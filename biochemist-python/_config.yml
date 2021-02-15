@@ -1,0 +1,24 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title                       : Python Data and Scripting for Biochemists  # The title of the book. Will be placed in the left navbar.
+author                      : The Molecular Sciences Software Institute  # The author of the book
+copyright                   : "2021"  # Copyright year to be placed in the footer
+logo                        : molssi_main_logo.png  # A path to the book logo
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/MolSSI-Education/python-scripting-biochemistry  # Online location of your book
+  path_to_book: biochemist-python  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+  google_analytics_id: UA-169902961-1
