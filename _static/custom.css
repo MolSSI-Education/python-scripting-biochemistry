@@ -1,0 +1,91 @@
+.overview .overview-title {
+    position: relative;
+    margin: 0 -.6rem!important;
+    padding: .4rem .6rem .4rem 2rem; 
+    font-weight: 700;
+    background-color: #ffc10733;
+}
+
+.overview {
+    margin: 1.5625em auto;
+    padding: 0 .6rem .8rem!important;
+    overflow: hidden;
+    page-break-inside: avoid;
+    border-left: .2rem solid #ffc107;
+    border-radius: .1rem;
+    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 5%), 0 0 0.05rem rgb(0 0 0 / 10%);
+    transition: color .25s,background-color .25s,border-color .25s;
+}
+
+.overview .overview-title:before {
+    position: absolute;
+    left: .6rem;
+    width: 1rem;
+    height: 1rem;
+    color: #ffc107;
+    font-family: Font Awesome\ 5 Free;
+    font-weight: 900;
+    content: "\f128";
+}
+
+.exercise .exercise-title {
+    position: relative;
+    margin: 0 -.6rem!important;
+    padding: .4rem .6rem .4rem 2rem; 
+    font-weight: 700;
+    background-color: #fd7e1433;
+}
+
+.exercise {
+    margin: 1.5625em auto;
+    padding: 0 .6rem .8rem!important;
+    overflow: hidden;
+    page-break-inside: avoid;
+    border-left: .2rem solid #fd7e14;
+    border-radius: .1rem;
+    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 5%), 0 0 0.05rem rgb(0 0 0 / 10%);
+    transition: color .25s,background-color .25s,border-color .25s;
+}
+
+.exercise .exercise-title:before {
+    position: absolute;
+    left: .6rem;
+    width: 1rem;
+    height: 1rem;
+    color: #fd7e14;
+    font-family: Font Awesome\ 5 Free;
+    font-weight: 900;
+    content: "\f303";
+}
+
+.admonition {
+    margin: 1.5625em auto;
+    padding: 0 .6rem .8rem!important;
+    overflow: hidden;
+    page-break-inside: avoid;
+    border-left: .2rem solid #fd7e14;
+    border-radius: .1rem;
+    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 5%), 0 0 0.05rem rgb(0 0 0 / 10%);
+    transition: color .25s,background-color .25s,border-color .25s;
+}
+
+.admonition .admonition-title {
+    position: relative;
+    margin: 0 -.6rem!important;
+    padding: .4rem .6rem .4rem 2rem; 
+    font-weight: 700;
+    background-color: #fd7e1433;
+}
+
+.admonition .admonition-title:before {
+    position: absolute;
+    left: .6rem;
+    width: 1rem;
+    height: 1rem;
+    color: #fd7e14;
+    font-family: Font Awesome\ 5 Free;
+    font-weight: 900;
+    content: "\f06e";
+}
+
+

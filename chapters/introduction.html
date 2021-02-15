@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction &#8212; Python Data and Scripting for Biochemists</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/molssi_main_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Data and Scripting for Biochemists</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/introduction.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting Started
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-up-your-jupyter-notebooks">
+     Setting up your Jupyter notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assigning-variables-and-data-types">
+   Assigning variables and data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assigning-multiple-variables-at-once">
+   Assigning multiple variables at once
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-types">
+   Data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   Lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slices">
+   Slices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repeating-an-operation-many-times-for-loops">
+   Repeating an operation many times: for loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-choices-logic-statements">
+   Making choices: Logic Statements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-note-about-jupyter-notebooks">
+   A note about jupyter notebooks
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="overview-this-is-a-title overview">
+<p class="overview-title">Overview</p>
+<p>Questions</p>
+    <ul>
+        <li> What is the basic syntax of the python programming language?
+    </ul>
+<p>Objectives:</p>
+    <ul>
+        <li> Assign values to variables
+        <li> Use the print function to check how the code is owkring.
+        <li> Use multiple assignment to assign several variables at once.
+        <li> Use a for loop to perform the same action on the items in a list
+    </ul>
+</div><div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Python is a computer programming language that has become ubiquitous in scientific programming.  Our initial lessons will run python <em>interactively</em> through a python interpreter. We will first use a Jupyter notebook.  The [setup] page should have provided information
+on how to install and start a Jupyter notebook.  Everything included in a code block is something you could type into your python interpreter and evaluate.</p>
+<div class="section" id="setting-up-your-jupyter-notebooks">
+<h3>Setting up your Jupyter notebooks<a class="headerlink" href="#setting-up-your-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>In the [setup], you learned how to start a Jupyter notebook. Now, we will use the notebook to execute Python code. Jupyter notebooks are divided into cells. You run a Jupyter notebook one cell at a time. To execute a cell, click inside the cell and press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code>.</p>
+<p>In the upper left corner, click where it says “Untitled” and change the name to “MolSSI Workshop”. We have now changed the name of the Jupyter Notebook.</p>
+<p>Jupyter notebooks allow us to also use something called <strong>markdown</strong> in some cells. We can use markdown to write descriptions about our notebooks for others to read. It’s a good practice to have your first cell be markdown to explain the purpose of the notebook. Let’s do that in our first cell. Click inside the first cell, then on the top of the screen select <code class="docutils literal notranslate"><span class="pre">Cell-&gt;Cell</span> <span class="pre">Type-&gt;Markdown</span></code> (shown below).</p>
+<img src="https://github.com/MolSSI-Education/python_scripting_cms/blob/gh-pages/fig/lesson01_fig1.png?raw=true">
+<p>Now, return to the cell and type the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># MolSSI Workshop</span>
+<span class="c1">## Introduction</span>
+
+<span class="n">This</span> <span class="n">lesson</span> <span class="n">covers</span> <span class="n">Python</span> <span class="n">basics</span> <span class="n">like</span> <span class="n">variable</span> <span class="n">creation</span>
+<span class="ow">and</span> <span class="n">assignment</span> <span class="ow">and</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Jupyter</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+<p>In Markdown, we create headers using a single <code class="docutils literal notranslate"><span class="pre">#</span></code> sign. Using two (<code class="docutils literal notranslate"><span class="pre">##</span></code>) creates a subheader. After typing this into a cell, press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code> to evaluate. Now your notebook should look like the following.</p>
+<img src="https://github.com/MolSSI-Education/python_scripting_cms/blob/gh-pages/fig/lesson01_fig2.png?raw=true">
+<p>Now that our notebook is set-up, we’re ready to start learning some Python!</p>
+</div>
+</div>
+<div class="section" id="assigning-variables-and-data-types">
+<h2>Assigning variables and data types<a class="headerlink" href="#assigning-variables-and-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Any python interpreter can work just like a calculator.  This is not very useful. Type the following into the next cell of your Jupyter notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">+</span><span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, Python has performed a calculation for us. To save this value, or other values, we assign them to a variable for later use. The syntax for assigning variables is the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">variable_name</span> <span class="o">=</span> <span class="n">variable_value</span>
+</pre></div>
+</div>
+<p>Let’s see this in action with a calculation. Type the following into the next cell of your Jupyter notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculations using the Michaelis-Menten Equation</span>
+<span class="n">Km</span> <span class="o">=</span> <span class="mf">15.0</span>                <span class="c1"># Km = 15 micromolar</span>
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mf">100.0</span>             <span class="c1"># Vmax = 100.0 nanomoles/sec</span>
+<span class="n">substrate_concentration</span> <span class="o">=</span> <span class="mf">8.0</span>                  <span class="c1"># Substrate concentration is 8.0 micromolar</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">substrate_concentration</span><span class="o">/</span><span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">substrate_concentration</span><span class="p">)</span>    <span class="c1"># Michaelis-Menten equation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice several things about this code.  You can use <code class="docutils literal notranslate"><span class="pre">#</span></code> to add comments to your code, both at the start of a line and in the middle of the line (then the rest of the line is a comment).  The computer does not do anything with these comments.  They have been used here to remind the user what units each of their values are in. Comments are also often used to explain what the code is doing or leave information for future people who might use the code.</p>
+<p>When choosing variable names, you should choose informative names so that someone reading your code can tell what they represent.  Naming a variable temp or temperature is much more informative than naming that variable t.</p>
+<p>We can now access any of the variables from other cells. Let’s print the value that we calculated. In the next cell,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous code block, we introduced the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.  Often, we will use the print function just to make sure our code is working correctly.</p>
+<p>Note that if you do not specify a new name for a variable, then it doesn’t automatically change the value of the variable; this is called being <em>immutable</em>.  For example if we typed</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+<span class="n">velocity</span><span class="o">*</span><span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+34.78260869565217
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nothing happened to the value of <code class="docutils literal notranslate"><span class="pre">velocity</span></code>.  If we wanted to change the value of <code class="docutils literal notranslate"><span class="pre">velocity</span></code> we would have to re-save the variable using the same name to overwrite the existing value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+2086.9565217391305
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are situations where it is reasonable to overwrite a variable with a new value, but you should always think carefully about this.  Usually it is a better practice to give the variable a new name and leave the existing variable as is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change velocity back</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">/</span> <span class="mi">60</span>
+<span class="n">v_nmols_per_min</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v_nmols_per_min</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+2086.9565217391305
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="assigning-multiple-variables-at-once">
+<h2>Assigning multiple variables at once<a class="headerlink" href="#assigning-multiple-variables-at-once" title="Permalink to this headline">¶</a></h2>
+<p>Python can do what is called multiple assignment where you assign several variables their values on one line of code.  The following code block does the exact same thing as the previous code block.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I can assign all these variables at once</span>
+<span class="n">Km</span><span class="p">,</span> <span class="n">vmax</span><span class="p">,</span> <span class="n">substrate_concentration</span> <span class="o">=</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">8.0</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="n">vmax</span> <span class="o">*</span> <span class="n">substrate_concentration</span><span class="o">/</span><span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">substrate_concentration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-types">
+<h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
+<p>Each variable is some particular type of data.  The most common types of data are strings (<code class="docutils literal notranslate"><span class="pre">str</span></code>), integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>), and floating point numbers (<code class="docutils literal notranslate"><span class="pre">float</span></code>).  You can identify the data type of any variable with the function <code class="docutils literal notranslate"><span class="pre">type(variable_name)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can change the data type of a variable like this.  This is called casting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">velocity_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">velocity_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>Another common data structure in python is the list.  Lists can be used to group several values or variables together, and are declared using square brackets [_]. <strong>Python assigns special meanings to square brackets [], parentheses () and curly brackets {}, so you must be very careful with these characters.</strong> List values are separated by commas. Python has several built in functions which can be used on lists. The built-in function <code class="docutils literal notranslate"><span class="pre">len</span></code> can be used to determine the length of a list. This code block also demonstrates how to print multiple variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a list</span>
+<span class="n">substrate_concs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span> <span class="c1">#micromolar</span>
+<span class="c1"># I can determine its length</span>
+<span class="n">s_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">substrate_concs</span><span class="p">)</span>
+<span class="c1"># Print the length of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This list contains&#39;</span><span class="p">,</span> <span class="n">s_length</span><span class="p">,</span> <span class="s1">&#39;substrate concentrations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This list contains 13 substrate concentrations
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to operate on a particular element of the list, you use the list name and then put in brackets which element of the list you want.  <strong>In python counting starts at zero.  So the first element of the list is <code class="docutils literal notranslate"><span class="pre">list[0]</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the first element of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">substrate_concs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can use an element of a list as a variable in a calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the last substrate concentration to nM</span>
+<span class="n">concentration_nM</span> <span class="o">=</span> <span class="n">substrate_concs</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">concentration_nM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100000.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="slices">
+<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you will want to make a new list that is a subset of an existing list.  For example, we might want to make a new list that is just the first few elements of our previous list.  This is called a <code class="docutils literal notranslate"><span class="pre">slice</span></code>.  The general syntax is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="n">list_name</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>When taking a slice, it is very important to remember how counting works in python.  Remember that counting starts at zero so the first element of a list is <code class="docutils literal notranslate"><span class="pre">list_name[0]</span></code>.  When you specify the last element for the slice, it goes <em>up to but not including</em> that element of the list.  So a slice like</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">short_list</span> <span class="o">=</span> <span class="n">substrate_concs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>includes <code class="docutils literal notranslate"><span class="pre">substrate_concs[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">substrate_conces[1]</span></code> and <code class="docutils literal notranslate"><span class="pre">substrate_concs[2]</span></code> but <em>not</em> <code class="docutils literal notranslate"><span class="pre">substrate_concs[3]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">short_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0, 2.0, 3.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you do not include a start index, the slice automatically starts at <code class="docutils literal notranslate"><span class="pre">list_name[0]</span></code>.  If you do not include an end index, the slice automatically goes to the end of the list.</p>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Check your understanding</p>
+    <p> What does the following code print? </p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slice1</span> <span class="o">=</span> <span class="n">substrate_concs</span><span class="p">[</span><span class="mi">8</span><span class="p">:]</span>
+<span class="n">slice2</span> <span class="o">=</span> <span class="n">substrate_concs</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;slice1 is&#39;</span><span class="p">,</span> <span class="n">slice1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;slice2 is&#39;</span><span class="p">,</span> <span class="n">slice2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>slice1 is [20.0, 30.0, 50.0, 75.0, 100.0]
+slice2 is [1.0, 2.0, 3.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you don’t specify a new variable name nothing happens. Looking at our example above if we only slice the list, nothing happens to `energy_kcal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">substrate_concs</span><span class="p">)</span>
+<span class="n">substrate_concs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">substrate_concs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0, 2.0, 3.0, 4.0, 6.0, 8.0, 10.0, 15.0, 20.0, 30.0, 50.0, 75.0, 100.0]
+[1.0, 2.0, 3.0, 4.0, 6.0, 8.0, 10.0, 15.0, 20.0, 30.0, 50.0, 75.0, 100.0]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="repeating-an-operation-many-times-for-loops">
+<h2>Repeating an operation many times: for loops<a class="headerlink" href="#repeating-an-operation-many-times-for-loops" title="Permalink to this headline">¶</a></h2>
+<p>Often, you will want to do something to every element of a list.  The structure
+to do this is called a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.  The general structure of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">do</span> <span class="n">things</span> <span class="n">using</span> <span class="n">variable</span>
+</pre></div>
+</div>
+<p>Indentation is very important in python.  There is nothing like an <code class="docutils literal notranslate"><span class="pre">end</span></code> or <code class="docutils literal notranslate"><span class="pre">exit</span></code> statement that tells you that you are finished with the loop.  The indentation shows you what statements are in the loop.  Let’s use a loop to calculate initial velocities for all the substrate concentration in our S list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">substrate_concs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+    <span class="n">velocity</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.25
+11.764705882352942
+16.666666666666668
+21.05263157894737
+28.571428571428573
+34.78260869565217
+40.0
+50.0
+57.142857142857146
+66.66666666666667
+76.92307692307692
+83.33333333333333
+86.95652173913044
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now it seems like we are really getting somewhere with our program!  But it would be even better if instead of just printing the values, it saved them in a new list.  To do this, we are going to use the <code class="docutils literal notranslate"><span class="pre">append</span></code> function.  The <code class="docutils literal notranslate"><span class="pre">append</span></code> function adds a new item to the end of an existing list.  The general form of the append function is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_thing</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Try running this block of code.  See if you can figure out why it doesn’t work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">substrate_concs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+    <span class="n">velocities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">velocities</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="mi">11125</span><span class="n">c6ba2e5</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">V</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">velocities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">velocities</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;velocities&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code doesn’t work because on the first iteration of our loop, the list <code class="docutils literal notranslate"><span class="pre">velocities</span></code> doesn’t exist.  To make it work, we have to start the list outside of the loop.  The list can be blank when we start it, but we have to start it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">velocities</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">substate_concs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+    <span class="n">velocities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">velocities</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.25, 11.764705882352942, 16.666666666666668, 21.05263157894737, 28.571428571428573, 34.78260869565217, 40.0, 50.0, 57.142857142857146, 66.66666666666667, 76.92307692307692, 83.33333333333333, 86.95652173913044]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="making-choices-logic-statements">
+<h2>Making choices: Logic Statements<a class="headerlink" href="#making-choices-logic-statements" title="Permalink to this headline">¶</a></h2>
+<p>Within your code, you may need to evaluate a variable and then do something if the variable has a particular value.  This type of logic is handled by an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.  In the following example, we are only going to use the lower substrate concentrations, as we might do when we are looking for the initial linear portion of a Michaelis-Menten curve. <strong>As a biochemist, you may want to plot the data to see what you find. We will address plotting later in the workshop</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Km</span><span class="p">,</span> <span class="n">Vmax</span> <span class="o">=</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">100.0</span>
+<span class="n">linear_MM</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">subtrate_concs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="n">Km</span><span class="o">/</span><span class="mi">4</span><span class="p">:</span>
+        <span class="n">V_linear</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+        <span class="n">linear_MM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V_linear</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">linear_MM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.25, 11.764705882352942, 16.666666666666668]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Other logic operations include</p>
+<ul class="simple">
+<li><p>equal to <code class="docutils literal notranslate"><span class="pre">==</span></code></p></li>
+<li><p>not equal to <code class="docutils literal notranslate"><span class="pre">!=</span></code></p></li>
+<li><p>greater than <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></li>
+<li><p>less than <code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></li>
+<li><p>greater than or equal to <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></li>
+<li><p>less than or equal to <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></li>
+</ul>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code> to check more than one condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">substrate_concs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">75.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span>
+<span class="n">v_at_or_below_km</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="n">Km</span> <span class="ow">or</span> <span class="n">number</span> <span class="o">==</span> <span class="n">Km</span><span class="p">:</span>
+        <span class="n">velocity</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+        <span class="n">v_at_or_below_km</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">v_at_or_below_km</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.25, 11.764705882352942, 16.666666666666668, 21.05263157894737, 28.571428571428573, 34.78260869565217, 40.0, 50.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are comparing strings, not numbers, you use different logic operators like <code class="docutils literal notranslate"><span class="pre">is</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, or <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code>.  We will see these types of logic operators used in a future lesson.</p>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Exercise</p>
+    <p> The following list contains some floating point numbers and some numbers which have been saved as strings.  Copy this list exactly into your code. </p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conc_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;14.0&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Set up a `for` loop to go over each element of `S_list`.  If the element is a string (`str`), recast it as a float.  Save *all* of the numbers to a new list called `number_list`.  Pay close attention to your indentation!</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;14.0&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">]</span>
+<span class="n">number_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="n">number_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">number_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="section" id="a-note-about-jupyter-notebooks">
+<h2>A note about jupyter notebooks<a class="headerlink" href="#a-note-about-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>If you use the jupyter notebook for your python interpreter, the notebook only executes the current code block.  This can have several unintended consequences. If you change a value and then go back and run an earlier code block, it will use the new value, not the first defined value, which may give you incorrect analysis.  Similarly, if you open your jupyter notebook later, and try to run a code block in the middle, it may tell you that your variables are undefined, even though you can clearly see them defined in earlier code blocks.  But if you didn’t re-run those code blocks, then python doesn’t know they exist.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Welcome to your Jupyter Book</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Molecular Sciences Software Institute<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-169902961-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
