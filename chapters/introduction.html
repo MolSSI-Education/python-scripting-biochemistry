@@ -711,9 +711,9 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 <p>Set up a `for` loop to go over each element of `S_list`.  If the element is a string (`str`), recast it as a float.  Save *all* of the numbers to a new list called `number_list`.  Pay close attention to your indentation!</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">S_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;14.0&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conc_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;14.0&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">]</span>
 <span class="n">number_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">conc_list</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">item</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="n">number_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
