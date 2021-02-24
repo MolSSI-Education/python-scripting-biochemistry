@@ -1,0 +1,82 @@
+﻿PDB ID,Method,Resolution,Structure,Ligand ID,Ligand name
+3SHC,X-RAY DIFFRACTION,1.9,Human Thrombin,B01,D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl]-L-prolinamide
+3P17,X-RAY DIFFRACTION,1.43,Thrombin,99P,D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolinamide
+2ZNK,X-RAY DIFFRACTION,1.8,Thrombin,31U,D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+2ZGB,X-RAY DIFFRACTION,1.6,Thrombin,21U,D-leucyl-N-(3-chlorobenzyl)-L-prolinamide
+2ZHQ,X-RAY DIFFRACTION,1.96,Thrombin,27U,N-(4-carbamimidoylbenzyl)-1-(3-phenylpropanoyl)-L-prolinamide
+2ZI2,X-RAY DIFFRACTION,1.65,Thrombin,24U,1-butanoyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+1K22,X-RAY DIFFRACTION,1.93,Human Thrombin,MEL,[((1R)-2-{(2S)-2-[({4-[AMINO(IMINO)METHYL]BENZYL}AMINO)CARBONYL]AZETIDINYL}-1-CYCLOHEXYL-2-OXOETHYL)AMINO]ACETIC ACID
+6V64,X-RAY DIFFRACTION,2.29,Human Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+1K21,X-RAY DIFFRACTION,1.86,Human Thrombin,IGN,{[(1R)-2-((2S)-2-{[(3-{[AMINO(IMINO)METHYL]AMINO}PROPYL)AMINO]CARBONYL}PIPERIDINYL)-1-(CYCLOHEXYLMETHYL)-2-OXOETHYL]AMINO}ACETIC ACID
+3QTO,X-RAY DIFFRACTION,1.52,Thrombin,10P,D-phenylalanyl-N-[(1-methylpyridinium-3-yl)methyl]-L-prolinamide
+3QTV,X-RAY DIFFRACTION,1.63,Thrombin,06P,D-phenylalanyl-N-[(1-methylpyridinium-4-yl)methyl]-L-prolinamide
+3QX5,X-RAY DIFFRACTION,1.35,Thrombin,02P,D-phenylalanyl-N-[(4-chloro-1-methylpyridinium-2-yl)methyl]-L-prolinamide
+3QWC,X-RAY DIFFRACTION,1.75,Thrombin,98P,D-phenylalanyl-N-[(4-chloro-1-methylpyridinium-3-yl)methyl]-L-prolinamide
+3SHA,X-RAY DIFFRACTION,1.52,Human Thrombin,P97,D-phenylalanyl-N-[(4-chloropyridin-3-yl)methyl]-L-prolinamide
+3SI3,X-RAY DIFFRACTION,1.55,Human Thrombin,B03,D-phenylalanyl-N-(pyridin-2-ylmethyl)-L-prolinamide
+3SI4,X-RAY DIFFRACTION,1.27,Human Thrombin,B04,D-phenylalanyl-N-[(1-methylpyridinium-2-yl)methyl]-L-prolinamide
+3SV2,X-RAY DIFFRACTION,1.3,Human Thrombin,P05,D-phenylalanyl-N-(pyridin-4-ylmethyl)-L-prolinamide
+4UFE,X-RAY DIFFRACTION,1.593,Thrombin,3ZD,(2R)-N-[(2S)-1-[(4-carbamimidoylphenyl)methylamino]-1-oxidanylidene-propan-2-yl]-3-phenyl-2-[(phenylmethyl)sulfonylamino]propanamide
+4UFF,X-RAY DIFFRACTION,1.55,Thrombin,6V2,(2R)-2-(benzylsulfonylamino)-N-(2-((4-carbamimidoylphenyl)methylamino)-2-oxo-ethyl)-N-methyl-3-phenyl-propanamide
+4UFG,X-RAY DIFFRACTION,1.65,Thrombin,D6J,(2S)-N-[(4-carbamimidoylphenyl)methyl]-2-[methyl-[(2R)-3-phenyl-2-[(phenylmethyl)sulfonylamino]propanoyl]amino]butanamide
+6TDT,X-RAY DIFFRACTION,1.53,Thrombin,LXW,"(2~{S})-1-[(2~{R})-2-azanyl-3,3-diphenyl-propanoyl]-~{N}-(pyridin-4-ylmethyl)pyrrolidine-2-carboxamide"
+1UVU,X-RAY DIFFRACTION,2.8,Bovine Thrombin,DCH,3-(7-DIAMINOMETHYL-NAPHTHALEN-2-YL)-PROPIONIC ACID ETHYL ESTER
+1UVT,X-RAY DIFFRACTION,2.5,Bovine Thrombin,I48,N-{3-METHYL-5-[2-(PYRIDIN-4-YLAMINO)-ETHOXY]-PHENYL}-BENZENESULFONAMIDE
+1UVS,X-RAY DIFFRACTION,2.8,Bovine Thrombin,I11,[[CYCLOHEXANESULFONYL-GLYCYL]-3[PYRIDIN-4-YL-AMINOMETHYL]ALANYL]PIPERIDINE
+2C8Z,X-RAY DIFFRACTION,2.14,Thrombin,C2A,1-(3-CHLOROPHENYL)METHANAMINE
+2C8Y,X-RAY DIFFRACTION,2.2,Thrombin,C3M,"N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]NAPHTHALENE-2-SULFONAMIDE"
+2C8X,X-RAY DIFFRACTION,2.17,Thrombin,C5M,"N-{(2R,3S)-3-[(3-CHLOROBENZYL)AMINO]-2-HYDROXY-4-PHENYLBUTYL}-4-METHOXY-2,3,6-TRIMETHYLBENZENESULFONAMIDE"
+2C93,X-RAY DIFFRACTION,2.2,Thrombin,C4M,"N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]-4-METHOXY-2,3,6-TRIMETHYLBENZENESULFONAMIDE"
+2C90,X-RAY DIFFRACTION,2.25,Thrombin,C1M,1-(4-CHLOROPHENYL)-1H-TETRAZOLE
+2CF9,X-RAY DIFFRACTION,1.79,Human Thrombin,348,"4-[(1R,3AS,4R,8AS,8BR)-1-ISOPROPYL-2-(4-METHOXYBENZYL)-3-OXODECAHYDROPYRROLO[3,4-A]PYRROLIZIN-4-YL]BENZENECARBOXIMIDAMIDE"
+2CF8,X-RAY DIFFRACTION,1.3,Human Thrombin,ESH,"4- [(1R,3AS,4R,8AS,8BR)- 2- (4-CHLOROBENZYL)- 1- ISOPROPYL- 3- OXODECAHYDROPYRROLO[3,4- A]PYRROLIZIN- 4- YL]BENZENECARBOXIMIDAMIDE"
+1PPB,X-RAY DIFFRACTION,1.92,Human Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+3UWJ,X-RAY DIFFRACTION,1.5,Human Thrombin,TIF,N-(benzylsulfonyl)-D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+4UFD,X-RAY DIFFRACTION,1.429,Thrombin,S49,(2S)-N-[(4-carbamimidoylphenyl)methyl]-1-[(2R)-3-phenyl-2-[(phenylmethyl)sulfonylamino]propanoyl]pyrrolidine-2-carboxamide
+6T3Q,X-RAY DIFFRACTION,1.33,Thrombin,M6Q,(2~{S})-1-[(2~{R})-2-azanyl-3-phenyl-propanoyl]-~{N}-[(2-azanylpyridin-4-yl)methyl]pyrrolidine-2-carboxamide
+6T4A,X-RAY DIFFRACTION,1.31,Thrombin,J5K,(2~{S})-1-[(2~{R})-2-azanyl-3-phenyl-propanoyl]-~{N}-[(6-azanylpyridin-3-yl)methyl]pyrrolidine-2-carboxamide
+1BHX,X-RAY DIFFRACTION,2.3,Human Thrombin,R56,"5-OXO-6-PHENYLMETHANESULFONYLAMINO-HEXAHYDRO-THIAZOLO[3,2-A]PYRIDINE-3-CARBOXYLIC ACID (3-GUANIDINO-PROPYL)-AMIDE"
+1LHD,X-RAY DIFFRACTION,2.35,Human Thrombin,DI2,AC-(D)PHE-PRO-BOROLYS-OH
+1LHC,X-RAY DIFFRACTION,1.95,Human Thrombin,DP7,AC-(D)PHE-PRO-BOROARG-OH
+1LHG,X-RAY DIFFRACTION,2.25,Human Thrombin,DI5,AC-(D)PHE-PRO-BOROHOMOORNITHINE-OH
+1LHF,X-RAY DIFFRACTION,2.4,Human Thrombin,DI4,AC-(D)PHE-PRO-BOROHOMOLYS-OH
+1LHE,X-RAY DIFFRACTION,2.25,Human Thrombin,DI3,AC-(D)PHE-PRO-BORO-N-BUTYL-AMIDINO-GLYCINE-OH
+6HSX,X-RAY DIFFRACTION,1.56,Thrombin,GOZ,"(2~{S})-1-[(2~{R})-2-azanyl-3-phenyl-propanoyl]-~{N}-[[2,6-bis(azanyl)pyridin-4-yl]methyl]pyrrolidine-2-carboxamide"
+3F68,X-RAY DIFFRACTION,1.75,Thrombin,91U,N-acetyl-3-cyclohexyl-D-alanyl-N-(3-chlorobenzyl)-L-prolinamide
+3DA9,X-RAY DIFFRACTION,1.8,Thrombin,44U,beta-phenyl-D-phenylalanyl-N-propyl-L-prolinamide
+3C1K,X-RAY DIFFRACTION,1.84,Thrombin,T15,2-{3-[(benzylsulfonyl)amino]-6-methyl-2-oxopyridin-1(2H)-yl}-N-({1-[2-(tert-butylamino)-2-oxoethyl]-4-methyl-1H-imidazol-5-yl}methyl)acetamide
+2THF,X-RAY DIFFRACTION,2.1,Human Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+1THP,X-RAY DIFFRACTION,2.1,Human Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+2ZC9,X-RAY DIFFRACTION,1.58,Thrombin,22U,D-phenylalanyl-N-(3-chlorobenzyl)-L-prolinamide
+2ZDA,X-RAY DIFFRACTION,1.73,Thrombin,32U,D-phenylalanyl-N-{4-[amino(iminio)methyl]benzyl}-L-prolinamide
+2ZFP,X-RAY DIFFRACTION,2.25,Thrombin,19U,1-[(2R)-2-aminobutanoyl]-N-(3-chlorobenzyl)-L-prolinamide
+2ZGX,X-RAY DIFFRACTION,1.8,Thrombin,29U,1-[(2R)-2-aminobutanoyl]-N-(4-carbamimidoylbenzyl)-L-prolinamide
+2ZO3,X-RAY DIFFRACTION,1.7,Thrombin,33U,beta-phenyl-D-phenylalanyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+3DUX,X-RAY DIFFRACTION,1.6,Thrombin,64U,3-cyclohexyl-D-alanyl-N-(3-chlorobenzyl)-L-prolinamide
+3DHK,X-RAY DIFFRACTION,1.73,Thrombin,23U,beta-phenyl-D-phenylalanyl-N-(3-chlorobenzyl)-L-prolinamide
+1NRR,X-RAY DIFFRACTION,2.4,Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+3RML,X-RAY DIFFRACTION,1.53,Human Thrombin,M31,N-(benzylsulfonyl)glycyl-N-[2-(aminomethyl)-5-chlorobenzyl]-L-prolinamide
+3RMM,X-RAY DIFFRACTION,1.58,Human Thrombin,M32,N-(benzylsulfonyl)-D-alanyl-N-[2-(aminomethyl)-5-chlorobenzyl]-L-prolinamide
+3RLW,X-RAY DIFFRACTION,1.69,Human Thrombin,S28,N-(benzylsulfonyl)glycyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+3RLY,X-RAY DIFFRACTION,1.51,Human Thrombin,S29,N-(benzylsulfonyl)-D-alanyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+3RM0,X-RAY DIFFRACTION,1.34,Human Thrombin,S54,N-(benzylsulfonyl)-D-valyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+3RM2,X-RAY DIFFRACTION,1.23,Human Thrombin,S00,N-(benzylsulfonyl)-3-cyclohexyl-D-alanyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
+3RMN,X-RAY DIFFRACTION,1.78,Human Thrombin,M41,N-(benzylsulfonyl)-D-valyl-N-[2-(aminomethyl)-5-chlorobenzyl]-L-prolinamide
+3RMO,X-RAY DIFFRACTION,1.4,Human Thrombin,S04,N-(benzylsulfonyl)-3-cyclohexyl-D-alanyl-N-[2-(aminomethyl)-5-chlorobenzyl]-L-prolinamide
+3T5F,X-RAY DIFFRACTION,1.45,Human Thrombin,M34,N-(benzylsulfonyl)-D-leucyl-N-[2-(aminomethyl)-5-chlorobenzyl]-L-prolinamide
+6PX5,X-RAY DIFFRACTION,2.4,Human Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+2HNT,X-RAY DIFFRACTION,2.5,Human Thrombin,,
+6ROT,X-RAY DIFFRACTION,1.339,Thrombin,KDQ,(2~{S})-~{N}-[[5-chloranyl-2-(hydroxymethyl)phenyl]methyl]-1-[2-[(phenylmethyl)sulfonylamino]ethanoyl]pyrrolidine-2-carboxamide
+6GBW,X-RAY DIFFRACTION,1.45,Thrombin,EU5,(2~{S})-~{N}-[[2-(aminomethyl)-5-chloranyl-phenyl]methyl]-1-[(2~{S})-5-carbamimidamido-2-[(phenylmethyl)sulfonylamino]pentanoyl]pyrrolidine-2-carboxamide
+5JZY,X-RAY DIFFRACTION,1.27,Thrombin,6OV,3-cyclohexyl-D-alanyl-N-[(4-carbamimidoylphenyl)methyl]-L-prolinamide
+1DWC,X-RAY DIFFRACTION,3,Human Thrombin,MIT,"amino{[(4S)-5-[(2R,4R)-2-carboxy-4-methylpiperidin-1-yl]-4-({[(3R)-3-methyl-1,2,3,4-tetrahydroquinolin-8-yl]sulfonyl}amino)-5-oxopentyl]amino}methaniminium"
+1DWB,X-RAY DIFFRACTION,3.16,Human Thrombin,BEN,BENZAMIDINE
+1DWE,X-RAY DIFFRACTION,3,Human Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+1DWD,X-RAY DIFFRACTION,3,Human Thrombin,MID,1-[N-(naphthalen-2-ylsulfonyl)glycyl-4-carbamimidoyl-D-phenylalanyl]piperidine
+1ABJ,X-RAY DIFFRACTION,2.4,Thrombin,0G6,"D-phenylalanyl-N-[(2S,3S)-6-{[amino(iminio)methyl]amino}-1-chloro-2-hydroxyhexan-3-yl]-L-prolinamide"
+1AWH,X-RAY DIFFRACTION,3,Thrombin,GR3,"3-ACETOXY-17-(1-FORMYL-5-METHYL-3-OXO-HEX-4-ENYL)-16-HYDROXY-4,10,13,14-TETRAMETHYL-2,3,4,5,6,9,10,11,12,13,14,15,16,17-TETRADECAHYDRO-1H-CYCLOPENTA[A]PHENANTHRENE-4-CARBOXYLIC ACID"
+1A3B,X-RAY DIFFRACTION,1.8,Human Thrombin,T29,TRI166 (BIFUNCTIONAL BORONATE INHIBITOR)
+1A3E,X-RAY DIFFRACTION,1.85,Human Thrombin,T16,BOROLOG2
+2CN0,X-RAY DIFFRACTION,1.3,Human Thrombin,F25,"4-(1R,3AS,4R,8AS,8BR)-[1-DIFLUOROMETHYL-2-(4-FLUOROBENZYL)-3-OXODECAHYDROPYRROLO[3,4-A]PYRROLIZIN-4-YL]BENZAMIDINE"
+1TBZ,X-RAY DIFFRACTION,2.3,Human Thrombin,00Q,"D-phenylalanyl-N-{(1S)-1-[(S)-1,3-benzothiazol-2-yl(hydroxy)methyl]-4-carbamimidamidobutyl}-L-prolinamide"
+1HBT,X-RAY DIFFRACTION,2,Human Thrombin,,
