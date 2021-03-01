@@ -2,3 +2,4 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
 - file: chapters/introduction
+- file: chapters/File_Parsing
