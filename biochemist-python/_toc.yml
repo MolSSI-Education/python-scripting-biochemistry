@@ -1,9 +1,3 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
-- file: intro
-- file: chapters/introduction
-- file: chapters/File_Parsing
-- file: chapters/Processing_Multiple_Files_and_Writing_Files
-- file: chapters/Working_with_Pandas
-- file: chapters/Linear_Regression
 - file: chapters/Creating_Plots_in_Jupyter_Notebooks
