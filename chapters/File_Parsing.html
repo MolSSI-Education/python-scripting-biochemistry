@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Parsing &#8212; Python Data and Scripting for Biochemists</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Processing Multiple Files and Writing Files" href="Processing_Multiple_Files_and_Writing_Files.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/molssi_main_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Data and Scripting for Biochemists</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   File Parsing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">
+   Processing Multiple Files and Writing Files
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/File_Parsing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/File_Parsing.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/File_Parsing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-files">
+   Working with files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-file-paths-the-os-path-module">
+     Working with file paths - the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       os.path
+      </span>
+     </code>
+     module
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#absolute-and-relative-paths">
+   Absolute and relative paths
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-a-file">
+   Reading a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#readlines-function-behavior">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     readlines
+    </span>
+   </code>
+   function behavior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#searching-for-a-pattern-in-your-file">
+   Searching for a pattern in your file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#searching-for-a-particular-line-number-in-your-file">
+   Searching for a particular line number in your file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-final-note-about-regular-expressions">
+   A final note about regular expressions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="file-parsing">
+<h1>File Parsing<a class="headerlink" href="#file-parsing" title="Permalink to this headline">¶</a></h1>
+<div class="overview-this-is-a-title overview">
+<p class="overview-title">Overview</p>
+<p>Questions</p>
+    <ul>
+        <li> How do I sort through all the information in a text file and extract particular pieces of information?
+    </ul>
+<p>Objectives:</p>
+    <ul>
+        <li> Open a file and read in its contents line by line.
+        <li> Search for a particular string in a file.
+        <li> Manipulate strings and change data types.
+        <li> Print to a new file.
+    </ul>
+<p>Key Points:</p>
+    <ul>
+        <li> You should use the os.path module to work with file paths.
+        <li> One of the most flexible ways to read in the lines of a file is the `readlines()` function.
+        <li> An <ital>if</ital> statement can be used to find a particular string within a file.
+        <li> The split() function can be used to seperate the elements of a string.
+        <li> You will often need to recast data into a different data type when it was read in as a string.
+    </ul>
+</div><div class="section" id="working-with-files">
+<h2>Working with files<a class="headerlink" href="#working-with-files" title="Permalink to this headline">¶</a></h2>
+<p>One of the most common tasks in research is analyzing data.  An enormous amount of data is currently being generated in biochemistry and molecular biology, much of it pertaining to sequence and structure. The PDB file format is commonly used to describe macromolecular structures that have been determined by experimental methods. You may be interested in exploring the text and/or the data in a PDB file.  While the <a class="reference external" href="https://www.rcsb.org/">PDB web site</a> is very helpful, there are times when it would be handy to extract specific information about one protein (or 1,000) with a few keystrokes. For example, you might be interested in the resolution of a structure, or the small molecules that are bound to the macromolecule.  In general, this is called file parsing.</p>
+<div class="section" id="working-with-file-paths-the-os-path-module">
+<h3>Working with file paths - the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module<a class="headerlink" href="#working-with-file-paths-the-os-path-module" title="Permalink to this headline">¶</a></h3>
+<p>For this section, we will be working with the file <code class="docutils literal notranslate"><span class="pre">4eyr</span></code> in the <code class="docutils literal notranslate"><span class="pre">PDB_files</span></code> directory.</p>
+<p>To see this, go to a new cell and type <code class="docutils literal notranslate"><span class="pre">ls</span></code>. <code class="docutils literal notranslate"><span class="pre">ls</span></code> stands for ‘list’, and will list all of the contents of the current directory. <strong>This command is not a Python command, but will work in the Jupyter notebook</strong>. To see everything in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory, type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">data</span></code>. You should see something like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">PDB_files</span>/
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can tell that PDB_files is a directory (containing other files) because it is followed by a backslash (/). Now let’s go one step deeper to ensure that the file is really in the PDB_files directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">data</span><span class="o">/</span><span class="n">PDB_files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1ddo.pdb  3iva.pdb  4eyr.pdb  5veu.pdb  7tim.pdb
+2pkr.pdb  3vnd.pdb  5eu9.pdb  6zt7.pdb
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to parse a file, you must tell Python the location of the file, or the “file path”. For example, you can see what folder your Jupyter notebook is in by typing <code class="docutils literal notranslate"><span class="pre">pwd</span></code> into a cell in your notebook and evaluating it. <code class="docutils literal notranslate"><span class="pre">pwd</span></code> stands for ‘print working directory’, and can also be used in your terminal to see what directory you’re in.</p>
+<p>After evaluating the cell with <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, you should see an output similar to the following if you are on Mac or Linux:</p>
+<p>/Users/YOUR_USER_NAME/Desktop/python-scripting-biochemistry/biochemist-python/chapters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/runner/work/python-scripting-biochemistry/python-scripting-biochemistry/biochemist-python/chapters&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or something like this if you are in Windows:</p>
+<p>C:\Users\YOUR_USER_NAME\Desktop\python-scripting-biochemistry\biochemist-python\chapters</p>
+<p>Notice that the file paths are different for these two systems. The Windows system uses a forward slash (‘'), while Mac and Linux use a backslash (‘/’) for filepaths.</p>
+<p>When we write a script, we want it to be usable on any operating system, thus we will use a python module called <code class="docutils literal notranslate"><span class="pre">os.path</span></code> that will allow us to define file paths in a general way.</p>
+<p>In order to get the path to the <code class="docutils literal notranslate"><span class="pre">4eyr.pdb</span></code> file in a general way, type</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span><span class="s1">&#39;4eyr.pdb&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/4eyr.pdb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here, we have specified that our filepath contains the ‘data’ and ‘PDB_files’ directory, and the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module has made this into a filepath that is usable by our system. If you are on Windows, you will instead see that a forward slash is used.</p>
+</div>
+</div>
+</div>
+<div class="section" id="absolute-and-relative-paths">
+<h2>Absolute and relative paths<a class="headerlink" href="#absolute-and-relative-paths" title="Permalink to this headline">¶</a></h2>
+<p>File paths can be <em>absolute</em>, or <em>relative</em>.</p>
+<p>A relative file path gives the location relative to the directory we are in. Thus, if we are in the <code class="docutils literal notranslate"><span class="pre">biochemist-python</span></code> directory, the relative filepath for the <code class="docutils literal notranslate"><span class="pre">4eyr.pdb</span></code> file would be <code class="docutils literal notranslate"><span class="pre">chapters/data/PDB_files/4eyr.pdb</span></code></p>
+<p>An absolute filepath gives the complete path to a file. This could file path could be used from anywhere on a computer, and would access the same file. For example, the absolute filepath to the <code class="docutils literal notranslate"><span class="pre">4eyr.pdb</span></code> file on a Mac might be <code class="docutils literal notranslate"><span class="pre">/Users/YOUR_USER_NAME/Desktop/python-scripting-biochemistry/biochemist-python/chapters/data/PDB_files/4eyr.pdb</span></code>. You can get the absolute path of a file using <code class="docutils literal notranslate"><span class="pre">os.path.abspath(path)</span></code>, where path is the relative path of the file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are working with the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module here, and this is how you will see people handle file paths in most Python code. However, as of Python 3.6, there is also a <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> module in the Python standard library that can be used to represent and manipulate filepaths. <code class="docutils literal notranslate"><span class="pre">os.path</span></code> works with filepaths as strings, while in the <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> module, paths are objects. A good overview of the pathlib module can be found <a class="reference external" href="https://realpython.com/python-pathlib/">here</a>.</p>
+</div>
+</div>
+<div class="section" id="reading-a-file">
+<h2>Reading a file<a class="headerlink" href="#reading-a-file" title="Permalink to this headline">¶</a></h2>
+<p>In Python, there are many ways to read in information from a text file.  The best method to use depends on the type of data and the type of analysis you are performing.  If you have a file with lots of different types of information, text and numbers, with different types of formatting, the most generic way to read in information is the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.  Reading in the file is a two-set process. First, you have to open the file using the file path we defined above. This creates a file object, or filehandle. Then you can read in information with the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.</p>
+<p>We could use the following code to accomplish this task:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>After you open and read information from a file object, you must close the file. In this example, the command would be</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>There is a second option for opening files - to use a context manager(that is to say, using the word <code class="docutils literal notranslate"><span class="pre">with</span></code> from the beginning). This is actually the preferred way to open files, and prevents you from having to remember to close the file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code opens a file for reading and assigns it to the filehandle  <code class="docutils literal notranslate"><span class="pre">outfile</span></code>. The <code class="docutils literal notranslate"><span class="pre">r</span></code> argument in the function stands for <code class="docutils literal notranslate"><span class="pre">read</span></code>. Other arguments might be <code class="docutils literal notranslate"><span class="pre">w</span></code> for <code class="docutils literal notranslate"><span class="pre">write</span></code> if we want to write new information to the file, or <code class="docutils literal notranslate"><span class="pre">a</span></code> for append if we want to add new information at the end of the file.</p>
+<p>In the next line, we use the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function to get our file as a list of strings.  Notice the dot notation introduced last lesson; readlines acts on the file object given to the left of the dot.  The function creates a list called data where each element of the list is a string that is one line of the file.  This is always how the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function works.</p>
+<p>The file we will be analyzing in this example is a <a class="reference external" href="https://www.rcsb.org/structure/4EYR">PDB web site</a> file for an HIV protease complex with the inhibitor Ritonavir.</p>
+</div>
+<div class="section" id="readlines-function-behavior">
+<h2><code class="docutils literal notranslate"><span class="pre">readlines</span></code> function behavior<a class="headerlink" href="#readlines-function-behavior" title="Permalink to this headline">¶</a></h2>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">readlines</span></code> function can only be used on a file object one time. If you forget to set <code class="docutils literal notranslate"><span class="pre">outfile.readlines()</span></code> equal to a variable, you must <code class="docutils literal notranslate"><span class="pre">open</span></code> the file again in order to get the contents of the file.</p>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Check your understanding</p>
+    <p>Check that your file was read in correctly by determining how many lines are in the file.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> 
+    
+<span class="mi">2232</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="section" id="searching-for-a-pattern-in-your-file">
+<h2>Searching for a pattern in your file<a class="headerlink" href="#searching-for-a-pattern-in-your-file" title="Permalink to this headline">¶</a></h2>
+<p>The file we opened is the complete PDB file for the <a class="reference external" href="https://www.rcsb.org/structure/4EYR">Crystal structure of multidrug-resistant clinical isolate 769 HIV-1 protease in complex with ritonavir</a>.  As stated previously, the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function put the file contents into a list where each element is a line of the file. You may remember from lesson 1 that a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop can be used to execute the same code repeatedly. As we learned in the previous lesson, we can use a for loop to iterate through elements in a list.</p>
+<p>Here’s the code we could use to take a look at what’s in the file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here are the first five lines that would result from running this code on 4eyr.pdb:</p>
+<p>HEADER    HYDROLASE/HYDROLASE INHIBITOR           01-MAY-12   4EYR</p>
+<p>TITLE     CRYSTAL STRUCTURE OF MULTIDRUG-RESISTANT CLINICAL ISOLATE 769 HIV-1</p>
+<p>TITLE    2 PROTEASE IN COMPLEX WITH RITONAVIR</p>
+<p>CAVEAT     4EYR    LIGAND RIT HAS LOW CORRELATION AND HIGH REAL SPACE R VALUE.</p>
+<p>COMPND    MOL_ID: 1;</p>
+<p>If you look through 4eyr.pdb in a text editor, you will find one line that starts with HETNAM. This line contains information about the ligand or heterogen (in PDB terms) that is bound to HIV protease in this structure, providing both the abbreviation (RIT) and the full name of the drug (RITONAVIR).  We want to search through this file and find that line, and print only that line. We can do this using an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.</p>
+<p>Returning to our file example,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;HETNAM&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">HETNAM_line</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">HETNAM_line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HETNAM     RIT RITONAVIR                                                        
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> saves each line of the file as a string, so <code class="docutils literal notranslate"><span class="pre">HETNAM_line</span></code> is a string that contains the whole line.  For our analysis, if we are most interested in the abbreviation for the drug, we need to split up the line so we can save just that abbreviation as a different variable name. To do this, we can use a function called <code class="docutils literal notranslate"><span class="pre">split</span></code>.  The <code class="docutils literal notranslate"><span class="pre">split</span></code> function takes a string and divides it into its components using a <em>delimiter</em>.</p>
+<p>The <em>delimiter</em> is specified as an argument to the function (put in the parenthesis <code class="docutils literal notranslate"><span class="pre">()</span></code>). If you do not specify a delimiter, a space is used by default. Let’s try this out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HETNAM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HETNAM&#39;, &#39;RIT&#39;, &#39;RITONAVIR&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can save the output of this function to a variable as a new list. In the example below, we take the line we found in the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and split it up into its individual words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="n">HETNAM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HETNAM&#39;, &#39;RIT&#39;, &#39;RITONAVIR&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, we now see that we have a list called words, where we have split <code class="docutils literal notranslate"><span class="pre">HETNAM_line</span></code>.  The abbreviation is actually the second element of this list, so we can now save it as a new variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abbrev</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">abbrev</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise-this-is-a-title exercise">
+    <p class="exercise-title">Check Your Understanding</p>
+    <p>Some PDB files contain more than one heterogen. For example, the structure of D-amino acid oxidase found in PDB entry 1ddo contains three heterogens. Can you think of a way to keep all of the lines using syntax we have already learned?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>You will need to create an empty list and append each answer to the list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use os to assign the file path to a variable</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span><span class="s1">&#39;1ddo.pdb&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a list to hold the heterogen information</span>
+<span class="n">HETNAM_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Use the with context manager to open the file, then a for loop to populate HETNAM_list[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;HETNAM&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">HETNAM_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">HETNAM_list</span><span class="p">)</span>      
+</pre></div>
+</div>
+</div>
+</div>
+<p>We might also want to extract the number of atoms in the protein in this file. We will modify the above steps to achieve the desired result. We will be looking for the line that contains the term <code class="docutils literal notranslate"><span class="pre">PROTEIN</span> <span class="pre">ATOMS</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;PROTEIN ATOMS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">PROTEIN_ATOM_line</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">PROTEIN_ATOM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">PROTEIN_ATOM_line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>REMARK   3   PROTEIN ATOMS            : 1514                                    
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that the fifth element in this list is a colon (:). It is possible to modify the split command to split lines using the colon as the delimiter (‘:’).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;PROTEIN ATOMS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">PROTEIN_ATOM_line</span> <span class="o">=</span> <span class="n">line</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">PROTEIN_ATOM_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;REMARK   3   PROTEIN ATOMS            &#39;, &#39; 1514                                    \n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, we now see that we have a list called words, where we have split <code class="docutils literal notranslate"><span class="pre">PROTEIN_ATOM_line</span></code>.  The number of atoms in the protein is actually the second element of this list, so we can now save it as a new variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1514                                    
+</pre></div>
+</div>
+</div>
+</div>
+<p>The HIV protease structure in 4eyr.pdb is a dimer. Let’s find the number of atoms in each monomer unit. If we now try to do a math operation on atoms, we get an error message.  Why do you think that is?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">5</span><span class="n">ff957608802</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;str&#39; and &#39;int&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even though <code class="docutils literal notranslate"><span class="pre">atoms</span></code> looks like a number to us, it is really a string, so we can use it for a math operation.  We need to change the data type of atoms to a float. This is called <em>casting</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+<span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>757.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now it works.  If we thought ahead we could have changed the data type when we assigned the variable originally.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Exercise on file parsing</p>
+<p>Use skills from this lesson and the previous lesson to extract the experimental method and temperature for determining the structure of 4eyr.pdb. Try to complete this exercise without opening and reading the PDB file in your text editor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXPERIMENT</span> <span class="n">TYPE</span> <span class="p">:</span> <span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span>
+<span class="n">TEMPERATURE</span> <span class="p">(</span><span class="n">KELVIN</span><span class="p">)</span> <span class="p">:</span> <span class="mi">298</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Hint</p>
+<ul>
+    <li>Remember that you can only use readlines once. You will need to reopen the file to read it again</li>
+    <li>To find the lines with the keywords, do a search and then print the lines to see their content. Then you can refine your search and split the lines as needed to get the desired output</li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>This is one possible solution for the file parsing exercise.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span><span class="s1">&#39;4eyr.pdb&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;EXPERIMENT TYPE&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">exp_type_line</span> <span class="o">=</span> <span class="n">line</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">exp_type_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>  <span class="c1"># to remove the . from RESOLUTION.</span>
+            <span class="n">words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s1">&#39;KELVIN&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">temp_line</span> <span class="o">=</span> <span class="n">line</span>
+            <span class="n">words</span> <span class="o">=</span> <span class="n">temp_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="section" id="searching-for-a-particular-line-number-in-your-file">
+<h2>Searching for a particular line number in your file<a class="headerlink" href="#searching-for-a-particular-line-number-in-your-file" title="Permalink to this headline">¶</a></h2>
+<p>There is a lot of other information in the PDB file we might be interested in.  For example, we might want to pull out the sequence of the protein.  If we look through the file, 4eyr.pdb, in a text editor, we notice that the sequence is given in a series of lines that begin with <code class="docutils literal notranslate"><span class="pre">SEQRES</span></code></p>
+<p>SEQRES   1 A   99  PRO GLN ILE THR LEU TRP GLN ARG PRO ILE VAL THR ILE</p>
+<p>followed by a series of lines that contain the full sequence using three letter abbreviations for the amino acids.  In this case, we don’t want to pull something out of this line, as we did in our previous example, but we want to know which line of the file this is so that we can then pull the sequence from the next few lines.</p>
+<p>When you use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, it is easy to have python keep up with the line numbers using the <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> command.  The general syntax is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">linenum</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">list_name</span><span class="p">):</span>
+    <span class="n">do</span> <span class="n">things</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">loop</span>
+</pre></div>
+</div>
+<p>In this notation, there are now <em>two</em> variables you can use in your loop commands, <code class="docutils literal notranslate"><span class="pre">linenum</span></code> (which can be named something else) will keep up with what iteration you are on in the loop, in this case what line you are on in the file. The variable <code class="docutils literal notranslate"><span class="pre">line</span></code> (which could be named something else) functions exactly as it did before, holding the actual information from the list.  Finally, instead of just giving the list name you use <code class="docutils literal notranslate"><span class="pre">enumerate(list_name)</span></code>.</p>
+<p>This block of code searches our file for the line that contains “SEQRES” and reports the line number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">linenum</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;SEQRES   1 A&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">linenum</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>310:SEQRES   1 A   99  PRO GLN ILE THR LEU TRP GLN ARG PRO ILE VAL THR ILE          
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we know that this is line 310 in our file (remember that you start counting at zero!).</p>
+<div class="exercise-this-is-a-title exercise">
+    <p class="exercise-title">Check Your Understanding</p>
+    <p>What would be printed if you entered the following?</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(data[311])
+print(data[312])
+print(data[313])
+print(data[314])
+print(data[315])
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p> It prints line 311-315 of the list data which is the first line that contains "SEQRES 1 A" and then the sequence information for the next 5 lines from the PDB file for 7TIM.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">311</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">312</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">313</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">314</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">315</span><span class="p">])</span>
+
+<span class="n">SEQRES</span>   <span class="mi">2</span> <span class="n">A</span>   <span class="mi">99</span>  <span class="n">LYS</span> <span class="n">ILE</span> <span class="n">GLY</span> <span class="n">GLY</span> <span class="n">GLN</span> <span class="n">LEU</span> <span class="n">LYS</span> <span class="n">GLU</span> <span class="n">ALA</span> <span class="n">LEU</span> <span class="n">LEU</span> <span class="n">ASN</span> <span class="n">THR</span>          
+
+<span class="n">SEQRES</span>   <span class="mi">3</span> <span class="n">A</span>   <span class="mi">99</span>  <span class="n">GLY</span> <span class="n">ALA</span> <span class="n">ASP</span> <span class="n">ASP</span> <span class="n">THR</span> <span class="n">VAL</span> <span class="n">LEU</span> <span class="n">GLU</span> <span class="n">GLU</span> <span class="n">VAL</span> <span class="n">ASN</span> <span class="n">LEU</span> <span class="n">PRO</span>          
+
+<span class="n">SEQRES</span>   <span class="mi">4</span> <span class="n">A</span>   <span class="mi">99</span>  <span class="n">GLY</span> <span class="n">ARG</span> <span class="n">TRP</span> <span class="n">LYS</span> <span class="n">PRO</span> <span class="n">LYS</span> <span class="n">LEU</span> <span class="n">ILE</span> <span class="n">GLY</span> <span class="n">GLY</span> <span class="n">ILE</span> <span class="n">GLY</span> <span class="n">GLY</span>          
+
+<span class="n">SEQRES</span>   <span class="mi">5</span> <span class="n">A</span>   <span class="mi">99</span>  <span class="n">PHE</span> <span class="n">VAL</span> <span class="n">LYS</span> <span class="n">VAL</span> <span class="n">ARG</span> <span class="n">GLN</span> <span class="n">TYR</span> <span class="n">ASP</span> <span class="n">GLN</span> <span class="n">VAL</span> <span class="n">PRO</span> <span class="n">ILE</span> <span class="n">GLU</span>          
+
+<span class="n">SEQRES</span>   <span class="mi">6</span> <span class="n">A</span>   <span class="mi">99</span>  <span class="n">ILE</span> <span class="n">CYS</span> <span class="n">GLY</span> <span class="n">HIS</span> <span class="n">LYS</span> <span class="n">VAL</span> <span class="n">ILE</span> <span class="n">GLY</span> <span class="n">THR</span> <span class="n">VAL</span> <span class="n">LEU</span> <span class="n">VAL</span> <span class="n">GLY</span>          
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-final-note-about-regular-expressions">
+<h2>A final note about regular expressions<a class="headerlink" href="#a-final-note-about-regular-expressions" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you will need to match something more complex than just a particular word or phrase in your output file.  Sometimes you will need to match a particular word, but only if it is found at the beginning of a line.  Or perhaps you will need to match a particular pattern of data, like a capital letter followed by a number, but you won’t know the exact letter and number you are looking for.  These types of matching situations are handled with something called <em>regular expressions</em> which is accessed through the python module <code class="docutils literal notranslate"><span class="pre">re</span></code>.  While using regular expressions is outside the scope of this tutorial, they are very useful and you might want to learn more about them in the future.  A tutorial can be found at <a class="reference external" href="https://automatetheboringstuff.com/2e/chapter7/">Automate the Boring Stuff with Python book</a>. A great test site for regex is <a class="reference external" href="https://regex101.com/">here</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="Processing_Multiple_Files_and_Writing_Files.html" title="next page">Processing Multiple Files and Writing Files</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Molecular Sciences Software Institute<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-169902961-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
