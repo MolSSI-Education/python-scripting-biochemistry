@@ -3,3 +3,4 @@
 - file: chapters/introduction
 - file: chapters/File_Parsing
 - file: chapters/Processing_Multiple_Files_and_Writing_Files
+- file: chapters/Working_with_Pandas
