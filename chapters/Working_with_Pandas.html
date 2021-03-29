@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with Pandas &#8212; Python Data and Scripting for Biochemists</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Processing Multiple Files and Writing Files" href="Processing_Multiple_Files_and_Writing_Files.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/molssi_main_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Data and Scripting for Biochemists</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="File_Parsing.html">
+   File Parsing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">
+   Processing Multiple Files and Writing Files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Working with Pandas
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/Working_with_Pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Working_with_Pandas.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/Working_with_Pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-pandas-and-why-do-we-use-it">
+   What is pandas and why do we use it?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-arrays">
+     1D arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2D arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3D arrays
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-python-libraries">
+   Importing python libraries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#locating-the-data">
+     Locating the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-the-data-with-pandas">
+     Importing the data with pandas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-information-in-a-dataframe">
+     Finding information in a dataframe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-data-with-pandas">
+     Sorting data with pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="working-with-pandas">
+<h1>Working with Pandas<a class="headerlink" href="#working-with-pandas" title="Permalink to this headline">¶</a></h1>
+<p>Questions</p>
+    <ul>
+        <li>How can I use import data for analysis in my notebook?
+    </ul>
+<p>Objectives:</p>
+    <ul>
+        <li>Import the pandas library.
+        <li>Use pandas library funtions to import data from a csv file.
+        <li>Import data from a .csv formatted file.
+    </ul>
+<p>Keypoints:</p>
+    <ul>
+        <li>Use the pandas library to create dataframes from csv formatted data.</li>
+    </ul>
+</div><div class="section" id="what-is-pandas-and-why-do-we-use-it">
+<h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Permalink to this headline">¶</a></h2>
+<p>Pandas is a python library that is designed to work with two dimensional data arrays. It is built on numpy, another python library that specializes in numerical analysis. Numpy also has the ability to create and analyze data arrays. If you are not familiar with arrays, here are some simple examples.</p>
+<div class="section" id="d-arrays">
+<h3>1D arrays<a class="headerlink" href="#d-arrays" title="Permalink to this headline">¶</a></h3>
+<p>A one dimensional array is simply a list of items, for example, a list of the elements: H, He, Li, Be, B, etc.</p>
+</div>
+<div class="section" id="id1">
+<h3>2D arrays<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>A two dimensional array is an array which has rows and columns. It can have any number of columns and rows. A spreadsheet with rows and columns is analogous to a 2D array.</p>
+</div>
+<div class="section" id="id2">
+<h3>3D arrays<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>A three-dimensional array would be a collection of two dimensional arrays. For example, this might be a collection of x, y, and z coordinates for a structure as a function of time.</p>
+<p>The numpy library has functions that will manage n-dimensional arrays, while pandas only works on 2D arrays. You may need numpy for nD arrays at some point, but for this workshop, we will learn to use pandas as we learn how to perform linear and nonlinear regression of laboratory data based on data in 2D arrays.</p>
+<p>The pandas library contains powerful tools for working with 2D data arrays, including the ability to identify the rows and columns of data by unique identifiers: things like “mass protein” and “initial velocity” rather than “row 1” or “column C”). Pandas also has many more functions that we will not explore in this workshop, but here are two excellent free online resources for learning more about pandas:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://education.molssi.org/python-data-analysis/02-pandas/index.html">Using pandas for data analysis</a> from MolSSI</p></li>
+<li><p>Charlie Weiss’s excellent online textbook, <em>Scientific Computing for Chemists</em>, which you can find on his GitHub site, <a class="reference external" href="https://github.com/weisscharlesj/SciCompforChemists">SciCompforChemists</a></p></li>
+<li><p>Corey Schafer’s <a class="reference external" href="https://www.youtube.com/watch?v=ZyhVh-qRZPA&amp;list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">Pandas Tutorials on YouTube</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="importing-python-libraries">
+<h2>Importing python libraries<a class="headerlink" href="#importing-python-libraries" title="Permalink to this headline">¶</a></h2>
+<p>As we move toward data analysis, we will need to import a series python <strong>libraries</strong>. A <strong>library</strong> is a set of modules which contain related functions that can be used to complete specific tasks. Using libraries in Python reduces the amount of code you have to write. Usually a function has some type of input and gives a particular output.  To use a function that is in a library, you often use the dot notation introduced in the previous lesson.</p>
+<p>In the last lesson, we imported the <code class="docutils literal notranslate"><span class="pre">os</span></code> library, which can be used to assign the location of a file to a variable (e.g. datafile), so our script can be transferred between computers with different operating systems (e.g., mac vs windows). In this lesson, we will be using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and we will add a few more libraries in the future. As we proceed, we’ll build this table.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Library</p></th>
+<th class="text-align:center head"><p>Uses</p></th>
+<th class="text-align:center head"><p>Abbreviation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>os</p></td>
+<td class="text-align:center"><p>file management in operating systems</p></td>
+<td class="text-align:center"><p>os</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>numpy</p></td>
+<td class="text-align:center"><p>calculations</p></td>
+<td class="text-align:center"><p>np</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>pandas</p></td>
+<td class="text-align:center"><p>data management</p></td>
+<td class="text-align:center"><p>pd</p></td>
+</tr>
+</tbody>
+</table>
+<p>To start we will import the two libraries we need to complete the work in this notebook, os and pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">aa23a9097180</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="locating-the-data">
+<h3>Locating the data<a class="headerlink" href="#locating-the-data" title="Permalink to this headline">¶</a></h3>
+<p>To work with data in Jupyter notebooks, you must first find the data. In the file parsing lesson, we used the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (print working directory) command to find out where we were located on our computers. In this lesson, we will learn another command, <code class="docutils literal notranslate"><span class="pre">ls</span></code>, which gives us a listing of the files and folders in the working directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">data/</span></code> appears in a different font and is followed by a forward slash. That is because <code class="docutils literal notranslate"><span class="pre">data</span></code> is a folder or directory. In fact, the data folder contains the file we want to use. To get a listing of the files in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder, you can just type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">data</span></code>. The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command is unix/linux is similar to the <code class="docutils literal notranslate"><span class="pre">dir</span></code> command when you are working at the command prompt in Windows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will notice a number of files and folders in the data folder. We will be working with the file, <code class="docutils literal notranslate"><span class="pre">thrombin_with_ligands.csv</span></code>. As a first step, we will assign the location of that file to a variable, using the path.join function from the <code class="docutils literal notranslate"><span class="pre">os</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombin_with_ligands.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">thrombin_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="importing-the-data-with-pandas">
+<h3>Importing the data with pandas<a class="headerlink" href="#importing-the-data-with-pandas" title="Permalink to this headline">¶</a></h3>
+<p>As mentioned above, the pandas library has a number of excellent tools for importing data. We will be using the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function from the pandas library to import our data. You may have encountered csv files before. csv stands for comma separated values. This is a format that spreadsheet programs like Excel and Google Sheets can both read and write. If you open a csv file in a text editor, it simply contains rows of information, where the information is separated by commas. The information can be integers, real numbers or strings. Here are the first four rows of the csv file that we will be exploring using pandas.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PDB</span> <span class="n">ID</span><span class="p">,</span><span class="n">Method</span><span class="p">,</span><span class="n">Resolution</span><span class="p">,</span><span class="n">Structure</span><span class="p">,</span><span class="n">Ligand</span> <span class="n">ID</span><span class="p">,</span><span class="n">Ligand</span> <span class="n">name</span>
+
+<span class="mi">3</span><span class="n">SHC</span><span class="p">,</span><span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="n">Human</span> <span class="n">Thrombin</span><span class="p">,</span><span class="n">B01</span><span class="p">,</span><span class="n">D</span><span class="o">-</span><span class="n">phenylalanyl</span><span class="o">-</span><span class="n">N</span><span class="o">-</span><span class="p">[(</span><span class="mi">4</span><span class="o">-</span><span class="n">chloropyridin</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">yl</span><span class="p">)</span><span class="n">methyl</span><span class="p">]</span><span class="o">-</span><span class="n">L</span><span class="o">-</span><span class="n">prolinamide</span>
+
+<span class="mi">3</span><span class="n">P17</span><span class="p">,</span><span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span><span class="p">,</span><span class="mf">1.43</span><span class="p">,</span><span class="n">Thrombin</span><span class="p">,</span><span class="mi">99</span><span class="n">P</span><span class="p">,</span><span class="n">D</span><span class="o">-</span><span class="n">phenylalanyl</span><span class="o">-</span><span class="n">N</span><span class="o">-</span><span class="p">(</span><span class="n">pyridin</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">ylmethyl</span><span class="p">)</span><span class="o">-</span><span class="n">L</span><span class="o">-</span><span class="n">prolinamide</span>
+
+<span class="mi">2</span><span class="n">ZNK</span><span class="p">,</span><span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="n">Thrombin</span><span class="p">,</span><span class="mi">31</span><span class="n">U</span><span class="p">,</span><span class="n">D</span><span class="o">-</span><span class="n">leucyl</span><span class="o">-</span><span class="n">N</span><span class="o">-</span><span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="n">carbamimidoylbenzyl</span><span class="p">)</span><span class="o">-</span><span class="n">L</span><span class="o">-</span><span class="n">prolinamide</span>
+</pre></div>
+</div>
+<p>If you look at these data carefully, you can see how they could easily be arranged in a table, with the labels in the in the first row as the column headers. Before we can explore how pandas can do that for us, let’s look at the help command for the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function in pandas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice the syntax for the command:  help is followed by parentheses, which contain the function name that we want to explore. Also note that <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is abbreviated as <code class="docutils literal notranslate"><span class="pre">pd</span></code>. That may seem strange at first, but you will get used to library abbreviations in short order if you work much with Jupyter notebooks, or with python in general.</p>
+<p>If you enter this command in a cell, the output will be over 200 lines long. You can learn about all of the arguments that can be attached to the read_csv function and how they affect the dataframe. Just to give you a taste, here are the first few lines you would see.</p>
+<p>Help on function read_csv in module pandas.io.parsers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">IO</span><span class="p">[</span><span class="o">~</span><span class="n">AnyStr</span><span class="p">]],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="n">header</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">squeeze</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mangle_dupe_cols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">true_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">false_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skip_blank_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">keep_date_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">decimal</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">lineterminator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">doublequote</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">escapechar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">warn_bad_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">memory_map</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_precision</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The panda library contains many more options than we have time to explore right now, but one thing to pay special attention to is called a <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>. The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas dataframe</a> is the primary data structure that is produced and manipulated by pandas functions. We can take an existing 2D data array and tell pandas to convert it to a DataFrame, or we can use the read_csv command to convert a csv file to a pandas dataframe. As our example, we will be exploring a csv file containing information about different thrombin structures found in the <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank</a>. So let’s create our DataFrame and explore what it contains.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">thrombin_file</span><span class="p">)</span> <span class="c1">#thrombin_df is a convenient name for our dataframe.</span>
+<span class="n">thrombin_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-information-in-a-dataframe">
+<h3>Finding information in a dataframe<a class="headerlink" href="#finding-information-in-a-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>The dataframe appears as a table. The data are in rows (“indexes”) and columns (“series”). If you want to look at the data in a single column (one series), you can use this command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="p">[</span><span class="s1">&#39;Resolution&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Check your understanding</p>
+    <p>How can you print out the ligand names for each of the structures? </p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="p">[</span><span class="s1">&#39;Ligand name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div><p>You can use the loc function from the pandas library to get all the information from a single index or row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also use the loc command to locate the information from a specific cell. If you enter the index (row) of 2 and the column ‘Resolution’, the resolution for the structure in the third row is returned. You may be thinking, “Resolution is the third column. Why does python think it is column 2?” Remember that python starts counting at 0. So the number for the first column is 0 and the number for the third column is 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Resolution&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are times when you may want to use the index number and column number to locate the information in that cell in the dataframe. In this case, you can use the iloc (for integer locate) command, which accepts integers in the form of [row, column].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you only want to look at the first five rows of a dataframe, you can use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function; you can use the <code class="docutils literal notranslate"><span class="pre">tail</span></code> function to look at the last five rows. We always include () after the name of the function. This is how we can pass arguments into the function. Try using the argument 3 in the head command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sorting-data-with-pandas">
+<h3>Sorting data with pandas<a class="headerlink" href="#sorting-data-with-pandas" title="Permalink to this headline">¶</a></h3>
+<p>You can also sort the data using the pandas sort_values function. To sort the thrombin_df dataframe into ascending Resolution values, use the following command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Resolution&#39;</span><span class="p">)</span>
+<span class="n">thrombin_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the numbers in the first column (the index values) are not in order. If you type “thrombin_df” now, you will get back the unsorted dataframe. However, if you want to keep retain the sorting, you can add <code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">True</span></code> to the command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Resolution&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">thrombin_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Exercise</p>
+    <p> The enzyme kinetics data from the introduction can be found in the file `enzyme_kinetics.csv` in the data directory. The only problem is that the substrate concentrations are out of order. This is how it looks in Excel:</p>
+<img src="images/enzyme_kinetics.png" alt="enzyme kinetics data" width="306" height="387"> 
+<p>Create a dataframe from that file and use pandas functions to place the data in ascending substrate concentrations, then print the velocity at a substrate concentration of 20 micromolar. As a biochemist, you probably want to plot and analyze these data to find the Km and Vmax. We’ll get to that in a bit. The goal right now is to just have a little fun with pandas.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
+import pandas as pd
+kinetics_file = os.path.join(&#39;data&#39;, &#39;enzyme_kinetics.csv&#39;)
+kinetics_df = pd.read_csv(kinetics_file) # kinetics_file is a variable, not a string
+kinetics_df.head(0)  # to find out the column labels. You can also use kinetics_df.columns to get the same output.
+kinetics_df.sort_values(&#39;Substrate_conc&#39;)  # once you know the column labels
+kinetics_df.loc[9]
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Processing_Multiple_Files_and_Writing_Files.html" title="previous page">Processing Multiple Files and Writing Files</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Molecular Sciences Software Institute<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-169902961-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
