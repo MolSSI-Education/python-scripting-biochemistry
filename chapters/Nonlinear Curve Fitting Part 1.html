@@ -1,0 +1,1031 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Non-Linear Curve Fitting, Part 1 &#8212; Python Data and Scripting for Biochemists</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Creating Plots in Jupyter Notebooks" href="Creating_Plots_in_Jupyter_Notebooks.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/molssi_main_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Python Data and Scripting for Biochemists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="File_Parsing.html">
+   File Parsing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">
+   Processing Multiple Files and Writing Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Working_with_Pandas.html">
+   Working with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Linear_Regression.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">
+   Creating Plots in Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Non-Linear Curve Fitting, Part 1
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapters/Nonlinear Curve Fitting Part 1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Nonlinear Curve Fitting Part 1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/Nonlinear Curve Fitting Part 1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   Importing the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-the-pandas-dataframe">
+   Creating the pandas dataframe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datatype">
+   Datatype
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-the-initial-velocity">
+   Calculating the initial velocity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inspect-the-data">
+     Inspect the data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-the-slopes">
+   Calculate the Slopes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-the-initial-velocity">
+   Calculate the initial velocity
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="non-linear-curve-fitting-part-1">
+<h1>Non-Linear Curve Fitting, Part 1<a class="headerlink" href="#non-linear-curve-fitting-part-1" title="Permalink to this headline">¶</a></h1>
+<div class="overview-this-is-a-title overview">
+<p class="overview-title">Overview</p>
+<p>Questions</p>
+    <ul>
+        <li>How can I analyze enzyme kinetics data in Python?</li>
+        <li>What is the process for non-linear least squares curve fitting in Python?</li>
+    </ul>
+<p>Objectives:</p>
+    <ul>
+        <li> Create a pandas dataframe with enzyme kinetics data from a .csv file</li>
+        <li> Add velocity calculations to the dataframe</li>
+        <li> Perform the non-linear regression calculations</li>
+    </ul>
+<p>In this module, we will calculate initial rates from the raw data (&Delta;A<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where you will explore nonlinear curve fitting in python.
+    </p>
+</div><div class="section" id="importing-the-data">
+<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">¶</a></h2>
+<p>We start by importing data from a csv file as we did earlier with the data for linear regression. These data represent the rate of p-nitrophenol appearance for a series of p-nitrophenol phosphate concentrations in the presence of alkaline phosphatase. We will import the libraries we need, import the data and set up a pandas dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="c1"># to create a filehandle for the .csv file</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># for importing the .csv file and creating a dataframe</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="c1"># for performing non-linear regression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the filehandle for the csv file that contains your data</span>
+<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;AP_kin.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>  <span class="c1"># filehandle confirmed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/AP_kin.csv
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-the-pandas-dataframe">
+<h2>Creating the pandas dataframe<a class="headerlink" href="#creating-the-pandas-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>The filehandle, <code class="docutils literal notranslate"><span class="pre">datafile</span></code>, points to a csv file that contains the raw kinetics data. As we saw in the <code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">with</span> <span class="pre">Pandas</span></code> module, the pandas library has a tool for creating a dataframe from an existing csv file. Notice that the variable for the dataframe is called AP_kin_df. The <code class="docutils literal notranslate"><span class="pre">_df</span></code> at the end of the variable name is a reminder that this is a pandas dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the pandas dataframe using read_csv</span>
+<span class="n">AP_kin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
+<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c1"># looking at the first five rows of the dataframe </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time (min)</th>
+      <th>20.0</th>
+      <th>10.0</th>
+      <th>7.0</th>
+      <th>4.0</th>
+      <th>2.0</th>
+      <th>1.0</th>
+      <th>0.7</th>
+      <th>0.4</th>
+      <th>0.2</th>
+      <th>0.1</th>
+      <th>0.05</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.25</td>
+      <td>0.127118</td>
+      <td>0.121434</td>
+      <td>0.123059</td>
+      <td>0.103351</td>
+      <td>0.088046</td>
+      <td>0.062613</td>
+      <td>0.051681</td>
+      <td>0.034661</td>
+      <td>0.019578</td>
+      <td>0.020353</td>
+      <td>0.005635</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.50</td>
+      <td>0.269802</td>
+      <td>0.257587</td>
+      <td>0.239086</td>
+      <td>0.210920</td>
+      <td>0.177801</td>
+      <td>0.122747</td>
+      <td>0.104366</td>
+      <td>0.068643</td>
+      <td>0.040318</td>
+      <td>0.040318</td>
+      <td>0.011162</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.75</td>
+      <td>0.373572</td>
+      <td>0.364301</td>
+      <td>0.369177</td>
+      <td>0.313216</td>
+      <td>0.246186</td>
+      <td>0.193419</td>
+      <td>0.147517</td>
+      <td>0.099906</td>
+      <td>0.059896</td>
+      <td>0.056988</td>
+      <td>0.016580</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.00</td>
+      <td>0.518850</td>
+      <td>0.500455</td>
+      <td>0.468796</td>
+      <td>0.400747</td>
+      <td>0.352183</td>
+      <td>0.257892</td>
+      <td>0.194682</td>
+      <td>0.134567</td>
+      <td>0.073658</td>
+      <td>0.075985</td>
+      <td>0.022757</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.25</td>
+      <td>0.616135</td>
+      <td>0.613302</td>
+      <td>0.556695</td>
+      <td>0.500934</td>
+      <td>0.444503</td>
+      <td>0.309966</td>
+      <td>0.258405</td>
+      <td>0.173306</td>
+      <td>0.099827</td>
+      <td>0.100796</td>
+      <td>0.027092</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>When you look at this dataframe, notice that the index (the item at the far left of each row) is an integer. In this case, we want to use the ‘Time (min)’ values that are found in the first series as the index. There is a simple fix - the set_index function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By making the time values the index for each row, we can easily omit them from our initial rate calculations. We use the <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> option to make the change to the dataframe permanent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>20.0</th>
+      <th>10.0</th>
+      <th>7.0</th>
+      <th>4.0</th>
+      <th>2.0</th>
+      <th>1.0</th>
+      <th>0.7</th>
+      <th>0.4</th>
+      <th>0.2</th>
+      <th>0.1</th>
+      <th>0.05</th>
+    </tr>
+    <tr>
+      <th>Time (min)</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.25</th>
+      <td>0.127118</td>
+      <td>0.121434</td>
+      <td>0.123059</td>
+      <td>0.103351</td>
+      <td>0.088046</td>
+      <td>0.062613</td>
+      <td>0.051681</td>
+      <td>0.034661</td>
+      <td>0.019578</td>
+      <td>0.020353</td>
+      <td>0.005635</td>
+    </tr>
+    <tr>
+      <th>0.50</th>
+      <td>0.269802</td>
+      <td>0.257587</td>
+      <td>0.239086</td>
+      <td>0.210920</td>
+      <td>0.177801</td>
+      <td>0.122747</td>
+      <td>0.104366</td>
+      <td>0.068643</td>
+      <td>0.040318</td>
+      <td>0.040318</td>
+      <td>0.011162</td>
+    </tr>
+    <tr>
+      <th>0.75</th>
+      <td>0.373572</td>
+      <td>0.364301</td>
+      <td>0.369177</td>
+      <td>0.313216</td>
+      <td>0.246186</td>
+      <td>0.193419</td>
+      <td>0.147517</td>
+      <td>0.099906</td>
+      <td>0.059896</td>
+      <td>0.056988</td>
+      <td>0.016580</td>
+    </tr>
+    <tr>
+      <th>1.00</th>
+      <td>0.518850</td>
+      <td>0.500455</td>
+      <td>0.468796</td>
+      <td>0.400747</td>
+      <td>0.352183</td>
+      <td>0.257892</td>
+      <td>0.194682</td>
+      <td>0.134567</td>
+      <td>0.073658</td>
+      <td>0.075985</td>
+      <td>0.022757</td>
+    </tr>
+    <tr>
+      <th>1.25</th>
+      <td>0.616135</td>
+      <td>0.613302</td>
+      <td>0.556695</td>
+      <td>0.500934</td>
+      <td>0.444503</td>
+      <td>0.309966</td>
+      <td>0.258405</td>
+      <td>0.173306</td>
+      <td>0.099827</td>
+      <td>0.100796</td>
+      <td>0.027092</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="datatype">
+<h2>Datatype<a class="headerlink" href="#datatype" title="Permalink to this headline">¶</a></h2>
+<p>Before we calculate the slopes to get initial velocities, we need to check for the datatypes on the numbers. We must ensure that the numbers are floats, rather than strings, so we can do calculations on them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># checking to see if the numbers are strings or floats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;float64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculating-the-initial-velocity">
+<h2>Calculating the initial velocity<a class="headerlink" href="#calculating-the-initial-velocity" title="Permalink to this headline">¶</a></h2>
+<p>The index for each row is the time, which will be the x values to get the slope of each line. The values in each column are the absorbance values at each time point, so those will be our y values. Now we need to follow these steps to calculate the initial velocity at each substrate concentration.</p>
+<ol class="simple">
+<li><p>Inspect the data.</p></li>
+<li><p>Create a second dataframe with the substrate concentration as the first series.</p></li>
+<li><p>Calculate the slopes from the first dataframe and add those as a column to the second dataframe.</p></li>
+<li><p>Calculate the initial velocity by dividing the slope by the extinction coefficient for p-nitrophenol under these buffer conditions, 15.0 mM<sup>-1</sup>cm<sup>-1</sup>.</p></li>
+<li><p>Export the second dataframe to a csv file that we will use in the next module.</p></li>
+</ol>
+<div class="section" id="inspect-the-data">
+<h3>Inspect the data<a class="headerlink" href="#inspect-the-data" title="Permalink to this headline">¶</a></h3>
+<p>In an earlier module, we used pyplot from matplotlib to create a well-annotated plot of our linear regression data. We could do that here, but we only want to inspect the data to make sure we are on the right track. To do that we can use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html">plot command from pandas</a>, which builds the plot using tools from matplotlib. The syntax is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In our case, the only argument we will pass is “marker = ‘o’ so that the individual data points will appear.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect the data using the plot command that is available with the dataframe</span>
+<span class="c1"># We use the plot function that is built into pandas for this simple data display</span>
+<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time (min)&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/Nonlinear Curve Fitting Part 1_13_1.png" src="../_images/Nonlinear Curve Fitting Part 1_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a second dataframe with the substrate concentration as the first series.</span>
+<span class="c1"># Note the syntax for this pandas function - the D and F are capitalized.</span>
+<span class="n">MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-the-slopes">
+<h2>Calculate the Slopes<a class="headerlink" href="#calculate-the-slopes" title="Permalink to this headline">¶</a></h2>
+<p>There is some scatter in the data, but generally, the slopes of the curves increase with increasing substrate concentration. Now we need to calculate the slopes for each of the lines in the plot above. To do so, we can use the linregress function from scipy.stats that we used for the least squares linear regression analysis of the protein assay data from an earlier module. We will use the index from our data frame, <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">(min)</span></code>, AP_kin_df. The y values will be taken from each of the series from the same dataframe.</p>
+<p>Remember that linregress provides five outputs: slope, intercept, r-value, p-value and standard error. We need only the slope, so we will use this format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where _ is just a placeholder that we will ignore.</p>
+<p>To get the slopes for each series we will use a for loop. First, we’ll create an empty list to contain the slopes that are generated as the for loop cycles through the series in the AP_kin_df dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty list to hold the slopes </span>
+<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Calculate the slopes from each column in the AP_kin_df dataframe </span>
+
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">AP_kin_df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+    
+<span class="c1"># Did we get a list of 11 slopes for each of the 11 series?</span>
+<span class="n">slopes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5140907641142858,
+ 0.5031401632390977,
+ 0.4704346427639096,
+ 0.4170212341052633,
+ 0.34244478125714295,
+ 0.24625953559097755,
+ 0.20284295232781954,
+ 0.1364430576421053,
+ 0.07644213958496243,
+ 0.07806979615939849,
+ 0.022319351245112782]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Populate the new dataframe with the slopes</span>
+
+<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
+
+<span class="c1"># Check the dataframe</span>
+<span class="n">MM_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pNPP (mM)</th>
+      <th>slopes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20.0</td>
+      <td>0.514091</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.503140</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.0</td>
+      <td>0.470435</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>0.417021</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>0.342445</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>0.246260</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7</td>
+      <td>0.202843</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.4</td>
+      <td>0.136443</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.2</td>
+      <td>0.076442</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.1</td>
+      <td>0.078070</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.05</td>
+      <td>0.022319</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="calculate-the-initial-velocity">
+<h2>Calculate the initial velocity<a class="headerlink" href="#calculate-the-initial-velocity" title="Permalink to this headline">¶</a></h2>
+<p>The initial velocity can be calculated by dividing the slope by the extinction micromlar coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate initial velocities and place those in a new column in the dataframe</span>
+<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.015</span>
+<span class="n">MM_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pNPP (mM)</th>
+      <th>slopes</th>
+      <th>initial velocities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20.0</td>
+      <td>0.514091</td>
+      <td>34.272718</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.503140</td>
+      <td>33.542678</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.0</td>
+      <td>0.470435</td>
+      <td>31.362310</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>0.417021</td>
+      <td>27.801416</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>0.342445</td>
+      <td>22.829652</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>0.246260</td>
+      <td>16.417302</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7</td>
+      <td>0.202843</td>
+      <td>13.522863</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.4</td>
+      <td>0.136443</td>
+      <td>9.096204</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.2</td>
+      <td>0.076442</td>
+      <td>5.096143</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.1</td>
+      <td>0.078070</td>
+      <td>5.204653</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.05</td>
+      <td>0.022319</td>
+      <td>1.487957</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We will use this dataframe now to perform the nonlinear regression fit using the SciPy library in part 2 of this lesson. To save this data for part 2, so we need to write it to a csv file in our data directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;MM_data.csv&#39;</span><span class="p">)</span>
+<span class="n">MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="exercise-this-is-a-title exercise">
+<p class="exercise-title">Check your understanding</p>
+    <p>You will find an Excel file in your data folder, chymotrypsin_kinetics.xlsx, with some kinetic data from a chymotrypsin experiment. Apply the principles above to create dataframes and a .csv file for creating a Michaelis-Menten plot with these data. Under these assay conditions the extinction coefficient for p-nitrophenol is 18,320 M<sup>-1</sup>cm<sup>-1</sup>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p>You will need to get the data into a layout and file format that is easily read by pandas.
+Delete the first seven lines of the Excel file.
+Delete the first column of the Excel file.
+Save the file as chymotrypsin_kinetics.csv.
+Your data will should look something like this:
+<img alt="csv image" src="../_images/csv_image.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
+<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymotrypsin_kinetics.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
+<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
+<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">linregress_slope</span><span class="p">(</span><span class="n">df_series</span><span class="p">):</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">df_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_series</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">slope</span>
+
+<span class="n">chymo_MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">linregress_slope</span><span class="p">)</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;Initial Velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;biochemist-python/chapters/data/chymo_MM_data.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chymo_MM_df</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<p>The solution is in the next cell. We will remove that cell before we publish the final Jupyter book.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
+<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymotrypsin_kinetics.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
+<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
+<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">linregress_slope</span><span class="p">(</span><span class="n">df_series</span><span class="p">):</span>
+  <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">df_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_series</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">slope</span>
+
+<span class="n">chymo_MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">linregress_slope</span><span class="p">)</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;Initial Velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span> 
+<span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymo_MM_data.csv&#39;</span><span class="p">)</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chymo_MM_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              slopes  Initial Velocities
+1           0.000557            0.030412
+0.5         0.000539            0.029437
+0.25        0.000500            0.027293
+0.125       0.000450            0.024563
+0.0625      0.000511            0.027877
+0.03125     0.000493            0.026903
+0.015625    0.000357            0.019495
+0.0078125   0.000229            0.012477
+0.00390625  0.000111            0.006043
+0.00195313  0.000071            0.003899
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Creating_Plots_in_Jupyter_Notebooks.html" title="previous page">Creating Plots in Jupyter Notebooks</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Molecular Sciences Software Institute<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+    
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-169902961-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
