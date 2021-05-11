@@ -17,14 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-atoms / 2
+ydata = rates_df('initial velocities') # Common errors and how to read them
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-13-5ff957608802>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0matoms[0m [0;34m/[0m [0;36m2[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-5-694e0dd4e545>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mydata[0m [0;34m=[0m [0mrates_df[0m[0;34m([0m[0;34m'initial velocities'[0m[0;34m)[0m [0;31m# Common errors and how to read them[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mTypeError[0m: unsupported operand type(s) for /: 'str' and 'int'
-TypeError: unsupported operand type(s) for /: 'str' and 'int'
+[0;31mTypeError[0m: 'DataFrame' object is not callable
+TypeError: 'DataFrame' object is not callable
 
