@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Non-Linear Regression Part 2 &#8212; Python Data and Scripting for Biochemists</title>
+    <title>Nonlinear Regression Part 2 &#8212; Python Data and Scripting for Biochemists</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,6 +54,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Non-Linear Regression, Part 1" href="Nonlinear%20Regression%20Part%201.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -90,7 +91,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Workshop%20Schedule.html">
    Workshop Schedule
@@ -131,8 +132,8 @@
    Non-Linear Regression, Part 1
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Nonlinear%20Regression%20Part%202.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Nonlinear Regression Part 2
   </a>
  </li>
@@ -177,7 +178,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/Non-Linear Regression Part 2.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/chapters/Nonlinear Regression Part 2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -197,7 +198,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Non-Linear Regression Part 2.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Nonlinear Regression Part 2.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -218,7 +219,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/Non-Linear Regression Part 2.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/Nonlinear Regression Part 2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -296,8 +297,8 @@
         
               <div>
                 
-  <div class="section" id="non-linear-regression-part-2">
-<h1>Non-Linear Regression Part 2<a class="headerlink" href="#non-linear-regression-part-2" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="nonlinear-regression-part-2">
+<h1>Nonlinear Regression Part 2<a class="headerlink" href="#nonlinear-regression-part-2" title="Permalink to this headline">¶</a></h1>
 <div class="overview-this-is-a-title overview">
 <p class="overview-title">Overview</p>
 <p>Questions</p>
@@ -387,6 +388,7 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>pNPP (mM)</th>
       <th>slopes</th>
       <th>initial velocities</th>
@@ -395,30 +397,35 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
   <tbody>
     <tr>
       <th>0</th>
+      <td>0</td>
       <td>20.0</td>
       <td>0.514091</td>
       <td>34.272718</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>10.0</td>
       <td>0.503140</td>
       <td>33.542678</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>2</td>
       <td>7.0</td>
       <td>0.470435</td>
       <td>31.362310</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>3</td>
       <td>4.0</td>
       <td>0.417021</td>
       <td>27.801416</td>
     </tr>
     <tr>
       <th>4</th>
+      <td>4</td>
       <td>2.0</td>
       <td>0.342445</td>
       <td>22.829652</td>
@@ -439,10 +446,10 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6f3a304640&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ff8138a4580&gt;]
 </pre></div>
 </div>
-<img alt="../_images/Non-Linear Regression Part 2_6_1.png" src="../_images/Non-Linear Regression Part 2_6_1.png" />
+<img alt="../_images/Nonlinear Regression Part 2_6_1.png" src="../_images/Nonlinear Regression Part 2_6_1.png" />
 </div>
 </div>
 </div>
@@ -649,7 +656,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc619176450&gt;]
 </pre></div>
 </div>
-<img alt="../_images/Non-Linear Regression Part 2_19_1.png" src="../_images/Non-Linear Regression Part 2_19_1.png" />
+<img alt="../_images/Nonlinear Regression Part 2_19_1.png" src="../_images/Nonlinear Regression Part 2_19_1.png" />
 </div>
 </div>
 </div>
@@ -672,7 +679,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc678a338d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/Non-Linear Regression Part 2_21_1.png" src="../_images/Non-Linear Regression Part 2_21_1.png" />
+<img alt="../_images/Nonlinear Regression Part 2_21_1.png" src="../_images/Nonlinear Regression Part 2_21_1.png" />
 </div>
 </div>
 <div class="exercise-this-is-a-title exercise">
@@ -716,7 +723,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(7.5, 16, &#39;Km = 1.19 +/- 0.08&#39;)
 </pre></div>
 </div>
-<img alt="../_images/Non-Linear Regression Part 2_23_1.png" src="../_images/Non-Linear Regression Part 2_23_1.png" />
+<img alt="../_images/Nonlinear Regression Part 2_23_1.png" src="../_images/Nonlinear Regression Part 2_23_1.png" />
 </div>
 </div>
 <div class="exercise-this-is-a-title exercise">
@@ -841,7 +848,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc62967aa50&gt;]
 </pre></div>
 </div>
-<img alt="../_images/Non-Linear Regression Part 2_26_1.png" src="../_images/Non-Linear Regression Part 2_26_1.png" />
+<img alt="../_images/Nonlinear Regression Part 2_26_1.png" src="../_images/Nonlinear Regression Part 2_26_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -882,7 +889,7 @@ Km for this reaction: 0.0097 +/- 0.0020
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc61952d0d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/Non-Linear Regression Part 2_28_1.png" src="../_images/Non-Linear Regression Part 2_28_1.png" />
+<img alt="../_images/Nonlinear Regression Part 2_28_1.png" src="../_images/Nonlinear Regression Part 2_28_1.png" />
 </div>
 </div>
 </div>
@@ -932,6 +939,7 @@ Python is very particular about the use of parentheses (), square brackets [], a
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="Nonlinear%20Regression%20Part%201.html" title="previous page">Non-Linear Regression, Part 1</a>
 
         </div>
         
