@@ -337,7 +337,7 @@
 </div>
 <div class="section" id="libraries-you-will-need">
 <h2>Libraries you will need<a class="headerlink" href="#libraries-you-will-need" title="Permalink to this headline">¶</a></h2>
-<p>In previous lessons, we have used <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. In this lesson, we will add the SciPy library, a collection of numerical tools for solving mathematical, scientific, technical and engineering problems (from the <a class="reference external" href="https://www.guru99.com/scipy-tutorial.html">Guru99 Python SciPy Tutorial</a>. Specific subsets of SciPy are useful for linear algebra (scipy.linalg), optimization and fit (scipy.optimize), statistics and random numbers (scipy.stats), and numerical integration (scipy.integrate).</p>
+<p>In previous lessons, we have used <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. In this lesson, we will add the SciPy library, a collection of numerical tools for solving mathematical, scientific, technical and engineering problems (from the <a class="reference external" href="https://www.guru99.com/scipy-tutorial.html">Guru99 Python SciPy Tutorial</a>). Specific subsets of SciPy are useful for linear algebra (scipy.linalg), optimization and fit (scipy.optimize), statistics and random numbers (scipy.stats), and numerical integration (scipy.integrate).</p>
 <p>We will use the dot notation we introduced earlier to access the functions in these libraries. I have expanded our table of libraries to help you keep track of your tools. Please note that the abbreviations listed are just the most common. You can actually define any abbreviation you like, but it is best to use the conventional abbreviations. This will help future coders (including yourself six months from now) as they work with the code.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -418,45 +418,40 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mass (ug)</th>
-      <th>A-595</th>
+      <th>Protein Concentration (mg/mL)</th>
+      <th>A595</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>10</td>
-      <td>0.094425</td>
+      <td>0.2</td>
+      <td>0.285</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>20</td>
-      <td>0.121328</td>
+      <td>0.4</td>
+      <td>0.485</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>30</td>
-      <td>0.130231</td>
+      <td>0.6</td>
+      <td>0.621</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>40</td>
-      <td>0.131134</td>
+      <td>0.8</td>
+      <td>0.799</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>60</td>
-      <td>0.156940</td>
+      <td>1.0</td>
+      <td>1.010</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>80</td>
-      <td>0.186746</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>100</td>
-      <td>0.198552</td>
+      <td>1.2</td>
+      <td>1.118</td>
     </tr>
   </tbody>
 </table>
@@ -465,53 +460,26 @@
 <p>In a dataframe, you can refer to the data in a column just by the column header. These are strings, so you need to put single or double quotes around them when you use them. In pandas, the terms <code class="docutils literal notranslate"><span class="pre">series</span></code> is often used to refer to the data in a single column in a dataframe. So we are going to use the two column headers to define the data for our linear regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Prot Conc (mg/mL)&#39;</span><span class="p">]</span>   <span class="c1"># setting the x values  </span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values    </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>   <span class="c1"># setting the x values  </span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values    </span>
 <span class="nb">print</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">)</span> <span class="c1"># checking to make sure everything is in place</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3079</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3080</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3081</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;Prot Conc (mg/mL)&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">38</span><span class="n">bb68eeba6d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Prot Conc (mg/mL)&#39;</span><span class="p">]</span>   <span class="c1"># setting the x values</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">)</span> <span class="c1"># checking to make sure everything is in place</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/pandas/core/frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3022</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3023</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3024</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3025</span>             <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3026</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/pandas/core/indexes/base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3080</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3081</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3082</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3083</span> 
-<span class="g g-Whitespace">   </span><span class="mi">3084</span>         <span class="k">if</span> <span class="n">tolerance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="ne">KeyError</span>: &#39;Prot Conc (mg/mL)&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.2
+1    0.4
+2    0.6
+3    0.8
+4    1.0
+5    1.2
+Name: Protein Concentration (mg/mL), dtype: float64 0    0.285
+1    0.485
+2    0.621
+3    0.799
+4    1.010
+5    1.118
+Name: A595, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -520,11 +488,11 @@
 <div class="section" id="linear-regression-with-scipy">
 <h2>Linear Regression with SciPy<a class="headerlink" href="#linear-regression-with-scipy" title="Permalink to this headline">¶</a></h2>
 <p>Now that the data are in place, we simply need to import the stats module from SciPy to perform the linear regression.</p>
-<p>Notice the the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function in scipy.stats accepts the two data series and actually generates five values: slope, intercept, r-value, p-value, and standard error. In the next cell all of those variables are assigned in a single command. Then the results are presented with a series of print statements.</p>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function in scipy.stats accepts the two data series and actually generates five values: slope, intercept, r-value, p-value, and standard error. In the next cell all of those variables are assigned in a single command. Then the results are presented with a series of print statements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope = &quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="s2">&quot;/microgram/mL&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope = &quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept = &quot;</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R-squared = &quot;</span><span class="p">,</span> <span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P value = &quot;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
@@ -532,37 +500,43 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope =  0.8454285714285716
+Intercept =  0.12786666666666657
+R-squared =  0.994690398528738
+P value =  1.0590717448341336e-05
+Standard error =  0.030884027089284245
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="solving-for-protein-concentrations-in-samples">
 <h3>Solving for protein concentrations in samples<a class="headerlink" href="#solving-for-protein-concentrations-in-samples" title="Permalink to this headline">¶</a></h3>
-<p>In the next lesson, we will look at plotting these data. For now, let’s get some practice using the results of our linear regression to calculate the protein concentrations in typical unknowns. This will be simple math, but it’s good practice with using correct syntax. For this exercise, we are going to determine protein concentration in mg/mL. The data shown in this table can be found in data/protein_samples.csv are for a series of six protein samples. In each case 100 <span class="math notranslate nohighlight">\(\mu\)</span>L of sample was added to the sample tubes for analysis.</p>
+<p>In the next lesson, we will look at plotting these data. For now, let’s get some practice using the results of our linear regression to calculate the protein concentrations in typical unknowns. This will be simple math, but it’s good practice with using correct syntax. For this exercise, we are going to determine protein concentration in mg/mL. The data shown for the six protein samples in this table can be found in data/protein_samples.csv. In each case 100 <span class="math notranslate nohighlight">\(\mu\)</span>L of sample was added to the sample tube for analysis.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Sample #</p></th>
-<th class="text-align:center head"><p>A_595</p></th>
+<th class="text-align:center head"><p>A<span class="math notranslate nohighlight">\(_{595}\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0.183</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p>0.599</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:center"><p>2</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>2</p></td>
 <td class="text-align:center"><p>0.682</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>3</p></td>
+<tr class="row-even"><td class="text-align:center"><p>3</p></td>
 <td class="text-align:center"><p>0.759</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>4</p></td>
-<td class="text-align:center"><p>1.013</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>1.340</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>5</p></td>
+<tr class="row-even"><td class="text-align:center"><p>5</p></td>
 <td class="text-align:center"><p>0.935</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>6</p></td>
-<td class="text-align:center"><p>1.341</p></td>
+<tr class="row-odd"><td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>1.013</p></td>
 </tr>
 </tbody>
 </table>
@@ -576,7 +550,7 @@ A_{595} = slope * ProtConc + intercept
 \[
 ProtConc = \frac{A_{595} - intercept}{slope}
 \]</div>
-<p>Our final equation will then solve for concentration in mg/mL. Since the volumes of the samples and standards were the same (100 <span class="math notranslate nohighlight">\(\mu\)</span>L), the protein concentrations for the samples will be in units of mg/mL.</p>
+<p>Our final equation will then solve for concentration in mg/mL, based on the units for the slope (/mg/mL) and the unitless intercept.</p>
 <p>Now let’s put our unknown sample data in a pandas dataframe, write out the code for the equation and use some neat tricks from pandas to add the concentrations to our table.</p>
 <div class="section" id="use-pandas-to-import-the-csv-data-into-a-dataframe">
 <h4>Use pandas to import the csv data into a dataframe<a class="headerlink" href="#use-pandas-to-import-the-csv-data-into-a-dataframe" title="Permalink to this headline">¶</a></h4>
@@ -589,6 +563,63 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample #</th>
+      <th>A-595</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.183</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.682</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.759</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1.340</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.935</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1.013</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="create-the-equation">
@@ -598,6 +629,17 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein_conc</span> <span class="o">=</span> <span class="p">((</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">intercept</span><span class="p">)</span> <span class="o">/</span> <span class="n">slope</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">protein_conc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.065213
+1    0.655447
+2    0.746525
+3    1.433750
+4    0.954703
+5    1.046964
+Name: A-595, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -613,22 +655,150 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample #</th>
+      <th>A-595</th>
+      <th>ProtConc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.183</td>
+      <td>0.065213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.682</td>
+      <td>0.655447</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.759</td>
+      <td>0.746525</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1.340</td>
+      <td>1.433750</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.935</td>
+      <td>0.954703</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1.013</td>
+      <td>1.046964</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="eliminating-values-outside-the-calibration-curve-optional">
 <h4>Eliminating values outside the calibration curve (optional)<a class="headerlink" href="#eliminating-values-outside-the-calibration-curve-optional" title="Permalink to this headline">¶</a></h4>
-<p>Notice that the calculations cover all absorbance values - python went through each row (index) of the dataframe.</p>
+<p>Notice that the calculations cover all absorbance values - python went through each row of the dataframe.</p>
 <p>There is one more issue we can address - the absorbance value for the first and last unknown samples were outside the absorbance values of the standards. Therefore, these concentrations are not experimentally valid and should be reported as being “Out of Range”.</p>
 <p>We can make this change in the dataframe by using <code class="docutils literal notranslate"><span class="pre">loc</span></code> to look sequentially at the rows in the dataframe. The syntax here tells python to work with the <code class="docutils literal notranslate"><span class="pre">samples_df</span></code> dataframe, look at one row at a time (<code class="docutils literal notranslate"><span class="pre">loc</span></code>), perform a conditional analysis of the A<span class="math notranslate nohighlight">\(_{595}\)</span> value on that row, and change the value for <code class="docutils literal notranslate"><span class="pre">ProtConc</span></code> to <code class="docutils literal notranslate"><span class="pre">NaN</span></code> if the A<span class="math notranslate nohighlight">\(_{595}\)</span> &lt; 0.642 (the value for the lowest standard) or A<span class="math notranslate nohighlight">\(_{595}\)</span> &gt; 1.188 (the value for the highest standard).</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code> is a NumPy function that results in a value of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (for not a number) as the output. This is typically used when there is no value in a cell, but it still preserves the datatype in that cell as a float. This is preferred to using a string such as ‘Out of Range’ which would change the datatype for those cells in the column to a string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.642</span><span class="p">,</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1.188</span><span class="p">,</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.285</span><span class="p">,</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1.118</span><span class="p">,</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">samples_df</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample #</th>
+      <th>A-595</th>
+      <th>ProtConc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.183</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.682</td>
+      <td>0.655447</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.759</td>
+      <td>0.746525</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1.340</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.935</td>
+      <td>0.954703</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1.013</td>
+      <td>1.046964</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>Optional:</strong> Rather than hard-coding the minimum and maximum values for the calibration curve, we could also do this programmatically with the <code class="docutils literal notranslate"><span class="pre">.min()</span></code> and <code class="docutils literal notranslate"><span class="pre">.max()</span></code> functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>

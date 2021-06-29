@@ -242,20 +242,35 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preparing-to-plot">
-   Preparing to Plot
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Creating Plots in Jupyter Notebooks
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preparing-to-plot">
+     Preparing to Plot
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-matplotlib-pyplot">
+     Using Matplotlib.pyplot
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-matplotlib-pyplot">
-   Using Matplotlib.pyplot
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#div-class-exercise-this-is-a-title-exercise">
+   <div class="exercise-this-is-a-title exercise">
+   </div>
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scatter-plots-with-seaborn">
-   Scatter Plots with Seaborn
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plots-with-seaborn">
+     Scatter Plots with Seaborn
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -331,8 +346,8 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay.csv&#39;</span><span class="p">)</span>
 <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mass (ug)&#39;</span><span class="p">]</span>  <span class="c1"># Setting the x values</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values</span>
+<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>  <span class="c1"># Setting the x values</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope = &quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="s2">&quot;/mg/mL&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -344,11 +359,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope = 0.0011136480176211455/mg/mL
-Intercept =  0.09153081057268722
-R-squared =  0.9715760228371997
-P value =  4.67252070582932e-05
-Standard error =  8.518575456701813e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope = 0.8454285714285716/mg/mL
+Intercept =  0.12786666666666657
+R-squared =  0.994690398528738
+P value =  1.0590717448341336e-05
+Standard error =  0.030884027089284245
 </pre></div>
 </div>
 </div>
@@ -368,7 +383,7 @@ Standard error =  8.518575456701813e-05
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fbf388a3b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc304195790&gt;
 </pre></div>
 </div>
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_5_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_5_1.png" />
@@ -384,7 +399,7 @@ Standard error =  8.518575456701813e-05
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbf38733d00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc30406b7f0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_7_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_7_1.png" />
@@ -405,26 +420,29 @@ Standard error =  8.518575456701813e-05
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein ($\mu$g)&#39;</span><span class="p">)</span>  <span class="c1"># x-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">)</span>  <span class="c1"># x-axis label</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>  <span class="c1"># y-axis label in LaTeX _{595} makes 595 the subscripts</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.19</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(15, 0.19, &#39;y = 0.0011 * x + 0.0915&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.25, 1.0, &#39;y = 0.8454 * x + 0.1279&#39;)
 </pre></div>
 </div>
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_9_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_9_1.png" />
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
+</div>
+</div>
+<div class="section" id="div-class-exercise-this-is-a-title-exercise">
+<h1><div class="exercise-this-is-a-title exercise"><a class="headerlink" href="#div-class-exercise-this-is-a-title-exercise" title="Permalink to this headline">¶</a></h1>
 <p class="exercise-title">Check your understanding</p>
     <p>Take some time to play with the code for the figure above. Can you move the equation to the lower right hand corner of the plot? </p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>You can simply change the xy pair in the last line of the code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">))</span>    
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>    
 </pre></div>
 </div>
 </div>
@@ -436,7 +454,7 @@ Standard error =  8.518575456701813e-05
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein ($\mu$g)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.19</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -455,7 +473,6 @@ Standard error =  8.518575456701813e-05
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span> <span class="c1"># red line</span>
 </pre></div>
 </div>
-</div>
 <div class="section" id="scatter-plots-with-seaborn">
 <h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a Python library for statistical data visualization that is based on matplotlib. That means you can use all the commands from Matplotlib with Seaborn, but it also has high-level functions that group many Matplotlib functions to produce sophisticated graphs easily.</p>
@@ -467,43 +484,42 @@ Standard error =  8.518575456701813e-05
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay.csv&#39;</span><span class="p">)</span>
 <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mass (ug)&#39;</span><span class="p">]</span>  
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> 
+<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>  
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span> 
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-  warnings.warn(
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;mass (ug)&#39;, ylabel=&#39;A-595&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_15_2.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_15_2.png" />
+<img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_15_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_15_1.png" />
 </div>
 </div>
 <div class="exercise-this-is-a-title exercise">
 <p class="exercise-title">Exercise</p>
-<p>Use a similar approach to the one described above to create a linear regression plot with confidence intervals for data that are a bit more scattered. The data can be found in the folder <code class="docutils literal notranslate"><span class="pre">data/protein_assay2.csv</span></code>. Increase the size of the figure, change the default x-axis and y-axis labels (taken by pandas from the column headers) to be mass (<span class="math notranslate nohighlight">\(\mu\)</span>g) and A<span class="math notranslate nohighlight">\(_{595}\)</span> as before and insert the equation for the line within the plot. You final figure should look something like this:</p>
-<p><img alt="alt" src="../_images/Bradford_plot2.png" /></p>
+<p>Use a similar approach to the one described above to create a linear regression plot with confidence intervals for data from a microplate assay that are a bit more scattered. The data can be found in the folder <code class="docutils literal notranslate"><span class="pre">data/protein_assay2.csv</span></code>. Increase the size of the figure, change the default x-axis and y-axis labels (taken by pandas from the column headers) to be Protein Concentration (mg/mL) and A<span class="math notranslate nohighlight">\(_{595}\)</span> as before and insert the equation for the line within the plot. You final figure should look something like this:</p>
+<p><img alt="alt" src="../_images/Bradford_plot3.png" /></p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">protein_file2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay2.csv&#39;</span><span class="p">)</span>
     <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file2</span><span class="p">)</span>
-    <span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mass (ug)&#39;</span><span class="p">]</span>
-    <span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span>
+    <span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mg/mL&#39;</span><span class="p">]</span>
+    <span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>
+
+    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
     <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+
     <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein ($\mu$g)&#39;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -513,24 +529,24 @@ Standard error =  8.518575456701813e-05
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Once this lesson is finalized, I&#39;ll remove this block of code.</span>
 <span class="n">protein_file2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay2.csv&#39;</span><span class="p">)</span>
 <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file2</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mass (ug)&#39;</span><span class="p">]</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span>
+<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mg/mL&#39;</span><span class="p">]</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein ($\mu$g)&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.22</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/seaborn/_decorators.py:36: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_17_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_17_1.png" />
+<img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_17_0.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_17_0.png" />
 </div>
 </div>
 </div>
