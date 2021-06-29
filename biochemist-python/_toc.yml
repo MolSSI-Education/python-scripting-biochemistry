@@ -1,6 +1,6 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-- file: chapters/setup
+format: jb-article
+root: chapters/setup
+sections:
 - file: chapters/workshop_schedule
 - file: chapters/introduction
 - file: chapters/File_Parsing
