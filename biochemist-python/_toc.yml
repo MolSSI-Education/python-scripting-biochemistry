@@ -1,6 +1,6 @@
-format: jb-article
+format: jb-book
 root: chapters/setup
-sections:
+chapters:
 - file: chapters/workshop_schedule
 - file: chapters/introduction
 - file: chapters/File_Parsing
