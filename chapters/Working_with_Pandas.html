@@ -333,7 +333,7 @@
 <h3>3D arrays<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>A three-dimensional array would be a collection of two dimensional arrays. For example, this might be a collection of x, y, and z coordinates for a structure as a function of time.</p>
 <p>The numpy library has functions that will manage n-dimensional arrays, while pandas only works on 2D arrays. You may need numpy for nD arrays at some point, but for this workshop, we will learn to use pandas as we learn how to perform linear and nonlinear regression of laboratory data based on data in 2D arrays.</p>
-<p>The pandas library contains powerful tools for working with 2D data arrays, including the ability to identify the rows and columns of data by unique identifiers: things like “mass protein” and “initial velocity” rather than “row 1” or “column C”). Pandas also has many more functions that we will not explore in this workshop, but here are two excellent free online resources for learning more about pandas:</p>
+<p>The pandas library contains powerful tools for working with 2D data arrays, including the ability to identify the rows and columns of data by unique identifiers: things like “Protein Concentration (mg/mL)” and “initial velocity” rather than “row 1” or “column C”). Pandas also has many more functions that we will not explore in this workshop, but here are three excellent free online resources for learning more about pandas:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://education.molssi.org/python-data-analysis/02-pandas/index.html">Using pandas for data analysis</a> from MolSSI</p></li>
 <li><p>Charlie Weiss’s excellent online textbook, <em>Scientific Computing for Chemists</em>, which you can find on his GitHub site, <a class="reference external" href="https://github.com/weisscharlesj/SciCompforChemists">SciCompforChemists</a></p></li>
@@ -343,8 +343,8 @@
 </div>
 <div class="section" id="importing-python-libraries">
 <h2>Importing python libraries<a class="headerlink" href="#importing-python-libraries" title="Permalink to this headline">¶</a></h2>
-<p>As we move toward data analysis, we will need to import a series python <strong>libraries</strong>. A <strong>library</strong> is a set of modules which contain related functions that can be used to complete specific tasks. Using libraries in Python reduces the amount of code you have to write. Usually a function has some type of input and gives a particular output.  To use a function that is in a library, you often use the dot notation introduced in the previous lesson.</p>
-<p>In the last lesson, we imported the <code class="docutils literal notranslate"><span class="pre">os</span></code> library, which can be used to assign the location of a file to a variable (e.g. datafile), so our script can be transferred between computers with different operating systems (e.g., mac vs windows). In this lesson, we will be using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and we will add a few more libraries in the future. As we proceed, we’ll build this table.</p>
+<p>As we move toward data analysis, we will need to import a series python <strong>libraries</strong>. A <strong>library</strong> is a set of modules which contain related functions that can be used to complete specific tasks. Using libraries in Python reduces the amount of code you have to write. Usually a function has some type of input and gives a particular output.  To use a function that is in a library, you often use the dot notation introduced previously.</p>
+<p>In the last lesson, we imported the <code class="docutils literal notranslate"><span class="pre">os</span></code> library, which can be used to assign the location of a file to a variable (e.g. datafile), so our script can be transferred between computers with different operating systems (e.g., Mac vs Windows). In this lesson, we will be using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and we will add a few more libraries in the future. As we proceed, we’ll build this table.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Library</p></th>
@@ -442,7 +442,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 </div>
 <div class="section" id="importing-the-data-with-pandas">
 <h3>Importing the data with pandas<a class="headerlink" href="#importing-the-data-with-pandas" title="Permalink to this headline">¶</a></h3>
-<p>As mentioned above, the pandas library has a number of excellent tools for importing data. We will be using the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function from the pandas library to import our data. You may have encountered csv files before. csv stands for comma separated values. This is a format that spreadsheet programs like Excel and Google Sheets can both read and write. If you open a csv file in a text editor, it simply contains rows of information, where the information is separated by commas. The information can be integers, real numbers or strings. Here are the first four rows of the csv file that we will be exploring using pandas.</p>
+<p>As mentioned above, the pandas library has a number of excellent tools for importing data. We will be using the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function from the pandas library to import our data. You may have encountered csv files before; csv stands for comma separated values. This is a format that spreadsheet programs like Excel and Google Sheets can both read and write. If you open a csv file in a text editor, it simply contains rows of information, where the information is separated by commas. The information can be integers, real numbers or strings. Here are the first four rows of the csv file that we will be exploring using pandas.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PDB</span> <span class="n">ID</span><span class="p">,</span><span class="n">Method</span><span class="p">,</span><span class="n">Resolution</span><span class="p">,</span><span class="n">Structure</span><span class="p">,</span><span class="n">Ligand</span> <span class="n">ID</span><span class="p">,</span><span class="n">Ligand</span> <span class="n">name</span>
 
 <span class="mi">3</span><span class="n">SHC</span><span class="p">,</span><span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span><span class="p">,</span><span class="mf">1.9</span><span class="p">,</span><span class="n">Human</span> <span class="n">Thrombin</span><span class="p">,</span><span class="n">B01</span><span class="p">,</span><span class="n">D</span><span class="o">-</span><span class="n">phenylalanyl</span><span class="o">-</span><span class="n">N</span><span class="o">-</span><span class="p">[(</span><span class="mi">4</span><span class="o">-</span><span class="n">chloropyridin</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">yl</span><span class="p">)</span><span class="n">methyl</span><span class="p">]</span><span class="o">-</span><span class="n">L</span><span class="o">-</span><span class="n">prolinamide</span>
@@ -452,7 +452,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <span class="mi">2</span><span class="n">ZNK</span><span class="p">,</span><span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="n">Thrombin</span><span class="p">,</span><span class="mi">31</span><span class="n">U</span><span class="p">,</span><span class="n">D</span><span class="o">-</span><span class="n">leucyl</span><span class="o">-</span><span class="n">N</span><span class="o">-</span><span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="n">carbamimidoylbenzyl</span><span class="p">)</span><span class="o">-</span><span class="n">L</span><span class="o">-</span><span class="n">prolinamide</span>
 </pre></div>
 </div>
-<p>If you look at these data carefully, you can see how they could easily be arranged in a table, with the labels in the in the first row as the column headers. Before we can explore how pandas can do that for us, let’s look at the help command for the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function in pandas.</p>
+<p>If you look at these data carefully, you can see how they could easily be arranged in a table, with the labels in the first row as the column headers. Before we can explore how pandas can do that for us, let’s look at the help command for the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function in pandas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1336,7 +1336,7 @@ Name: 2, dtype: object
 <div class="exercise-this-is-a-title exercise">
 <p class="exercise-title">Exercise</p>
     <p> The enzyme kinetics data from the introduction can be found in the file `enzyme_kinetics.csv` in the data directory. The only problem is that the substrate concentrations are out of order. This is how it looks in Excel:</p>
-<a class="mb-1 reference internal image-reference" href="../_images/enzyme_kinetics.png"><img alt="enzyme kinetics data" class="mb-1 align-center" src="../_images/enzyme_kinetics.png" style="width: 305px;" /></a>
+<p><img alt="Enzyme Kinetics" src="../_images/enzyme_kinetics.png" /></p>
 <p>Create a dataframe from that file and use pandas functions to place the data in ascending substrate concentrations, then print the velocity at a substrate concentration of 20 micromolar. As a biochemist, you probably want to plot and analyze these data to find the Km and Vmax. We’ll get to that in a bit. The goal right now is to just have a little fun with pandas.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
@@ -1345,7 +1345,7 @@ import pandas as pd
 kinetics_file = os.path.join(&#39;data&#39;, &#39;enzyme_kinetics.csv&#39;)
 kinetics_df = pd.read_csv(kinetics_file) # kinetics_file is a variable, not a string
 kinetics_df.head(0)  # to find out the column labels. You can also use kinetics_df.columns to get the same output.
-kinetics_df.sort_values(&#39;Substrate_conc&#39;)  # once you know the column labels
+kinetics_df.sort_values(&#39;Substrate_conc&#39;, inplace = True)  # once you know the column labels
 kinetics_df.loc[9]
 </pre></div>
 </div>

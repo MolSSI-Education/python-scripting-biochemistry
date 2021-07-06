@@ -418,7 +418,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 </div>
 <div class="section" id="reading-a-file">
 <h2>Reading a file<a class="headerlink" href="#reading-a-file" title="Permalink to this headline">¶</a></h2>
-<p>In Python, there are many ways to read in information from a text file.  The best method to use depends on the type of data and the type of analysis you are performing.  If you have a file with lots of different types of information, text and numbers, with different types of formatting, the most generic way to read in information is the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.  Reading in the file is a two-set process. First, you have to open the file using the file path we defined above. This creates a file object, or filehandle. Then you can read in information with the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.</p>
+<p>In Python, there are many ways to read in information from a text file.  The best method to use depends on the type of data and the type of analysis you are performing.  If you have a file with lots of different types of information, text and numbers, with different types of formatting, the most generic way to read in information is the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.  Reading in the file is a two-step process. First, you have to open the file using the file path we defined above. This creates a file object, or filehandle. Then you can read in information with the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.</p>
 <p>We could use the following code to accomplish this task:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
@@ -612,7 +612,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1892</span><span class="o">/</span><span class="mf">320285707.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1821</span><span class="o">/</span><span class="mf">320285707.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
 
 <span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;str&#39; and &#39;int&#39;
@@ -680,7 +680,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 </div></div>
 <div class="section" id="searching-for-a-particular-line-number-in-your-file">
 <h2>Searching for a particular line number in your file<a class="headerlink" href="#searching-for-a-particular-line-number-in-your-file" title="Permalink to this headline">¶</a></h2>
-<p>There is a lot of other information in the PDB file we might be interested in.  For example, we might want to pull out the sequence of the protein.  If we look through the file, 4eyr.pdb, in a text editor, we notice that the sequence is given in a series of lines that begin with <code class="docutils literal notranslate"><span class="pre">SEQRES</span></code></p>
+<p>There is a lot of other information in the PDB file that might be of interest.  For example, we might want to pull out the sequence of the protein.  If we look through the file, 4eyr.pdb, in a text editor, we notice that the sequence is given in a series of lines that begin with <code class="docutils literal notranslate"><span class="pre">SEQRES</span></code></p>
 <p>SEQRES   1 A   99  PRO GLN ILE THR LEU TRP GLN ARG PRO ILE VAL THR ILE</p>
 <p>followed by a series of lines that contain the full sequence using three letter abbreviations for the amino acids.  In this case, we don’t want to pull something out of this line, as we did in our previous example, but we want to know which line of the file this is so that we can then pull the sequence from the next few lines.</p>
 <p>When you use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, it is easy to have python keep up with the line numbers using the <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> command.  The general syntax is</p>

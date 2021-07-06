@@ -22,7 +22,7 @@ atoms / 2
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1892/320285707.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1821/320285707.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0matoms[0m [0;34m/[0m [0;36m2[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mTypeError[0m: unsupported operand type(s) for /: 'str' and 'int'

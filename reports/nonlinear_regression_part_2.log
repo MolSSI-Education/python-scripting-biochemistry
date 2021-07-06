@@ -22,7 +22,7 @@ ydata = rates_df('initial velocities') # Common errors and how to read them
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2019/718136756.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1946/718136756.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mydata[0m [0;34m=[0m [0mrates_df[0m[0;34m([0m[0;34m'initial velocities'[0m[0;34m)[0m [0;31m# Common errors and how to read them[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mTypeError[0m: 'DataFrame' object is not callable

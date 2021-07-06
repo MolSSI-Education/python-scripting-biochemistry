@@ -314,7 +314,7 @@
     </ul>
 </div><div class="section" id="data-fitting">
 <h2>Data Fitting<a class="headerlink" href="#data-fitting" title="Permalink to this headline">¶</a></h2>
-<p>In an earlier module, you used the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function from the scipy.stats library to perform linear regression. This is sufficient for a least squares linear fit to your data. Python contains tools that also enable you to fit data to an equation that you have defined, with two or more paramaters. So it is ideal for nonlinear curve fitting to the Michaelis-Menten equation.</p>
+<p>In an earlier module, we used the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function from the scipy.stats library to perform linear regression. This is sufficient for a least squares linear fit to the data. Python contains tools that also enable us to fit data to an equation that we have defined, with two or more paramaters. So it is ideal for nonlinear curve fitting to the Michaelis-Menten equation.</p>
 <p>In this module, we will use some familiar tools: importing csv data into a pandas dataframe and plotting results using the matplotlib.pyplot library. We will also create a function based on the Michaelis-Menten equation. The exciting part is to learn to fit the data to the function using <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> from scipy.optimize.</p>
 <p>Here are the steps in our process:</p>
 <ol class="simple">
@@ -348,7 +348,7 @@
 \[
 V_i = \frac{V_{max} * [S]}{K_m + [S]}
 \]</div>
-<p>We will define the following variables for our equation:</p>
+<p>We will define the two parameters and two variables for our equation:</p>
 <ul class="simple">
 <li><p>Vmax = the maximum velocity</p></li>
 <li><p>Km = the Michaelis constant</p></li>
@@ -388,7 +388,6 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>pNPP (mM)</th>
       <th>slopes</th>
       <th>initial velocities</th>
@@ -397,35 +396,30 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>20.0</td>
       <td>0.514091</td>
       <td>34.272718</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>10.0</td>
       <td>0.503140</td>
       <td>33.542678</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>7.0</td>
       <td>0.470435</td>
       <td>31.362310</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>4.0</td>
       <td>0.417021</td>
       <td>27.801416</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>2.0</td>
       <td>0.342445</td>
       <td>22.829652</td>
@@ -446,7 +440,7 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc7cdcf9a60&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe0722aaa90&gt;]
 </pre></div>
 </div>
 <img alt="../_images/nonlinear_regression_part_2_6_1.png" src="../_images/nonlinear_regression_part_2_6_1.png" />
@@ -457,12 +451,12 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 <h2>Creating Functions<a class="headerlink" href="#creating-functions" title="Permalink to this headline">¶</a></h2>
 <p>To this point we have called a number of functions that are included with python libraries such pandas, numpy and matplotlib. Most code is organized into blocks of code which perform a particular task. These code blocks are called functions. A commercial software package likely has hundreds of thousands or millions of functions. Functions break up our code into smaller, more easily understandable statements, and also allow our code to be more modular, meaning we can take pieces and reuse them. In general, each function should perform only one computational task.</p>
 <p>In Python, the following syntax is used to declare a function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">independent_variable</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">independent_variable</span><span class="p">,</span> <span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">):</span>
     <span class="o">**</span> <span class="n">function</span> <span class="n">body</span> <span class="n">code</span> <span class="o">**</span>
     <span class="k">return</span> <span class="n">value_to_return</span>
 </pre></div>
 </div>
-<p>Functions are defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, followed by the name of the function. The function may have independent variable(s) and parameters which are passed to it; these are in parenthesis following the function name. You then add a colon after the parentheses. This causes the function body code to indent in a Jupyter notebook coding cell . In certain cases, a function may have no parameters as well. Most (though not all) functions return some type of information. It is important to note here that defining a function does not execute it.</p>
+<p>Functions are defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, followed by the name of the function. The function may have independent variable(s) and parameters which are passed to it; these are in parenthesis following the function name. You then add a colon after the parentheses. This causes the function body code to indent in a Jupyter notebook coding cell. In certain cases, a function may have no parameters as well. Most (though not all) functions return some type of information. It is important to note here that defining a function does not execute it.</p>
 <p>Now we will create a function for the Michaelis-Menten equation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,7 +499,7 @@ Name: pNPP (mM), dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2019</span><span class="o">/</span><span class="mf">718136756.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1946</span><span class="o">/</span><span class="mf">718136756.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ydata</span> <span class="o">=</span> <span class="n">rates_df</span><span class="p">(</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">)</span> <span class="c1"># Common errors and how to read them</span>
 
 <span class="ne">TypeError</span>: &#39;DataFrame&#39; object is not callable
@@ -513,7 +507,7 @@ Name: pNPP (mM), dtype: float64
 </div>
 </div>
 </div>
-<p>In the previous cell, we received an error message that resulted when we uses parentheses by mistake rather than square brackets in our attempt to assign a series from a dataframe to a variable. The error message is</p>
+<p>In the previous cell, we received an error message that resulted when we used parentheses by mistake rather than square brackets in our attempt to assign a series from a dataframe to a variable. The error message is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;DataFrame&#39;</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">callable</span>
 </pre></div>
 </div>
@@ -592,12 +586,6 @@ Name: pNPP (mM), dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vmax for this reaction: 36.657348357808445 +/- 0.6749595153861864
-Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="review-of-f-string-printing">
@@ -614,11 +602,6 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vmax for this reaction: </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">stdev</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vmax for this reaction: 36.66 +/- 0.67
 </pre></div>
 </div>
 </div>
@@ -652,12 +635,6 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc619176450&gt;]
-</pre></div>
-</div>
-<img alt="../_images/nonlinear_regression_part_2_19_1.png" src="../_images/nonlinear_regression_part_2_19_1.png" />
-</div>
 </div>
 </div>
 <div class="section" id="smoothing-the-plot">
@@ -670,16 +647,10 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <span class="n">smooth_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># y values for the 1000 points in smooth_x</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="c1"># plot of the experimental data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># plot of the fit data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># plot of the fit data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># legend added</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc678a338d0&gt;
-</pre></div>
-</div>
-<img alt="../_images/nonlinear_regression_part_2_21_1.png" src="../_images/nonlinear_regression_part_2_21_1.png" />
 </div>
 </div>
 <div class="exercise-this-is-a-title exercise">
@@ -691,7 +662,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <span class="n">smooth_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># y values for the 1000 points in smooth_x</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="c1"># plot of the experimental data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># plot of the fit data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># plot of the fit data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># legend added</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;[pNPP] (mM)&#39;</span><span class="p">)</span>  <span class="c1"># x-axis label</span>
@@ -701,32 +672,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 </pre></div>
 </div>
 </div>
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete this cell when we are the module is complete.</span>
-
-<span class="n">smooth_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># x value range with 1000 points</span>
-<span class="n">smooth_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># y values for the 1000 points in smooth_x</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="c1"># plot of the experimental data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># plot of the fit data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># legend added</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;[pNPP] (mM)&#39;</span><span class="p">)</span>  <span class="c1"># x-axis label</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;V$_i$ ($\mu$M/min)&#39;</span><span class="p">)</span>  <span class="c1"># y-axis label in LaTeX _{595} makes 595 the subscripts</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">stdev</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;Km = </span><span class="si">{</span><span class="n">Km</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">stdev</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(7.5, 16, &#39;Km = 1.19 +/- 0.08&#39;)
-</pre></div>
-</div>
-<img alt="../_images/nonlinear_regression_part_2_23_1.png" src="../_images/nonlinear_regression_part_2_23_1.png" />
-</div>
-</div>
-<div class="exercise-this-is-a-title exercise">
+</div><div class="exercise-this-is-a-title exercise">
 <p class="exercise-title">Take Home Exercise</p>
     <p> If you want to dig deeper, you can complete the curve fitting analysis of the chymotrypsin data from the previous module. You may need to adjust some of the details to generate high quality output.</p>
 <div class="dropdown admonition">
@@ -739,7 +685,7 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 <span class="n">c_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
     
 <span class="c1"># Inspect the data</span>
-<span class="n">c_ydata</span> <span class="o">=</span> <span class="n">c_rates_df</span><span class="p">[</span><span class="s1">&#39;Initial Velocities&#39;</span><span class="p">]</span>
+<span class="n">c_ydata</span> <span class="o">=</span> <span class="n">c_rates_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span>
 <span class="n">c_xdata</span> <span class="o">=</span> <span class="n">c_rates_df</span><span class="p">[</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c_xdata</span><span class="p">,</span> <span class="n">c_ydata</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
     
@@ -760,143 +706,10 @@ Km for this reaction: 1.192632242867685 +/- 0.08042268460381517
 </pre></div>
 </div>
 </div>
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The solution to the Take Home Exercise in the next four cells</span>
-<span class="c1"># will be removed when we are ready to publish.</span>
-
-<span class="c1"># create the filehandle</span>
-<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymo_MM_data.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># import the data</span>
-<span class="n">c_rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
-<span class="n">c_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>pNPA (mM)</th>
-      <th>slopes</th>
-      <th>Initial Velocities</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0000</td>
-      <td>0.000557</td>
-      <td>0.030412</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.5000</td>
-      <td>0.000539</td>
-      <td>0.029437</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.2500</td>
-      <td>0.000500</td>
-      <td>0.027293</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.1250</td>
-      <td>0.000450</td>
-      <td>0.024563</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.0625</td>
-      <td>0.000511</td>
-      <td>0.027877</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The solution to the Take Home Exercise will be removed when we are ready to publish.</span>
-
-<span class="c1"># Inspect the data</span>
-<span class="n">c_ydata</span> <span class="o">=</span> <span class="n">c_rates_df</span><span class="p">[</span><span class="s1">&#39;Initial Velocities&#39;</span><span class="p">]</span>
-<span class="n">c_xdata</span> <span class="o">=</span> <span class="n">c_rates_df</span><span class="p">[</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c_xdata</span><span class="p">,</span> <span class="n">c_ydata</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc62967aa50&gt;]
-</pre></div>
-</div>
-<img alt="../_images/nonlinear_regression_part_2_26_1.png" src="../_images/nonlinear_regression_part_2_26_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The solution to the Take Home Exercise will be removed when we are ready to publish.</span>
-
-<span class="c1"># Non-linear regression with scipy.optimize.curve_fit</span>
-<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MM</span><span class="p">,</span> <span class="n">c_xdata</span><span class="p">,</span> <span class="n">c_ydata</span><span class="p">)</span>
-<span class="n">Vmax</span> <span class="o">=</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">Km</span> <span class="o">=</span> <span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span> <span class="c1"># returns one standard deviation for each parameter</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vmax for this reaction: </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Km for this reaction: </span><span class="si">{</span><span class="n">Km</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">perr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vmax for this reaction: 0.0300 +/- 0.0012
-Km for this reaction: 0.0097 +/- 0.0020
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The solution to the Take Home Exercise will be removed when we are ready to publish.</span>
-
-<span class="c1"># Plot the data</span>
-<span class="n">smooth_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">c_xdata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">c_xdata</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">smooth_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c_xdata</span><span class="p">,</span> <span class="n">c_ydata</span><span class="p">,</span> <span class="s1">&#39;r^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc61952d0d0&gt;
-</pre></div>
-</div>
-<img alt="../_images/nonlinear_regression_part_2_28_1.png" src="../_images/nonlinear_regression_part_2_28_1.png" />
-</div>
-</div>
-</div>
+</div></div>
 <div class="section" id="common-errors">
 <h2>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">¶</a></h2>
-<p><strong>Should this material be added to the Introduction?</strong>
-Python is very particular about the use of parentheses (), square brackets [], and braces or curly brackets {}.</p>
+<p>Python is very particular about the use of parentheses (), square brackets [], and braces or curly brackets {}.</p>
 <p>Parentheses are used to pass arguments to functions. For example,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Vi</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span>
 </pre></div>

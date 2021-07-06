@@ -305,7 +305,7 @@
 <p>In our previous lesson, we parsed values from output files.  While you might have seen the utility of doing such a thing, you might have also wondered why we didn’t just search the file and cut and paste the values we wanted into a spreadsheet.  If you only have 1 or 2 files, this might be a very reasonable thing to do.  But what if you had 100 files to analyze?  What if you had 1000?  In such a case the cutting and pasting method would be very tedious and time consuming.</p>
 <p>One of the real powers of writing a program to analyze your data is that you can just as easily analyze 100 files as 1 file.  In this example, we are going to parse the PDB files for a series of enzyme structures in the <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank</a> and extract resolution data and atom counts for each one.  The PDB files are all saved in a folder called PDB_files that you should have downloaded in the setup for this lesson.  Make sure the folder is in the same directory as the directory where you are writing and executing your code.</p>
 <p>To analyze multiple files, we will need to import a python <strong>library</strong>.  A <strong>library</strong> is a set of modules which contain functions. The functions within a library or module are usually related to one another. Using libraries in Python reduces the amount of code you have to write. In the last lesson, we imported <code class="docutils literal notranslate"><span class="pre">os.path</span></code>, which was a module that handled filepaths for us.</p>
-<p>In this lesson, we will be using the <code class="docutils literal notranslate"><span class="pre">glob</span></code> library, which will help us read in multiple files from our computer.  Within a library there are modules and functions which do a specific computational task.  Usually a function has some type of input and gives a particular output.  To use a function that is in a library, you often use the dot notation introduced in the previous lesson.</p>
+<p>In this lesson, we will be using the <code class="docutils literal notranslate"><span class="pre">glob</span></code> library, which will help us read in multiple files from our computer.  Within a library there are modules and functions which do a specific computational task.  Usually a function has some type of input and gives a particular output.  To use a function that is in a library, you often use the dot notation introduced earlier.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">library_name</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">library_name</span><span class="o">.</span><span class="n">function_name</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 </pre></div>
@@ -387,7 +387,7 @@
 </div>
 </div>
 </div>
-<p>Notice that in this code we actually used two <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, one nested inside the other.  The outer <code class="docutils literal notranslate"><span class="pre">for</span></code> loop counts over the filenames we read in earlier.  The inner <code class="docutils literal notranslate"><span class="pre">for</span></code> loop counts over the line in each file, just as we did in our previous file parsing lesson.</p>
+<p>Notice that in this code we actually used two <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, one nested inside the other.  The outer <code class="docutils literal notranslate"><span class="pre">for</span></code> loop counts over the filenames we read in earlier.  The inner <code class="docutils literal notranslate"><span class="pre">for</span></code> loop counts over the lines in each file, just as we did in our previous file parsing lesson.</p>
 <p>The output our code currently generates is not that useful.  It doesn’t show us which file each resolution value came from.</p>
 <p>We want to print the name of the molecule with the resolution. We can use <code class="docutils literal notranslate"><span class="pre">os.path.basename</span></code>, which is another function in <code class="docutils literal notranslate"><span class="pre">os.path</span></code> to get just the name of the file.</p>
 <div class="cell docutils container">
@@ -396,7 +396,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">first_file</span><span class="p">)</span>
 
 <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">first_file</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -469,7 +469,7 @@ print(molecule_name)</p>
 <p>The second (preferred) approach in python is to use the <code class="docutils literal notranslate"><span class="pre">with</span></code> context manager that we have already used for reading a file. The advantage to this approach is that all of the steps that generate input for the file are indented under the initial <code class="docutils literal notranslate"><span class="pre">with</span></code> statement and the file closes automatically when all of the actions indented beneath the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement are completed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file_name.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
     <span class="n">take</span> <span class="n">some</span> <span class="n">actions</span>
-    <span class="n">use</span> <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span> <span class="n">to</span> <span class="n">add</span> <span class="n">content</span> <span class="n">the</span> <span class="n">file</span>
+    <span class="n">use</span> <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span> <span class="n">to</span> <span class="n">add</span> <span class="n">content</span> <span class="n">to</span> <span class="n">the</span> <span class="n">file</span>
 </pre></div>
 </div>
 <p>Let’s examine the syntax of the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement.</p>

@@ -27,7 +27,7 @@ print(velocities)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1979/252774083.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1907/252774083.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      2[0m [0;32mfor[0m [0mnumber[0m [0;32min[0m [0msubstrate_concs[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m     [0mV[0m [0;34m=[0m [0mVmax[0m [0;34m*[0m [0mnumber[0m [0;34m/[0m [0;34m([0m[0mKm[0m [0;34m+[0m [0mnumber[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 4[0;31m     [0mvelocities[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mV[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

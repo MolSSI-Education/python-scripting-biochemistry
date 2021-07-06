@@ -305,7 +305,7 @@
         <li> Add velocity calculations to the dataframe</li>
         <li> Perform the non-linear regression calculations</li>
     </ul>
-<p>In this module, we will calculate initial rates from the raw data (&Delta;A<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where you will explore nonlinear curve fitting in python.
+<p>In this module, we will calculate initial rates from the raw data (&Delta;A<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where we will explore nonlinear curve fitting in python.
     </p>
 </div><div class="section" id="importing-the-data">
 <h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">¶</a></h2>
@@ -666,6 +666,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty list to hold the slopes </span>
 <span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span>
+
 <span class="c1"># Calculate the slopes from each column in the AP_kin_df dataframe </span>
 
 <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
@@ -701,6 +702,10 @@
 
 <span class="c1"># Check the dataframe</span>
 <span class="n">MM_df</span>
+
+<span class="c1"># Make &#39;pNPP (mM) the index&#39;</span>
+<span class="n">MM_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">MM_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -723,65 +728,33 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>pNPP (mM)</th>
       <th>slopes</th>
+    </tr>
+    <tr>
+      <th>pNPP (mM)</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>20.0</td>
+      <th>20.0</th>
       <td>0.514091</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>10.0</td>
+      <th>10.0</th>
       <td>0.503140</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>7.0</td>
+      <th>7.0</th>
       <td>0.470435</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>4.0</td>
+      <th>4.0</th>
       <td>0.417021</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>2.0</td>
+      <th>2.0</th>
       <td>0.342445</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1.0</td>
-      <td>0.246260</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.7</td>
-      <td>0.202843</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.4</td>
-      <td>0.136443</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.2</td>
-      <td>0.076442</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.1</td>
-      <td>0.078070</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>0.05</td>
-      <td>0.022319</td>
     </tr>
   </tbody>
 </table>
@@ -790,7 +763,7 @@
 </div>
 <div class="section" id="calculate-the-initial-velocity">
 <h2>Calculate the initial velocity<a class="headerlink" href="#calculate-the-initial-velocity" title="Permalink to this headline">¶</a></h2>
-<p>The initial velocity can be calculated by dividing the slope by the extinction micromlar coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
+<p>The initial velocity can be calculated by dividing the slope by the micromlar extinction coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate initial velocities and place those in a new column in the dataframe</span>
@@ -818,75 +791,68 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>pNPP (mM)</th>
       <th>slopes</th>
       <th>initial velocities</th>
+    </tr>
+    <tr>
+      <th>pNPP (mM)</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>20.0</td>
+      <th>20.0</th>
       <td>0.514091</td>
       <td>34.272718</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>10.0</td>
+      <th>10.0</th>
       <td>0.503140</td>
       <td>33.542678</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>7.0</td>
+      <th>7.0</th>
       <td>0.470435</td>
       <td>31.362310</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>4.0</td>
+      <th>4.0</th>
       <td>0.417021</td>
       <td>27.801416</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>2.0</td>
+      <th>2.0</th>
       <td>0.342445</td>
       <td>22.829652</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>1.0</td>
+      <th>1.0</th>
       <td>0.246260</td>
       <td>16.417302</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>0.7</td>
+      <th>0.7</th>
       <td>0.202843</td>
       <td>13.522863</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>0.4</td>
+      <th>0.4</th>
       <td>0.136443</td>
       <td>9.096204</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>0.2</td>
+      <th>0.2</th>
       <td>0.076442</td>
       <td>5.096143</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>0.1</td>
+      <th>0.1</th>
       <td>0.078070</td>
       <td>5.204653</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>0.05</td>
+      <th>0.05</th>
       <td>0.022319</td>
       <td>1.487957</td>
     </tr>
@@ -894,7 +860,7 @@
 </table>
 </div></div></div>
 </div>
-<p>We will use this dataframe now to perform the nonlinear regression fit using the SciPy library in part 2 of this lesson. To save this data for part 2, so we need to write it to a csv file in our data directory.</p>
+<p>We will use this dataframe now to perform the nonlinear regression fit using the SciPy library in part 2 of this lesson. To save this data for part 2, we need to write it to a csv file in our data directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;MM_data.csv&#39;</span><span class="p">)</span>
@@ -912,28 +878,65 @@
 Delete the first seven lines of the Excel file.
 Delete the first column of the Excel file.
 Save the file as chymotrypsin_kinetics.csv.
-Your data will should look something like this:
-<img alt="csv image" src="../_images/csv_image.png" /></p>
+Your data will should look something like this:</p>
 </div>
+<p><img alt="csv image" src="../_images/csv_image.png" /></p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
+<span class="kn">import</span> <span class="nn">os</span> 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># create the filehandle for the csv file</span>
 <span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymotrypsin_kinetics.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span> <span class="c1"># checking on this step</span>
+
+<span class="c1"># create the pandas dataframe using read_csv</span>
 <span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
-<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">)</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># looking at the first five rows of the dataframe</span>
 
-<span class="k">def</span> <span class="nf">linregress_slope</span><span class="p">(</span><span class="n">df_series</span><span class="p">):</span>
-    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">df_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_series</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">slope</span>
+<span class="c1"># set the time as the index</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
+<span class="c1"># check the datatype for the numbers</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span>
+
+<span class="c1"># inspect the data</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="c1"># looking at the data</span>
+
+<span class="c1"># create a second dataframe with substrate concentration as the first series</span>
 <span class="n">chymo_MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">linregress_slope</span><span class="p">)</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;Initial Velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span>
-<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;biochemist-python/chapters/data/chymo_MM_data.csv&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chymo_MM_df</span><span class="p">)</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">chymo_MM_df</span>
+
+<span class="c1"># calculate slopes at each substrate concentration</span>
+<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># create an empty list</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">chymo_rates_df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+
+<span class="c1"># Add the new slopes to the dataframe</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
+
+<span class="c1"># check the dataframe</span>
+<span class="n">chymo_MM_df</span>
+
+<span class="c1"># Make &#39;pNPA(mM)&#39; the index</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># check the dataframe</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Calculate the initial velocities</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span>
+<span class="n">chymo_MM_df</span>
+
+<span class="c1"># Export the datafile to a csv file</span>
+<span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymo_MM_data.csv&#39;</span><span class="p">)</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
     
 </pre></div>
 </div>
@@ -942,41 +945,68 @@ Your data will should look something like this:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
+<span class="kn">import</span> <span class="nn">os</span> 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># create the filehandle for the csv file</span>
 <span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymotrypsin_kinetics.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span> <span class="c1"># checking on this step</span>
+
+<span class="c1"># create the pandas dataframe using read_csv</span>
 <span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
-<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">)</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># looking at the first five rows of the dataframe</span>
 
-<span class="k">def</span> <span class="nf">linregress_slope</span><span class="p">(</span><span class="n">df_series</span><span class="p">):</span>
-  <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">df_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_series</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">slope</span>
+<span class="c1"># set the time as the index</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
+<span class="c1"># check the datatype for the numbers</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span>
+
+<span class="c1"># inspect the data</span>
+<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="c1"># looking at the data</span>
+
+<span class="c1"># create a second dataframe with substrate concentration as the first series</span>
 <span class="n">chymo_MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">linregress_slope</span><span class="p">)</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;Initial Velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span> 
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">chymo_MM_df</span>
+
+<span class="c1"># calculate slopes at each substrate concentration</span>
+<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># create an empty list</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">chymo_rates_df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+
+<span class="c1"># Add the new slopes to the dataframe</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
+
+<span class="c1"># check the dataframe</span>
+<span class="n">chymo_MM_df</span>
+
+<span class="c1"># Make &#39;pNPA(mM)&#39; the index</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># check the dataframe</span>
+<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Calculate the initial velocities</span>
+<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span>
+<span class="n">chymo_MM_df</span>
+
+<span class="c1"># Export the datafile to a csv file</span>
 <span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymo_MM_data.csv&#39;</span><span class="p">)</span>
 <span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chymo_MM_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              slopes  Initial Velocities
-1           0.000557            0.030412
-0.5         0.000539            0.029437
-0.25        0.000500            0.027293
-0.125       0.000450            0.024563
-0.0625      0.000511            0.027877
-0.03125     0.000493            0.026903
-0.015625    0.000357            0.019495
-0.0078125   0.000229            0.012477
-0.00390625  0.000111            0.006043
-0.00195313  0.000071            0.003899
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/chymotrypsin_kinetics.csv
 </pre></div>
 </div>
+<img alt="../_images/nonlinear_regression_part_1_23_1.png" src="../_images/nonlinear_regression_part_1_23_1.png" />
 </div>
 </div>
 </div>

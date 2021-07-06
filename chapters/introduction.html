@@ -320,11 +320,10 @@
     </ul>
 </div><div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>Python is a computer programming language that has become ubiquitous in scientific programming.  Our initial lessons will run python <em>interactively</em> through a python interpreter. We will first use a Jupyter notebook.  The [setup] page should have provided information
-on how to install and start a Jupyter notebook.  Everything included in a code block is something you could type into your python interpreter and evaluate.</p>
+<p>Python is a computer programming language that has become ubiquitous in scientific programming.  Our lessons will run python <em>interactively</em> through a python interpreter inside a Jupyter notebook.  The <a class="reference internal" href="setup.html"><span class="doc std std-doc">setup</span></a> page should have provided information on how to install and start a Jupyter notebook.  Everything included in a code block is something you could type into your python interpreter and evaluate.</p>
 <div class="section" id="setting-up-your-jupyter-notebooks">
 <h3>Setting up your Jupyter notebooks<a class="headerlink" href="#setting-up-your-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
-<p>In the [setup], you learned how to start a Jupyter notebook. Now, we will use the notebook to execute Python code. Jupyter notebooks are divided into cells. You run a Jupyter notebook one cell at a time. To execute a cell, click inside the cell and press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code>.</p>
+<p>In the <a class="reference internal" href="setup.html"><span class="doc std std-doc">setup</span></a>, you learned how to start a Jupyter notebook. Now, we will use the notebook to execute Python code. Jupyter notebooks are divided into cells. You run a Jupyter notebook one cell at a time. To execute a cell, click inside the cell and press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code>.</p>
 <p>In the upper left corner, click where it says “Untitled” and change the name to “MolSSI Workshop”. We have now changed the name of the Jupyter Notebook.</p>
 <p>Jupyter notebooks allow us to also use something called <strong>markdown</strong> in some cells. We can use markdown to write descriptions about our notebooks for others to read. It’s a good practice to have your first cell be markdown to explain the purpose of the notebook. Let’s do that in our first cell. Click inside the first cell, then on the top of the screen select <code class="docutils literal notranslate"><span class="pre">Cell-&gt;Cell</span> <span class="pre">Type-&gt;Markdown</span></code> (shown below).</p>
 <img src="https://github.com/MolSSI-Education/python_scripting_cms/blob/gh-pages/fig/lesson01_fig1.png?raw=true">
@@ -372,7 +371,7 @@ on how to install and start a Jupyter notebook.  Everything included in a code b
 </div>
 </div>
 </div>
-<p>Notice several things about this code.  You can use <code class="docutils literal notranslate"><span class="pre">#</span></code> to add comments to your code, both at the start of a line and in the middle of the line (then the rest of the line is a comment).  The computer does not do anything with these comments.  They have been used here to remind the user what units each of their values are in. Comments are also often used to explain what the code is doing or leave information for future people who might use the code.</p>
+<p>Notice several things about this code.  You can use <code class="docutils literal notranslate"><span class="pre">#</span></code> to add comments to your code, both at the start of a line and in the middle of the line (then the rest of the line is a comment).  The computer does not do anything with these comments.  They have been used here to remind the user what units are used for each of their values. Comments are also often used to explain what the code is doing or leave information for future people who might use the code.</p>
 <p>When choosing variable names, you should choose informative names so that someone reading your code can tell what they represent.  Naming a variable temp or temperature is much more informative than naming that variable t.</p>
 <p>We can now access any of the variables from other cells. Let’s print the value that we calculated. In the next cell,</p>
 <div class="cell docutils container">
@@ -655,7 +654,7 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1979</span><span class="o">/</span><span class="mf">252774083.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1907</span><span class="o">/</span><span class="mf">252774083.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">V</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">velocities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
@@ -680,6 +679,11 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.090909090909092, 16.666666666666668, 23.076923076923077, 28.571428571428573, 37.5, 44.44444444444444, 50.0, 60.0, 66.66666666666667, 75.0, 83.33333333333333, 88.23529411764706, 90.9090909090909]
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="making-choices-logic-statements">
@@ -697,6 +701,11 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
         <span class="n">linear_MM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V_linear</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">linear_MM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.25, 11.764705882352942, 16.666666666666668]
 </pre></div>
 </div>
 </div>
@@ -724,8 +733,13 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6.25, 11.764705882352942, 16.666666666666668, 21.05263157894737, 28.571428571428573, 34.78260869565217, 40.0, 50.0]
+</pre></div>
 </div>
-<p>If you are comparing strings, not numbers, you use different logic operators like <code class="docutils literal notranslate"><span class="pre">is</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, or <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code>.  We will see these types of logic operators used in a future lesson.</p>
+</div>
+</div>
+<p>If you are comparing strings, not numbers, you use different logic operators like <code class="docutils literal notranslate"><span class="pre">is</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, or <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code>.</p>
 <div class="exercise-this-is-a-title exercise">
 <p class="exercise-title">Exercise</p>
     <p> The following list contains some floating point numbers and some numbers which have been saved as strings.  Copy this list exactly into your code. </p>
