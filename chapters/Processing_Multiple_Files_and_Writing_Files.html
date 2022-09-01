@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Processing Multiple Files and Writing Files &#8212; Python Data and Scripting for Biochemists</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,18 +38,18 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -63,18 +61,30 @@
 
     <!-- Google Analytics -->
     
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
 <script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-169902961-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-FHKVGE8HKZ');
+                </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -83,9 +93,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -103,14 +114,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="setup.html">
-   Set Up
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="setup.html">
+                    Set Up
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="workshop_schedule.html">
    Workshop Schedule
@@ -159,107 +171,209 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapters/Processing_Multiple_Files_and_Writing_Files.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/MolSSI-Education/python-scripting-biochemistry"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Processing_Multiple_Files_and_Writing_Files.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/Processing_Multiple_Files_and_Writing_Files.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/Processing_Multiple_Files_and_Writing_Files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/MolSSI-Education/python-scripting-biochemistry"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Processing_Multiple_Files_and_Writing_Files.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapters/Processing_Multiple_Files_and_Writing_Files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#processing-multiple-files">
    Processing multiple files
@@ -289,12 +403,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Processing Multiple Files and Writing Files</h1>
@@ -340,11 +453,12 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="processing-multiple-files-and-writing-files">
-<h1>Processing Multiple Files and Writing Files<a class="headerlink" href="#processing-multiple-files-and-writing-files" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="processing-multiple-files-and-writing-files">
+<h1>Processing Multiple Files and Writing Files<a class="headerlink" href="#processing-multiple-files-and-writing-files" title="Permalink to this headline">#</a></h1>
 <div class="overview-this-is-a-title overview">
 <p class="overview-title">Overview</p>
 <p>Questions</p>
@@ -365,8 +479,8 @@
         <li> Python can only print strings to files.
         <li> You must close files so python will actually write them. You can do this either manually or automatically.
     </ul>    
-</div><div class="section" id="processing-multiple-files">
-<h2>Processing multiple files<a class="headerlink" href="#processing-multiple-files" title="Permalink to this headline">¶</a></h2>
+</div><section id="processing-multiple-files">
+<h2>Processing multiple files<a class="headerlink" href="#processing-multiple-files" title="Permalink to this headline">#</a></h2>
 <p>In our previous lesson, we parsed values from output files.  While you might have seen the utility of doing such a thing, you might have also wondered why we didn’t just search the file and cut and paste the values we wanted into a spreadsheet.  If you only have 1 or 2 files, this might be a very reasonable thing to do.  But what if you had 100 files to analyze?  What if you had 1000?  In such a case the cutting and pasting method would be very tedious and time consuming.</p>
 <p>One of the real powers of writing a program to analyze your data is that you can just as easily analyze 100 files as 1 file.  In this example, we are going to parse the PDB files for a series of enzyme structures in the <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank</a> and extract resolution data and atom counts for each one.  The PDB files are all saved in a folder called PDB_files that you should have downloaded in the setup for this lesson.  Make sure the folder is in the same directory as the directory where you are writing and executing your code.</p>
 <p>To analyze multiple files, we will need to import a python <strong>library</strong>.  A <strong>library</strong> is a set of modules which contain functions. The functions within a library or module are usually related to one another. Using libraries in Python reduces the amount of code you have to write. In the last lesson, we imported <code class="docutils literal notranslate"><span class="pre">os.path</span></code>, which was a module that handled filepaths for us.</p>
@@ -375,8 +489,8 @@
 <span class="n">output</span> <span class="o">=</span> <span class="n">library_name</span><span class="o">.</span><span class="n">function_name</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="importing-libraries">
-<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">¶</a></h3>
+<section id="importing-libraries">
+<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">#</a></h3>
 <p>We are going to import two libraries.  One is the <code class="docutils literal notranslate"><span class="pre">os</span></code> library which controls functions related to the operating system of your computer. We used this library in the last lesson to handle filepaths.  The other is the <code class="docutils literal notranslate"><span class="pre">glob</span></code> library which contains functions to help us analyze multiple files.  If we are going to analyze multiple files, we first need to specify where those files are located.</p>
 <div class="exercise-this-is-a-title exercise">
 <p class="exercise-title">Check your understanding</p>
@@ -414,14 +528,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/3iva.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;, &#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;, &#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;, &#39;data/PDB_files/3iva.pdb&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="reading-multiple-files-with-nested-for-loops">
-<h3>Reading multiple files with nested for loops<a class="headerlink" href="#reading-multiple-files-with-nested-for-loops" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="reading-multiple-files-with-nested-for-loops">
+<h3>Reading multiple files with nested for loops<a class="headerlink" href="#reading-multiple-files-with-nested-for-loops" title="Permalink to this headline">#</a></h3>
 <p>Now you have a list of all the files which end in <code class="docutils literal notranslate"><span class="pre">*.pdb</span></code> in the <code class="docutils literal notranslate"><span class="pre">PDB_files</span></code> directory. To parse every file we just read in, we will use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to go through each file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -439,15 +553,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7
-1.85
-1.9
-2.91
-1.8
-2.4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.91
 2.6
+1.9
 2.05
+2.4
+1.8
+1.85
 3.1
+2.7
 </pre></div>
 </div>
 </div>
@@ -466,8 +580,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/3iva.pdb
-3iva.pdb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/5veu.pdb
+5veu.pdb
 </pre></div>
 </div>
 </div>
@@ -506,23 +620,23 @@ print(molecule_name)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3iva: 2.7 Angstroms
-6zt7: 1.85 Angstroms
-7tim: 1.9 Angstroms
-5veu: 2.91 Angstroms
-4eyr: 1.8 Angstroms
-2pkr: 2.4 Angstroms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5veu: 2.91 Angstroms
 3vnd: 2.6 Angstroms
+7tim: 1.9 Angstroms
 5eu9: 2.05 Angstroms
+2pkr: 2.4 Angstroms
+4eyr: 1.8 Angstroms
+6zt7: 1.85 Angstroms
 1ddo: 3.1 Angstroms
+3iva: 2.7 Angstroms
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="printing-to-a-file">
-<h2>Printing to a File<a class="headerlink" href="#printing-to-a-file" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="printing-to-a-file">
+<h2>Printing to a File<a class="headerlink" href="#printing-to-a-file" title="Permalink to this headline">#</a></h2>
 <p>Finally, it might be useful to print our results in a new file, such that we could share our results with colleagues or e-mail them to our advisors.  Much like when we read in a file, the first step to writing output to a file is opening that file for writing.  In general, to open a file for writing you have two options. The first is uses the <code class="docutils literal notranslate"><span class="pre">open</span></code> command.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file_name.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">):</span>
 <span class="n">take</span> <span class="n">some</span> <span class="n">actions</span>
@@ -570,9 +684,9 @@ print(molecule_name)</p>
 </div>
 <p>After you run this command, look in the directory where you ran your code and find the “resolutions.txt” file.  Open it in a text editor and look at the file.</p>
 <p>In the file writing line, notice the <code class="docutils literal notranslate"><span class="pre">\n</span></code> at the end of the line.  This is the newline character.  Without it, the text in our file would just be all smushed together on one line.</p>
-</div>
-<div class="section" id="a-final-note-about-string-formatting">
-<h2>A final note about string formatting<a class="headerlink" href="#a-final-note-about-string-formatting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="a-final-note-about-string-formatting">
+<h2>A final note about string formatting<a class="headerlink" href="#a-final-note-about-string-formatting" title="Permalink to this headline">#</a></h2>
 <p>The F’string’ notation that you can use with the print or the write command lets you format strings in many ways.  You could include other words or whole sentences.  For example, we could change the file writing line to</p>
 <p><code class="docutils literal notranslate"><span class="pre">datafile.write(F'For</span> <span class="pre">the</span> <span class="pre">PDB</span> <span class="pre">ID</span> <span class="pre">{molecule_name}</span> <span class="pre">the</span> <span class="pre">resolution</span> <span class="pre">is</span> <span class="pre">{resolution}</span> <span class="pre">in</span> <span class="pre">Angstroms.')</span></code></p>
 <p>where anything in the braces is a python variable and it will print the value of that variable.</p>
@@ -636,8 +750,8 @@ print(molecule_name)</p>
 </div>
 </div>
 <p>Notice that the datafile.close() command is not required because this solution employs the <code class="docutils literal notranslate"><span class="pre">with</span></code> context manager.</p>
-</div></div>
-</div>
+</div></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -661,9 +775,11 @@ print(molecule_name)</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="File_Parsing.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -679,24 +795,28 @@ print(molecule_name)</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Molecular Sciences Software Institute<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
     
-      By The Molecular Sciences Software Institute<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
