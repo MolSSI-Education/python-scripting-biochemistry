@@ -511,28 +511,21 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="file-parsing">
 <h1>File Parsing<a class="headerlink" href="#file-parsing" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li> How do I sort through all the information in a text file and extract particular pieces of information?
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How do I sort through all the information in a text file and extract particular pieces of information?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li> Open a file and read in its contents line by line.
-        <li> Search for a particular string in a file.
-        <li> Manipulate strings and change data types.
-        <li> Print to a new file.
-    </ul>
-<p>Key Points:</p>
-    <ul>
-        <li> You should use the os.path module to work with file paths.
-        <li> One of the most flexible ways to read in the lines of a file is the `readlines()` function.
-        <li> An <ital>if</ital> statement can be used to find a particular string within a file.
-        <li> The split() function can be used to seperate the elements of a string.
-        <li> You will often need to recast data into a different data type when it was read in as a string.
-    </ul>
-</div><section id="working-with-files">
+<ul class="simple">
+<li><p>Open a file and read in its contents line by line.</p></li>
+<li><p>Search for a particular string in a file.</p></li>
+<li><p>Manipulate strings and change data types.</p></li>
+<li><p>Print to a new file.</p></li>
+</ul>
+</div>
+<section id="working-with-files">
 <h2>Working with files<a class="headerlink" href="#working-with-files" title="Permalink to this headline">#</a></h2>
 <p>One of the most common tasks in research is analyzing data.  An enormous amount of data is currently being generated in biochemistry and molecular biology, much of it pertaining to sequence and structure. The PDB file format is commonly used to describe macromolecular structures that have been determined by experimental methods. You may be interested in exploring the text and/or the data in a PDB file.  While the <a class="reference external" href="https://www.rcsb.org/">PDB web site</a> is very helpful, there are times when it would be handy to extract specific information about one protein (or 1,000) with a few keystrokes. For example, you might be interested in the resolution of a structure, or the small molecules that are bound to the macromolecule.  In general, this is called file parsing.</p>
 <section id="working-with-file-paths-the-os-path-module">
@@ -541,7 +534,7 @@ title="Print to PDF"
 <p>To see this, go to a new cell and type <code class="docutils literal notranslate"><span class="pre">ls</span></code>. <code class="docutils literal notranslate"><span class="pre">ls</span></code> stands for ‘list’, and will list all of the contents of the current directory. <strong>This command is not a Python command, but will work in the Jupyter notebook</strong>. To see everything in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory, type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">data</span></code>. You should see something like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ls data
 </pre></div>
 </div>
 </div>
@@ -559,7 +552,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>You can tell that PDB_files is a directory (containing other files) because it is followed by a backslash (/). Now let’s go one step deeper to ensure that the file is really in the PDB_files directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">data</span><span class="o">/</span><span class="n">PDB_files</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ls data/PDB_files
 </pre></div>
 </div>
 </div>
@@ -575,7 +568,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>/Users/YOUR_USER_NAME/Desktop/python-scripting-biochemistry/biochemist-python/chapters</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pwd
 </pre></div>
 </div>
 </div>
@@ -592,10 +585,10 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>In order to get the path to the <code class="docutils literal notranslate"><span class="pre">4eyr.pdb</span></code> file in a general way, type</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
 
-<span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span><span class="s1">&#39;4eyr.pdb&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
+protein_file = os.path.join(&#39;data&#39;, &#39;PDB_files&#39;,&#39;4eyr.pdb&#39;)
+print(protein_file)
 </pre></div>
 </div>
 </div>
@@ -636,8 +629,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>There is a second option for opening files - to use a context manager(that is to say, using the word <code class="docutils literal notranslate"><span class="pre">with</span></code> from the beginning). This is actually the preferred way to open files, and prevents you from having to remember to close the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with open(protein_file,&quot;r&quot;) as outfile:
+    data = outfile.readlines()
 </pre></div>
 </div>
 </div>
@@ -649,10 +642,10 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <section id="readlines-function-behavior">
 <h2><code class="docutils literal notranslate"><span class="pre">readlines</span></code> function behavior<a class="headerlink" href="#readlines-function-behavior" title="Permalink to this headline">#</a></h2>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">readlines</span></code> function can only be used on a file object one time. If you forget to set <code class="docutils literal notranslate"><span class="pre">outfile.readlines()</span></code> equal to a variable, you must <code class="docutils literal notranslate"><span class="pre">open</span></code> the file again in order to get the contents of the file.</p>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Check your understanding</p>
-    <p>Check that your file was read in correctly by determining how many lines are in the file.</p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check Your Understanding</p>
+<p>Check that your file was read in correctly by determining how many lines are in the file.</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Answer</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> 
     
@@ -660,7 +653,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 </pre></div>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 <section id="searching-for-a-pattern-in-your-file">
 <h2>Searching for a pattern in your file<a class="headerlink" href="#searching-for-a-pattern-in-your-file" title="Permalink to this headline">#</a></h2>
 <p>The file we opened is the complete PDB file for the <a class="reference external" href="https://www.rcsb.org/structure/4EYR">Crystal structure of multidrug-resistant clinical isolate 769 HIV-1 protease in complex with ritonavir</a>.  As stated previously, the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function put the file contents into a list where each element is a line of the file. You may remember from lesson 1 that a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop can be used to execute the same code repeatedly. As we learned in the previous lesson, we can use a for loop to iterate through elements in a list.</p>
@@ -679,10 +673,10 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>Returning to our file example,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;HETNAM&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-        <span class="n">HETNAM_line</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">HETNAM_line</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for line in data:
+    if &#39;HETNAM&#39; in line:
+        HETNAM_line = line
+        print(HETNAM_line)
 </pre></div>
 </div>
 </div>
@@ -696,7 +690,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>The <em>delimiter</em> is specified as an argument to the function (put in the parenthesis <code class="docutils literal notranslate"><span class="pre">()</span></code>). If you do not specify a delimiter, a space is used by default. Let’s try this out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HETNAM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>HETNAM_line.split()
 </pre></div>
 </div>
 </div>
@@ -709,8 +703,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>We can save the output of this function to a variable as a new list. In the example below, we take the line we found in the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and split it up into its individual words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="n">HETNAM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>words = HETNAM_line.split()
+print(words)
 </pre></div>
 </div>
 </div>
@@ -723,8 +717,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>From this <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, we now see that we have a list called words, where we have split <code class="docutils literal notranslate"><span class="pre">HETNAM_line</span></code>.  The abbreviation is actually the second element of this list, so we can now save it as a new variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abbrev</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">abbrev</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>abbrev = words[1]
+print(abbrev)
 </pre></div>
 </div>
 </div>
@@ -734,12 +728,12 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-    <p class="exercise-title">Check Your Understanding</p>
-    <p>Some PDB files contain more than one heterogen. For example, the structure of D-amino acid oxidase found in PDB entry 1ddo contains three heterogens. Can you think of a way to keep all of the lines using syntax we have already learned?</p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check Your Understanding</p>
+<p>Some PDB files contain more than one heterogen. For example, the structure of D-amino acid oxidase found in PDB entry 1ddo contains three heterogens. Can you think of a way to keep all of the lines using syntax we have already learned?</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
-<p>You will need to create an empty list and append each answer to the list.</p>
+<p>You will need to create an empty list and append each answer to the list.</p></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use os to assign the file path to a variable</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span><span class="s1">&#39;1ddo.pdb&#39;</span><span class="p">)</span>
@@ -747,7 +741,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <span class="c1"># Create a list to hold the heterogen information</span>
 <span class="n">HETNAM_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="c1"># Use the with context manager to open the file, then a for loop to populate HETNAM_list[]</span>
+<span class="c1"># Use the with context manager to open the file, </span>
+<span class="c1"># then a for loop to populate HETNAM_list</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
@@ -762,11 +757,11 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>We might also want to extract the number of atoms in the protein in this file. We will modify the above steps to achieve the desired result. We will be looking for the line that contains the term <code class="docutils literal notranslate"><span class="pre">PROTEIN</span> <span class="pre">ATOMS</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;PROTEIN ATOMS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-        <span class="n">PROTEIN_ATOM_line</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="n">words</span> <span class="o">=</span> <span class="n">PROTEIN_ATOM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">PROTEIN_ATOM_line</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for line in data:
+    if &#39;PROTEIN ATOMS&#39; in line:
+        PROTEIN_ATOM_line = line
+        words = PROTEIN_ATOM_line.split()
+        print(PROTEIN_ATOM_line)
 </pre></div>
 </div>
 </div>
@@ -779,11 +774,11 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>We can see that the fifth element in this list is a colon (:). It is possible to modify the split command to split lines using the colon as the delimiter (‘:’).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;PROTEIN ATOMS&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-        <span class="n">PROTEIN_ATOM_line</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="n">words</span> <span class="o">=</span> <span class="n">PROTEIN_ATOM_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for line in data:
+    if &#39;PROTEIN ATOMS&#39; in line:
+        PROTEIN_ATOM_line = line
+        words = PROTEIN_ATOM_line.split(&#39;:&#39;)
+        print(words)
 </pre></div>
 </div>
 </div>
@@ -796,8 +791,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>From this <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, we now see that we have a list called words, where we have split <code class="docutils literal notranslate"><span class="pre">PROTEIN_ATOM_line</span></code>.  The number of atoms in the protein is actually the second element of this list, so we can now save it as a new variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atoms = words[1]
+print(atoms)
 </pre></div>
 </div>
 </div>
@@ -810,14 +805,14 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>The HIV protease structure in 4eyr.pdb is a dimer. Let’s find the number of atoms in each monomer unit. If we now try to do a math operation on atoms, we get an error message.  Why do you think that is?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atoms / 2
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
 
 <span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;str&#39; and &#39;int&#39;
@@ -828,13 +823,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>Even though <code class="docutils literal notranslate"><span class="pre">atoms</span></code> looks like a number to us, it is really a string, so we can use it for a math operation.  We need to change the data type of atoms to a float. This is called <em>casting</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
-<span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>757.0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atoms = float(atoms)
+atoms / 2
 </pre></div>
 </div>
 </div>
@@ -842,26 +832,26 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>Now it works.  If we thought ahead we could have changed the data type when we assigned the variable originally.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atoms = float(words[1])
 </pre></div>
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Exercise on file parsing</p>
-<p>Use skills from this lesson and the previous lesson to extract the experimental method and temperature for determining the structure of 4eyr.pdb. Try to complete this exercise without opening and reading the PDB file in your text editor.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXPERIMENT</span> <span class="n">TYPE</span> <span class="p">:</span> <span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span>
+<div class="exercise admonition">
+<p class="admonition-title">Exerise on file parsing</p>
+<p>Use skills from this lesson and the previous lesson to extract the experimental method and temperature for determining the structure of 4eyr.pdb.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EXPERIMENT</span> <span class="n">TYPE</span> <span class="p">:</span> <span class="n">X</span><span class="o">-</span><span class="n">RAY</span> <span class="n">DIFFRACTION</span>
 <span class="n">TEMPERATURE</span> <span class="p">(</span><span class="n">KELVIN</span><span class="p">)</span> <span class="p">:</span> <span class="mi">298</span>
 </pre></div>
 </div>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Hint</p>
-<ul>
-    <li>Remember that you can only use readlines once. You will need to reopen the file to read it again</li>
-    <li>To find the lines with the keywords, do a search and then print the lines to see their content. Then you can refine your search and split the lines as needed to get the desired output</li>
+<ul class="simple">
+<li><p>Remember that you can only use readlines once. You will need to reopen the file to read it again</p></li>
+<li><p>To find the lines with the keywords, do a search and then print the lines to see their content. Then you can refine your search and split the lines as needed to get the desired output</p></li>
 </ul>
 </div>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>This is one possible solution for the file parsing exercise.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span><span class="s1">&#39;4eyr.pdb&#39;</span><span class="p">)</span>
@@ -882,7 +872,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 </pre></div>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 <section id="searching-for-a-particular-line-number-in-your-file">
 <h2>Searching for a particular line number in your file<a class="headerlink" href="#searching-for-a-particular-line-number-in-your-file" title="Permalink to this headline">#</a></h2>
 <p>There is a lot of other information in the PDB file that might be of interest.  For example, we might want to pull out the sequence of the protein.  If we look through the file, 4eyr.pdb, in a text editor, we notice that the sequence is given in a series of lines that begin with <code class="docutils literal notranslate"><span class="pre">SEQRES</span></code></p>
@@ -897,34 +888,29 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>This block of code searches our file for the line that contains “SEQRES” and reports the line number.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">linenum</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s1">&#39;SEQRES   1 A&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">linenum</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>310:SEQRES   1 A   99  PRO GLN ILE THR LEU TRP GLN ARG PRO ILE VAL THR ILE          
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with open(protein_file,&quot;r&quot;) as outfile:
+    data = outfile.readlines()
+    for linenum, line in enumerate(data):
+        if &#39;SEQRES   1 A&#39; in line:
+            print(linenum, &#39;:&#39;, line, sep = &#39;&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now we know that this is line 310 in our file (remember that you start counting at zero!).</p>
-<div class="exercise-this-is-a-title exercise">
-    <p class="exercise-title">Check Your Understanding</p>
-    <p>What would be printed if you entered the following?</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(data[311])
-print(data[312])
-print(data[313])
-print(data[314])
-print(data[315])
+<div class="exercise admonition">
+<p class="admonition-title">Check your Understanding</p>
+<p>What would be printed if you entered the following?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">311</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">312</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">313</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">314</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">315</span><span class="p">])</span>
 </pre></div>
 </div>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p> It prints line 311-315 of the list data which is the first line that contains "SEQRES 1 A" and then the sequence information for the next 5 lines from the PDB file for 7TIM.</p>
+<p>It prints line 311-315 of the list data which is the first line that contains “SEQRES 1 A” and then the sequence information for the next 5 lines from the PDB file for 7TIM.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">311</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">312</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">313</span><span class="p">])</span>
@@ -948,6 +934,16 @@ print(data[315])
 <section id="a-final-note-about-regular-expressions">
 <h2>A final note about regular expressions<a class="headerlink" href="#a-final-note-about-regular-expressions" title="Permalink to this headline">#</a></h2>
 <p>Sometimes you will need to match something more complex than just a particular word or phrase in your output file.  Sometimes you will need to match a particular word, but only if it is found at the beginning of a line.  Or perhaps you will need to match a particular pattern of data, like a capital letter followed by a number, but you won’t know the exact letter and number you are looking for.  These types of matching situations are handled with something called <em>regular expressions</em> which is accessed through the python module <code class="docutils literal notranslate"><span class="pre">re</span></code>.  While using regular expressions is outside the scope of this tutorial, they are very useful and you might want to learn more about them in the future.  A tutorial can be found at <a class="reference external" href="https://automatetheboringstuff.com/2e/chapter7/">Automate the Boring Stuff with Python book</a>. A great test site for regex is <a class="reference external" href="https://regex101.com/">here</a>.</p>
+<div class="key admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>You should use the os.path module to work with file paths.</p></li>
+<li><p>One of the most flexible ways to read in the lines of a file is the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.</p></li>
+<li><p>An <ital>if</ital> statement can be used to find a particular string within a file.</p></li>
+<li><p>The split() function can be used to seperate the elements of a string.</p></li>
+<li><p>You will often need to recast data into a different data type when it was read in as a string.</p></li>
+</ul>
+</div>
 </section>
 </section>
 

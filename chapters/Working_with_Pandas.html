@@ -503,23 +503,20 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-pandas">
 <h1>Working with Pandas<a class="headerlink" href="#working-with-pandas" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li>How can I use import data for analysis in my notebook?
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How can I use import data for analysis in my notebook?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li>Import the pandas library.
-        <li>Use pandas library funtions to import data from a csv file.
-        <li>Import data from a .csv formatted file.
-    </ul>
-<p>Keypoints:</p>
-    <ul>
-        <li>Use the pandas library to create dataframes from csv formatted data.</li>
-    </ul>
-</div><section id="what-is-pandas-and-why-do-we-use-it">
+<ul class="simple">
+<li><p>Import the pandas library.</p></li>
+<li><p>Use pandas library funtions to import data from a csv file.</p></li>
+<li><p>Import data from a .csv formatted file.</p></li>
+</ul>
+</div>
+<section id="what-is-pandas-and-why-do-we-use-it">
 <h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Permalink to this headline">#</a></h2>
 <p>Pandas is a python library that is designed to work with two dimensional data arrays. It is built on numpy, another python library that specializes in numerical analysis. Numpy also has the ability to create and analyze data arrays. If you are not familiar with arrays, here are some simple examples.</p>
 <section id="d-arrays">
@@ -571,8 +568,8 @@ title="Print to PDF"
 <p>To start we will import the two libraries we need to complete the work in this notebook, os and pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -582,7 +579,7 @@ title="Print to PDF"
 <p>To work with data in Jupyter notebooks, you must first find the data. In the file parsing lesson, we used the <code class="docutils literal notranslate"><span class="pre">pwd</span></code> (print working directory) command to find out where we were located on our computers. In this lesson, we will learn another command, <code class="docutils literal notranslate"><span class="pre">ls</span></code>, which gives us a listing of the files and folders in the working directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
 </div>
@@ -611,7 +608,7 @@ workshop_schedule.ipynb
 <p>Notice that <code class="docutils literal notranslate"><span class="pre">data/</span></code> appears in a different font and is followed by a forward slash. That is because <code class="docutils literal notranslate"><span class="pre">data</span></code> is a folder or directory. In fact, the data folder contains the file we want to use. To get a listing of the files in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder, you can just type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">data</span></code>. The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command is unix/linux is similar to the <code class="docutils literal notranslate"><span class="pre">dir</span></code> command when you are working at the command prompt in Windows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ls data
 </pre></div>
 </div>
 </div>
@@ -629,8 +626,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>You will notice a number of files and folders in the data folder. We will be working with the file, <code class="docutils literal notranslate"><span class="pre">thrombin_with_ligands.csv</span></code>. As a first step, we will assign the location of that file to a variable, using the path.join function from the <code class="docutils literal notranslate"><span class="pre">os</span></code> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombin_with_ligands.csv&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">thrombin_file</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_file = os.path.join(&#39;data&#39;, &#39;thrombin_with_ligands.csv&#39;)
+print(thrombin_file)
 </pre></div>
 </div>
 </div>
@@ -667,8 +664,8 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>The panda library contains many more options than we have time to explore right now, but one thing to pay special attention to is called a <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>. The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas dataframe</a> is the primary data structure that is produced and manipulated by pandas functions. We can take an existing 2D data array and tell pandas to convert it to a DataFrame, or we can use the read_csv command to convert a csv file to a pandas dataframe. As our example, we will be exploring a csv file containing information about different thrombin structures found in the <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank</a>. So let’s create our DataFrame and explore what it contains.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">thrombin_file</span><span class="p">)</span> <span class="c1">#thrombin_df is a convenient name for our dataframe.</span>
-<span class="n">thrombin_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df = pd.read_csv(thrombin_file) #thrombin_df is a convenient name for our dataframe.
+thrombin_df
 </pre></div>
 </div>
 </div>
@@ -809,7 +806,7 @@ MM_data_for_NLRpt2.csv  enzyme_kinetics.xlsx
 <p>The dataframe appears as a table. The data are in rows (“indexes”) and columns (“series”). If you want to look at the data in a single column (one series), you can use this command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="p">[</span><span class="s1">&#39;Resolution&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df[&#39;Resolution&#39;]
 </pre></div>
 </div>
 </div>
@@ -830,19 +827,20 @@ Name: Resolution, dtype: float64
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Check your understanding</p>
-    <p>How can you print out the ligand names for each of the structures? </p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check your understanding</p>
+<p>How can you print out the ligand names for each of the structures?</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="p">[</span><span class="s1">&#39;Ligand name&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-</div><p>You can use the loc function from the pandas library to get all the information from a single index or row.</p>
+</div>
+<p>You can use the loc function from the pandas library to get all the information from a single index or row.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.loc[2]
 </pre></div>
 </div>
 </div>
@@ -861,7 +859,7 @@ Name: 2, dtype: object
 <p>You can also use the loc command to locate the information from a specific cell. If you enter the index (row) of 2 and the column ‘Resolution’, the resolution for the structure in the third row is returned. You may be thinking, “Resolution is the third column. Why does python think it is column 2?” Remember that python starts counting at 0. So the number for the first column is 0 and the number for the third column is 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Resolution&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.loc[2, &#39;Resolution&#39;]
 </pre></div>
 </div>
 </div>
@@ -874,7 +872,7 @@ Name: 2, dtype: object
 <p>There are times when you may want to use the index number and column number to locate the information in that cell in the dataframe. In this case, you can use the iloc (for integer locate) command, which accepts integers in the form of [row, column].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.iloc[2,2]
 </pre></div>
 </div>
 </div>
@@ -887,7 +885,7 @@ Name: 2, dtype: object
 <p>If you only want to look at the first five rows of a dataframe, you can use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function; you can use the <code class="docutils literal notranslate"><span class="pre">tail</span></code> function to look at the last five rows. We always include () after the name of the function. This is how we can pass arguments into the function. Try using the argument 3 in the head command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.head()
 </pre></div>
 </div>
 </div>
@@ -970,7 +968,7 @@ Name: 2, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.head(3)
 </pre></div>
 </div>
 </div>
@@ -1035,7 +1033,7 @@ Name: 2, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.tail()
 </pre></div>
 </div>
 </div>
@@ -1122,7 +1120,7 @@ Name: 2, dtype: object
 <p>You can also sort the data using the pandas sort_values function. To sort the thrombin_df dataframe into ascending Resolution values, use the following command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Resolution&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.sort_values(&#39;Resolution&#39;)
 </pre></div>
 </div>
 </div>
@@ -1260,7 +1258,7 @@ Name: 2, dtype: object
 <p>Notice that the numbers in the first column (the index values) are not in order. If you type “thrombin_df” now, you will get back the unsorted dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df
 </pre></div>
 </div>
 </div>
@@ -1398,8 +1396,8 @@ Name: 2, dtype: object
 <p>However, if you want to keep retain the sorting, you can add <code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">True</span></code> to the command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Resolution&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">thrombin_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>thrombin_df.sort_values(&#39;Resolution&#39;, inplace = True)
+thrombin_df
 </pre></div>
 </div>
 </div>
@@ -1534,24 +1532,32 @@ Name: 2, dtype: object
 </table>
 </div></div></div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Exercise</p>
-    <p> The enzyme kinetics data from the introduction can be found in the file `enzyme_kinetics.csv` in the data directory. The only problem is that the substrate concentrations are out of order. This is how it looks in Excel:</p>
+<div class="exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>The enzyme kinetics data from the introduction can be found in the file <code class="docutils literal notranslate"><span class="pre">enzyme_kinetics.csv</span></code> in the data directory. The only problem is that the substrate concentrations are out of order. This is how it looks in Excel:</p>
 <p><img alt="Enzyme Kinetics" src="../_images/enzyme_kinetics.png" /></p>
 <p>Create a dataframe from that file and use pandas functions to place the data in ascending substrate concentrations, then print the velocity at a substrate concentration of 20 micromolar. As a biochemist, you probably want to plot and analyze these data to find the Km and Vmax. We’ll get to that in a bit. The goal right now is to just have a little fun with pandas.</p>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-import pandas as pd
-kinetics_file = os.path.join(&#39;data&#39;, &#39;enzyme_kinetics.csv&#39;)
-kinetics_df = pd.read_csv(kinetics_file) # kinetics_file is a variable, not a string
-kinetics_df.head(0)  # to find out the column labels. You can also use kinetics_df.columns to get the same output.
-kinetics_df.sort_values(&#39;Substrate_conc&#39;, inplace = True)  # once you know the column labels
-kinetics_df.loc[9]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="n">kinetics_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;enzyme_kinetics.csv&#39;</span><span class="p">)</span>
+    <span class="n">kinetics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">kinetics_file</span><span class="p">)</span> <span class="c1"># kinetics_file is a variable, not a string</span>
+    <span class="n">kinetics_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># to find out the column labels. You can also use kinetics_df.columns to get the same output.</span>
+    <span class="n">kinetics_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Substrate_conc&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># once you know the column labels</span>
+    <span class="n">kinetics_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-</div></section>
+</div>
+<div class="key admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>The pandas library can be used to analyze tabular (rows and columns) data.</p></li>
+<li><p>The pandas library can read CSV (comma separated vaue) files and Excel files.</p></li>
+</ul>
+</div>
+</section>
 </section>
 </section>
 

@@ -496,20 +496,21 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression-part-2">
 <h1>Nonlinear Regression Part 2<a class="headerlink" href="#nonlinear-regression-part-2" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li> How can I perform statistically robust non-linear regression in a Jupyter notebook?</li>
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How can I perform statistically robust non-linear regression in a Jupyter notebook?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li> Import data from a csv file
-        <li> Create a function based on the equation to be fitted
-        <li> Generate the best-fit curve with parameters and statistical descriptors
-        <li> Create plots of the data
-    </ul>
-</div><section id="data-fitting">
+<ul class="simple">
+<li><p>Import data from a csv file.</p></li>
+<li><p>Create a function based on the equation to be fitted.</p></li>
+<li><p>Generate the best-fit curve with parameters and statistical descriptors.</p></li>
+<li><p>Create plots of the data.</p></li>
+</ul>
+</div>
+<section id="data-fitting">
 <h2>Data Fitting<a class="headerlink" href="#data-fitting" title="Permalink to this headline">#</a></h2>
 <p>In an earlier module, we used the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function from the scipy.stats library to perform linear regression. This is sufficient for a least squares linear fit to the data. Python contains tools that also enable us to fit data to an equation that we have defined, with two or more paramaters. So it is ideal for nonlinear curve fitting to the Michaelis-Menten equation.</p>
 <p>In this module, we will use some familiar tools: importing csv data into a pandas dataframe and plotting results using the matplotlib.pyplot library. We will also create a function based on the Michaelis-Menten equation. The exciting part is to learn to fit the data to the function using <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> from scipy.optimize.</p>
@@ -526,12 +527,12 @@ title="Print to PDF"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the libraries and functions that you need, including curve_fit from scipy.optimize.</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Import the libraries and functions that you need, including curve_fit from scipy.optimize.
+import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
 </pre></div>
 </div>
 </div>
@@ -554,15 +555,15 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up a pandas dataframe from the MM_data.csv file you saved from the previous module.</span>
-<span class="c1"># create the filehandle</span>
-<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;MM_data.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Set up a pandas dataframe from the MM_data.csv file you saved from the previous module.
+# create the filehandle
+datafile = os.path.join(&#39;data&#39;, &#39;MM_data.csv&#39;)
 
-<span class="c1"># import the data</span>
-<span class="n">rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
+# import the data
+rates_df = pd.read_csv(datafile)
 
-<span class="c1"># inspect the data to make sure you have substrate concentrations and initial velocities</span>
-<span class="n">rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+# inspect the data to make sure you have substrate concentrations and initial velocities
+rates_df.head()
 </pre></div>
 </div>
 </div>
@@ -627,17 +628,17 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create your independent and dependent variables for curve fitting.</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">rates_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">rates_df</span><span class="p">[</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create your independent and dependent variables for curve fitting.
+ydata = rates_df[&#39;initial velocities&#39;]
+xdata = rates_df[&#39;pNPP (mM)&#39;]
 
-<span class="c1"># Inspect your data to make sure it looks like a Michaelis-Menten plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+# Inspect your data to make sure it looks like a Michaelis-Menten plot
+plt.plot(xdata, ydata, &#39;o&#39;, label=&#39;data&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa45e9ead00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0aa6396730&gt;]
 </pre></div>
 </div>
 <img alt="../_images/nonlinear_regression_part_2_6_1.png" src="../_images/nonlinear_regression_part_2_6_1.png" />
@@ -657,16 +658,16 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 <p>Now we will create a function for the Michaelis-Menten equation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a function for the equation you want to fit. The function should accept </span>
-<span class="c1"># as inputs the independent variable(s) and all the parameters to be fit.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create a function for the equation you want to fit. The function should accept 
+# as inputs the independent variable(s) and all the parameters to be fit.
 
-<span class="k">def</span> <span class="nf">MM</span><span class="p">(</span><span class="n">SubConc</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">):</span>
-    <span class="n">Vi</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">SubConc</span><span class="o">/</span><span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">SubConc</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Vi</span>
+def MM(SubConc, Vmax, Km):
+    Vi = Vmax * SubConc/(Km + SubConc)
+    return Vi
 
-<span class="c1"># Test the function to see if it produces the expected output</span>
+# Test the function to see if it produces the expected output
 
-<span class="n">MM</span><span class="p">(</span><span class="n">rates_df</span><span class="p">[</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+MM(rates_df[&#39;pNPP (mM)&#39;], 100, 1)
 </pre></div>
 </div>
 </div>
@@ -689,15 +690,15 @@ Name: pNPP (mM), dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ydata</span> <span class="o">=</span> <span class="n">rates_df</span><span class="p">(</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">)</span> <span class="c1"># Common errors and how to read them</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ydata = rates_df(&#39;initial velocities&#39;) # Common errors and how to read them
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ydata</span> <span class="o">=</span> <span class="n">rates_df</span><span class="p">(</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ydata</span> <span class="o">=</span> <span class="n">rates_df</span><span class="p">(</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">)</span> <span class="c1"># Common errors and how to read them</span>
 
 <span class="ne">TypeError</span>: &#39;DataFrame&#39; object is not callable
 </pre></div>
@@ -755,8 +756,8 @@ Name: pNPP (mM), dtype: float64
 <p>scipy.optimize.curve_fit() can then fit the data to the <code class="docutils literal notranslate"><span class="pre">MM</span></code> function you have defined. In an earlier module, there was a discussion of different ways to linearize data so that linear regression could be used, for example, taking logs of the molecular weights of protein standards to plot versus relative migration for an SDS-PAGE gel. With curve_fit, you can do a least squares regression fit for data that demonstrate nonlinear relationships.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the function curve_fit to fit your data.</span>
-<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MM</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Use the function curve_fit to fit your data.
+popt, pcov = curve_fit(MM, xdata, ydata)
 </pre></div>
 </div>
 </div>
@@ -772,14 +773,14 @@ Name: pNPP (mM), dtype: float64
 <p>So we can extract the fitted values for <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_m\)</span> just by setting variables equal to them. The covariance matrix can be used to extract standard errors or standard deviations for each of the parameters. In our case, we will calculate one standard deviation for each parameter. Note that we use two numpy functions (sqrt and diag) to calculate the standard deviation values from the 2D matrix for pcov.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the fit parameters from the output of curve_fit.</span>
-<span class="n">Vmax</span> <span class="o">=</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">Km</span> <span class="o">=</span> <span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Extract the fit parameters from the output of curve_fit.
+Vmax = popt[0]
+Km = popt[1]
 
-<span class="c1"># Extract one standard deviation for each parameter</span>
-<span class="n">stdev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span> <span class="c1"># returns one standard deviation for each parameter</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vmax for this reaction:&#39;</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="s1">&#39;+/-&#39;</span><span class="p">,</span> <span class="n">stdev</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Km for this reaction:&#39;</span><span class="p">,</span> <span class="n">Km</span><span class="p">,</span> <span class="s1">&#39;+/-&#39;</span><span class="p">,</span> <span class="n">stdev</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+# Extract one standard deviation for each parameter
+stdev = np.sqrt(np.diag(pcov)) # returns one standard deviation for each parameter
+print(&#39;Vmax for this reaction:&#39;, Vmax, &#39;+/-&#39;, stdev[0])
+print(&#39;Km for this reaction:&#39;, Km, &#39;+/-&#39;, stdev[1])
 </pre></div>
 </div>
 </div>
@@ -798,21 +799,22 @@ Name: pNPP (mM), dtype: float64
 <p>Since Vmax is in curly brackets, the print statement will insert the value for the variable, Vmax, at that point in the print statement. Vmax is followed by <code class="docutils literal notranslate"><span class="pre">:.2f</span></code> which directs the print statement to print the value of Vmax to 2 decimal places. We will now use f string printing to control the precision on the values for our parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vmax for this reaction: </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">stdev</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&#39;Vmax for this reaction: {Vmax:.2f} +/- {stdev[0]:.2f}&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Exercise</p>
-    <p> Print the value for K<sub>m</sub> +/- one standard deviation to three decimal places. </p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Print the value for K<sub>m</sub> +/- one standard deviation to three decimal places.</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Km for this reaction: </span><span class="si">{</span><span class="n">Km</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> +/- </span><span class="si">{</span><span class="n">stdev</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 <section id="plotting-the-data">
 <h2>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">#</a></h2>
 <p>At this point, you want to compare your plotted data with the curve based on the parameters from curve_fit. We’ll do this in two stages. First, we’ll use the <code class="docutils literal notranslate"><span class="pre">MM</span></code> function to calculate y values using your fit model to see how well your model fits the data.</p>
@@ -823,12 +825,12 @@ Name: pNPP (mM), dtype: float64
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fit_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># calculates y values based on the curve_fit parameters</span>
-<span class="c1"># using your fit model to see how well your model fits the data.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fit_y = MM(xdata, Vmax, Km) # calculates y values based on the curve_fit parameters
+# using your fit model to see how well your model fits the data.
 
-<span class="c1"># Graph your original data and the fit equation</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="c1"># the experimental data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">fit_y</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># the fit equation</span>
+# Graph your original data and the fit equation
+plt.plot(xdata, ydata, &#39;o&#39;, label=&#39;data&#39;) # the experimental data
+plt.plot(xdata, fit_y, &#39;-&#39;, label=&#39;fit&#39;) # the fit equation
 </pre></div>
 </div>
 </div>
@@ -839,21 +841,21 @@ Name: pNPP (mM), dtype: float64
 <p>You probably noticed that the curve appears a bit disjointed, because it provides values only at the selected concentrations of the substrate. A fit curve based on 1000 x-values will be much smoother. To do this, we first use the numpy linspace function to create a new list of 1000 x-values ranging from the minimum xdata value (using the numpy min function) to the maximum xdata value (using the numpy max function). Then we generate a fit curve using the MM function. We then add the experimental data and the smoothed fit data to the plot. Note that the experimental data is plotted using <code class="docutils literal notranslate"><span class="pre">'bo'</span></code>. This tells matplotlib.pyplot to use blue (<code class="docutils literal notranslate"><span class="pre">b</span></code>) circles (<code class="docutils literal notranslate"><span class="pre">o</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To generate a smoother fitted curve</span>
-<span class="n">smooth_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># x value range with 1000 points</span>
-<span class="n">smooth_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># y values for the 1000 points in smooth_x</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># To generate a smoother fitted curve
+smooth_x = np.linspace(np.min(xdata), np.max(xdata), 1000) # x value range with 1000 points
+smooth_y = MM(smooth_x, Vmax, Km) # y values for the 1000 points in smooth_x
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span> <span class="c1"># plot of the experimental data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">smooth_y</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fit&#39;</span><span class="p">)</span> <span class="c1"># plot of the fit data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># legend added</span>
+plt.plot(xdata, ydata, &#39;bo&#39;, label=&#39;data&#39;) # plot of the experimental data
+plt.plot(smooth_x, smooth_y, &#39;r&#39;, label = &#39;fit&#39;) # plot of the fit data
+plt.legend() # legend added
 </pre></div>
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Exercise</p>
-    <p> Use what you learned in previous modules to label the x-axis and y-axis and to insert the values for $V_{max}$ and $K_m$ with their standard deviations in the white space on the graph. Change the symbol for the substrate concentrations to a red triangle. </p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Use what you learned in previous modules to label the x-axis and y-axis and to insert the values for <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_m\)</span> with their standard deviations in the white space on the graph. Change the symbol for the substrate concentrations to a red triangle.</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smooth_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">xdata</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># x value range with 1000 points</span>
 <span class="n">smooth_y</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">smooth_x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># y values for the 1000 points in smooth_x</span>
@@ -869,10 +871,11 @@ Name: pNPP (mM), dtype: float64
 </pre></div>
 </div>
 </div>
-</div><div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Take Home Exercise</p>
-    <p> If you want to dig deeper, you can complete the curve fitting analysis of the chymotrypsin data from the previous module. You may need to adjust some of the details to generate high quality output.</p>
-<div class="dropdown admonition">
+</div>
+<div class="exercise admonition">
+<p class="admonition-title">Take Home Exercise</p>
+<p>If you want to dig deeper, you can complete the curve fitting analysis of the chymotrypsin data from the previous module. You may need to adjust some of the details to generate high quality output.</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the filehandle</span>
 <span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymo_MM_data.csv&#39;</span><span class="p">)</span>
@@ -903,7 +906,8 @@ Name: pNPP (mM), dtype: float64
 </pre></div>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 <section id="common-errors">
 <h2>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this headline">#</a></h2>
 <p>Python is very particular about the use of parentheses (), square brackets [], and braces or curly brackets {}.</p>

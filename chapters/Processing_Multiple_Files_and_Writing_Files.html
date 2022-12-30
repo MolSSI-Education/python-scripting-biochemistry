@@ -459,27 +459,21 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="processing-multiple-files-and-writing-files">
 <h1>Processing Multiple Files and Writing Files<a class="headerlink" href="#processing-multiple-files-and-writing-files" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li> How do I analyze multiple files at once?
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How do I analyze multiple files at once?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li> Import a python library.
-        <li> Use python library funtions.
-        <li> Process multiple files using a `for` loop.
-        <li> Print output to a new text file.
-    </ul>
-<p>Key Points:</p>
-    <ul>
-        <li> Use the glob function in the python library `glob` to find all the files you want to analyze.
-        <li> You can have multiple `for` loops nested inside each other.
-        <li> Python can only print strings to files.
-        <li> You must close files so python will actually write them. You can do this either manually or automatically.
-    </ul>    
-</div><section id="processing-multiple-files">
+<ul class="simple">
+<li><p>Import a python library.</p></li>
+<li><p>Use python library funtions.</p></li>
+<li><p>Process multiple files using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p></li>
+<li><p>Print output to a new text file.</p></li>
+</ul>
+</div>
+<section id="processing-multiple-files">
 <h2>Processing multiple files<a class="headerlink" href="#processing-multiple-files" title="Permalink to this headline">#</a></h2>
 <p>In our previous lesson, we parsed values from output files.  While you might have seen the utility of doing such a thing, you might have also wondered why we didn’t just search the file and cut and paste the values we wanted into a spreadsheet.  If you only have 1 or 2 files, this might be a very reasonable thing to do.  But what if you had 100 files to analyze?  What if you had 1000?  In such a case the cutting and pasting method would be very tedious and time consuming.</p>
 <p>One of the real powers of writing a program to analyze your data is that you can just as easily analyze 100 files as 1 file.  In this example, we are going to parse the PDB files for a series of enzyme structures in the <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank</a> and extract resolution data and atom counts for each one.  The PDB files are all saved in a folder called PDB_files that you should have downloaded in the setup for this lesson.  Make sure the folder is in the same directory as the directory where you are writing and executing your code.</p>
@@ -492,22 +486,23 @@ title="Print to PDF"
 <section id="importing-libraries">
 <h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">#</a></h3>
 <p>We are going to import two libraries.  One is the <code class="docutils literal notranslate"><span class="pre">os</span></code> library which controls functions related to the operating system of your computer. We used this library in the last lesson to handle filepaths.  The other is the <code class="docutils literal notranslate"><span class="pre">glob</span></code> library which contains functions to help us analyze multiple files.  If we are going to analyze multiple files, we first need to specify where those files are located.</p>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Check your understanding</p>
-    <p>How would you use the `os.path` module to point to the directory where your PDB files are located?</p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check Your Understanding</p>
+<p>How would you use the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module to point to the directory where your PDB files are located?</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    
     <span class="n">outfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">)</span>    
 </pre></div>
 </div>
 </div>
-</div>  <p>In order to get all of the files which match a specific pattern, we will use the wildcard character <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+</div>
+<p>In order to get all of the files which match a specific pattern, we will use the wildcard character <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">file_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span> <span class="s1">&#39;*.pdb&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">file_location</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+file_location = os.path.join(&#39;data&#39;, &#39;PDB_files&#39;, &#39;*.pdb&#39;)
+print(file_location)
 </pre></div>
 </div>
 </div>
@@ -521,14 +516,14 @@ title="Print to PDF"
 <p>Next we are going to use a function called <code class="docutils literal notranslate"><span class="pre">glob</span></code> in the library called <code class="docutils literal notranslate"><span class="pre">glob</span></code>.  It is a little confusing since the function and the library have the same name, but we will see other examples where this is not the case later.  The output of the function <code class="docutils literal notranslate"><span class="pre">glob</span></code> is a list of all the filenames that fit the pattern specified in the input.   The input is the file location.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
-<span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">file_location</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import glob
+filenames = glob.glob(file_location)
+print(filenames)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;, &#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;, &#39;data/PDB_files/3iva.pdb&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/3iva.pdb&#39;, &#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;]
 </pre></div>
 </div>
 </div>
@@ -539,29 +534,29 @@ title="Print to PDF"
 <p>Now you have a list of all the files which end in <code class="docutils literal notranslate"><span class="pre">*.pdb</span></code> in the <code class="docutils literal notranslate"><span class="pre">PDB_files</span></code> directory. To parse every file we just read in, we will use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to go through each file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for f in filenames:
+    with open(f, &#39;r&#39;) as outfile:
+        data = outfile.readlines()
         
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s1">&#39;RESOLUTION.&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-            <span class="n">res_line</span> <span class="o">=</span> <span class="n">line</span>
-            <span class="n">words</span> <span class="o">=</span> <span class="n">res_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-            <span class="n">resolution</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">resolution</span><span class="p">)</span>
+    for line in data:
+        if &#39;RESOLUTION.&#39; in line:
+            res_line = line
+            words = res_line.split()
+            resolution = float(words[3])
+            print(resolution)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.91
-2.6
-1.9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4
 2.05
-2.4
-1.8
 1.85
-3.1
+2.91
+2.6
 2.7
+1.9
+1.8
+3.1
 </pre></div>
 </div>
 </div>
@@ -571,64 +566,65 @@ title="Print to PDF"
 <p>We want to print the name of the molecule with the resolution. We can use <code class="docutils literal notranslate"><span class="pre">os.path.basename</span></code>, which is another function in <code class="docutils literal notranslate"><span class="pre">os.path</span></code> to get just the name of the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_file</span> <span class="o">=</span> <span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># look above to recall the content of filenames</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">first_file</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>first_file = filenames[0] # look above to recall the content of filenames
+print(first_file)
 
-<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">first_file</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> 
+file_name = os.path.basename(first_file)
+print(file_name) 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/5veu.pdb
-5veu.pdb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/2pkr.pdb
+2pkr.pdb
 </pre></div>
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Check your understanding</p>
-    <p>How would you extract the PDB ID from the example above? </p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check your understanding</p>
+<p>How would you extract the PDB ID from the example above?</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>You can use the str.split function introduced in the last lesson, and split at the ‘.’ character.</p>
 <p>split_filename = file_name.split(‘.’)<br />
 molecule_name = split_filename[0]<br />
 print(molecule_name)</p>
 </div>
-</div><p>Using the solution above, we can modify our loop so that it prints the file name along with each resolution value.</p>
+</div>
+<p>Using the solution above, we can modify our loop so that it prints the file name along with each resolution value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
-    <span class="c1"># Get the PDB ID</span>
-    <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="n">split_filename</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-    <span class="n">molecule_name</span> <span class="o">=</span> <span class="n">split_filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for f in filenames:
+    # Get the PDB ID
+    file_name = os.path.basename(f)
+    split_filename = file_name.split(&#39;.&#39;)
+    molecule_name = split_filename[0]
 
-    <span class="c1"># Read the data</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    # Read the data
+    with open(f,&quot;r&quot;) as outfile:
+        data = outfile.readlines()
 
-    <span class="c1"># Loop through the data</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s1">&#39;RESOLUTION.&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-            <span class="n">res_line</span> <span class="o">=</span> <span class="n">line</span>
-            <span class="n">words</span> <span class="o">=</span> <span class="n">res_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-            <span class="n">resolution</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">molecule_name</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="s2">&quot; Angstroms&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    # Loop through the data
+    for line in data:
+        if &#39;RESOLUTION.&#39; in line:
+            res_line = line
+            words = res_line.split()
+            resolution = float(words[3])
+            print(molecule_name, &quot;: &quot;, resolution, &quot; Angstroms&quot;, sep = &quot;&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5veu: 2.91 Angstroms
-3vnd: 2.6 Angstroms
-7tim: 1.9 Angstroms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2pkr: 2.4 Angstroms
 5eu9: 2.05 Angstroms
-2pkr: 2.4 Angstroms
-4eyr: 1.8 Angstroms
 6zt7: 1.85 Angstroms
-1ddo: 3.1 Angstroms
+5veu: 2.91 Angstroms
+3vnd: 2.6 Angstroms
 3iva: 2.7 Angstroms
+7tim: 1.9 Angstroms
+4eyr: 1.8 Angstroms
+1ddo: 3.1 Angstroms
 </pre></div>
 </div>
 </div>
@@ -660,24 +656,24 @@ print(molecule_name)</p>
 <p>To make the printing neater, we will separate the PDB ID from the resolution using a tab. To insert a tab, we use the special character <code class="docutils literal notranslate"><span class="pre">\t</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;resolutions.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
-        <span class="c1"># Get the PDB ID</span>
-        <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-        <span class="n">split_filename</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-        <span class="n">molecule_name</span> <span class="o">=</span> <span class="n">split_filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with open(&#39;resolutions.txt&#39;, &#39;w+&#39;) as datafile:
+    for f in filenames:
+        # Get the PDB ID
+        file_name = os.path.basename(f)
+        split_filename = file_name.split(&#39;.&#39;)
+        molecule_name = split_filename[0]
         
-        <span class="c1"># Read the data</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">outfile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>  
+        # Read the data
+        with open(f,&quot;r&quot;) as outfile:
+            data = outfile.readlines()  
             
-        <span class="c1"># Loop through the data</span>
-        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s1">&#39;RESOLUTION.&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                <span class="n">res_line</span> <span class="o">=</span> <span class="n">line</span>
-                <span class="n">words</span> <span class="o">=</span> <span class="n">res_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-                <span class="n">resolution</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-                <span class="n">datafile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">molecule_name</span><span class="si">}</span><span class="s1"> </span><span class="se">\t</span><span class="s1"> </span><span class="si">{</span><span class="n">resolution</span><span class="si">}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        # Loop through the data
+        for line in data:
+            if &#39;RESOLUTION.&#39; in line:
+                res_line = line
+                words = res_line.split()
+                resolution = float(words[3])
+                datafile.write(F&#39;{molecule_name} \t {resolution} \n&#39;)
 </pre></div>
 </div>
 </div>
@@ -690,8 +686,8 @@ print(molecule_name)</p>
 <p>The F’string’ notation that you can use with the print or the write command lets you format strings in many ways.  You could include other words or whole sentences.  For example, we could change the file writing line to</p>
 <p><code class="docutils literal notranslate"><span class="pre">datafile.write(F'For</span> <span class="pre">the</span> <span class="pre">PDB</span> <span class="pre">ID</span> <span class="pre">{molecule_name}</span> <span class="pre">the</span> <span class="pre">resolution</span> <span class="pre">is</span> <span class="pre">{resolution}</span> <span class="pre">in</span> <span class="pre">Angstroms.')</span></code></p>
 <p>where anything in the braces is a python variable and it will print the value of that variable.</p>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Project</p>
+<div class="exercise admonition">
+<p class="admonition-title">Project</p>
 <p>You can complete this project to test your skills. It should be completed when this material is used in a long workshop, or if you are working through this material independently.</p>
 <p>The goal of this exercise is to extract the Enzyme Commission Class for a series of enzyme structures in PDB files and write them to a text file. The files are located in the <code class="docutils literal notranslate"><span class="pre">data/PDB_files</span></code> folder. If you open any of these files in a text editor and search for the term “EC:” you will find a listing that looks like this:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>COMPND   6 EC: 1.2.1.13;
@@ -706,7 +702,7 @@ print(molecule_name)</p>
 2pkr 	  1.2.1.13<br />
 3vnd 	  4.2.1.20<br />
 5veu 	  1.14.14.1</p>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Hint</p>
 <p>It helps when you are writing code to break up what you have to do into steps. Overall, we want to get information from the file. How do we do that?</p>
 <p>If you think about the steps you will need to do this assignment you might come up with a list that is like this:</p>
@@ -724,7 +720,7 @@ print(molecule_name)</p>
 <p>First, think about what you have to do for step 1, and write the code for that. Next, think about how you would do step 2 and write the code for that. You can troubleshoot each step using print statments.</p>
 <p>The steps build on each other, so you can work on getting each piece written before moving on to the next.</p>
 </div>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="s1">&#39;EC_class.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafile</span><span class="p">:</span> <span class="c1">#This opens the file for writing</span>
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>    <span class="c1"># Get the PDB ID</span>
@@ -750,7 +746,16 @@ print(molecule_name)</p>
 </div>
 </div>
 <p>Notice that the datafile.close() command is not required because this solution employs the <code class="docutils literal notranslate"><span class="pre">with</span></code> context manager.</p>
-</div></section>
+</div>
+<div class="key admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Use the glob function in the python library <code class="docutils literal notranslate"><span class="pre">glob</span></code> to find all the files you want to analyze.</p></li>
+<li><p>You can have multiple <code class="docutils literal notranslate"><span class="pre">for</span></code> loops nested inside each other.</p></li>
+<li><p>Python can only print strings to files.</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

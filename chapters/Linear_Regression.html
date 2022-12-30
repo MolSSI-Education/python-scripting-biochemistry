@@ -519,24 +519,18 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
 <h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li>How can I complete linear regression with statistics in Python?
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How can I complete linear regression with statistics in Python?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li>Use a pandas dataframe for data analysis
-        <li>Perform linear regression on the data and obtain best fit statistics
-    </ul>
-<p>Keypoints:</p>
-    <ul>
-        <li>Use pandas to create dataframes from csv formatted data.</li>
-        <li>Use SciPy functions to perform linear regression with statistical output.</li>
-        <li>Use results from linear regression for lab calculations.</li>
-    </ul>
-</div><section id="why-linear-regression">
+<ul class="simple">
+<li><p>Perform linear regression on the data and obteain best fit statistics.</p></li>
+</ul>
+</div>
+<section id="why-linear-regression">
 <h2>Why Linear Regression?<a class="headerlink" href="#why-linear-regression" title="Permalink to this headline">#</a></h2>
 <p>When I was a biochemistry grad student, we almost always manipulated our data into a linear format so that we could do linear regression on our handheld calculators. The most prominent example was the manipulation of enzyme kinetic data for Lineweaver-Burke or Eadie-Hofstee plots, so that we could determine the kinetic parameters (<strong>Note</strong>: we’ll actually do non-linear curve fitting for enzyme kinetics in a future lesson).  I also remember doing semi-log plots of enzyme inactivation because they were linear. Now we have many more options by using python in Jupyter notebooks.</p>
 <p>However, some data can still be analyzed by simple linear regression. Perhaps the most common case is the protein assay. Whether you use Lowry, Bradford or BCA methods, it is still most common to use a linear regression fit to the results.</p>
@@ -584,11 +578,11 @@ title="Print to PDF"
 <p>The first part of the module is modeled after an exercise in Charlie Weiss’s excellent online textbook, <em>Scientific Computing for Chemists</em>, which you can find on his GitHub site, <a class="reference external" href="https://github.com/weisscharlesj/SciCompforChemists">SciCompforChemists</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the libraries you need</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Import the libraries you need
+import os
+import numpy as np
+import pandas as pd
+from scipy import stats
 </pre></div>
 </div>
 </div>
@@ -601,9 +595,9 @@ title="Print to PDF"
 <p>The data in the csv file includes the concentrations of the standards, where 100 <span class="math notranslate nohighlight">\(\mu\)</span>L of standard was added to each test tube.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay.csv&#39;</span><span class="p">)</span> <span class="c1"># gives a path to your csv file</span>
-<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span> <span class="c1"># use pandas to read the csv file into a dataframe</span>
-<span class="n">results_df</span>  <span class="c1"># display your dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>protein_file = os.path.join(&#39;data&#39;, &#39;protein_assay.csv&#39;) # gives a path to your csv file
+results_df = pd.read_csv(protein_file) # use pandas to read the csv file into a dataframe
+results_df  # display your dataframe
 </pre></div>
 </div>
 </div>
@@ -668,9 +662,9 @@ title="Print to PDF"
 <p>In a dataframe, you can refer to the data in a column just by the column header. These are strings, so you need to put single or double quotes around them when you use them. In pandas, the terms <code class="docutils literal notranslate"><span class="pre">series</span></code> is often used to refer to the data in a single column in a dataframe. So we are going to use the two column headers to define the data for our linear regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>   <span class="c1"># setting the x values  </span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values    </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">)</span> <span class="c1"># checking to make sure everything is in place</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>xdata = results_df[&#39;Protein Concentration (mg/mL)&#39;]   # setting the x values  
+ydata = results_df[&#39;A595&#39;]  # setting the y values    
+print(xdata,ydata) # checking to make sure everything is in place
 </pre></div>
 </div>
 </div>
@@ -699,12 +693,12 @@ Name: A595, dtype: float64
 <p>Notice that the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function in scipy.stats accepts the two data series and actually generates five values: slope, intercept, r-value, p-value, and standard error. In the next cell all of those variables are assigned in a single command. Then the results are presented with a series of print statements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope = &quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept = &quot;</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R-squared = &quot;</span><span class="p">,</span> <span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P value = &quot;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard error = &quot;</span><span class="p">,</span> <span class="n">std_err</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>slope, intercept, r_value, p_value, std_err = stats.linregress(xdata, ydata)
+print(&quot;Slope = &quot;, slope)
+print(&quot;Intercept = &quot;, intercept)
+print(&quot;R-squared = &quot;, r_value**2)
+print(&quot;P value = &quot;, p_value)
+print(&quot;Standard error = &quot;, std_err)
 </pre></div>
 </div>
 </div>
@@ -765,9 +759,9 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 <p>This is the exact process we used above. We are just repeating it to gain practice. We start by using the os library to point to the csv file. Then we use pandas to read the csv file and write it to the dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_samples.csv&#39;</span><span class="p">)</span> 
-<span class="n">samples_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">samples_file</span><span class="p">)</span> 
-<span class="n">samples_df</span>  <span class="c1"># display your dataframe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>samples_file = os.path.join(&#39;data&#39;, &#39;protein_samples.csv&#39;) 
+samples_df = pd.read_csv(samples_file) 
+samples_df  # display your dataframe
 </pre></div>
 </div>
 </div>
@@ -835,8 +829,8 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 <p>The next step is to implement the equation we described above in python. You can use the column headers from the pandas dataframe to apply the equation to every row (index) of the dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein_conc</span> <span class="o">=</span> <span class="p">((</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">intercept</span><span class="p">)</span> <span class="o">/</span> <span class="n">slope</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">protein_conc</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>protein_conc = ((samples_df[&#39;A-595&#39;] - intercept) / slope)
+print(protein_conc)
 </pre></div>
 </div>
 </div>
@@ -858,8 +852,8 @@ Name: A-595, dtype: float64
 <p>Adding a column to a pandas dataframe is simple - you just use the name of the dataframe followed by the name of the new column in single quotes within square brackets. In this case, we will create the new column and assign the calculated concentration values to that column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">protein_conc</span>
-<span class="n">samples_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>samples_df[&#39;ProtConc&#39;] = protein_conc
+samples_df
 </pre></div>
 </div>
 </div>
@@ -937,9 +931,9 @@ Name: A-595, dtype: float64
 <p><code class="docutils literal notranslate"><span class="pre">np.nan</span></code> is a NumPy function that results in a value of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (for not a number) as the output. This is typically used when there is no value in a cell, but it still preserves the datatype in that cell as a float. This is preferred to using a string such as ‘Out of Range’ which would change the datatype for those cells in the column to a string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.285</span><span class="p">,</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1.118</span><span class="p">,</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">samples_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>samples_df.loc[samples_df[&#39;A-595&#39;] &lt; 0.285, &#39;ProtConc&#39;] = np.nan
+samples_df.loc[samples_df[&#39;A-595&#39;] &gt; 1.118, &#39;ProtConc&#39;] = np.nan
+samples_df
 </pre></div>
 </div>
 </div>
@@ -1013,16 +1007,17 @@ Name: A-595, dtype: float64
 <span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </pre></div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Exercise</p>
-    <p> Now that you have completed a simple linear regression exercise with protein assay data, here is a problem with a slightly larger dataset, taken from a ground water survey of wells in Texas, kindly provided by  <a href="https://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html">Houghton-Mifflin</a>. Using the skills you have learned with pandas and SciPy, get the linear regression statistics for the relationship between pH (dependent variable) and bicarbonate levels (ppm in well water in Texas; independent variable). The data are available in the file, Ground_water.csv in the data folder. Once complete, your output should look like this:</p>
-<p>Slope =  -0.0030521595419827677 <br>
-Intercept =  8.097595134597833 <br>
-R-squared =  0.1152673937227531 <br>
-P value =  0.04948248037131796 <br>
-Standard error =  0.0014948066523110296
-</p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Now that you have completed a simple linear regression exercise with protein assay data, here is a problem with a slightly larger dataset, taken from a ground water survey of wells in Texas, kindly provided by  <a class="reference external" href="https://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html">Houghton-Mifflin</a>. Using the skills you have learned with pandas and SciPy, get the linear regression statistics for the relationship between pH (dependent variable) and bicarbonate levels (ppm in well water in Texas; independent variable). The data are available in the file, Ground_water.csv in the data folder. Once complete, your output should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Slope</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.0030521595419827677</span>  
+<span class="n">Intercept</span> <span class="o">=</span>  <span class="mf">8.097595134597833</span>  
+<span class="n">R</span><span class="o">-</span><span class="n">squared</span> <span class="o">=</span>  <span class="mf">0.1152673937227531</span>  
+<span class="n">P</span> <span class="n">value</span> <span class="o">=</span>  <span class="mf">0.04948248037131796</span>  
+<span class="n">Standard</span> <span class="n">error</span> <span class="o">=</span>  <span class="mf">0.0014948066523110296</span>
+</pre></div>
+</div>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Hint</p>
 <p>You will need to use a multi-step process to complete this exercise.</p>
 <ol class="simple">
@@ -1033,27 +1028,35 @@ Standard error =  0.0014948066523110296
 <li><p>Use SciPy.stats to perform linear regression.</p></li>
 </ol>
 </div>
-<div class="dropdown admonition">
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-import pandas as pd
-import scipy as sp
-water_file = os.path.join(&#39;data&#39;, &#39;Ground_water.csv&#39;)
-water_df = pd.read_csv(water_file)
-water_df.head() # to see the headers for each series (column)
-xdata = water_df[&#39;Bicarb&#39;]
-ydata = water_df[&#39;pH&#39;]
-from scipy import stats
-slope, intercept, r_value, p_value, std_err = stats.linregress(xdata, ydata)
-print(&quot;Slope = &quot;, slope)
-print(&quot;Intercept = &quot;, intercept)
-print(&quot;R-squared = &quot;, r_value**2)
-print(&quot;P value = &quot;, p_value)
-print(&quot;Standard error = &quot;, std_err)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">water_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;Ground_water.csv&#39;</span><span class="p">)</span>
+<span class="n">water_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">water_file</span><span class="p">)</span>
+<span class="n">water_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># to see the headers for each series (column)</span>
+<span class="n">xdata</span> <span class="o">=</span> <span class="n">water_df</span><span class="p">[</span><span class="s1">&#39;Bicarb&#39;</span><span class="p">]</span>
+<span class="n">ydata</span> <span class="o">=</span> <span class="n">water_df</span><span class="p">[</span><span class="s1">&#39;pH&#39;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope = &quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept = &quot;</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R-squared = &quot;</span><span class="p">,</span> <span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P value = &quot;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard error = &quot;</span><span class="p">,</span> <span class="n">std_err</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div><p>The next cell is just to show that the solution to the exercise works.</p>
+</div>
+<div class="key admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Use pandas to create dataframes from csv formatted data.</li></p></li>
+<li><p>Use SciPy functions to perform linear regression with statistical output.</li></p></li>
+<li><p>Use results from linear regression for lab calculations.</li></p></li>
+</ul>
+</div>
 </section>
 </section>
 </section>

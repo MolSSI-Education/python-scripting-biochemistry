@@ -437,24 +437,20 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="creating-plots-in-jupyter-notebooks">
 <h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li>How can I plot and annotate my data in Jupyter notebooks?
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How can I plot and annotate my data in Jupyter notebooks?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li>Repeat linear regression on the protein assay data to obtain best fit statistics.</li>
-        <li>Create a plot of the data with the best fit line.</li>
-        <li>Create a plot that includes confidence intervals.
-    </ul>
-<p>Keypoints:</p>
-    <ul>
-        <li>Use the matplotlib library to prepare a plot with data and a best fit line.</li>
-        <li>Use the seaborn library to create a plot that includes a confidence interval.</li>
-    </ul>
-</div><section id="preparing-to-plot">
+<ul class="simple">
+<li><p>Repeat linear regression on the protein assay data to obtain best fit statistics.</p></li>
+<li><p>Create a plot of the data with the best fit line.</p></li>
+<li><p>Create a plot that includes confidence intervals.</p></li>
+</ul>
+</div>
+<section id="preparing-to-plot">
 <h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Permalink to this headline">#</a></h2>
 <p>In recent lessons, we have learned to use pandas to import csv data into a dataframe that is very easy to access and can be used for plotting our data. We have also learned to do linear regression analysis using scipy. In this lesson, we will create linear regression plots of our data using two different libraries, matplotlib.pyplot and seaborn. As we add more libraries to our repretoire, we are going to track them in a table.</p>
 <table class="colwidths-auto table">
@@ -494,19 +490,19 @@ title="Print to PDF"
 <p>We will start by importing the data and linear regresson analysis from the previous lesson.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay.csv&#39;</span><span class="p">)</span>
-<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>  <span class="c1"># Setting the x values</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope = &quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="s2">&quot;/mg/mL&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept = &quot;</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R-squared = &quot;</span><span class="p">,</span> <span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P value = &quot;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard error = &quot;</span><span class="p">,</span> <span class="n">std_err</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import pandas as pd
+protein_file = os.path.join(&#39;data&#39;, &#39;protein_assay.csv&#39;)
+results_df = pd.read_csv(protein_file)
+xdata = results_df[&#39;Protein Concentration (mg/mL)&#39;]  # Setting the x values
+ydata = results_df[&#39;A595&#39;]  # setting the y values
+from scipy import stats
+slope, intercept, r_value, p_value, std_err = stats.linregress(xdata, ydata)
+print(&quot;Slope = &quot;, slope, &quot;/mg/mL&quot;, sep = &quot;&quot;)
+print(&quot;Intercept = &quot;, intercept)
+print(&quot;R-squared = &quot;, r_value**2)
+print(&quot;P value = &quot;, p_value)
+print(&quot;Standard error = &quot;, std_err)
 </pre></div>
 </div>
 </div>
@@ -527,15 +523,15 @@ Standard error =  0.030884027089284245
 <p>We are going to use one subset of matplotlib’s functions called pyplot. This approach is similar to using the stats subset of the functions found in scipy. This library contains tools for plotting and annotating the data. Let’s start with a simple x-y scatter plot of the protein calibration curve data. First, we need to import the library, set the size of the figure and indicate the data for the plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># set the size of the figure</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span> <span class="c1"># scatter plot of the data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+plt.figure(figsize = (10,5)) # set the size of the figure
+plt.scatter(xdata, ydata) # scatter plot of the data
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ffba38e53a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fce60119160&gt;
 </pre></div>
 </div>
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_5_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_5_1.png" />
@@ -544,14 +540,14 @@ Standard error =  0.030884027089284245
 <p>Next we add the best fit line using the slope and intercept that were generated by the stats.linregress function from scipy. The first two lines in the next cell are identical to the cell above (no need to import the libraries again). The third line introduces the best fit curve. You may notice a delay of a few seconds as the notebook generates the figure. The more complex the figure and the larger the dataset, the longer it takes for the plot to appear.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span> <span class="c1"># introduce the best-fit line</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize = (10,6))
+plt.scatter(xdata, ydata)
+plt.plot(xdata, slope * xdata + intercept) # introduce the best-fit line
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffba38355e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fce5fdedca0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_7_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_7_1.png" />
@@ -569,12 +565,12 @@ Standard error =  0.030884027089284245
 <p>The command for printing the line equation includes <code class="docutils literal notranslate"><span class="pre">F</span></code>, which stands for <code class="docutils literal notranslate"><span class="pre">formatted</span> <span class="pre">string</span> <span class="pre">literal</span></code>. By using <code class="docutils literal notranslate"><span class="pre">F</span></code> it is possible to pull the values for slope and intercept that were generated with scipy.stats, by enclosing the variable names in braces, {}. It is also possible to set the precision by following the variable name with <code class="docutils literal notranslate"><span class="pre">:.4f</span></code> where 4 is the number of decimal places you want to appear and f represents the datatype, float.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">)</span>  <span class="c1"># x-axis label</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>  <span class="c1"># y-axis label in LaTeX _{595} makes 595 the subscripts</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize = (10,6))
+plt.scatter(xdata, ydata)
+plt.plot(xdata, slope * xdata + intercept)
+plt.xlabel(&#39;Protein Concentration (mg/mL)&#39;)  # x-axis label
+plt.ylabel(&#39;$A_{595}$&#39;)  # y-axis label in LaTeX _{595} makes 595 the subscripts
+plt.annotate(F&#39;y = {slope:.4f} * x + {intercept:.4f}&#39;, xy = (0.25, 1.0))
 </pre></div>
 </div>
 </div>
@@ -585,26 +581,27 @@ Standard error =  0.030884027089284245
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_9_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_9_1.png" />
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Check your understanding</p>
-    <p>Take some time to play with the code for the figure above. Can you move the equation to the lower right hand corner of the plot? </p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check your Understanding</p>
+<p>Take some time to play with the code for the figure above. Can you move the equation to the lower right hand corner of the plot?</p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <p>You can simply change the xy pair in the last line of the code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>    
 </pre></div>
 </div>
 </div>
-</div><p>You may be asking yourself, “Why didn’t we generate a title for the figure?” That is certainly possible using the plt.title() function from matplotlib.pyplot. This was omitted because figures for publications and reports normally include separate text with a figure number, title and details as part of the text. To that end, we are going to learn to use the <code class="docutils literal notranslate"><span class="pre">savefig</span></code> command to produce a high resolution figure suitable for publication, which we will then learn to export to a file. Like many commands in python, it is simply a matter of getting the syntax right. We’ve added one line of code to save a high resolution image of our current figure.</p>
+</div>
+<p>You may be asking yourself, “Why didn’t we generate a title for the figure?” That is certainly possible using the plt.title() function from matplotlib.pyplot. This was omitted because figures for publications and reports normally include separate text with a figure number, title and details as part of the text. To that end, we are going to learn to use the <code class="docutils literal notranslate"><span class="pre">savefig</span></code> command to produce a high resolution figure suitable for publication, which we will then learn to export to a file. Like many commands in python, it is simply a matter of getting the syntax right. We’ve added one line of code to save a high resolution image of our current figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein ($\mu$g)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize = (10,6))
+plt.scatter(xdata, ydata)
+plt.plot(xdata, slope * xdata + intercept)
+plt.xlabel(&#39;Protein ($\mu$g)&#39;)
+plt.ylabel(&#39;$A_{595}$&#39;)
+plt.annotate(F&#39;y = {slope:.4f} * x + {intercept:.4f}&#39;, xy = (0.25, 1.0))
+plt.savefig(&#39;Bradford_plot.png&#39;, dpi = 600, bbox_inches = &#39;tight&#39;)
 </pre></div>
 </div>
 </div>
@@ -630,32 +627,32 @@ Standard error =  0.030884027089284245
 <p>The following plot is based on resources at <a class="reference external" href="https://www.statology.org/scatterplot-with-regression-line-python/">Statology</a>. I prefer this plot to the simple linear regression above because it makes the reliable regions of the calibration curve more obvious by displaying the 95% confidence interval. It also emphasizes the valid range for calculations based on the plot - that we can’t use this curve to analyze absorbance values below 0.285 or above 1.118.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay.csv&#39;</span><span class="p">)</span>
-<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>  
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span> 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import pandas as pd
+protein_file = os.path.join(&#39;data&#39;, &#39;protein_assay.csv&#39;)
+results_df = pd.read_csv(protein_file)
+xdata = results_df[&#39;Protein Concentration (mg/mL)&#39;]  
+ydata = results_df[&#39;A595&#39;] 
+from scipy import stats
+slope, intercept, r_value, p_value, std_err = stats.linregress(xdata, ydata)
 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
+import seaborn as sns
+sns.regplot(x = xdata, y = ydata)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
 </pre></div>
 </div>
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_15_1.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_15_1.png" />
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Exercise</p>
+<div class="exercise admonition">
+<p class="admonition-title">Exercise</p>
 <p>Use a similar approach to the one described above to create a linear regression plot with confidence intervals for data from a microplate assay that are a bit more scattered. The data can be found in the folder <code class="docutils literal notranslate"><span class="pre">data/protein_assay2.csv</span></code>. Increase the size of the figure, change the default x-axis and y-axis labels (taken by pandas from the column headers) to be Protein Concentration (mg/mL) and A<span class="math notranslate nohighlight">\(_{595}\)</span> as before and insert the equation for the line within the plot. You final figure should look something like this:</p>
 <p><img alt="alt" src="../_images/Bradford_plot3.png" /></p>
-<div class="dropdown admonition">
+<div class="dropdown solution admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">protein_file2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay2.csv&#39;</span><span class="p">)</span>
     <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file2</span><span class="p">)</span>
@@ -675,29 +672,38 @@ Standard error =  0.030884027089284245
 </pre></div>
 </div>
 </div>
-</div><div class="cell docutils container">
+</div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein_file2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;protein_assay2.csv&#39;</span><span class="p">)</span>
-<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">protein_file2</span><span class="p">)</span>
-<span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;mg/mL&#39;</span><span class="p">]</span>
-<span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>protein_file2 = os.path.join(&#39;data&#39;, &#39;protein_assay2.csv&#39;)
+results_df = pd.read_csv(protein_file2)
+xdata = results_df[&#39;mg/mL&#39;]
+ydata = results_df[&#39;A595&#39;]
+plt.figure(figsize = (15, 8))
 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+from scipy import stats
+slope, intercept, r_value, p_value, std_err = stats.linregress(xdata, ydata)
 
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_</span><span class="si">{595}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+import seaborn as sns
+sns.regplot(x = xdata, y = ydata)
+plt.xlabel(&#39;Protein Concentration (mg/mL)&#39;)
+plt.ylabel(&#39;$A_{595}$&#39;)
+plt.annotate(F&#39;y = {slope:.4f} * x + {intercept:.4f}&#39;, xy = (0.2, 0.5))
+plt.savefig(&#39;Bradford_plot2.png&#39;, dpi = 600, bbox_inches = &#39;tight&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/Creating_Plots_in_Jupyter_Notebooks_17_0.png" src="../_images/Creating_Plots_in_Jupyter_Notebooks_17_0.png" />
 </div>
+</div>
+<div class="key admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Use the matplotlib library to prepare a plot with data and a best fit line.</p></li>
+<li><p>Use the seaborn library to create a plot that includes a confidence interval.</p></li>
+</ul>
 </div>
 </section>
 </section>

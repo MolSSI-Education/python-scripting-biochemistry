@@ -481,39 +481,39 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression-part-1">
 <h1>Nonlinear Regression Part 1<a class="headerlink" href="#nonlinear-regression-part-1" title="Permalink to this headline">#</a></h1>
-<div class="overview-this-is-a-title overview">
-<p class="overview-title">Overview</p>
-<p>Questions</p>
-    <ul>
-        <li>How can I analyze enzyme kinetics data in Python?</li>
-        <li>What is the process for non-linear least squares curve fitting in Python?</li>
-    </ul>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>How can I analyze enzyme kinetics data in Python?</p></li>
+<li><p>What is the process for non-linear least squares curve fitting in Python?</p></li>
+</ul>
 <p>Objectives:</p>
-    <ul>
-        <li> Create a pandas dataframe with enzyme kinetics data from a .csv file</li>
-        <li> Add velocity calculations to the dataframe</li>
-        <li> Perform the non-linear regression calculations</li>
-    </ul>
-<p>In this module, we will calculate initial rates from the raw data (&Delta;A<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where we will explore nonlinear curve fitting in python.
-    </p>
-</div><section id="importing-the-data">
+<ul class="simple">
+<li><p>Create a pandas dataframe with enzyme kinetics data from a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file.</p></li>
+<li><p>Add velocity calculations to the dataframe.</p></li>
+<li><p>Perform the non-linear regression calculations.</p></li>
+</ul>
+<p>In this module, we will calculate initial rates from the raw data (ΔA<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where we will explore nonlinear curve fitting in Python.</p>
+</div>
+<section id="importing-the-data">
 <h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
 <p>We start by importing data from a csv file as we did earlier with the data for linear regression. These data represent the rate of p-nitrophenol appearance for a series of p-nitrophenol phosphate concentrations in the presence of alkaline phosphatase. We will import the libraries we need, import the data and set up a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
-<span class="kn">import</span> <span class="nn">os</span> <span class="c1"># to create a filehandle for the .csv file</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># for importing the .csv file and creating a dataframe</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="c1"># for performing non-linear regression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># import the libraries we need
+import os # to create a filehandle for the .csv file
+import pandas as pd # for importing the .csv file and creating a dataframe
+from scipy import stats # for performing non-linear regression
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the filehandle for the csv file that contains your data</span>
-<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;AP_kin.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>  <span class="c1"># filehandle confirmed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create the filehandle for the csv file that contains your data
+datafile = os.path.join(&#39;data&#39;, &#39;AP_kin.csv&#39;) # filehandle created
+print(datafile)  # filehandle confirmed
 </pre></div>
 </div>
 </div>
@@ -529,9 +529,9 @@ title="Print to PDF"
 <p>The filehandle, <code class="docutils literal notranslate"><span class="pre">datafile</span></code>, points to a csv file that contains the raw kinetics data. As we saw in the <code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">with</span> <span class="pre">Pandas</span></code> module, the pandas library has a tool for creating a dataframe from an existing csv file. Notice that the variable for the dataframe is called AP_kin_df. The <code class="docutils literal notranslate"><span class="pre">_df</span></code> at the end of the variable name is a reminder that this is a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the pandas dataframe using read_csv</span>
-<span class="n">AP_kin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
-<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c1"># looking at the first five rows of the dataframe </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Creating the pandas dataframe using read_csv
+AP_kin_df = pd.read_csv(datafile)
+AP_kin_df.head()  # looking at the first five rows of the dataframe 
 </pre></div>
 </div>
 </div>
@@ -655,8 +655,8 @@ title="Print to PDF"
 <p>By making the time values the index for each row, we can easily omit them from our initial rate calculations. We use the <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> option to make the change to the dataframe permanent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AP_kin_df.set_index(&#39;Time (min)&#39;, inplace=True)
+AP_kin_df.head()
 </pre></div>
 </div>
 </div>
@@ -787,7 +787,7 @@ title="Print to PDF"
 <p>Before we calculate the slopes to get initial velocities, we need to check for the datatypes on the numbers. We must ensure that the numbers are floats, rather than strings, so we can do calculations on them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># checking to see if the numbers are strings or floats</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AP_kin_df.index.dtype # checking to see if the numbers are strings or floats
 </pre></div>
 </div>
 </div>
@@ -817,14 +817,14 @@ title="Print to PDF"
 <p>In our case, the only argument we will pass is “marker = ‘o’ so that the individual data points will appear.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect the data using the plot command that is available with the dataframe</span>
-<span class="c1"># We use the plot function that is built into pandas for this simple data display</span>
-<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Inspect the data using the plot command that is available with the dataframe
+# We use the plot function that is built into pandas for this simple data display
+AP_kin_df.plot(marker = &#39;o&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time (min)&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time (min)&#39;&gt;
 </pre></div>
 </div>
 <img alt="../_images/nonlinear_regression_part_1_13_1.png" src="../_images/nonlinear_regression_part_1_13_1.png" />
@@ -832,10 +832,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a second dataframe with the substrate concentration as the first series.</span>
-<span class="c1"># Note the syntax for this pandas function - the D and F are capitalized.</span>
-<span class="n">MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create a second dataframe with the substrate concentration as the first series.
+# Note the syntax for this pandas function - the D and F are capitalized.
+MM_df = pd.DataFrame()
+MM_df[&#39;pNPP (mM)&#39;] = AP_kin_df.columns
 </pre></div>
 </div>
 </div>
@@ -853,17 +853,17 @@ title="Print to PDF"
 <p>To get the slopes for each series we will use a for loop. First, we’ll create an empty list to contain the slopes that are generated as the for loop cycles through the series in the AP_kin_df dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty list to hold the slopes </span>
-<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create an empty list to hold the slopes 
+slopes = []
 
-<span class="c1"># Calculate the slopes from each column in the AP_kin_df dataframe </span>
+# Calculate the slopes from each column in the AP_kin_df dataframe 
 
-<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">AP_kin_df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
-    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+for column in AP_kin_df.columns:
+    slope, _, _, _, _, = stats.linregress(AP_kin_df.index, AP_kin_df[column])
+    slopes.append(slope)
     
-<span class="c1"># Did we get a list of 11 slopes for each of the 11 series?</span>
-<span class="n">slopes</span>
+# Did we get a list of 11 slopes for each of the 11 series?
+slopes
 </pre></div>
 </div>
 </div>
@@ -885,16 +885,16 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Populate the new dataframe with the slopes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Populate the new dataframe with the slopes
 
-<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
+MM_df[&#39;slopes&#39;] = slopes
 
-<span class="c1"># Check the dataframe</span>
-<span class="n">MM_df</span>
+# Check the dataframe
+MM_df
 
-<span class="c1"># Make &#39;pNPP (mM) the index&#39;</span>
-<span class="n">MM_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">MM_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+# Make &#39;pNPP (mM) the index&#39;
+MM_df.set_index(&#39;pNPP (mM)&#39;, inplace=True)
+MM_df.head()
 </pre></div>
 </div>
 </div>
@@ -955,9 +955,9 @@ title="Print to PDF"
 <p>The initial velocity can be calculated by dividing the slope by the micromlar extinction coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate initial velocities and place those in a new column in the dataframe</span>
-<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.015</span>
-<span class="n">MM_df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Calculate initial velocities and place those in a new column in the dataframe
+MM_df[&#39;initial velocities&#39;] = MM_df[&#39;slopes&#39;] / 0.015
+MM_df
 </pre></div>
 </div>
 </div>
@@ -1052,25 +1052,25 @@ title="Print to PDF"
 <p>We will use this dataframe now to perform the nonlinear regression fit using the SciPy library in part 2 of this lesson. To save this data for part 2, we need to write it to a csv file in our data directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;MM_data.csv&#39;</span><span class="p">)</span>
-<span class="n">MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>outputfile = os.path.join(&#39;data&#39;, &#39;MM_data.csv&#39;)
+MM_df.to_csv(outputfile)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="exercise-this-is-a-title exercise">
-<p class="exercise-title">Check your understanding</p>
-    <p>You will find an Excel file in your data folder, chymotrypsin_kinetics.xlsx, with some kinetic data from a chymotrypsin experiment. Apply the principles above to create dataframes and a .csv file for creating a Michaelis-Menten plot with these data. Under these assay conditions the extinction coefficient for p-nitrophenol is 18,320 M<sup>-1</sup>cm<sup>-1</sup>.</p>
-<div class="dropdown admonition">
+<div class="exercise admonition">
+<p class="admonition-title">Check your understanding</p>
+<p>You will find an Excel file in your data folder, chymotrypsin_kinetics.xlsx, with some kinetic data from a chymotrypsin experiment. Apply the principles above to create dataframes and a .csv file for creating a Michaelis-Menten plot with these data. Under these conditions the extinction coefficient for p-nitrophenol is 18,320 M<sup>-1</sup>cm<sup>-1</sup>.</p></p>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Hint</p>
 <p>You will need to get the data into a layout and file format that is easily read by pandas.
 Delete the first seven lines of the Excel file.
 Delete the first column of the Excel file.
 Save the file as chymotrypsin_kinetics.csv.
 Your data will should look something like this:</p>
-</div>
 <p><img alt="csv image" src="../_images/csv_image.png" /></p>
-<div class="dropdown admonition">
+</div>
+<div class="solution dropdown admonition">
 <p class="admonition-title">Solution</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
 <span class="kn">import</span> <span class="nn">os</span> 
@@ -1129,73 +1129,6 @@ Your data will should look something like this:</p>
     
 </pre></div>
 </div>
-</div>
-<p>The solution is in the next cell. We will remove that cell before we publish the final Jupyter book.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
-<span class="kn">import</span> <span class="nn">os</span> 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-
-<span class="c1"># create the filehandle for the csv file</span>
-<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymotrypsin_kinetics.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span> <span class="c1"># checking on this step</span>
-
-<span class="c1"># create the pandas dataframe using read_csv</span>
-<span class="n">chymo_rates_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
-<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># looking at the first five rows of the dataframe</span>
-
-<span class="c1"># set the time as the index</span>
-<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (sec)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="c1"># check the datatype for the numbers</span>
-<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span>
-
-<span class="c1"># inspect the data</span>
-<span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="c1"># looking at the data</span>
-
-<span class="c1"># create a second dataframe with substrate concentration as the first series</span>
-<span class="n">chymo_MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">columns</span>
-<span class="n">chymo_MM_df</span>
-
-<span class="c1"># calculate slopes at each substrate concentration</span>
-<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># create an empty list</span>
-<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">chymo_rates_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">chymo_rates_df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
-    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
-
-<span class="c1"># Add the new slopes to the dataframe</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
-
-<span class="c1"># check the dataframe</span>
-<span class="n">chymo_MM_df</span>
-
-<span class="c1"># Make &#39;pNPA(mM)&#39; the index</span>
-<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pNPA (mM)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># check the dataframe</span>
-<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="c1"># Calculate the initial velocities</span>
-<span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chymo_MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.01832</span>
-<span class="n">chymo_MM_df</span>
-
-<span class="c1"># Export the datafile to a csv file</span>
-<span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;chymo_MM_data.csv&#39;</span><span class="p">)</span>
-<span class="n">chymo_MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/chymotrypsin_kinetics.csv
-</pre></div>
-</div>
-<img alt="../_images/nonlinear_regression_part_1_23_1.png" src="../_images/nonlinear_regression_part_1_23_1.png" />
 </div>
 </div>
 </section>
