@@ -1,4 +1,10 @@
-.overview .overview-title {
+/* Custom CSS * - mostly custom admonitions */
+
+/**********************************************************************************/
+/* Overview  Admonition*/
+
+/* Overview - title div background */
+.admonition.overview>.admonition-title, div.admonition.overview>.admonition-title {
     position: relative;
     margin: 0 -.6rem!important;
     padding: .4rem .6rem .4rem 2rem; 
@@ -6,7 +12,9 @@
     background-color: #ffc10733;
 }
 
-.overview {
+/* Overview admonition left border */
+
+.adomonition.overview, div.admonition.overview {
     margin: 1.5625em auto;
     padding: 0 .6rem .8rem!important;
     overflow: hidden;
@@ -17,7 +25,8 @@
     transition: color .25s,background-color .25s,border-color .25s;
 }
 
-.overview .overview-title:before {
+/* Overview admonition icon */
+.admonition.overview>.admonition-title:before, div.admonition.overview>.admonition-title:before {
     position: absolute;
     left: .6rem;
     width: 1rem;
@@ -27,8 +36,14 @@
     font-weight: 900;
     content: "\f128";
 }
+/**********************************************************************************/
 
-.exercise .exercise-title {
+/**********************************************************************************/
+/* Exercise and Solution Admonitions */
+
+/* Exercise and Solution - title div background */
+.admonition.exercise>.admonition-title, div.admonition.exercise>.admonition-title,
+.admonition.solution>.admonition-title, div.admonition.solution>.admonition-title {
     position: relative;
     margin: 0 -.6rem!important;
     padding: .4rem .6rem .4rem 2rem; 
@@ -36,18 +51,8 @@
     background-color: #fd7e1433;
 }
 
-.exercise {
-    margin: 1.5625em auto;
-    padding: 0 .6rem .8rem!important;
-    overflow: hidden;
-    page-break-inside: avoid;
-    border-left: .2rem solid #fd7e14;
-    border-radius: .1rem;
-    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 5%), 0 0 0.05rem rgb(0 0 0 / 10%);
-    transition: color .25s,background-color .25s,border-color .25s;
-}
-
-.exercise .exercise-title:before {
+/* Exercise Admonition Icon */
+.admonition.exercise>.admonition-title:before, div.admonition.exercise>.admonition-title:before {
     position: absolute;
     left: .6rem;
     width: 1rem;
@@ -58,7 +63,21 @@
     content: "\f303";
 }
 
-.admonition {
+/* Solution Left Icon */
+.admonition.solution>.admonition-title:before, div.admonition.solution>.admonition-title:before {
+    position: absolute;
+    left: .6rem;
+    width: 1rem;
+    height: 1rem;
+    color: #fd7e14;
+    font-family: Font Awesome\ 5 Free;
+    font-weight: 900;
+    content: "\f06e";
+}
+
+/* Overview and Exercise - Left Border */
+.adomonition.exercise, div.admonition.exercise,
+.adomonition.solution, div.admonition.solution {
     margin: 1.5625em auto;
     padding: 0 .6rem .8rem!important;
     overflow: hidden;
@@ -69,23 +88,50 @@
     transition: color .25s,background-color .25s,border-color .25s;
 }
 
-.admonition .admonition-title {
+/**********************************************************************************/
+
+/**********************************************************************************/
+/* Key Points Admonition */
+
+/* Key Admonition Div Background */
+.admonition.key>.admonition-title, div.admonition.key>.admonition-title {
     position: relative;
     margin: 0 -.6rem!important;
     padding: .4rem .6rem .4rem 2rem; 
     font-weight: 700;
-    background-color: #fd7e1433;
+    background-color: #00A30033;
 }
 
-.admonition .admonition-title:before {
+/* Key Admonition Icon*/
+.admonition.key>.admonition-title:before, div.admonition.key>.admonition-title:before {
     position: absolute;
     left: .6rem;
     width: 1rem;
     height: 1rem;
-    color: #fd7e14;
+    color: #00A300;
     font-family: Font Awesome\ 5 Free;
     font-weight: 900;
-    content: "\f06e";
+    content: "\f084";
 }
+
+/* Key Admonition left border */
+.adomonition.key, div.admonition.key {
+    margin: 1.5625em auto;
+    padding: 0 .6rem .8rem!important;
+    overflow: hidden;
+    page-break-inside: avoid;
+    border-left: .2rem solid #00A300;
+    border-radius: .1rem;
+    box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 5%), 0 0 0.05rem rgb(0 0 0 / 10%);
+    transition: color .25s,background-color .25s,border-color .25s;
+}
+
+/**********************************************************************************/
+
+
+
+
+
+
 
 
