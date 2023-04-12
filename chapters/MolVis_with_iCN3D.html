@@ -1,0 +1,1205 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Molecular Visualization with iCN3D &#8212; Python Data and Scripting for Biochemists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/MolVis_with_iCN3D';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="setup.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="setup.html">
+                    Set Up
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File_Parsing.html">File Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">Processing Multiple Files and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working_with_Pandas.html">Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear_Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">Creating Plots in Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_1.html">Nonlinear Regression Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_2.html">Nonlinear Regression Part 2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/MolVis_with_iCN3D.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/MolVis_with_iCN3D.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Molecular Visualization with iCN3D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Molecular Visualization with iCN3D</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#icn3d-and-molecular-visualization">iCN3D and Molecular Visualization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-icn3d-library">Loading the iCN3D library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-a-pdb-structure">Viewing a PDB structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-power-of-python">Applying the power of python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-commands-to-the-icn3dpy-view-function">Adding commands to the icn3dpy.view function</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-collections-of-commands-from-an-icn3d-web-page">Pulling collections of commands from an iCN3D web page</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teasing-apart-the-command-set-from-the-icn3d-page-for-pdb-id-1ets">Teasing apart the command set from the iCN3D page for PDB ID 1ETS</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-functions-based-on-preferred-command-sets-generated-from-icn3d-web-pages">Creating functions based on preferred command sets generated from iCN3D web pages</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="molecular-visualization-with-icn3d">
+<h1>Molecular Visualization with iCN3D<a class="headerlink" href="#molecular-visualization-with-icn3d" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<section id="questions">
+<h3>Questions<a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>How do you incorporate iCN3D into a Jupyter Notebook?</p></li>
+<li><p>How do you view structures from PDB files in iCN3D?</p></li>
+<li><p>How do you superimpose structures in iCN3D in a Jupyter Notebook?</p></li>
+<li><p>How can you control the renderings of features of a protein in iCN3D?</p></li>
+</ol>
+</section>
+<section id="objectives">
+<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Learn to load the iCN3D app</p></li>
+<li><p>Identify controls that are available within the iCN3D window in a Jupyter Notebook</p></li>
+<li><p>Implement commands captured from an iCN3D web page in a Jupyter notebook.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="icn3d-and-molecular-visualization">
+<h1>iCN3D and Molecular Visualization<a class="headerlink" href="#icn3d-and-molecular-visualization" title="Permalink to this heading">#</a></h1>
+<p>iCN3D is a molecular viewer that is provided by the National Center for Biotechnology Information and integrated into many of their web pages. Here is a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/Structure/icn3d/full.html">link</a> that enables you to open an iCN3D web page and load a PDB structure of interest. In fact, Henry Jakubowski has created an extensive collection of <a class="reference external" href="https://bio.libretexts.org/Learning_Objects/Visualizations_and_Simulations/Biochemistry-iCn3D_Molecular_Models">iCN3D web pages</a> to support his <a class="reference external" href="https://bio.libretexts.org/Bookshelves/Biochemistry">Biochemistry textbook offered through Libretext</a>.</p>
+<section id="loading-the-icn3d-library">
+<h2>Loading the iCN3D library<a class="headerlink" href="#loading-the-icn3d-library" title="Permalink to this heading">#</a></h2>
+<p>As we have seen previously, the <code class="docutils literal notranslate"><span class="pre">import</span></code> command is used to load iCN3D into your Jupyter notebook. Be careful to use the exact name of the library, all in lower case letters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">icn3dpy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">icn3dpy</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;icn3dpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="viewing-a-pdb-structure">
+<h2>Viewing a PDB structure<a class="headerlink" href="#viewing-a-pdb-structure" title="Permalink to this heading">#</a></h2>
+<p>As a first step, we will simply load a PDB structure in the default representation provided when you use the icn3dpy.view command for Jupyter notebooks. Please note that you can substitute in any structure id of interest using the format ‘pdbid = xxxx’. If you have a favorite structure, use that instead of 1a0j.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;pdbid=1a0j&#39;</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer1681313618935416" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning1681313618935416" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer1681313618935416 = null;
+var warn = document.getElementById("icn3dwarning1681313618935416");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer1681313618935416", pdbid: "1a0j", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '', };
+viewer1681313618935416 = new icn3d.iCn3DUI(cfg);
+viewer1681313618935416.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff070525070&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-the-power-of-python">
+<h2>Applying the power of python<a class="headerlink" href="#applying-the-power-of-python" title="Permalink to this heading">#</a></h2>
+<p>The above approach offers no real advantages over simply using an <a class="reference external" href="https://www.ncbi.nlm.nih.gov/Structure/icn3d/full.html">iCN3D web page</a> to view your structure, so we are going to create some variables and functions that will enable you to quickly generate your desired views of many different PDB entries using simple commands. Let’s start with variables. The icn3dpy.view() command requires the definition of a variable <code class="docutils literal notranslate"><span class="pre">q</span></code> in the statement. In this example, the string <code class="docutils literal notranslate"><span class="pre">pdbid=1a0j</span></code> is assigned to the variable q.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;pdbid=1a0j&#39;</span><span class="p">)</span>
+<span class="n">view</span>
+</pre></div>
+</div>
+<p>This can be replaced with another variable that contains the string. Let’s try that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replacing the &#39;pdbid=1a0j&#39; string with a variable</span>
+<span class="n">ID</span> <span class="o">=</span> <span class="s1">&#39;pdbid=8gch&#39;</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer168131377964705" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning168131377964705" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer168131377964705 = null;
+var warn = document.getElementById("icn3dwarning168131377964705");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer168131377964705", pdbid: "8gch", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '', };
+viewer168131377964705 = new icn3d.iCn3DUI(cfg);
+viewer168131377964705.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff070525c40&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-commands-to-the-icn3dpy-view-function">
+<h2>Adding commands to the icn3dpy.view function<a class="headerlink" href="#adding-commands-to-the-icn3dpy-view-function" title="Permalink to this heading">#</a></h2>
+<p>It is possible to add commands to the icn3dpy.view function to create a different view. You can find a list of commands on the <a class="reference external" href="https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.html#commands">iCN3D menuicon page</a>. Let’s consider a few examples and then explore additional ways to control them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding this command string with the syntax shown to change the appearance</span>
+<span class="c1"># of the protein from strands to cylinder and plate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;pdbid=1mbo&#39;</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;style proteins cylinder and plate&#39;</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16813185929293041" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning16813185929293041" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16813185929293041 = null;
+var warn = document.getElementById("icn3dwarning16813185929293041");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16813185929293041", pdbid: "1mbo", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'style proteins cylinder and plate', };
+viewer16813185929293041 = new icn3d.iCn3DUI(cfg);
+viewer16813185929293041.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff070525190&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the heme group to ball and stick</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;pdbid=1mbo&#39;</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;style proteins cylinder and plate; style chemicals ball and stick&#39;</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16813187240130382" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning16813187240130382" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16813187240130382 = null;
+var warn = document.getElementById("icn3dwarning16813187240130382");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16813187240130382", pdbid: "1mbo", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'style proteins cylinder and plate; style chemicals ball and stick', };
+viewer16813187240130382 = new icn3d.iCn3DUI(cfg);
+viewer16813187240130382.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff070525430&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assigning command strings to variables</span>
+<span class="n">ID</span> <span class="o">=</span> <span class="s1">&#39;pdbid=1mbo&#39;</span>
+<span class="n">cpl</span> <span class="o">=</span> <span class="s1">&#39;; style proteins cylinder and plate&#39;</span>
+<span class="n">bns</span> <span class="o">=</span> <span class="s1">&#39;; style chemicals ball and stick&#39;</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="n">cpl</span> <span class="o">+</span> <span class="n">bns</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16813189055430248" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning16813189055430248" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16813189055430248 = null;
+var warn = document.getElementById("icn3dwarning16813189055430248");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16813189055430248", pdbid: "1mbo", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '; style proteins cylinder and plate; style chemicals ball and stick', };
+viewer16813189055430248 = new icn3d.iCn3DUI(cfg);
+viewer16813189055430248.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff0105855b0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the same thing with a different protein</span>
+<span class="c1"># Assigning command strings to variables</span>
+<span class="n">ID</span> <span class="o">=</span> <span class="s1">&#39;pdbid=4hhb&#39;</span>
+<span class="n">cpl</span> <span class="o">=</span> <span class="s1">&#39;; style proteins cylinder and plate&#39;</span>
+<span class="n">bns</span> <span class="o">=</span> <span class="s1">&#39;; style chemicals ball and stick&#39;</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="n">cpl</span> <span class="o">+</span> <span class="n">bns</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer1681318950189132" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning1681318950189132" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer1681318950189132 = null;
+var warn = document.getElementById("icn3dwarning1681318950189132");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer1681318950189132", pdbid: "4hhb", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '; style proteins cylinder and plate; style chemicals ball and stick', };
+viewer1681318950189132 = new icn3d.iCn3DUI(cfg);
+viewer1681318950189132.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff0105855e0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pulling-collections-of-commands-from-an-icn3d-web-page">
+<h1>Pulling collections of commands from an iCN3D web page<a class="headerlink" href="#pulling-collections-of-commands-from-an-icn3d-web-page" title="Permalink to this heading">#</a></h1>
+<p>You can imagine that it might be quite time consuming to make 8 or 10 modifications to a visualization using commands like those seen above. One of the features of iCN3D web pages is that you can create a view there and import the commands into a Jupyter notebook. In this <a class="reference external" href="https://structure.ncbi.nlm.nih.gov/icn3d/share.html?TmUEcZr72jbmKirq9">iCN3D page for PDB ID 1ETS</a>, the following steps were taken:</p>
+<ul class="simple">
+<li><p>the ligand was changed to ball and stick;</p></li>
+<li><p>the protein was changed from ribbon to cylinder and plate;</p></li>
+<li><p>the color was changed to represent secondary structures;</p></li>
+<li><p>the background was changed to white.</p></li>
+</ul>
+<p>The resulting page looks like this:
+<img alt="modified image of 1ETS" src="../_images/1ets.png" /></p>
+<p>There is a feature on an iCN3D web page that enables you to modify the structure on the page and reproduce the structure in a Jupyter notebook. Why would you want to do that? We’ll get to that in a bit.</p>
+<p>On the <a class="reference external" href="https://structure.ncbi.nlm.nih.gov/icn3d/share.html?TmUEcZr72jbmKirq9">iCN3D page for PDB ID 1ETS</a>, select <code class="docutils literal notranslate"><span class="pre">File</span></code> from the dropdown menu, then choose <code class="docutils literal notranslate"><span class="pre">Share</span> <span class="pre">Link</span></code> and it will bring up a dialog box.</p>
+<p><img alt="dialog box from modified 1ETS" src="../_images/dialog_box.png" /></p>
+<p>Simply go to 2. <code class="docutils literal notranslate"><span class="pre">Commands</span> <span class="pre">Used</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">Notebooks</span></code> and click on <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">Commands</span></code>. Then paste those commands into a code cell on your Jupyter notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;mmdbafid=1ETS&#39;</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="s1">&#39;load mmdb 1ets | parameters &amp;mmdbid=1ets&amp;bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{&quot;factor&quot;:&quot;1.000&quot;,&quot;mouseChange&quot;:{&quot;x&quot;:&quot;0.000&quot;,&quot;y&quot;:&quot;0.000&quot;},&quot;quaternion&quot;:{&quot;_x&quot;:&quot;0.000&quot;,&quot;_y&quot;:&quot;0.000&quot;,&quot;_z&quot;:&quot;0.000&quot;,&quot;_w&quot;:&quot;1.000&quot;}}&#39;</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer1681320209482031" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning1681320209482031" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer1681320209482031 = null;
+var warn = document.getElementById("icn3dwarning1681320209482031");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer1681320209482031", mmdbafid: "1ETS", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'load mmdb 1ets | parameters &mmdbid=1ets&bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{"factor":"1.000","mouseChange":{"x":"0.000","y":"0.000"},"quaternion":{"_x":"0.000","_y":"0.000","_z":"0.000","_w":"1.000"}}', };
+viewer1681320209482031 = new icn3d.iCn3DUI(cfg);
+viewer1681320209482031.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff0105850a0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="teasing-apart-the-command-set-from-the-icn3d-page-for-pdb-id-1ets">
+<h2>Teasing apart the command set from the <a class="reference external" href="https://structure.ncbi.nlm.nih.gov/icn3d/share.html?TmUEcZr72jbmKirq9">iCN3D page for PDB ID 1ETS</a><a class="headerlink" href="#teasing-apart-the-command-set-from-the-icn3d-page-for-pdb-id-1ets" title="Permalink to this heading">#</a></h2>
+<p>If you explore the collected list of commands we extracted from the iCN3D page, you can see that the PDB ID was used three times:</p>
+<ol class="arabic simple">
+<li><p>in the form of mmdbafid=1ETS early in the line of code <em>icn3dpy.view(q = ‘mmdbafid=1ETS’)</em></p></li>
+<li><p>in the form of 1ets in the phrase <em>load mmdb 1ets</em></p></li>
+<li><p>in the form of 1ets in the phrase <em>&amp;mmdbid=1ets&amp;bu=1</em></p></li>
+</ol>
+<p>We are going to substitute variables in this command set so that you could generate the same view for almost any PDB entry. Remember that this set of commands is a string, so we have to be careful with the syntax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ID1</span> <span class="o">=</span> <span class="s1">&#39;mmdbafid=4HHB&#39;</span> <span class="c1"># to be used in the first call for the structure</span>
+<span class="n">ID2</span> <span class="o">=</span> <span class="s1">&#39;4HHB&#39;</span> <span class="c1"># to be used in the second and third calls for the structure</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID1</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="s1">&#39;load mmdb&#39;</span> <span class="o">+</span> <span class="n">ID2</span> <span class="o">+</span> <span class="s1">&#39;| parameters &amp;mmdbid=&#39;</span> <span class="o">+</span> <span class="n">ID2</span> <span class="o">+</span> <span class="s1">&#39;&amp;bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{&quot;factor&quot;:&quot;1.000&quot;,&quot;mouseChange&quot;:{&quot;x&quot;:&quot;0.000&quot;,&quot;y&quot;:&quot;0.000&quot;},&quot;quaternion&quot;:{&quot;_x&quot;:&quot;0.000&quot;,&quot;_y&quot;:&quot;0.000&quot;,&quot;_z&quot;:&quot;0.000&quot;,&quot;_w&quot;:&quot;1.000&quot;}}&#39;</span><span class="p">)</span>
+<span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer1681325877836593" style="position: relative; width: 640px; min-height: 580px; height: auto">
+        <p id="icn3dwarning1681325877836593" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.12.1.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer1681325877836593 = null;
+var warn = document.getElementById("icn3dwarning1681325877836593");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer1681325877836593", mmdbafid: "4HHB", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'load mmdb4HHB| parameters &mmdbid=4HHB&bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{"factor":"1.000","mouseChange":{"x":"0.000","y":"0.000"},"quaternion":{"_x":"0.000","_y":"0.000","_z":"0.000","_w":"1.000"}}', };
+viewer1681325877836593 = new icn3d.iCn3DUI(cfg);
+viewer1681325877836593.show3DStructure();
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7ff010585130&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="creating-functions-based-on-preferred-command-sets-generated-from-icn3d-web-pages">
+<h1>Creating functions based on preferred command sets generated from iCN3D web pages<a class="headerlink" href="#creating-functions-based-on-preferred-command-sets-generated-from-icn3d-web-pages" title="Permalink to this heading">#</a></h1>
+<p>The use of variables to control the appearance of any PDB entry is pretty cool. Wouldn’t it be great if you could enter a simple command with a PDB ID and have it do this? We can if we define and use a function. Here is some text from nonlinear regression part 2 to remind us how to work with functions.</p>
+<p>In Python, the following syntax is used to declare a function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">independent_variable</span><span class="p">,</span> <span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">):</span>
+    <span class="o">**</span> <span class="n">function</span> <span class="n">body</span> <span class="n">code</span> <span class="o">**</span>
+    <span class="k">return</span> <span class="n">value_to_return</span>
+</pre></div>
+</div>
+<p>Functions are defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, followed by the name of the function. The function may have independent variable(s) and parameters which are passed to it; these are in parenthesis following the function name. You then add a colon after the parentheses. This causes the function body code to indent in a Jupyter notebook coding cell. In certain cases, a function may have no parameters as well. Most (though not all) functions return some type of information. It is important to note here that defining a function does not execute it.</p>
+<p>Now we will create a function for a predesigned view in an iCN3D cell in a Jupyter notebook, using the code from the <a class="reference external" href="https://structure.ncbi.nlm.nih.gov/icn3d/share.html?TmUEcZr72jbmKirq9">iCN3D page for PDB ID 1ETS</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myview1</span><span class="p">(</span><span class="n">PDB_ID</span><span class="p">):</span>
+    <span class="n">PDB_ID</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">PDB_ID</span><span class="p">)</span>
+    <span class="n">ID1</span> <span class="o">=</span> <span class="s1">&#39;mmdbafid=&#39;</span> <span class="o">+</span> <span class="n">PDB_ID</span> <span class="c1"># to be used in the first call for the structure</span>
+    <span class="n">ID2</span> <span class="o">=</span> <span class="s1">&#39;PDB_ID&#39;</span> <span class="c1"># to be used in the second and third calls for the structure</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID1</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="s1">&#39;load mmdb&#39;</span> <span class="o">+</span> <span class="n">ID2</span> <span class="o">+</span> <span class="s1">&#39;| parameters &amp;mmdbid=&#39;</span> <span class="o">+</span> <span class="n">ID2</span> <span class="o">+</span> <span class="s1">&#39;&amp;bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{&quot;factor&quot;:&quot;1.000&quot;,&quot;mouseChange&quot;:{&quot;x&quot;:&quot;0.000&quot;,&quot;y&quot;:&quot;0.000&quot;},&quot;quaternion&quot;:{&quot;_x&quot;:&quot;0.000&quot;,&quot;_y&quot;:&quot;0.000&quot;,&quot;_z&quot;:&quot;0.000&quot;,&quot;_w&quot;:&quot;1.000&quot;}}&#39;</span><span class="p">)</span>
+    <span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PDB_ID</span> <span class="o">=</span> <span class="s1">&#39;1ETS&#39;</span>
+<span class="n">myview1</span><span class="p">(</span><span class="n">PDB_ID</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Molecular Visualization with iCN3D</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#icn3d-and-molecular-visualization">iCN3D and Molecular Visualization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-icn3d-library">Loading the iCN3D library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-a-pdb-structure">Viewing a PDB structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-power-of-python">Applying the power of python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-commands-to-the-icn3dpy-view-function">Adding commands to the icn3dpy.view function</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-collections-of-commands-from-an-icn3d-web-page">Pulling collections of commands from an iCN3D web page</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teasing-apart-the-command-set-from-the-icn3d-page-for-pdb-id-1ets">Teasing apart the command set from the iCN3D page for PDB ID 1ETS</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-functions-based-on-preferred-command-sets-generated-from-icn3d-web-pages">Creating functions based on preferred command sets generated from iCN3D web pages</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Molecular Sciences Software Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

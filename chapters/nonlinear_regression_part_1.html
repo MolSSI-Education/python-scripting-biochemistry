@@ -1,50 +1,68 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Nonlinear Regression Part 1 &#8212; Python Data and Scripting for Biochemists</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -53,69 +71,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/nonlinear_regression_part_1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Nonlinear Regression Part 2" href="nonlinear_regression_part_2.html" />
     <link rel="prev" title="Creating Plots in Jupyter Notebooks" href="Creating_Plots_in_Jupyter_Notebooks.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-FHKVGE8HKZ');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="setup.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/molssi_main_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Python Data and Scripting for Biochemists</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -125,362 +167,236 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="workshop_schedule.html">
-   Workshop Schedule
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="File_Parsing.html">
-   File Parsing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">
-   Processing Multiple Files and Writing Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Working_with_Pandas.html">
-   Working with Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Linear_Regression.html">
-   Linear Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">
-   Creating Plots in Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Nonlinear Regression Part 1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="nonlinear_regression_part_2.html">
-   Nonlinear Regression Part 2
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File_Parsing.html">File Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">Processing Multiple Files and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working_with_Pandas.html">Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear_Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">Creating Plots in Jupyter Notebooks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nonlinear Regression Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_2.html">Nonlinear Regression Part 2</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/MolSSI-Education/python-scripting-biochemistry/main?urlpath=tree/biochemist-python/chapters/nonlinear_regression_part_1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/nonlinear_regression_part_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/nonlinear_regression_part_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/MolSSI-Education/python-scripting-biochemistry"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/nonlinear_regression_part_1.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/chapters/nonlinear_regression_part_1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-the-data">
-   Importing the Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-the-pandas-dataframe">
-   Creating the pandas dataframe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datatype">
-   Datatype
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-the-initial-velocity">
-   Calculating the initial velocity
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspect-the-data">
-     Inspect the data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-the-slopes">
-   Calculate the Slopes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-the-initial-velocity">
-   Calculate the initial velocity
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Nonlinear Regression Part 1</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-the-data">
-   Importing the Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-the-pandas-dataframe">
-   Creating the pandas dataframe
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datatype">
-   Datatype
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-the-initial-velocity">
-   Calculating the initial velocity
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspect-the-data">
-     Inspect the data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-the-slopes">
-   Calculate the Slopes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-the-initial-velocity">
-   Calculate the initial velocity
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nonlinear Regression Part 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-pandas-and-why-do-we-use-it">What is pandas and why do we use it?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-arrays">1D arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2D arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3D arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-data">Importing the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-pandas-dataframe">Creating the pandas dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datatype">Datatype</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-initial-velocity">Calculating the initial velocity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-data">Inspect the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-slopes">Calculate the Slopes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-initial-velocity">Calculate the initial velocity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression-part-1">
-<h1>Nonlinear Regression Part 1<a class="headerlink" href="#nonlinear-regression-part-1" title="Permalink to this headline">#</a></h1>
+<h1>Nonlinear Regression Part 1<a class="headerlink" href="#nonlinear-regression-part-1" title="Permalink to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -496,24 +412,47 @@ title="Print to PDF"
 </ul>
 <p>In this module, we will calculate initial rates from the raw data (ΔA<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where we will explore nonlinear curve fitting in Python.</p>
 </div>
+<section id="what-is-pandas-and-why-do-we-use-it">
+<h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Permalink to this heading">#</a></h2>
+<p><em>Please note: this section about pandas is included for those who have not completed the Working with Pandas notebook already.</em> Pandas is a python library that is designed to work with two dimensional data arrays. It is built on numpy, another python library that specializes in numerical analysis. Numpy also has the ability to create and analyze data arrays. If you are not familiar with arrays, here are some simple examples.</p>
+<section id="d-arrays">
+<h3>1D arrays<a class="headerlink" href="#d-arrays" title="Permalink to this heading">#</a></h3>
+<p>A one dimensional array is simply a list of items, for example, a list of the elements: H, He, Li, Be, B, etc.</p>
+</section>
+<section id="id1">
+<h3>2D arrays<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>A two dimensional array is an array which has rows and columns. It can have any number of columns and rows. A spreadsheet with rows and columns is analogous to a 2D array.</p>
+</section>
+<section id="id2">
+<h3>3D arrays<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>A three-dimensional array would be a collection of two dimensional arrays. For example, this might be a collection of x, y, and z coordinates for a structure as a function of time.</p>
+<p>The numpy library has functions that will manage n-dimensional arrays, while pandas only works on 2D arrays. You may need numpy for nD arrays at some point, but for this workshop, we will learn to use pandas as we learn how to perform linear and nonlinear regression of laboratory data based on data in 2D arrays.</p>
+<p>The pandas library contains powerful tools for working with 2D data arrays, including the ability to identify the rows and columns of data by unique identifiers: things like “Substrate Concentration (mM)” and “initial velocity” rather than “row 1” or “column C”). Pandas also has many more functions that we will not explore in this workshop, but here are three excellent free online resources for learning more about pandas:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://education.molssi.org/python-data-analysis/02-pandas/index.html">Using pandas for data analysis</a> from MolSSI</p></li>
+<li><p>Charlie Weiss’s excellent online textbook, <em>Scientific Computing for Chemists</em>, which you can find on his GitHub site, <a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/intro.html">SciCompforChemists</a></p></li>
+<li><p>Corey Schafer’s <a class="reference external" href="https://www.youtube.com/watch?v=ZyhVh-qRZPA&amp;list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">Pandas Tutorials on YouTube</a></p></li>
+</ul>
+</section>
+</section>
 <section id="importing-the-data">
-<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this heading">#</a></h2>
 <p>We start by importing data from a csv file as we did earlier with the data for linear regression. These data represent the rate of p-nitrophenol appearance for a series of p-nitrophenol phosphate concentrations in the presence of alkaline phosphatase. We will import the libraries we need, import the data and set up a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># import the libraries we need
-import os # to create a filehandle for the .csv file
-import pandas as pd # for importing the .csv file and creating a dataframe
-from scipy import stats # for performing non-linear regression
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the libraries we need</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="c1"># to create a filehandle for the .csv file</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># for importing the .csv file and creating a dataframe</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> <span class="c1"># for performing non-linear regression</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create the filehandle for the csv file that contains your data
-datafile = os.path.join(&#39;data&#39;, &#39;AP_kin.csv&#39;) # filehandle created
-print(datafile)  # filehandle confirmed
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the filehandle for the csv file that contains your data</span>
+<span class="n">datafile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;AP_kin.csv&#39;</span><span class="p">)</span> <span class="c1"># filehandle created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>  <span class="c1"># filehandle confirmed</span>
 </pre></div>
 </div>
 </div>
@@ -525,13 +464,15 @@ print(datafile)  # filehandle confirmed
 </div>
 </section>
 <section id="creating-the-pandas-dataframe">
-<h2>Creating the pandas dataframe<a class="headerlink" href="#creating-the-pandas-dataframe" title="Permalink to this headline">#</a></h2>
+<h2>Creating the pandas dataframe<a class="headerlink" href="#creating-the-pandas-dataframe" title="Permalink to this heading">#</a></h2>
 <p>The filehandle, <code class="docutils literal notranslate"><span class="pre">datafile</span></code>, points to a csv file that contains the raw kinetics data. As we saw in the <code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">with</span> <span class="pre">Pandas</span></code> module, the pandas library has a tool for creating a dataframe from an existing csv file. Notice that the variable for the dataframe is called AP_kin_df. The <code class="docutils literal notranslate"><span class="pre">_df</span></code> at the end of the variable name is a reminder that this is a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Creating the pandas dataframe using read_csv
-AP_kin_df = pd.read_csv(datafile)
-AP_kin_df.head()  # looking at the first five rows of the dataframe 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating the pandas dataframe using read_csv</span>
+
+<span class="n">AP_kin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile</span><span class="p">)</span>
+
+<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c1"># looking at the first five rows of the dataframe </span>
 </pre></div>
 </div>
 </div>
@@ -655,8 +596,8 @@ AP_kin_df.head()  # looking at the first five rows of the dataframe
 <p>By making the time values the index for each row, we can easily omit them from our initial rate calculations. We use the <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> option to make the change to the dataframe permanent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AP_kin_df.set_index(&#39;Time (min)&#39;, inplace=True)
-AP_kin_df.head()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>  <span class="c1"># to make sure we got what we expected</span>
 </pre></div>
 </div>
 </div>
@@ -783,11 +724,11 @@ AP_kin_df.head()
 </div>
 </section>
 <section id="datatype">
-<h2>Datatype<a class="headerlink" href="#datatype" title="Permalink to this headline">#</a></h2>
+<h2>Datatype<a class="headerlink" href="#datatype" title="Permalink to this heading">#</a></h2>
 <p>Before we calculate the slopes to get initial velocities, we need to check for the datatypes on the numbers. We must ensure that the numbers are floats, rather than strings, so we can do calculations on them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>AP_kin_df.index.dtype # checking to see if the numbers are strings or floats
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># checking to see if the numbers are strings or floats</span>
 </pre></div>
 </div>
 </div>
@@ -799,9 +740,9 @@ AP_kin_df.head()
 </div>
 </section>
 <section id="calculating-the-initial-velocity">
-<h2>Calculating the initial velocity<a class="headerlink" href="#calculating-the-initial-velocity" title="Permalink to this headline">#</a></h2>
+<h2>Calculating the initial velocity<a class="headerlink" href="#calculating-the-initial-velocity" title="Permalink to this heading">#</a></h2>
 <p>The index for each row is the time, which will be the x values to get the slope of each line. The values in each column are the absorbance values at each time point, so those will be our y values. Now we need to follow these steps to calculate the initial velocity at each substrate concentration.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Inspect the data.</p></li>
 <li><p>Create a second dataframe with the substrate concentration as the first series.</p></li>
 <li><p>Calculate the slopes from the first dataframe and add those as a column to the second dataframe.</p></li>
@@ -809,7 +750,7 @@ AP_kin_df.head()
 <li><p>Export the second dataframe to a csv file that we will use in the next module.</p></li>
 </ol>
 <section id="inspect-the-data">
-<h3>Inspect the data<a class="headerlink" href="#inspect-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Inspect the data<a class="headerlink" href="#inspect-the-data" title="Permalink to this heading">#</a></h3>
 <p>In an earlier module, we used pyplot from matplotlib to create a well-annotated plot of our linear regression data. We could do that here, but we only want to inspect the data to make sure we are on the right track. To do that we can use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html">plot command from pandas</a>, which builds the plot using tools from matplotlib. The syntax is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -817,84 +758,27 @@ AP_kin_df.head()
 <p>In our case, the only argument we will pass is “marker = ‘o’ so that the individual data points will appear.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Inspect the data using the plot command that is available with the dataframe
-# We use the plot function that is built into pandas for this simple data display
-AP_kin_df.plot(marker = &#39;o&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Inspect the data using the plot command that is available with the dataframe</span>
+<span class="c1"># We use the plot function that is built into pandas for this simple data display</span>
+<span class="n">AP_kin_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time (min)&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Time (min)&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/nonlinear_regression_part_1_13_1.png" src="../_images/nonlinear_regression_part_1_13_1.png" />
+<img alt="../_images/9619bf7d5743d20f992209a74810b3fbe8236668f5dd400d25a2cce93cc662d9.png" src="../_images/9619bf7d5743d20f992209a74810b3fbe8236668f5dd400d25a2cce93cc662d9.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create a second dataframe with the substrate concentration as the first series.
-# Note the syntax for this pandas function - the D and F are capitalized.
-MM_df = pd.DataFrame()
-MM_df[&#39;pNPP (mM)&#39;] = AP_kin_df.columns
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="calculate-the-slopes">
-<h2>Calculate the Slopes<a class="headerlink" href="#calculate-the-slopes" title="Permalink to this headline">#</a></h2>
-<p>There is some scatter in the data, but generally, the slopes of the curves increase with increasing substrate concentration. Now we need to calculate the slopes for each of the lines in the plot above. To do so, we can use the linregress function from scipy.stats that we used for the least squares linear regression analysis of the protein assay data from an earlier module. We will use the index from our data frame, <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">(min)</span></code>, AP_kin_df. The y values will be taken from each of the series from the same dataframe.</p>
-<p>Remember that linregress provides five outputs: slope, intercept, r-value, p-value and standard error. We need only the slope, so we will use this format</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>where _ is just a placeholder that we will ignore.</p>
-<p>To get the slopes for each series we will use a for loop. First, we’ll create an empty list to contain the slopes that are generated as the for loop cycles through the series in the AP_kin_df dataframe.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create an empty list to hold the slopes 
-slopes = []
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Create a second dataframe with the substrate concentration as the first series.</span>
+<span class="c1"># Note the syntax for this pandas function - the D and F are capitalized.</span>
 
-# Calculate the slopes from each column in the AP_kin_df dataframe 
-
-for column in AP_kin_df.columns:
-    slope, _, _, _, _, = stats.linregress(AP_kin_df.index, AP_kin_df[column])
-    slopes.append(slope)
-    
-# Did we get a list of 11 slopes for each of the 11 series?
-slopes
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5140907641142858,
- 0.5031401632390977,
- 0.4704346427639096,
- 0.4170212341052633,
- 0.34244478125714295,
- 0.24625953559097755,
- 0.20284295232781954,
- 0.1364430576421053,
- 0.07644213958496243,
- 0.07806979615939849,
- 0.022319351245112782]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Populate the new dataframe with the slopes
-
-MM_df[&#39;slopes&#39;] = slopes
-
-# Check the dataframe
-MM_df
-
-# Make &#39;pNPP (mM) the index&#39;
-MM_df.set_index(&#39;pNPP (mM)&#39;, inplace=True)
-MM_df.head()
+<span class="n">MM_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">MM_df</span>
 </pre></div>
 </div>
 </div>
@@ -917,33 +801,190 @@ MM_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>slopes</th>
-    </tr>
-    <tr>
       <th>pNPP (mM)</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>20.0</th>
+      <th>0</th>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="calculate-the-slopes">
+<h2>Calculate the Slopes<a class="headerlink" href="#calculate-the-slopes" title="Permalink to this heading">#</a></h2>
+<p>There is some scatter in the data, but generally, the slopes of the curves increase with increasing substrate concentration. Now we need to calculate the slopes for each of the lines in the plot above. To do so, we can use the linregress function from scipy.stats that we used for the least squares linear regression analysis of the protein assay data from an earlier module. We will use the index from our data frame, <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">(min)</span></code>, AP_kin_df. The y values will be taken from each of the series from the same dataframe.</p>
+<p>Remember that linregress provides five outputs: slope, intercept, r-value, p-value and standard error. We need only the slope, so we will use this format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where _ is just a placeholder that we will ignore.</p>
+<p>To get the slopes for each series we will use a for loop. First, we’ll create an empty list to contain the slopes that are generated as the for loop cycles through the series in the AP_kin_df dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty list to hold the slopes </span>
+<span class="n">slopes</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 3. Calculate the slopes from each column in the AP_kin_df dataframe </span>
+
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">AP_kin_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">AP_kin_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">AP_kin_df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+    <span class="n">slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+
+<span class="c1"># Did we get a list of 11 slopes for each of the 11 series?</span>
+<span class="n">slopes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.5140907641142858,
+ 0.5031401632390977,
+ 0.4704346427639096,
+ 0.4170212341052633,
+ 0.34244478125714295,
+ 0.24625953559097755,
+ 0.20284295232781954,
+ 0.1364430576421053,
+ 0.07644213958496243,
+ 0.07806979615939849,
+ 0.022319351245112782]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Populate the new dataframe with the slopes</span>
+
+<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slopes</span>
+
+<span class="c1"># Check the dataframe</span>
+<span class="n">MM_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pNPP (mM)</th>
+      <th>slopes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20.0</td>
       <td>0.514091</td>
     </tr>
     <tr>
-      <th>10.0</th>
+      <th>1</th>
+      <td>10.0</td>
       <td>0.503140</td>
     </tr>
     <tr>
-      <th>7.0</th>
+      <th>2</th>
+      <td>7.0</td>
       <td>0.470435</td>
     </tr>
     <tr>
-      <th>4.0</th>
+      <th>3</th>
+      <td>4.0</td>
       <td>0.417021</td>
     </tr>
     <tr>
-      <th>2.0</th>
+      <th>4</th>
+      <td>2.0</td>
       <td>0.342445</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>0.246260</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7</td>
+      <td>0.202843</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.4</td>
+      <td>0.136443</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.2</td>
+      <td>0.076442</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.1</td>
+      <td>0.078070</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.05</td>
+      <td>0.022319</td>
     </tr>
   </tbody>
 </table>
@@ -951,13 +992,116 @@ MM_df.head()
 </div>
 </section>
 <section id="calculate-the-initial-velocity">
-<h2>Calculate the initial velocity<a class="headerlink" href="#calculate-the-initial-velocity" title="Permalink to this headline">#</a></h2>
-<p>The initial velocity can be calculated by dividing the slope by the micromlar extinction coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
+<h2>Calculate the initial velocity<a class="headerlink" href="#calculate-the-initial-velocity" title="Permalink to this heading">#</a></h2>
+<p>The initial velocity can be calculated by dividing the slope by the micromolar extinction coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Calculate initial velocities and place those in a new column in the dataframe
-MM_df[&#39;initial velocities&#39;] = MM_df[&#39;slopes&#39;] / 0.015
-MM_df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate initial velocities and place those in a new column in the dataframe</span>
+<span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;initial velocities&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MM_df</span><span class="p">[</span><span class="s1">&#39;slopes&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">0.015</span>
+<span class="n">MM_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pNPP (mM)</th>
+      <th>slopes</th>
+      <th>initial velocities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20.0</td>
+      <td>0.514091</td>
+      <td>34.272718</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.503140</td>
+      <td>33.542678</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.0</td>
+      <td>0.470435</td>
+      <td>31.362310</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>0.417021</td>
+      <td>27.801416</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>0.342445</td>
+      <td>22.829652</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+      <td>0.246260</td>
+      <td>16.417302</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7</td>
+      <td>0.202843</td>
+      <td>13.522863</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.4</td>
+      <td>0.136443</td>
+      <td>9.096204</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.2</td>
+      <td>0.076442</td>
+      <td>5.096143</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.1</td>
+      <td>0.078070</td>
+      <td>5.204653</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.05</td>
+      <td>0.022319</td>
+      <td>1.487957</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The final step before creating the csv file is to make pNPP (mM) the index for the dataframe.</span>
+<span class="n">MM_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pNPP (mM)&#39;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">MM_df</span>
 </pre></div>
 </div>
 </div>
@@ -1052,8 +1196,8 @@ MM_df
 <p>We will use this dataframe now to perform the nonlinear regression fit using the SciPy library in part 2 of this lesson. To save this data for part 2, we need to write it to a csv file in our data directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>outputfile = os.path.join(&#39;data&#39;, &#39;MM_data.csv&#39;)
-MM_df.to_csv(outputfile)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outputfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;MM_data.csv&#39;</span><span class="p">)</span>
+<span class="n">MM_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">outputfile</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1146,7 +1290,7 @@ Your data will should look something like this:</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters"
         },
         predefinedOutput: true
@@ -1154,50 +1298,119 @@ Your data will should look something like this:</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Creating_Plots_in_Jupyter_Notebooks.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Creating Plots in Jupyter Notebooks</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Creating_Plots_in_Jupyter_Notebooks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating Plots in Jupyter Notebooks</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="nonlinear_regression_part_2.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="nonlinear_regression_part_2.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Nonlinear Regression Part 2</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By The Molecular Sciences Software Institute<br/>
-  
-      &copy; Copyright 2021.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-pandas-and-why-do-we-use-it">What is pandas and why do we use it?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-arrays">1D arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2D arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3D arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-data">Importing the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-pandas-dataframe">Creating the pandas dataframe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datatype">Datatype</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-initial-velocity">Calculating the initial velocity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-data">Inspect the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-slopes">Calculate the Slopes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-initial-velocity">Calculate the initial velocity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Molecular Sciences Software Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
