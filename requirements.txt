@@ -5,3 +5,5 @@ seaborn
 pandas
 scipy
 ghp-import
+biopython
+icn3dpy
