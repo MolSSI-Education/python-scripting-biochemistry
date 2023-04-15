@@ -10,3 +10,5 @@ chapters:
 - file: chapters/Creating_Plots_in_Jupyter_Notebooks
 - file: chapters/nonlinear_regression_part_1
 - file: chapters/nonlinear_regression_part_2
+- file: chapters/biopython_mmcif
+- file: chapters/MolVis_with_iCN3D
