@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analyzing MMCIF Files using Biopython &#8212; Python Data and Scripting for Biochemists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/biopython_mmcif';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Molecular Visualization with iCN3D" href="MolVis_with_iCN3D.html" />
+    <link rel="prev" title="Nonlinear Regression Part 2" href="nonlinear_regression_part_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="setup.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="setup.html">
+                    Set Up
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File_Parsing.html">File Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">Processing Multiple Files and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working_with_Pandas.html">Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear_Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">Creating Plots in Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_1.html">Nonlinear Regression Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_2.html">Nonlinear Regression Part 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyzing MMCIF Files using Biopython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MolVis_with_iCN3D.html">Molecular Visualization with iCN3D</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/biopython_mmcif.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/biopython_mmcif.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyzing MMCIF Files using Biopython</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-mmcif-files">Reading MMCIF Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-3d-properties-ligand-neighbors">Measuring 3D Properties - Ligand Neighbors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-repeat-analysis-for-a-zinc-finger">Challenge - Repeat analysis for a Zinc Finger</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analyzing-mmcif-files-using-biopython">
+<h1>Analyzing MMCIF Files using Biopython<a class="headerlink" href="#analyzing-mmcif-files-using-biopython" title="Permalink to this heading">#</a></h1>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>What is the Biopython library and what is it used for?</p></li>
+<li><p>How can I use Biopython to analyze a protein structure (MMCIF) file?</p></li>
+</ul>
+<p>Objectives:</p>
+<ul class="simple">
+<li><p>Use Biopython to read information from an MMCIF</p></li>
+<li><p>Use Biopython to measure atom neighbors and analyze protein-ligand interactions.</p></li>
+</ul>
+</div>
+<p>The Biopython library is a powerful and versatile collection of tools specifically designed to assist biochemists and biologists with computational work.
+Biopython simplifies tasks such as working with DNA and protein sequences, interacting with online databases like GenBank and UniProt, and reading molecular format files like mmCIF and PDB.</p>
+<p>In this notebook, we will use Biopython to parse information from an MMCIF file.</p>
+<section id="reading-mmcif-files">
+<h2>Reading MMCIF Files<a class="headerlink" href="#reading-mmcif-files" title="Permalink to this heading">#</a></h2>
+<p>The mmCIF (also called PDBx/mmCIF) file format defines the three dimensional structure of a protein and provides information
+about the molecule, any ligands, host organism, and experimental method and conditions under which the data was obtained.
+The mmCIF file has a <a class="reference external" href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format">specific format</a>
+that consists of data entries with certain keywords beginning with <code class="docutils literal notranslate"><span class="pre">_</span></code> followed by their values.</p>
+<p>The following is a text excerpt from the PDB 101 page about the mmCIF file format:</p>
+<hr class="docutils" />
+<p>All data items are identified by name, begin with the underscore character and are composed of a category name and an attribute name.
+The category name is separated from the attribute name by a period:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_citation</span><span class="o">.</span><span class="n">year</span>
+
+</pre></div>
+</div>
+<p>This combination of category and attribute may be termed an mmCIF token.</p>
+<p>Data categories are presented in two styles: key-value and tabular.</p>
+<p>In the key-value style, the mmCIF token is followed directly by a corresponding value.  The following example shows the unit cell parameters from entry 4hhb:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_cell</span><span class="o">.</span><span class="n">entry_id</span>           <span class="mi">4</span><span class="n">HHB</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">length_a</span>           <span class="mf">63.150</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">length_b</span>           <span class="mf">83.590</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">length_c</span>           <span class="mf">53.800</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">angle_alpha</span>        <span class="mf">90.00</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">angle_beta</span>         <span class="mf">99.34</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">angle_gamma</span>        <span class="mf">90.00</span>
+<span class="n">_cell</span><span class="o">.</span><span class="n">Z_PDB</span>              <span class="mi">4</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>BioPython has a function called <code class="docutils literal notranslate"><span class="pre">MMCIF2Dict</span></code> that can read this information into a Python Dictionary.
+We can then query the dictionary to pull out data we are interested in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First import MMCIF2Dict function</span>
+<span class="kn">from</span> <span class="nn">Bio.PDB.MMCIF2Dict</span> <span class="kn">import</span> <span class="n">MMCIF2Dict</span>
+
+<span class="c1"># read in the CIF file.</span>
+<span class="n">pdb_info</span> <span class="o">=</span> <span class="n">MMCIF2Dict</span><span class="p">(</span><span class="s2">&quot;data/PDB_files/1mbn.cif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># First import MMCIF2Dict function</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">Bio.PDB.MMCIF2Dict</span> <span class="kn">import</span> <span class="n">MMCIF2Dict</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># read in the CIF file.</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pdb_info</span> <span class="o">=</span> <span class="n">MMCIF2Dict</span><span class="p">(</span><span class="s2">&quot;data/PDB_files/1mbn.cif&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;Bio&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">pdb_info</span></code> is now a Python dictionary containing data from the CIF file.</p>
+<p>We can pull out the cell information using dictionary syntax:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_cell.length_a&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The mmCIF file contains a lot of data.
+You can see all of the possible dictionary keys by doing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdb_info</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that there are a large number of possible keys for an MMCIF file.
+Each MMCIF file contains a varying number of these keywords.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try it here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use some looping in Python to print some of the data of interest.
+In the following cell, we use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to go over all of the keys and print the value if the key contains the word <code class="docutils literal notranslate"><span class="pre">_cell.</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdb_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">&quot;_cell.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a lot of keywords.
+You can browse then on <a class="reference external" href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Groups/index.html">this webpage</a> from the World Wide PDB.</p>
+<p>In particular, the <code class="docutils literal notranslate"><span class="pre">_entity</span></code> category contains interesting information:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            &quot;Data items in the ENTITY category record details (such as
+           chemical composition, name and source) about the molecular
+           entities that are present in the crystallographic structure.
+
+           Items in the various ENTITY subcategories provide a full
+           chemical description of these molecular entities.
+
+           Entities are of three types:  polymer, non-polymer and water.
+           Note that the water category includes only water;  ordered
+           solvent such as sulfate ion or acetone would be described as
+           individual non-polymer entities.&quot;
+</pre></div>
+</div>
+<p>We can add printing information about the entity to the for loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdb_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">&quot;_entity.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;_cell.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see a few interesting entries in the <code class="docutils literal notranslate"><span class="pre">_entity</span></code> section.
+The out put tells us that there atre three entities in the PDB.
+These are myoglobin, a hydroxide ion, and a heme group (protoporphyrin IX containing Fe).</p>
+<p>We will filter our for loop to not print values where <code class="docutils literal notranslate"><span class="pre">?</span></code> is an entry to make this more clear by adding a conditonal statement before looking for keywords.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdb_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">&quot;?&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;_entity.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;_cell.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some things we might be interested in are the name of the organism the sample originated from and the sequence of the protein.
+The relevant keywords for this will be <code class="docutils literal notranslate"><span class="pre">_entity_src_gen.gene_src_common_name</span></code> to get the common name of the organism,
+<code class="docutils literal notranslate"><span class="pre">_entity_src_gen.pdbx_gene_src_scientific_name</span></code> for the scientific name of the organism,
+and <code class="docutils literal notranslate"><span class="pre">_entity_poly.pdbx_seq_one_letter_code</span></code> for the sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">common_name_1mbn</span> <span class="o">=</span> <span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_entity_src_gen.gene_src_common_name&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">common_name_1mbn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scientific_name_1mbn</span> <span class="o">=</span> <span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_entity_src_gen.pdbx_gene_src_scientific_name&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scientific_name_1mbn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequence_1mbn</span> <span class="o">=</span> <span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_entity_poly.pdbx_seq_one_letter_code&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sequence_1mbn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="measuring-3d-properties-ligand-neighbors">
+<h2>Measuring 3D Properties - Ligand Neighbors<a class="headerlink" href="#measuring-3d-properties-ligand-neighbors" title="Permalink to this heading">#</a></h2>
+<p>In our analysis above, we see that the myoglobin structure contains an entity called “PROTOPORPHYRIN IX CONTAINING FE”.</p>
+<p>One useful thing about having the crystal structure of the protein is that we can analyze the coordinates to see how different parts of the molecule interact.
+In myoglobin, the iron atom (Fe) in the protoporphyrin reversibly binds the oxygen <span class="math notranslate nohighlight">\(O_2\)</span> molecule to carry oxygen to muscles.
+We can use BioPython to analyze the binding of this heme group to the protein.</p>
+<center><img src="images/Heme.svg"/></center>
+<p>Later in the workshop, we will learn how we can use a Python library to visualize the protein structure.
+For now, you can see this image showing myoglobin and the heme group (circled).</p>
+<center><img src="images/myoglobin_heme_small.png"></center>
+<p>We will want to use Biopython to measure the neighbors of the iron atom in order to measure which residues the
+heme group is bound to.
+To perform this analysis, we will have to load the protein into a different data type called a Biopython structure.
+This time, we will import <code class="docutils literal notranslate"><span class="pre">MMCIFParser</span></code> instead of<code class="docutils literal notranslate"> <span class="pre">``MMCIF2Dict</span></code>.
+This will allow us to do measurements with the coordinates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB.MMCIFParser</span> <span class="kn">import</span> <span class="n">MMCIFParser</span>
+
+<span class="c1"># Create an MMCIFParser object</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">MMCIFParser</span><span class="p">(</span><span class="n">QUIET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Parse the mmCIF file</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="s2">&quot;myoglobin&quot;</span><span class="p">,</span> <span class="s2">&quot;data/PDB_files/1mbn.cif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">structure</span></code> variable is a Biopython structure.</p>
+<p>The Structure object represents the molecules in the MMCIF file and is hierarchical.
+It follows the so-called SMCRA (Structure/Model/Chain/Residue/Atom) architecture :</p>
+<ul class="simple">
+<li><p>A structure consists of models</p></li>
+<li><p>A model consists of chains</p></li>
+<li><p>A chain consists of residues</p></li>
+<li><p>A residue consists of atoms</p></li>
+</ul>
+<p>This is the way many structural biologists/bioinformaticians think about structure, and provides a simple but efficient way to deal with structure.</p>
+<p>For our analysis, we want to find the neighbors of the iron atom.
+To do this analysis, we will first need to find our iron atom.
+We use the <code class="docutils literal notranslate"><span class="pre">structure.get_atoms()</span></code> function to get all of the atoms in the MMCIF.
+Then, we convert it to a list so we can more easily work with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">structure</span><span class="o">.</span><span class="n">get_atoms</span><span class="p">()</span>
+<span class="n">atoms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+
+<span class="c1"># Loop through the atoms.</span>
+<span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">:</span>
+    
+    <span class="c1"># Save information about the iron atom.</span>
+    <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="o">==</span> <span class="s2">&quot;FE&quot;</span><span class="p">:</span>
+        <span class="n">iron_atom</span> <span class="o">=</span> <span class="n">atom</span>
+        <span class="n">iron_coord</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">get_coord</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">iron_atom</span><span class="p">,</span> <span class="n">iron_coord</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now use Biopython to do a neighbor search.
+A neighbor search is done in two steps.
+First, we create a neighbor search variable using <code class="docutils literal notranslate"><span class="pre">NeighborSearch(atoms)</span></code>.
+Then, we do the neighbor search by inputting the coordinates we are looking for neighbors to,
+and a cut-off distance for the neighbors.
+Any atom that is within the specified cut-off distance is considered to be a neighbor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">NeighborSearch</span>
+
+<span class="c1"># Define the maximum distance for a neighbor.</span>
+<span class="n">cutoff_distance</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="c1"># Create a neighbor search.</span>
+<span class="n">neighbor_search</span> <span class="o">=</span> <span class="n">NeighborSearch</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+
+<span class="n">neighbors</span> <span class="o">=</span> <span class="n">neighbor_search</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">iron_atom</span><span class="o">.</span><span class="n">get_coord</span><span class="p">(),</span> <span class="n">cutoff_distance</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The iron atom has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbors</span><span class="p">),</span> <span class="s2">&quot;neighbor atoms.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a for loop to loop through the neighbor atoms thta the <code class="docutils literal notranslate"><span class="pre">search</span></code> function found.
+We can get the residue of the atom by using <code class="docutils literal notranslate"><span class="pre">atom.get_parent()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+    <span class="n">residue</span> <span class="o">=</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>THe lines that say “HEM” are for atoms that belong to the heme ligand.
+We are interested in how the ligand binds to the protein, so we’ll modify the for loop to only print neighbors if they are not part of the same residue as the iron.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iron_residue</span> <span class="o">=</span> <span class="n">iron_atom</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+    <span class="n">residue</span> <span class="o">=</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">residue</span> <span class="o">!=</span> <span class="n">iron_residue</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">neighbor</span><span class="o">.</span><span class="n">element</span><span class="p">,</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our analysis shows us that HIS 93 is a neighbor to the iron in the heme group.
+This histidine is called the “distal histidine” and is known to bind to the iron in the heme group.
+You can read more about myoglobin’s structure <a class="reference external" href="https://sites.chem.utoronto.ca/chemistry/coursenotes/GTM/JM/myoglobin/start.htm">here</a>.</p>
+<p>Try increasing the distance to 5. What do you find?</p>
+</section>
+<section id="challenge-repeat-analysis-for-a-zinc-finger">
+<h2>Challenge - Repeat analysis for a Zinc Finger<a class="headerlink" href="#challenge-repeat-analysis-for-a-zinc-finger" title="Permalink to this heading">#</a></h2>
+<p>Zinc fingers are small protein motifs that are characterized by the coordination of one or more zinc ions to stabilize their structure, enabling them to interact with other molecules such as DNA, RNA, or proteins.
+These motifs are commonly found in transcription factors, where they play a crucial role in the recognition and binding of specific DNA sequences, thereby regulating gene expression.</p>
+<p>For this challenge, you will analyze the structure <code class="docutils literal notranslate"><span class="pre">1a1t</span></code>.
+This structure is the HIV-1 nucleocapsid protein, which contains two zinc fingers that grip the viral RNA during budding of the virus.</p>
+<center><img src="images/1a1t.png" style="height: 350px;">></center></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="nonlinear_regression_part_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Nonlinear Regression Part 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MolVis_with_iCN3D.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Molecular Visualization with iCN3D</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-mmcif-files">Reading MMCIF Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-3d-properties-ligand-neighbors">Measuring 3D Properties - Ligand Neighbors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-repeat-analysis-for-a-zinc-finger">Challenge - Repeat analysis for a Zinc Finger</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Molecular Sciences Software Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
