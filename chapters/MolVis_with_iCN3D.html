@@ -427,16 +427,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">icn3dpy</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;icn3dpy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="viewing-a-pdb-structure">
@@ -446,6 +436,65 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;pdbid=1a0j&#39;</span><span class="p">)</span>
 <span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018157735" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018157735" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018157735 = null;
+var warn = document.getElementById("icn3dwarning16816155018157735");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018157735", pdbid: "1a0j", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '', };
+viewer16816155018157735 = new icn3d.iCn3DUI(cfg);
+viewer16816155018157735.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a9ff710&gt;
 </pre></div>
 </div>
 </div>
@@ -465,6 +514,65 @@ document.write(`
 <span class="n">ID</span> <span class="o">=</span> <span class="s1">&#39;pdbid=8gch&#39;</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID</span><span class="p">)</span>
 <span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018230937" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018230937" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018230937 = null;
+var warn = document.getElementById("icn3dwarning16816155018230937");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018230937", pdbid: "8gch", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '', };
+viewer16816155018230937 = new icn3d.iCn3DUI(cfg);
+viewer16816155018230937.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a595950&gt;
 </pre></div>
 </div>
 </div>
@@ -488,12 +596,130 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018341472" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018341472" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018341472 = null;
+var warn = document.getElementById("icn3dwarning16816155018341472");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018341472", pdbid: "1mbo", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'style proteins cylinder and plate', };
+viewer16816155018341472 = new icn3d.iCn3DUI(cfg);
+viewer16816155018341472.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a5ade10&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the heme group to ball and stick</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;pdbid=1mbo&#39;</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;style proteins cylinder and plate; style chemicals ball and stick&#39;</span><span class="p">)</span>
 <span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer1681615501841325" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning1681615501841325" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer1681615501841325 = null;
+var warn = document.getElementById("icn3dwarning1681615501841325");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer1681615501841325", pdbid: "1mbo", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'style proteins cylinder and plate; style chemicals ball and stick', };
+viewer1681615501841325 = new icn3d.iCn3DUI(cfg);
+viewer1681615501841325.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a5b3950&gt;
 </pre></div>
 </div>
 </div>
@@ -509,6 +735,65 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018484058" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018484058" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018484058 = null;
+var warn = document.getElementById("icn3dwarning16816155018484058");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018484058", pdbid: "1mbo", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '; style proteins cylinder and plate; style chemicals ball and stick', };
+viewer16816155018484058 = new icn3d.iCn3DUI(cfg);
+viewer16816155018484058.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a5ae690&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -519,6 +804,65 @@ document.write(`
 <span class="n">bns</span> <span class="o">=</span> <span class="s1">&#39;; style chemicals ball and stick&#39;</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID</span><span class="p">,</span> <span class="n">command</span> <span class="o">=</span> <span class="n">cpl</span> <span class="o">+</span> <span class="n">bns</span><span class="p">)</span>
 <span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018556967" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018556967" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018556967 = null;
+var warn = document.getElementById("icn3dwarning16816155018556967");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018556967", pdbid: "4hhb", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '; style proteins cylinder and plate; style chemicals ball and stick', };
+viewer16816155018556967 = new icn3d.iCn3DUI(cfg);
+viewer16816155018556967.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a5b1450&gt;
 </pre></div>
 </div>
 </div>
@@ -547,6 +891,65 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018628337" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018628337" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018628337 = null;
+var warn = document.getElementById("icn3dwarning16816155018628337");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018628337", mmdbafid: "1ETS", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'load mmdb 1ets | parameters &mmdbid=1ets&bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{"factor":"1.000","mouseChange":{"x":"0.000","y":"0.000"},"quaternion":{"_x":"0.000","_y":"0.000","_z":"0.000","_w":"1.000"}}', };
+viewer16816155018628337 = new icn3d.iCn3DUI(cfg);
+viewer16816155018628337.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a5b5a90&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="teasing-apart-the-command-set-from-the-icn3d-page-for-pdb-id-1ets">
 <h2>Teasing apart the command set from the <a class="reference external" href="https://structure.ncbi.nlm.nih.gov/icn3d/share.html?TmUEcZr72jbmKirq9">iCN3D page for PDB ID 1ETS</a><a class="headerlink" href="#teasing-apart-the-command-set-from-the-icn3d-page-for-pdb-id-1ets" title="Permalink to this heading">#</a></h2>
@@ -563,6 +966,65 @@ document.write(`
 <span class="n">ID2</span> <span class="o">=</span> <span class="s1">&#39;4HHB&#39;</span> <span class="c1"># to be used in the second and third calls for the structure</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">ID1</span><span class="p">,</span><span class="n">command</span><span class="o">=</span><span class="s1">&#39;load mmdb&#39;</span> <span class="o">+</span> <span class="n">ID2</span> <span class="o">+</span> <span class="s1">&#39;| parameters &amp;mmdbid=&#39;</span> <span class="o">+</span> <span class="n">ID2</span> <span class="o">+</span> <span class="s1">&#39;&amp;bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{&quot;factor&quot;:&quot;1.000&quot;,&quot;mouseChange&quot;:{&quot;x&quot;:&quot;0.000&quot;,&quot;y&quot;:&quot;0.000&quot;},&quot;quaternion&quot;:{&quot;_x&quot;:&quot;0.000&quot;,&quot;_y&quot;:&quot;0.000&quot;,&quot;_z&quot;:&quot;0.000&quot;,&quot;_w&quot;:&quot;1.000&quot;}}&#39;</span><span class="p">)</span>
 <span class="n">scene</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer16816155018688767" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning16816155018688767" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer16816155018688767 = null;
+var warn = document.getElementById("icn3dwarning16816155018688767");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer16816155018688767", mmdbafid: "4HHB", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: 'load mmdb4HHB| parameters &mmdbid=4HHB&bu=1; defined sets; select sets chemicals; set background white; style chemicals ball and stick; set surface wireframe on; set surface wireframe on; style proteins cylinder and plate; style proteins cylinder and plate; defined sets; select sets 1ETS; style proteins cylinder and plate; color secondary structure yellow|||{"factor":"1.000","mouseChange":{"x":"0.000","y":"0.000"},"quaternion":{"_x":"0.000","_y":"0.000","_z":"0.000","_w":"1.000"}}', };
+viewer16816155018688767 = new icn3d.iCn3DUI(cfg);
+viewer16816155018688767.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x7f0a3a5bb990&gt;
 </pre></div>
 </div>
 </div>

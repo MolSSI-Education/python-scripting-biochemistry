@@ -446,25 +446,17 @@ We can then query the dictionary to pull out data we are interested in.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># First import MMCIF2Dict function</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">Bio.PDB.MMCIF2Dict</span> <span class="kn">import</span> <span class="n">MMCIF2Dict</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># read in the CIF file.</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pdb_info</span> <span class="o">=</span> <span class="n">MMCIF2Dict</span><span class="p">(</span><span class="s2">&quot;data/PDB_files/1mbn.cif&quot;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;Bio&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>The variable <code class="docutils literal notranslate"><span class="pre">pdb_info</span></code> is now a Python dictionary containing data from the CIF file.</p>
 <p>We can pull out the cell information using dictionary syntax:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_cell.length_a&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;64.500&#39;]
 </pre></div>
 </div>
 </div>
@@ -490,6 +482,19 @@ In the following cell, we use a <code class="docutils literal notranslate"><span
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdb_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">if</span> <span class="s2">&quot;_cell.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_cell.entry_id [&#39;1MBN&#39;]
+_cell.length_a [&#39;64.500&#39;]
+_cell.length_b [&#39;30.900&#39;]
+_cell.length_c [&#39;34.700&#39;]
+_cell.angle_alpha [&#39;90.00&#39;]
+_cell.angle_beta [&#39;106.00&#39;]
+_cell.angle_gamma [&#39;90.00&#39;]
+_cell.Z_PDB [&#39;2&#39;]
+_cell.pdbx_unique_axis [&#39;?&#39;]
 </pre></div>
 </div>
 </div>
@@ -521,6 +526,29 @@ You can browse then on <a class="reference external" href="https://mmcif.wwpdb.o
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_cell.entry_id [&#39;1MBN&#39;]
+_cell.length_a [&#39;64.500&#39;]
+_cell.length_b [&#39;30.900&#39;]
+_cell.length_c [&#39;34.700&#39;]
+_cell.angle_alpha [&#39;90.00&#39;]
+_cell.angle_beta [&#39;106.00&#39;]
+_cell.angle_gamma [&#39;90.00&#39;]
+_cell.Z_PDB [&#39;2&#39;]
+_cell.pdbx_unique_axis [&#39;?&#39;]
+_entity.id [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]
+_entity.type [&#39;polymer&#39;, &#39;non-polymer&#39;, &#39;non-polymer&#39;]
+_entity.src_method [&#39;man&#39;, &#39;syn&#39;, &#39;syn&#39;]
+_entity.pdbx_description [&#39;MYOGLOBIN&#39;, &#39;HYDROXIDE ION&#39;, &#39;PROTOPORPHYRIN IX CONTAINING FE&#39;]
+_entity.formula_weight [&#39;17234.951&#39;, &#39;17.007&#39;, &#39;616.487&#39;]
+_entity.pdbx_number_of_molecules [&#39;1&#39;, &#39;1&#39;, &#39;1&#39;]
+_entity.pdbx_ec [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
+_entity.pdbx_mutation [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
+_entity.pdbx_fragment [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
+_entity.details [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We see a few interesting entries in the <code class="docutils literal notranslate"><span class="pre">_entity</span></code> section.
 The out put tells us that there atre three entities in the PDB.
@@ -537,6 +565,24 @@ These are myoglobin, a hydroxide ion, and a heme group (protoporphyrin IX contai
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_cell.entry_id [&#39;1MBN&#39;]
+_cell.length_a [&#39;64.500&#39;]
+_cell.length_b [&#39;30.900&#39;]
+_cell.length_c [&#39;34.700&#39;]
+_cell.angle_alpha [&#39;90.00&#39;]
+_cell.angle_beta [&#39;106.00&#39;]
+_cell.angle_gamma [&#39;90.00&#39;]
+_cell.Z_PDB [&#39;2&#39;]
+_entity.id [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]
+_entity.type [&#39;polymer&#39;, &#39;non-polymer&#39;, &#39;non-polymer&#39;]
+_entity.src_method [&#39;man&#39;, &#39;syn&#39;, &#39;syn&#39;]
+_entity.pdbx_description [&#39;MYOGLOBIN&#39;, &#39;HYDROXIDE ION&#39;, &#39;PROTOPORPHYRIN IX CONTAINING FE&#39;]
+_entity.formula_weight [&#39;17234.951&#39;, &#39;17.007&#39;, &#39;616.487&#39;]
+_entity.pdbx_number_of_molecules [&#39;1&#39;, &#39;1&#39;, &#39;1&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Some things we might be interested in are the name of the organism the sample originated from and the sequence of the protein.
 The relevant keywords for this will be <code class="docutils literal notranslate"><span class="pre">_entity_src_gen.gene_src_common_name</span></code> to get the common name of the organism,
@@ -549,11 +595,21 @@ and <code class="docutils literal notranslate"><span class="pre">_entity_poly.pd
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sperm whale&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scientific_name_1mbn</span> <span class="o">=</span> <span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_entity_src_gen.pdbx_gene_src_scientific_name&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">scientific_name_1mbn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Physeter catodon&#39;]
 </pre></div>
 </div>
 </div>
@@ -565,6 +621,11 @@ and <code class="docutils literal notranslate"><span class="pre">_entity_poly.pd
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;VLSEGEWQLVLHVWAKVEADVAGHGQDILIRLFKSHPETLEKFDRFKHLKTEAEMKASEDLKKHGVTVLTALGAILKKKG\nHHEAELKPLAQSHATKHKIPIKYLEFISEAIIHVLHSRHPGDFGADAQGAMNKALELFRKDIAAKYKELGYQG&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="measuring-3d-properties-ligand-neighbors">
@@ -573,10 +634,9 @@ and <code class="docutils literal notranslate"><span class="pre">_entity_poly.pd
 <p>One useful thing about having the crystal structure of the protein is that we can analyze the coordinates to see how different parts of the molecule interact.
 In myoglobin, the iron atom (Fe) in the protoporphyrin reversibly binds the oxygen <span class="math notranslate nohighlight">\(O_2\)</span> molecule to carry oxygen to muscles.
 We can use BioPython to analyze the binding of this heme group to the protein.</p>
-<center><img src="images/Heme.svg"/></center>
-<p>Later in the workshop, we will learn how we can use a Python library to visualize the protein structure.
+<img alt="../_images/Heme.svg" class="align-center" src="../_images/Heme.svg" /><p>Later in the workshop, we will learn how we can use a Python library to visualize the protein structure.
 For now, you can see this image showing myoglobin and the heme group (circled).</p>
-<center><img src="images/myoglobin_heme_small.png"></center>
+<img alt="../_images/myoglobin_heme_small.png" class="align-center" src="../_images/myoglobin_heme_small.png" />
 <p>We will want to use Biopython to measure the neighbors of the iron atom in order to measure which residues the
 heme group is bound to.
 To perform this analysis, we will have to load the protein into a different data type called a Biopython structure.
@@ -626,6 +686,11 @@ Then, we convert it to a list so we can more easily work with it.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Atom FE&gt; [14.8 28.1  4.8]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We will now use Biopython to do a neighbor search.
 A neighbor search is done in two steps.
@@ -649,6 +714,11 @@ Any atom that is within the specified cut-off distance is considered to be a nei
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The iron atom has 21 neighbor atoms.
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can use a for loop to loop through the neighbor atoms thta the <code class="docutils literal notranslate"><span class="pre">search</span></code> function found.
 We can get the residue of the atom by using <code class="docutils literal notranslate"><span class="pre">atom.get_parent()</span></code>.</p>
@@ -657,6 +727,31 @@ We can get the residue of the atom by using <code class="docutils literal notran
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
     <span class="n">residue</span> <span class="o">=</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HIS 93
+HIS 93
+HIS 93
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+HEM 155
+OH 154
 </pre></div>
 </div>
 </div>
@@ -675,6 +770,14 @@ We are interested in how the ligand binds to the protein, so we’ll modify the 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C HIS 93
+N HIS 93
+C HIS 93
+O OH 154
+</pre></div>
+</div>
+</div>
 </div>
 <p>Our analysis shows us that HIS 93 is a neighbor to the iron in the heme group.
 This histidine is called the “distal histidine” and is known to bind to the iron in the heme group.
@@ -687,7 +790,8 @@ You can read more about myoglobin’s structure <a class="reference external" hr
 These motifs are commonly found in transcription factors, where they play a crucial role in the recognition and binding of specific DNA sequences, thereby regulating gene expression.</p>
 <p>For this challenge, you will analyze the structure <code class="docutils literal notranslate"><span class="pre">1a1t</span></code>.
 This structure is the HIV-1 nucleocapsid protein, which contains two zinc fingers that grip the viral RNA during budding of the virus.</p>
-<center><img src="images/1a1t.png" style="height: 350px;">></center></section>
+<a class="reference internal image-reference" href="../_images/1a1t.png"><img alt="../_images/1a1t.png" class="align-center" src="../_images/1a1t.png" style="height: 350px;" /></a>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
