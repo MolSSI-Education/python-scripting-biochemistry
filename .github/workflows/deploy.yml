@@ -9,25 +9,37 @@ on:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-and-deploy-book:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: [3.11]
-    steps:
-    - uses: actions/checkout@v2
+    name: Build book
+    runs-on: ubuntu-latest
 
-    # Install dependencies
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Additional info about the build
+      shell: bash
       run: |
-        pip install -r requirements.txt
+        uname -a
+        df -h
+        ulimit -a
+
+
+    # More info on options: https://github.com/conda-incubator/setup-miniconda
+    - uses: conda-incubator/setup-miniconda@v2.2.0
+      with:
+        python-version: 3.9
+        environment-file: requirements.yaml
+
+        channels: conda-forge,defaults,bioconda
+
+        activate-environment: docs
+        auto-update-conda: false
+        auto-activate-base: false
+        show-channel-urls: true
+
 
     # Build the book
     - name: Build the book
+      shell: bash -l {0}
       run: |
         jupyter-book build biochemist-python
 
