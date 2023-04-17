@@ -468,13 +468,6 @@ You can see all of the possible dictionary keys by doing</p>
 </div>
 <p>Note that there are a large number of possible keys for an MMCIF file.
 Each MMCIF file contains a varying number of these keywords.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try it here</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>We can use some looping in Python to print some of the data of interest.
 In the following cell, we use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to go over all of the keys and print the value if the key contains the word <code class="docutils literal notranslate"><span class="pre">_cell.</span></code></p>
 <div class="cell docutils container">
@@ -502,17 +495,17 @@ _cell.pdbx_unique_axis [&#39;?&#39;]
 <p>There are a lot of keywords.
 You can browse then on <a class="reference external" href="https://mmcif.wwpdb.org/dictionaries/mmcif_pdbx_v50.dic/Groups/index.html">this webpage</a> from the World Wide PDB.</p>
 <p>In particular, the <code class="docutils literal notranslate"><span class="pre">_entity</span></code> category contains interesting information:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            &quot;Data items in the ENTITY category record details (such as
-           chemical composition, name and source) about the molecular
-           entities that are present in the crystallographic structure.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;Data items in the ENTITY category record details (such as
+   chemical composition, name and source) about the molecular
+   entities that are present in the crystallographic structure.
 
-           Items in the various ENTITY subcategories provide a full
-           chemical description of these molecular entities.
+   Items in the various ENTITY subcategories provide a full
+   chemical description of these molecular entities.
 
-           Entities are of three types:  polymer, non-polymer and water.
-           Note that the water category includes only water;  ordered
-           solvent such as sulfate ion or acetone would be described as
-           individual non-polymer entities.&quot;
+   Entities are of three types:  polymer, non-polymer and water.
+   Note that the water category includes only water;  ordered
+   solvent such as sulfate ion or acetone would be described as
+   individual non-polymer entities.&quot;
 </pre></div>
 </div>
 <p>We can add printing information about the entity to the for loop.</p>
@@ -551,7 +544,7 @@ _entity.details [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
 </div>
 </div>
 <p>We see a few interesting entries in the <code class="docutils literal notranslate"><span class="pre">_entity</span></code> section.
-The out put tells us that there atre three entities in the PDB.
+The output tells us that there are three entities in the PDB.
 These are myoglobin, a hydroxide ion, and a heme group (protoporphyrin IX containing Fe).</p>
 <p>We will filter our for loop to not print values where <code class="docutils literal notranslate"><span class="pre">?</span></code> is an entry to make this more clear by adding a conditonal statement before looking for keywords.</p>
 <div class="cell docutils container">
@@ -636,11 +629,11 @@ In myoglobin, the iron atom (Fe) in the protoporphyrin reversibly binds the oxyg
 We can use BioPython to analyze the binding of this heme group to the protein.</p>
 <img alt="../_images/Heme.svg" class="align-center" src="../_images/Heme.svg" /><p>Later in the workshop, we will learn how we can use a Python library to visualize the protein structure.
 For now, you can see this image showing myoglobin and the heme group (circled).</p>
-<img alt="../_images/myoglobin_heme_small.png" class="align-center" src="../_images/myoglobin_heme_small.png" />
+<a class="reference internal image-reference" href="../_images/myoglobin_heme_small.png"><img alt="../_images/myoglobin_heme_small.png" class="align-center" src="../_images/myoglobin_heme_small.png" style="height: 350px;" /></a>
 <p>We will want to use Biopython to measure the neighbors of the iron atom in order to measure which residues the
 heme group is bound to.
 To perform this analysis, we will have to load the protein into a different data type called a Biopython structure.
-This time, we will import <code class="docutils literal notranslate"><span class="pre">MMCIFParser</span></code> instead of<code class="docutils literal notranslate"> <span class="pre">``MMCIF2Dict</span></code>.
+This time, we will import <code class="docutils literal notranslate"><span class="pre">MMCIFParser</span></code> instead of <code class="docutils literal notranslate"><span class="pre">MMCIF2Dict</span></code>.
 This will allow us to do measurements with the coordinates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,14 +661,32 @@ It follows the so-called SMCRA (Structure/Model/Chain/Residue/Atom) architecture
 <p>For our analysis, we want to find the neighbors of the iron atom.
 To do this analysis, we will first need to find our iron atom.
 We use the <code class="docutils literal notranslate"><span class="pre">structure.get_atoms()</span></code> function to get all of the atoms in the MMCIF.
-Then, we convert it to a list so we can more easily work with it.</p>
+The variable <code class="docutils literal notranslate"><span class="pre">atoms</span></code> after this step is a special data type called a <strong>generator</strong>.
+A generator will load elements of a collection one a time using a loop.
+This means only one atom would be loaded into memory if we looped through the atoms.
+Biopython uses a generator when returning atoms because sometimes proteins can be so large that you don’t want to load them all into your computer memory at once.
+There is one drawback to generators, however, and that is that you can only use them once (if you wanted to work with atoms again, you would have to do structure.get_atoms() again.
+Because our protein is small and we expect to need the list of atoms more than one time, we will convert the atoms generator to a list using <code class="docutils literal notranslate"><span class="pre">list(atoms)</span></code>.
+However, if you are ever working with a larger structure, it might be better to use a generator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">structure</span><span class="o">.</span><span class="n">get_atoms</span><span class="p">()</span>
-<span class="n">atoms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
 
 <span class="c1"># Loop through the atoms.</span>
-<span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atom_list</span><span class="p">:</span>
     
     <span class="c1"># Save information about the iron atom.</span>
     <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="o">==</span> <span class="s2">&quot;FE&quot;</span><span class="p">:</span>
@@ -702,11 +713,14 @@ Any atom that is within the specified cut-off distance is considered to be a nei
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">NeighborSearch</span>
 
+<span class="c1"># Get a list of atoms</span>
+<span class="n">atoms</span> <span class="o">=</span> <span class="n">structure</span><span class="o">.</span><span class="n">get_atoms</span><span class="p">()</span>
+
 <span class="c1"># Define the maximum distance for a neighbor.</span>
 <span class="n">cutoff_distance</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="c1"># Create a neighbor search.</span>
-<span class="n">neighbor_search</span> <span class="o">=</span> <span class="n">NeighborSearch</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+<span class="n">neighbor_search</span> <span class="o">=</span> <span class="n">NeighborSearch</span><span class="p">(</span><span class="n">atom_list</span><span class="p">)</span>
 
 <span class="n">neighbors</span> <span class="o">=</span> <span class="n">neighbor_search</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">iron_atom</span><span class="o">.</span><span class="n">get_coord</span><span class="p">(),</span> <span class="n">cutoff_distance</span><span class="p">)</span>
 
@@ -720,38 +734,38 @@ Any atom that is within the specified cut-off distance is considered to be a nei
 </div>
 </div>
 </div>
-<p>We can use a for loop to loop through the neighbor atoms thta the <code class="docutils literal notranslate"><span class="pre">search</span></code> function found.
+<p>We can use a for loop to loop through the neighbor atoms that the <code class="docutils literal notranslate"><span class="pre">search</span></code> function found.
 We can get the residue of the atom by using <code class="docutils literal notranslate"><span class="pre">atom.get_parent()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
     <span class="n">residue</span> <span class="o">=</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HIS 93
-HIS 93
-HIS 93
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-HEM 155
-OH 154
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HIS (&#39; &#39;, 93, &#39; &#39;)
+HIS (&#39; &#39;, 93, &#39; &#39;)
+HIS (&#39; &#39;, 93, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
+OH (&#39;H_OH&#39;, 154, &#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -791,6 +805,18 @@ These motifs are commonly found in transcription factors, where they play a cruc
 <p>For this challenge, you will analyze the structure <code class="docutils literal notranslate"><span class="pre">1a1t</span></code>.
 This structure is the HIV-1 nucleocapsid protein, which contains two zinc fingers that grip the viral RNA during budding of the virus.</p>
 <a class="reference internal image-reference" href="../_images/1a1t.png"><img alt="../_images/1a1t.png" class="align-center" src="../_images/1a1t.png" style="height: 350px;" /></a>
+<p><strong>Hint 1</strong> - The structure <code class="docutils literal notranslate"><span class="pre">1a1t</span></code> is determined by NMR and contains 25 structure models. When you load the structure using the MMCIF parser, you will get a list of 25 structures. You can analyze only one of them by using list indexing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an MMCIFParser object</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">MMCIFParser</span><span class="p">(</span><span class="n">QUIET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Parse the mmCIF file</span>
+<span class="n">structures</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="s2">&quot;1a1t&quot;</span><span class="p">,</span> <span class="s2">&quot;data/PDB_files/1a1t.cif&quot;</span><span class="p">)</span>  <span class="c1"># This will be a list with 25 elements!</span>
+
+<span class="c1"># Get the first structure</span>
+<span class="n">structure</span> <span class="o">=</span> <span class="n">structures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Hint 2</strong> - The structure also contains more than one Zinc atom, so if you would like to analyze both that are present in the structure, you will have to use your Python knowledge to slightly modify your code.</p>
 </section>
 </section>
 
@@ -887,7 +913,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021.
+      © Copyright 2021-2023.
       <br/>
     
   </p>
