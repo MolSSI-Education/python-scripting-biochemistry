@@ -29,7 +29,7 @@ jobs:
         python-version: 3.9
         environment-file: requirements.yaml
 
-        channels: conda-forge,defaults,bioconda
+        channels: conda-forge,defaults
 
         activate-environment: iqb-2023
         auto-update-conda: false
