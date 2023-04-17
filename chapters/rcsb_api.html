@@ -409,8 +409,10 @@ document.write(`
 <p>We will work with two types of API from the PDB in this lesson.</p>
 <section id="file-download-using-biopython">
 <h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this headline">#</a></h2>
-<p>A simple wayBiopython also has a function for retrieving structure files.
-For example, the following cell downloads the Zinc finger structure that we analyzed in the Biopython lesson.</p>
+<p>Biopython has functions for retrieving structure files.
+To download a structure file from the PDB, you make a <code class="docutils literal notranslate"><span class="pre">PDBList</span></code>.
+Then, you use the function <code class="docutils literal notranslate"><span class="pre">pdb_list.retrieve_pdb_file.</span> <span class="pre">This</span> <span class="pre">function</span> <span class="pre">takes</span> <span class="pre">the</span> <span class="pre">PDB</span> <span class="pre">ID</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">parameter.</span>&#160; <span class="pre">You</span> <span class="pre">specify</span> <span class="pre">the</span> <span class="pre">folder</span> <span class="pre">where</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">saved</span> <span class="pre">using</span> </code>pdir=FOLDER<code class="docutils literal notranslate"><span class="pre">.</span>&#160; <span class="pre">If</span> <span class="pre">we</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">download</span> <span class="pre">the</span> <span class="pre">structure</span> <span class="pre">as</span> <span class="pre">an</span> <span class="pre">MMCIF,</span> <span class="pre">we</span> <span class="pre">have</span> <span class="pre">to</span> <span class="pre">add</span> </code>file_format=”mmCif”`.</p>
+<p>For example, the following cell downloads the PDB <code class="docutils literal notranslate"><span class="pre">4HHB</span></code>, hemoglobin.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">PDBList</span>
@@ -419,7 +421,7 @@ For example, the following cell downloads the Zinc finger structure that we anal
 <span class="n">pdb_list</span> <span class="o">=</span> <span class="n">PDBList</span><span class="p">()</span>
 
 <span class="c1"># Specify the PDB ID of the structure you want to download</span>
-<span class="n">pdb_id</span> <span class="o">=</span> <span class="s2">&quot;1a1t&quot;</span> <span class="c1">#zinc finger</span>
+<span class="n">pdb_id</span> <span class="o">=</span> <span class="s2">&quot;4hhb&quot;</span> <span class="c1">#zinc finger</span>
 
 <span class="c1"># Download the MMCIF file using the retrieve_pdb_file method</span>
 <span class="n">pdb_filename</span> <span class="o">=</span> <span class="n">pdb_list</span><span class="o">.</span><span class="n">retrieve_pdb_file</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="n">pdir</span><span class="o">=</span><span class="s2">&quot;data/PDB_files&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;mmCif&quot;</span><span class="p">)</span>
@@ -430,17 +432,21 @@ For example, the following cell downloads the Zinc finger structure that we anal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Structure exists: &#39;data/PDB_files/1a1t.cif&#39; 
-data/PDB_files/1a1t.cif
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4hhb&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/4hhb.cif
 </pre></div>
 </div>
 </div>
 </div>
+<p>If you check your data folder, you will see that you now have a file called <code class="docutils literal notranslate"><span class="pre">4hhb.cif</span></code>.</p>
 </section>
 <section id="pdb-data-api">
 <h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this headline">#</a></h2>
-<p>You can use the web to retrieve information about a molecule using it’s PDB using the PDB Data API.</p>
-<p>As mentioned above, web API’s often work by varying text in a web address (also called URL).</p>
+<p>You can use the web to retrieve information about a molecule using its PDB ID using the PDB Data API.
+This will give you access to information about the PDB entry, rather than the structure file like with the Biopython file download.</p>
+<p>As mentioned above, web APIs often work by varying text in a web address (also called URL).</p>
 <p>The PDB Data API has the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">rcsb</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">core</span><span class="o">/&lt;</span><span class="n">TYPE_OF_RESOURCE</span><span class="o">&gt;/&lt;</span><span class="n">IDENTIFIER</span><span class="o">&gt;</span>
 </pre></div>
@@ -479,6 +485,7 @@ This is a feature of web URLs.
 If they are successfully retrieved, they send a status code of 200.
 This is true for any website you receive.
 One status code you may be familiar with is <code class="docutils literal notranslate"><span class="pre">404</span></code>, which occurs when a resources is not found.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">status_code</span></code> is not a function associated with data, so we do not need to use <code class="docutils literal notranslate"><span class="pre">()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">status_code</span>
@@ -491,7 +498,7 @@ One status code you may be familiar with is <code class="docutils literal notran
 </div>
 </div>
 </div>
-<p>We can see the JSON associated with our request by calling the .json() method, which we will save in a variable called <code class="docutils literal notranslate"><span class="pre">info_1a1t</span></code>. Our variable is now similar to a Python dictionary, which is a data type that has key, value pairs.</p>
+<p>We can see the JSON associated with our request by calling the .json() method, which we will save in a variable called <code class="docutils literal notranslate"><span class="pre">info_4hhb</span></code>. Our variable is now similar to a Python dictionary, which is a data type that has key, value pairs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -511,6 +518,11 @@ One status code you may be familiar with is <code class="docutils literal notran
 </pre></div>
 </div>
 </div>
+</div>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">info_4hhb</span></code> is a Python dictionary, meaning that
+we can access information in the dictionary using the syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dictionary_name</span><span class="p">[</span><span class="s2">&quot;key_name&quot;</span><span class="p">]</span>
+</pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -602,12 +614,13 @@ One status code you may be familiar with is <code class="docutils literal notran
 </div>
 </div>
 </div>
-<p>You can also retrieve information about interfaces between polymeric entities (protein, or nucleic acids) using
+<p>You can also use the PDB Data API to retrieve information about interfaces between polymeric entities (protein, or nucleic acids) using
 one of the API endpoints by changing the URL.</p>
 <p>The format for querying about interfaces is</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">rcsb</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">interface</span><span class="o">/&lt;</span><span class="n">pdb_id</span><span class="o">&gt;/&lt;</span><span class="n">assembly_id</span><span class="o">&gt;/&lt;</span><span class="n">interface_id</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+<p>In the cell below, we get the first interface for assembly 1 (there is only one assembly in this PDB entry).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://data.rcsb.org/rest/v1/core/interface/4hhb/1/1&quot;</span><span class="p">)</span>
@@ -644,6 +657,7 @@ one of the API endpoints by changing the URL.</p>
 </div>
 </div>
 </div>
+<p>Try changing the numbers in the URL. How does it change your results?</p>
 </section>
 <section id="pdb-search-api">
 <h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this headline">#</a></h2>
@@ -685,29 +699,31 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;43a5d733-80f5-47af-9a0d-44cdfeb68068&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;bd90fc1d-7f5f-409c-ac6b-979d6c0e57b1&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 619,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
-  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.49152370348955227},
-  {&#39;identifier&#39;: &#39;1D8U&#39;, &#39;score&#39;: 0.16200921443553892},
-  {&#39;identifier&#39;: &#39;1JP6&#39;, &#39;score&#39;: 0.16200921443553892},
-  {&#39;identifier&#39;: &#39;1JP8&#39;, &#39;score&#39;: 0.16200921443553892},
-  {&#39;identifier&#39;: &#39;1JP9&#39;, &#39;score&#39;: 0.16200921443553892},
-  {&#39;identifier&#39;: &#39;1JPB&#39;, &#39;score&#39;: 0.16200921443553892},
-  {&#39;identifier&#39;: &#39;2BMM&#39;, &#39;score&#39;: 0.16200921443553892},
-  {&#39;identifier&#39;: &#39;6BMG&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.4915218267210861},
+  {&#39;identifier&#39;: &#39;1D8U&#39;, &#39;score&#39;: 0.16200954082840965},
+  {&#39;identifier&#39;: &#39;1JP6&#39;, &#39;score&#39;: 0.16200954082840965},
+  {&#39;identifier&#39;: &#39;1JP8&#39;, &#39;score&#39;: 0.16200954082840965},
+  {&#39;identifier&#39;: &#39;1JP9&#39;, &#39;score&#39;: 0.16200954082840965},
+  {&#39;identifier&#39;: &#39;1JPB&#39;, &#39;score&#39;: 0.16200954082840965},
+  {&#39;identifier&#39;: &#39;2BMM&#39;, &#39;score&#39;: 0.16200954082840965},
+  {&#39;identifier&#39;: &#39;6BMG&#39;, &#39;score&#39;: 0.16200954082840965},
   {&#39;identifier&#39;: &#39;1DUK&#39;, &#39;score&#39;: 0.0}]}
 </pre></div>
 </div>
 </div>
 </div>
-<p>Our results tell us that our query returned <code class="docutils literal notranslate"><span class="pre">12864</span></code> results (<code class="docutils literal notranslate"><span class="pre">total_count</span></code>).
+<p>Our results tell us that our query returned <code class="docutils literal notranslate"><span class="pre">619</span></code> results (<code class="docutils literal notranslate"><span class="pre">total_count</span></code>).
 The <code class="docutils literal notranslate"><span class="pre">results_set</span></code> keyword has a list of results.
 The <code class="docutils literal notranslate"><span class="pre">identifier</span></code> key in each value in <code class="docutils literal notranslate"><span class="pre">results_set</span></code> tells
 us the PDB ID of a search result.</p>
+<p>You will notice that even though the search has told us there are <code class="docutils literal notranslate"><span class="pre">619</span></code> results, we only have 10 values in our results variable.
+This is because the API always counts the number of results, but will only return 10 unless we ask for more.</p>
 <p>We could now combine this with Biopython or the data API to get information about the structures.
-For example, we will retrieve the title of the</p>
+For example, we will retrieve the title of the paper where this structure was published we could do so:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_result</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;result_set&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span>
@@ -737,8 +753,8 @@ For example, we will retrieve the title of the</p>
 </div>
 <p>You can also control the format of the returned results including the
 number of results and how the results are sorted.
-The query below searchs for the phrase “oxygen storage” in the keywors of the structure.
-We’ve specified that we want 10 values returned, and for the results to be sorted
+The query below searchs for the phrase “oxygen storage” in the keywords of the structure.
+We’ve specified that we want 50 values returned (instead of the usual 10), and for the results to be sorted
 by the initial release date in ascending order (oldest result first).
 If you wanted to see the 10 most recently released results, you would change
 “asc” to “desc” in the query below.</p>
@@ -804,7 +820,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;73cb7608-29d1-490d-a8e5-efd2f45dc346&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;543af01d-1e79-49d5-a14f-29f2c00e9fe9&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 515,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
@@ -992,6 +1008,23 @@ The end of the analysis prints the most commonly found neighboring residues to i
 <span class="go">Combination: 5 HIS, 2 HOH, 2 VAL, Count: 2</span>
 <span class="go">Combination: 4 HIS, 2 HOH, 2 VAL, Count: 2</span>
 </pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdb_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pdb_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
