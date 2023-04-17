@@ -7,7 +7,7 @@
 # Book settings
 title                       : Python Data and Scripting for Biochemists  # The title of the book. Will be placed in the left navbar.
 author                      : The Molecular Sciences Software Institute  # The author of the book
-copyright                   : "2021"  # Copyright year to be placed in the footer
+copyright                   : "2021-2023"  # Copyright year to be placed in the footer
 logo                        : molssi_main_logo.png  # A path to the book logo
 
 # Information about where the book exists on the web
