@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>File Parsing &#8212; Python Data and Scripting for Biochemists</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -75,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Processing Multiple Files and Writing Files" href="Processing_Multiple_Files_and_Writing_Files.html" />
     <link rel="prev" title="Introduction" href="introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -395,7 +394,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="file-parsing">
-<h1>File Parsing<a class="headerlink" href="#file-parsing" title="Permalink to this heading">#</a></h1>
+<h1>File Parsing<a class="headerlink" href="#file-parsing" title="Permalink to this headline">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -411,10 +410,10 @@ document.write(`
 </ul>
 </div>
 <section id="working-with-files">
-<h2>Working with files<a class="headerlink" href="#working-with-files" title="Permalink to this heading">#</a></h2>
+<h2>Working with files<a class="headerlink" href="#working-with-files" title="Permalink to this headline">#</a></h2>
 <p>One of the most common tasks in research is analyzing data.  An enormous amount of data is currently being generated in biochemistry and molecular biology, much of it pertaining to sequence and structure. The PDB file format is commonly used to describe macromolecular structures that have been determined by experimental methods. You may be interested in exploring the text and/or the data in a PDB file.  While the <a class="reference external" href="https://www.rcsb.org/">PDB web site</a> is very helpful, there are times when it would be handy to extract specific information about one protein (or 1,000) with a few keystrokes. For example, you might be interested in the resolution of a structure, or the small molecules that are bound to the macromolecule.  In general, this is called file parsing.</p>
 <section id="working-with-file-paths-the-os-path-module">
-<h3>Working with file paths - the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module<a class="headerlink" href="#working-with-file-paths-the-os-path-module" title="Permalink to this heading">#</a></h3>
+<h3>Working with file paths - the <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module<a class="headerlink" href="#working-with-file-paths-the-os-path-module" title="Permalink to this headline">#</a></h3>
 <p>For this section, we will be working with the file <code class="docutils literal notranslate"><span class="pre">4eyr</span></code> in the <code class="docutils literal notranslate"><span class="pre">PDB_files</span></code> directory.</p>
 <p>Jupyter notebooks are designed to work in all operating systems. You may know that the operating system commands for organizing and working with files are different in Windows, Mac OS and Linux. To address this, we will use the Python <code class="docutils literal notranslate"><span class="pre">os</span></code> library. To use this library, we will first import it. Then we’ll start with two commands from the library, <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> which stands for <em>get current working directory</em>. Executing this command will tell us where we are in our computer’s directory. The other command is <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> which stands from <em>list directory</em>. This command tells the Jupyter notebook to display a list of the files and directories in the current working directory.</p>
 <div class="cell docutils container">
@@ -544,7 +543,7 @@ document.write(`
 </section>
 </section>
 <section id="absolute-and-relative-paths">
-<h2>Absolute and relative paths<a class="headerlink" href="#absolute-and-relative-paths" title="Permalink to this heading">#</a></h2>
+<h2>Absolute and relative paths<a class="headerlink" href="#absolute-and-relative-paths" title="Permalink to this headline">#</a></h2>
 <p>File paths can be <em>absolute</em>, or <em>relative</em>.</p>
 <p>A relative file path gives the location relative to the directory we are in. Thus, if we are in the <code class="docutils literal notranslate"><span class="pre">biochemist-python</span></code> directory, the relative filepath for the <code class="docutils literal notranslate"><span class="pre">4eyr.pdb</span></code> file would be <code class="docutils literal notranslate"><span class="pre">chapters/data/PDB_files/4eyr.pdb</span></code></p>
 <p>An absolute filepath gives the complete path to a file. This could file path could be used from anywhere on a computer, and would access the same file. For example, the absolute filepath to the <code class="docutils literal notranslate"><span class="pre">4eyr.pdb</span></code> file on a Mac might be <code class="docutils literal notranslate"><span class="pre">/Users/YOUR_USER_NAME/Desktop/python-scripting-biochemistry/biochemist-python/chapters/data/PDB_files/4eyr.pdb</span></code>. You can get the absolute path of a file using <code class="docutils literal notranslate"><span class="pre">os.path.abspath(path)</span></code>, where path is the relative path of the file.</p>
@@ -554,7 +553,7 @@ document.write(`
 </div>
 </section>
 <section id="reading-a-file">
-<h2>Reading a file<a class="headerlink" href="#reading-a-file" title="Permalink to this heading">#</a></h2>
+<h2>Reading a file<a class="headerlink" href="#reading-a-file" title="Permalink to this headline">#</a></h2>
 <p>In Python, there are many ways to read in information from a text file.  The best method to use depends on the type of data and the type of analysis you are performing.  If you have a file with lots of different types of information, text and numbers, with different types of formatting, the most generic way to read in information is the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.  Reading in the file is a two-step process. First, you have to open the file using the file path we defined above. This creates a file object, or filehandle. Then you can read in information with the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function.</p>
 <p>We could use the following code to accomplish this task:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">protein_file</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
@@ -579,7 +578,7 @@ document.write(`
 <p>The file we will be analyzing in this example is a <a class="reference external" href="https://www.rcsb.org/structure/4EYR">PDB web site</a> file for an HIV protease complex with the inhibitor Ritonavir.</p>
 </section>
 <section id="readlines-function-behavior">
-<h2><code class="docutils literal notranslate"><span class="pre">readlines</span></code> function behavior<a class="headerlink" href="#readlines-function-behavior" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">readlines</span></code> function behavior<a class="headerlink" href="#readlines-function-behavior" title="Permalink to this headline">#</a></h2>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">readlines</span></code> function can only be used on a file object one time. If you forget to set <code class="docutils literal notranslate"><span class="pre">outfile.readlines()</span></code> equal to a variable, you must <code class="docutils literal notranslate"><span class="pre">open</span></code> the file again in order to get the contents of the file.</p>
 <div class="exercise admonition">
 <p class="admonition-title">Check Your Understanding</p>
@@ -595,7 +594,7 @@ document.write(`
 </div>
 </section>
 <section id="searching-for-a-pattern-in-your-file">
-<h2>Searching for a pattern in your file<a class="headerlink" href="#searching-for-a-pattern-in-your-file" title="Permalink to this heading">#</a></h2>
+<h2>Searching for a pattern in your file<a class="headerlink" href="#searching-for-a-pattern-in-your-file" title="Permalink to this headline">#</a></h2>
 <p>The file we opened is the complete PDB file for the <a class="reference external" href="https://www.rcsb.org/structure/4EYR">Crystal structure of multidrug-resistant clinical isolate 769 HIV-1 protease in complex with ritonavir</a>.  As stated previously, the <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> function put the file contents into a list where each element is a line of the file. You may remember from lesson 1 that a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop can be used to execute the same code repeatedly. As we learned in the previous lesson, we can use a for loop to iterate through elements in a list.</p>
 <p>Here’s the code we could use to take a look at what’s in the file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
@@ -814,7 +813,7 @@ document.write(`
 </div>
 </section>
 <section id="searching-for-a-particular-line-number-in-your-file">
-<h2>Searching for a particular line number in your file<a class="headerlink" href="#searching-for-a-particular-line-number-in-your-file" title="Permalink to this heading">#</a></h2>
+<h2>Searching for a particular line number in your file<a class="headerlink" href="#searching-for-a-particular-line-number-in-your-file" title="Permalink to this headline">#</a></h2>
 <p>There is a lot of other information in the PDB file that might be of interest.  For example, we might want to pull out the sequence of the protein.  If we look through the file, 4eyr.pdb, in a text editor, we notice that the sequence is given in a series of lines that begin with <code class="docutils literal notranslate"><span class="pre">SEQRES</span></code></p>
 <p>SEQRES   1 A   99  PRO GLN ILE THR LEU TRP GLN ARG PRO ILE VAL THR ILE</p>
 <p>followed by a series of lines that contain the full sequence using three letter abbreviations for the amino acids.  In this case, we don’t want to pull something out of this line, as we did in our previous example, but we want to know which line of the file this is so that we can then pull the sequence from the next few lines.</p>
@@ -871,7 +870,7 @@ document.write(`
 </div>
 </section>
 <section id="a-final-note-about-regular-expressions">
-<h2>A final note about regular expressions<a class="headerlink" href="#a-final-note-about-regular-expressions" title="Permalink to this heading">#</a></h2>
+<h2>A final note about regular expressions<a class="headerlink" href="#a-final-note-about-regular-expressions" title="Permalink to this headline">#</a></h2>
 <p>Sometimes you will need to match something more complex than just a particular word or phrase in your output file.  Sometimes you will need to match a particular word, but only if it is found at the beginning of a line.  Or perhaps you will need to match a particular pattern of data, like a capital letter followed by a number, but you won’t know the exact letter and number you are looking for.  These types of matching situations are handled with something called <em>regular expressions</em> which is accessed through the python module <code class="docutils literal notranslate"><span class="pre">re</span></code>.  While using regular expressions is outside the scope of this tutorial, they are very useful and you might want to learn more about them in the future.  A tutorial can be found at <a class="reference external" href="https://automatetheboringstuff.com/2e/chapter7/">Automate the Boring Stuff with Python book</a>. A great test site for regex is <a class="reference external" href="https://regex101.com/">here</a>.</p>
 <div class="key admonition">
 <p class="admonition-title">Key Points</p>

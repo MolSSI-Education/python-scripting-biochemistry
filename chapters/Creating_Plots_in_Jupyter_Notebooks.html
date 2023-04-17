@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Creating Plots in Jupyter Notebooks &#8212; Python Data and Scripting for Biochemists</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Nonlinear Regression Part 1" href="nonlinear_regression_part_1.html" />
     <link rel="prev" title="Linear Regression" href="Linear_Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -390,7 +389,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="creating-plots-in-jupyter-notebooks">
-<h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -405,13 +404,13 @@ document.write(`
 </ul>
 </div>
 <section id="preparing-to-plot">
-<h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Permalink to this heading">#</a></h2>
+<h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Permalink to this headline">#</a></h2>
 <p>In recent lessons, we have learned to use pandas to import csv data into a dataframe that is very easy to access and can be used for plotting our data. We have also learned to do linear regression analysis using scipy. In this lesson, we will create linear regression plots of our data using two different libraries, matplotlib.pyplot and seaborn. As we add more libraries to our repretoire, we are going to track them in a table.</p>
-<table class="table">
+<table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Library</p></th>
-<th class="head text-center"><p>Uses</p></th>
-<th class="head text-center"><p>Abbreviation</p></th>
+<tr class="row-odd"><th class="text-left head"><p>Library</p></th>
+<th class="text-center head"><p>Uses</p></th>
+<th class="text-center head"><p>Abbreviation</p></th>
 </tr>
 </thead>
 <tbody>
@@ -472,7 +471,7 @@ Standard error =  0.030884027089284245
 </div>
 </section>
 <section id="using-matplotlib-pyplot">
-<h2>Using Matplotlib.pyplot<a class="headerlink" href="#using-matplotlib-pyplot" title="Permalink to this heading">#</a></h2>
+<h2>Using Matplotlib.pyplot<a class="headerlink" href="#using-matplotlib-pyplot" title="Permalink to this headline">#</a></h2>
 <p>Matplotlib is a library that supports static, animated and interactive data visualization in Python (<a class="reference external" href="https://matplotlib.org/">Matplotlib: Visualization with Python</a>). Matplotlib is used alongside numpy to provide for MATLAB-style plotting. You can use matplotlib to create and fully annotate high resolution, publication quality plots that can be easily exported for inclusion in reports and manuscripts. It is possible to create many graph formats in matplotlib, including “picture within a picture graphs.” Think of the chart options that are available in your spreadsheet program. These are all available with matplotlib, plus many more.</p>
 <p>We are going to use one subset of matplotlib’s functions called pyplot. This approach is similar to using the stats subset of the functions found in scipy. This library contains tools for plotting and annotating the data. Let’s start with a simple x-y scatter plot of the protein calibration curve data. First, we need to import the library, set the size of the figure and indicate the data for the plot.</p>
 <div class="cell docutils container">
@@ -485,10 +484,10 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc6e92654d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f437fd49850&gt;
 </pre></div>
 </div>
-<img alt="../_images/3ea592d49ae4ec0ac4e448c3700ad688c6bda5ea908036316c79437070520771.png" src="../_images/3ea592d49ae4ec0ac4e448c3700ad688c6bda5ea908036316c79437070520771.png" />
+<img alt="../_images/36a262d4aeb146e9a1ecbd23c6eaffdec6fe70051d0e51930245c99dd0ce3394.png" src="../_images/36a262d4aeb146e9a1ecbd23c6eaffdec6fe70051d0e51930245c99dd0ce3394.png" />
 </div>
 </div>
 <p>Next we add the best fit line using the slope and intercept that were generated by the stats.linregress function from scipy. The first two lines in the next cell are identical to the cell above (no need to import the libraries again). The third line introduces the best fit curve. You may notice a delay of a few seconds as the notebook generates the figure. The more complex the figure and the larger the dataset, the longer it takes for the plot to appear.</p>
@@ -501,10 +500,10 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc6e910dc50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f437fcb5430&gt;]
 </pre></div>
 </div>
-<img alt="../_images/dc94fbf33caf0a5b246849ece33b6de5ccd0464c2fa0439f4f587b02dcf8c827.png" src="../_images/dc94fbf33caf0a5b246849ece33b6de5ccd0464c2fa0439f4f587b02dcf8c827.png" />
+<img alt="../_images/0d7ab950b34cf556a4c22ae75a38633be1bf7073563ad84d7a9bc3304e7fe936.png" src="../_images/0d7ab950b34cf556a4c22ae75a38633be1bf7073563ad84d7a9bc3304e7fe936.png" />
 </div>
 </div>
 <p>Next we will use functions for matplotlib.pyplot to add labels for each axis. It is possible to include subscripts and Greek letters in matplotlib figure labels using LaTeX. Here is a <a class="reference external" href="https://towardsdatascience.com/write-markdown-latex-in-the-jupyter-notebook-10985edb91fd">link to a helpful site</a> about using markdown (used for the text cells in Jupyter notebook) and LaTeX in Jupyter notebooks by <a class="reference external" href="https://medium.com/&#64;ahmedazizkhelifi">Khelifi Ahmed Aziz</a>.</p>
@@ -532,7 +531,7 @@ Standard error =  0.030884027089284245
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.25, 1.0, &#39;y = 0.8454 * x + 0.1279&#39;)
 </pre></div>
 </div>
-<img alt="../_images/f284ea8f52e4f6cc9b0dd5a1f21c96c792e7e4db8590e5d4393eac380a522b32.png" src="../_images/f284ea8f52e4f6cc9b0dd5a1f21c96c792e7e4db8590e5d4393eac380a522b32.png" />
+<img alt="../_images/1246164a9cb5eade96f05bad1ca1dc2564c2540495d0b5e72534b96b053a1671.png" src="../_images/1246164a9cb5eade96f05bad1ca1dc2564c2540495d0b5e72534b96b053a1671.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -560,7 +559,7 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c32ee490a5ec1e1d6c4724f6ffe7850d861f0cf896218cc3fdca5390577a687d.png" src="../_images/c32ee490a5ec1e1d6c4724f6ffe7850d861f0cf896218cc3fdca5390577a687d.png" />
+<img alt="../_images/57b08cc18765509026ed70cbd8289a0071204a59ac55086dd4eb02d73dcf29f4.png" src="../_images/57b08cc18765509026ed70cbd8289a0071204a59ac55086dd4eb02d73dcf29f4.png" />
 </div>
 </div>
 <p>Let’s explore the line of code we wrote to save the figure. Once you have executed this command, you should find the plot in the same folder as the current Jupyter notebook.</p>
@@ -575,7 +574,7 @@ Standard error =  0.030884027089284245
 </div>
 </section>
 <section id="scatter-plots-with-seaborn">
-<h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Permalink to this heading">#</a></h2>
+<h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a Python library for statistical data visualization that is based on matplotlib. That means you can use all the commands from Matplotlib with Seaborn, but it also has high-level functions that group many Matplotlib functions to produce sophisticated graphs easily.</p>
 <p>Here we will use the Seaborn library to create a scatter plot that includes a confidence interval. Please note that Seaborn has dependencies on other libraries (numpy, scipy, pandas, and matplotlib), so these must be imported before you can use Seaborn.</p>
 <p>The following plot is based on resources at <a class="reference external" href="https://www.statology.org/scatterplot-with-regression-line-python/">Statology</a>. I prefer this plot to the simple linear regression above because it makes the reliable regions of the calibration curve more obvious by displaying the 95% confidence interval. It also emphasizes the valid range for calculations based on the plot - that we can’t use this curve to analyze absorbance values below 0.285 or above 1.118.</p>
@@ -596,10 +595,17 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
 </pre></div>
 </div>
-<img alt="../_images/8e49cc029cfe565845f81c9d3644d7d883b7a9a07267c25ab186ed2703dbd568.png" src="../_images/8e49cc029cfe565845f81c9d3644d7d883b7a9a07267c25ab186ed2703dbd568.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -647,9 +653,6 @@ Standard error =  0.030884027089284245
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/9a2c532bc36cdc96513bf1fef4ccd785bda176815b08927973618ca5e2722162.png" src="../_images/9a2c532bc36cdc96513bf1fef4ccd785bda176815b08927973618ca5e2722162.png" />
 </div>
 </div>
 <div class="key admonition">

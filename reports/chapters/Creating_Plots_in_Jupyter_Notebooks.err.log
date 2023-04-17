@@ -17,14 +17,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-ydata = rates_df('initial velocities') # Common errors and how to read them
+import os
+import pandas as pd
+protein_file = os.path.join('data', 'protein_assay.csv')
+results_df = pd.read_csv(protein_file)
+xdata = results_df['Protein Concentration (mg/mL)']  
+ydata = results_df['A595'] 
+from scipy import stats
+slope, intercept, r_value, p_value, std_err = stats.linregress(xdata, ydata)
+
+import seaborn as sns
+sns.regplot(x = xdata, y = ydata)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[5], line 1[0m
-[0;32m----> 1[0m ydata [38;5;241m=[39m [43mrates_df[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43minitial velocities[39;49m[38;5;124;43m'[39;49m[43m)[49m [38;5;66;03m# Common errors and how to read them[39;00m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[6], line 10[0m
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m [38;5;28;01mimport[39;00m stats
+[1;32m      8[0m slope, intercept, r_value, p_value, std_err [38;5;241m=[39m stats[38;5;241m.[39mlinregress(xdata, ydata)
+[0;32m---> 10[0m [38;5;28;01mimport[39;00m [38;5;21;01mseaborn[39;00m [38;5;28;01mas[39;00m [38;5;21;01msns[39;00m
+[1;32m     11[0m sns[38;5;241m.[39mregplot(x [38;5;241m=[39m xdata, y [38;5;241m=[39m ydata)
 
-[0;31mTypeError[0m: 'DataFrame' object is not callable
-TypeError: 'DataFrame' object is not callable
+[0;31mModuleNotFoundError[0m: No module named 'seaborn'
+ModuleNotFoundError: No module named 'seaborn'
 

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction &#8212; Python Data and Scripting for Biochemists</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -75,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="File Parsing" href="File_Parsing.html" />
     <link rel="prev" title="Workshop Schedule" href="workshop_schedule.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -397,7 +396,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions</p>
@@ -413,10 +412,10 @@ document.write(`
 </ul>
 </div>
 <section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
 <p>Python is a computer programming language that has become ubiquitous in scientific programming.  Our lessons will run python <em>interactively</em> through a python interpreter inside a Jupyter notebook.  The <a class="reference internal" href="setup.html"><span class="doc std std-doc">setup</span></a> page should have provided information on how to install and start a Jupyter notebook.  Everything included in a code block is something you could type into your python interpreter and evaluate.</p>
 <section id="setting-up-your-jupyter-notebooks">
-<h3>Setting up your Jupyter notebooks<a class="headerlink" href="#setting-up-your-jupyter-notebooks" title="Permalink to this heading">#</a></h3>
+<h3>Setting up your Jupyter notebooks<a class="headerlink" href="#setting-up-your-jupyter-notebooks" title="Permalink to this headline">#</a></h3>
 <p>In the <a class="reference internal" href="setup.html"><span class="doc std std-doc">setup</span></a>, you learned how to start a Jupyter notebook. Now, we will use the notebook to execute Python code. Jupyter notebooks are divided into cells. You run a Jupyter notebook one cell at a time. To execute a cell, click inside the cell and press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code>.</p>
 <p>In the upper left corner, click where it says “Untitled” and change the name to “MolSSI Workshop”. We have now changed the name of the Jupyter Notebook.</p>
 <p>Jupyter notebooks allow us to also use something called <strong>markdown</strong> in some cells. We can use markdown to write descriptions about our notebooks for others to read. It’s a good practice to have your first cell be markdown to explain the purpose of the notebook. Let’s do that in our first cell. Click inside the first cell, then on the top of the screen select <code class="docutils literal notranslate"><span class="pre">Cell-&gt;Cell</span> <span class="pre">Type-&gt;Markdown</span></code> (shown below).</p>
@@ -435,7 +434,7 @@ document.write(`
 </section>
 </section>
 <section id="assigning-variables-and-data-types">
-<h2>Assigning variables and data types<a class="headerlink" href="#assigning-variables-and-data-types" title="Permalink to this heading">#</a></h2>
+<h2>Assigning variables and data types<a class="headerlink" href="#assigning-variables-and-data-types" title="Permalink to this headline">#</a></h2>
 <p>Any python interpreter can work just like a calculator.  This is not very useful. Type the following into the next cell of your Jupyter notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -533,7 +532,7 @@ document.write(`
 </div>
 </section>
 <section id="assigning-multiple-variables-at-once">
-<h2>Assigning multiple variables at once<a class="headerlink" href="#assigning-multiple-variables-at-once" title="Permalink to this heading">#</a></h2>
+<h2>Assigning multiple variables at once<a class="headerlink" href="#assigning-multiple-variables-at-once" title="Permalink to this headline">#</a></h2>
 <p>Python can do what is called multiple assignment where you assign several variables their values on one line of code.  The following code block does the exact same thing as the previous code block.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +551,7 @@ document.write(`
 </div>
 </section>
 <section id="data-types">
-<h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h2>
+<h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">#</a></h2>
 <p>Each variable is some particular type of data.  The most common types of data are strings (<code class="docutils literal notranslate"><span class="pre">str</span></code>), integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>), and floating point numbers (<code class="docutils literal notranslate"><span class="pre">float</span></code>).  You can identify the data type of any variable with the function <code class="docutils literal notranslate"><span class="pre">type(variable_name)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,7 +581,7 @@ document.write(`
 </div>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h2>
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
 <p>Another common data structure in python is the list.  Lists can be used to group several values or variables together, and are declared using square brackets [_]. <strong>Python assigns special meanings to square brackets [], parentheses () and curly brackets {}, so you must be very careful with these characters.</strong> List values are separated by commas. Python has several built in functions which can be used on lists. The built-in function <code class="docutils literal notranslate"><span class="pre">len</span></code> can be used to determine the length of a list. This code block also demonstrates how to print multiple variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,7 +631,7 @@ document.write(`
 </div>
 </section>
 <section id="slices">
-<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this heading">#</a></h2>
+<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this headline">#</a></h2>
 <p>Sometimes you will want to make a new list that is a subset of an existing list.  For example, we might want to make a new list that is just the first few elements of our previous list.  This is called a <code class="docutils literal notranslate"><span class="pre">slice</span></code>.  The general syntax is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="n">list_name</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
 </pre></div>
@@ -694,7 +693,7 @@ slice2 is [1.0, 2.0, 3.0]
 </div>
 </section>
 <section id="repeating-an-operation-many-times-for-loops">
-<h2>Repeating an operation many times: for loops<a class="headerlink" href="#repeating-an-operation-many-times-for-loops" title="Permalink to this heading">#</a></h2>
+<h2>Repeating an operation many times: for loops<a class="headerlink" href="#repeating-an-operation-many-times-for-loops" title="Permalink to this headline">#</a></h2>
 <p>Often, you will want to do something to every element of a list.  The structure
 to do this is called a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.  The general structure of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
@@ -775,7 +774,7 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 </div>
 </section>
 <section id="making-choices-logic-statements">
-<h2>Making choices: Logic Statements<a class="headerlink" href="#making-choices-logic-statements" title="Permalink to this heading">#</a></h2>
+<h2>Making choices: Logic Statements<a class="headerlink" href="#making-choices-logic-statements" title="Permalink to this headline">#</a></h2>
 <p>Within your code, you may need to evaluate a variable and then do something if the variable has a particular value.  This type of logic is handled by an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.  In the following example, we are only going to use the lower substrate concentrations, as we might do when we are looking for the initial linear portion of a Michaelis-Menten curve. <strong>As a biochemist, you may want to plot the data to see what you find. We will address plotting later in the workshop</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,7 +844,7 @@ nmbers which have been saved as strings. Copy this list exactly into your code.<
 </div>
 </section>
 <section id="a-note-about-jupyter-notebooks">
-<h2>A note about jupyter notebooks<a class="headerlink" href="#a-note-about-jupyter-notebooks" title="Permalink to this heading">#</a></h2>
+<h2>A note about jupyter notebooks<a class="headerlink" href="#a-note-about-jupyter-notebooks" title="Permalink to this headline">#</a></h2>
 <p>If you use the jupyter notebook for your python interpreter, the notebook only executes the current code block.  This can have several unintended consequences. If you change a value and then go back and run an earlier code block, it will use the new value, not the first defined value, which may give you incorrect analysis.  Similarly, if you open your jupyter notebook later, and try to run a code block in the middle, it may tell you that your variables are undefined, even though you can clearly see them defined in earlier code blocks.  But if you didn’t re-run those code blocks, then python doesn’t know they exist.</p>
 </section>
 </section>

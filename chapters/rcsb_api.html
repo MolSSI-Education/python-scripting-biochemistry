@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Retrieving Information from the PDB using the Web API &#8212; Python Data and Scripting for Biochemists</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -75,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Molecular Visualization with iCN3D" href="MolVis_with_iCN3D.html" />
     <link rel="prev" title="Analyzing MMCIF Files using Biopython" href="biopython_mmcif.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -390,7 +389,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="retrieving-information-from-the-pdb-using-the-web-api">
-<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Permalink to this heading">#</a></h1>
+<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Permalink to this headline">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -409,7 +408,7 @@ document.write(`
 <p>Usually a REST API is accessed by varying parameters in a web address.</p>
 <p>We will work with two types of API from the PDB in this lesson.</p>
 <section id="file-download-using-biopython">
-<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this heading">#</a></h2>
+<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this headline">#</a></h2>
 <p>A simple wayBiopython also has a function for retrieving structure files.
 For example, the following cell downloads the Zinc finger structure that we analyzed in the Biopython lesson.</p>
 <div class="cell docutils container">
@@ -439,7 +438,7 @@ data/PDB_files/1a1t.cif
 </div>
 </section>
 <section id="pdb-data-api">
-<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this heading">#</a></h2>
+<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this headline">#</a></h2>
 <p>You can use the web to retrieve information about a molecule using it’s PDB using the PDB Data API.</p>
 <p>As mentioned above, web API’s often work by varying text in a web address (also called URL).</p>
 <p>The PDB Data API has the following format:</p>
@@ -456,7 +455,7 @@ However, one interesting thing you can do is to retrieve PubMed annotations for 
 Its format is similar to a Python dictionary, having keys and values.</p>
 </section>
 <section id="programmatic-access-of-apis">
-<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Permalink to this heading">#</a></h2>
+<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Permalink to this headline">#</a></h2>
 <p>REST APIs start being more useful when you access them programmatically. We are going to use Python to retrieve the data at the URL and convert it to a format we can work with.</p>
 <p>We will use a Python library called requests. Requests is used to retrieve information from websites and URLs.</p>
 <div class="cell docutils container">
@@ -647,7 +646,7 @@ one of the API endpoints by changing the URL.</p>
 </div>
 </section>
 <section id="pdb-search-api">
-<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this heading">#</a></h2>
+<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this headline">#</a></h2>
 <p>The API we were just working with is called the PDB “Data” API.</p>
 <p>However, the PDB has another API called the “search” API that let’s you search based on keywords, host species, sequence similarity, and many other things.
 The search API can be complicated, but is <a class="reference external" href="https://search.rcsb.org/#search-api">well documented</a>.</p>
@@ -686,7 +685,7 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;fe9b3873-b0cf-41ba-8e79-e20a08857c57&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;5f8c8e28-a713-4ecc-9af8-bf7f77126d95&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 619,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
@@ -805,7 +804,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;6b6f31b8-1c2c-479f-8843-1f5087accf8a&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;fa83eb21-84ae-4f88-88a6-495d16198bfc&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 515,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
@@ -864,7 +863,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </section>
 <section id="using-biopython-to-analyze-search-results">
-<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Permalink to this heading">#</a></h2>
+<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Permalink to this headline">#</a></h2>
 <p>The API becomes really interesting when we use the results for analysis.
 Keeping our example of oxygen storage, we could use Biopython to analyze the structures we have retrieved to see
 if there are heme groups in the structures and if there are common motifs in the binding of the heme groups to proteins.</p>
