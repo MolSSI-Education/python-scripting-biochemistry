@@ -686,7 +686,7 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;43f76ae8-ed08-48f8-8ea7-da7cf78c639f&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;d67ab8ff-3a08-4dfb-9ada-2809aa637040&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 619,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
@@ -805,7 +805,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;ae1c0ff7-eb22-4088-b691-7ecd9c1e9717&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;9cd5d259-8cf6-42f7-8626-f8336777928a&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 515,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
@@ -873,15 +873,14 @@ If you are new to programming, the next few cells will be hard to understand.
 However, they are a demonstration of the type of analysis that can be done by retrieving search results programmatically
 and analyzing data using Python.
 The end of the analysis prints the most commonly found neighboring residues to iron in the structures retrieved by the search.</p>
-<p>The program is broken up into multiple cells based on “steps” in the worflow.</p>
+<p>The program has multiple steps:</p>
 <ol class="arabic simple">
 <li><p>Biopython is used to download the mmcif files for all of the structures.</p></li>
 <li><p>Biopython is used to create structure objects, sort through atoms, and find residues neighboring iron atoms.</p></li>
 <li><p>Python functions (particular <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.Counter">Counter</a> ) are used to count residue combinations.</p></li>
 </ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">PDBList</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Step 1</span>
+<span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">PDBList</span>
 
 <span class="c1"># Create an instance of the PDBList class</span>
 <span class="n">pdb_list</span> <span class="o">=</span> <span class="n">PDBList</span><span class="p">()</span>
@@ -892,260 +891,11 @@ The end of the analysis prints the most commonly found neighboring residues to i
 
     <span class="c1"># Download the MMCIF file using the retrieve_pdb_file method</span>
     <span class="n">pdb_filename</span> <span class="o">=</span> <span class="n">pdb_list</span><span class="o">.</span><span class="n">retrieve_pdb_file</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="n">pdir</span><span class="o">=</span><span class="s2">&quot;pdb_files&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;mmCif&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbn&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbd&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbo&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbc&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4mbn&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;5mbn&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mba&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1pmb&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;3mba&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4mba&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mb5&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbi&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;5mba&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2fal&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2fam&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myg&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myh&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myi&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myj&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1yca&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1ycb&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mga&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgb&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgc&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgd&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mge&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgf&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgg&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgh&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgi&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgj&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgk&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgl&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgm&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mya&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2myb&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2myc&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2myd&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mye&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spl&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spm&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spn&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spo&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlf&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlg&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlh&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlj&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlk&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mll&#39;...
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">pdb_id</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Download the MMCIF file using the retrieve_pdb_file method</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">pdb_filename</span> <span class="o">=</span> <span class="n">pdb_list</span><span class="o">.</span><span class="n">retrieve_pdb_file</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="n">pdir</span><span class="o">=</span><span class="s2">&quot;pdb_files&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;mmCif&quot;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/Bio/PDB/PDBList.py:335,</span> in <span class="ni">PDBList.retrieve_pdb_file</span><span class="nt">(self, pdb_code, obsolete, pdir, file_format, overwrite)</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">urlcleanup</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">335</span>     <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span> <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Desired structure doesn&#39;t exist&quot;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:241,</span> in <span class="ni">urlretrieve</span><span class="nt">(url, filename, reporthook, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="sd"> Retrieve a URL into a temporary location on disk.</span>
-<span class="g g-Whitespace">    </span><span class="mi">226</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd"> data file as well as the resulting HTTPMessage object.</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="n">url_type</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">_splittype</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">241</span> <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="n">headers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">244</span>     <span class="c1"># Just return the local path and the &quot;headers&quot; for file://</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span>     <span class="c1"># URLs. No sense in performing a copy unless requested.</span>
+<span class="c1">## Step 2</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:216,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
-<span class="ne">--&gt; </span><span class="mi">216</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:519,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
-<span class="ne">--&gt; </span><span class="mi">519</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="c1"># post-process response</span>
-<span class="g g-Whitespace">    </span><span class="mi">522</span> <span class="n">meth_name</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">+</span><span class="s2">&quot;_response&quot;</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:536,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">533</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
-<span class="ne">--&gt; </span><span class="mi">536</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
-<span class="g g-Whitespace">    </span><span class="mi">537</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">538</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:496,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">496</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:1565,</span> in <span class="ni">FTPHandler.ftp_open</span><span class="nt">(self, req)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1563</span>     <span class="n">dirs</span> <span class="o">=</span> <span class="n">dirs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1564</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1565</span>     <span class="n">fw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect_ftp</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1566</span>     <span class="nb">type</span> <span class="o">=</span> <span class="n">file</span> <span class="ow">and</span> <span class="s1">&#39;I&#39;</span> <span class="ow">or</span> <span class="s1">&#39;D&#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1567</span>     <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:1585,</span> in <span class="ni">FTPHandler.connect_ftp</span><span class="nt">(self, user, passwd, host, port, dirs, timeout)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1584</span> <span class="k">def</span> <span class="nf">connect_ftp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1585</span>     <span class="k">return</span> <span class="n">ftpwrapper</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1586</span>                       <span class="n">persistent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:2413,</span> in <span class="ni">ftpwrapper.__init__</span><span class="nt">(self, user, passwd, host, port, dirs, timeout, persistent)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2411</span> <span class="bp">self</span><span class="o">.</span><span class="n">keepalive</span> <span class="o">=</span> <span class="n">persistent</span>
-<span class="g g-Whitespace">   </span><span class="mi">2412</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2413</span>     <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">2414</span> <span class="k">except</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2415</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:2422,</span> in <span class="ni">ftpwrapper.init</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2420</span> <span class="bp">self</span><span class="o">.</span><span class="n">busy</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="g g-Whitespace">   </span><span class="mi">2421</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp</span> <span class="o">=</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">FTP</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">2422</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2423</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">passwd</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2424</span> <span class="n">_target</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/ftplib.py:158,</span> in <span class="ni">FTP.connect</span><span class="nt">(self, host, port, timeout, source_address)</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="bp">self</span><span class="o">.</span><span class="n">source_address</span> <span class="o">=</span> <span class="n">source_address</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s2">&quot;ftplib.connect&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">158</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span>                                      <span class="n">source_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="bp">self</span><span class="o">.</span><span class="n">af</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">family</span>
-<span class="g g-Whitespace">    </span><span class="mi">161</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">makefile</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/socket.py:836,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">834</span> <span class="k">if</span> <span class="n">source_address</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">835</span>     <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">836</span> <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">837</span> <span class="c1"># Break explicitly a reference cycle</span>
-<span class="g g-Whitespace">    </span><span class="mi">838</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB.MMCIFParser</span> <span class="kn">import</span> <span class="n">MMCIFParser</span>
+<span class="kn">from</span> <span class="nn">Bio.PDB.MMCIFParser</span> <span class="kn">import</span> <span class="n">MMCIFParser</span>
 <span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">NeighborSearch</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
@@ -1201,13 +951,10 @@ The end of the analysis prints the most commonly found neighboring residues to i
     <span class="n">residue_neighbors</span><span class="p">[</span><span class="n">pdb_id</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">neighbor_list</span><span class="p">)</span>
 
 <span class="c1"># The &#39;residue_neighbors&#39; dictionary contains the neighboring residues for each protein structure.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now we will want to count the residue neighbor types.</span>
+
+
+<span class="c1">## Step 3</span>
+<span class="c1">## Now we will want to count the residue neighbor types.</span>
 <span class="c1"># Initialize an empty Counter object to store the counts of residue combinations.</span>
 <span class="n">combination_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
 
@@ -1239,7 +986,13 @@ The end of the analysis prints the most commonly found neighboring residues to i
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Combination: </span><span class="si">{</span><span class="n">combination_str</span><span class="si">}</span><span class="s2">, Count: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Top 5 most common residue combinations for iron neighbors:</span>
+<span class="go">Combination: 2 HIS, 1 HOH, 1 VAL, Count: 4</span>
+<span class="go">Combination: 1 CMO, 2 HIS, 1 VAL, Count: 3</span>
+<span class="go">Combination: 2 HIS, 1 HOH, 1 OXY, 1 VAL, Count: 2</span>
+<span class="go">Combination: 5 HIS, 2 HOH, 2 VAL, Count: 2</span>
+<span class="go">Combination: 4 HIS, 2 HOH, 2 VAL, Count: 2</span>
+</pre></div>
 </div>
 </section>
 </section>
