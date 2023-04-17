@@ -17,6 +17,7 @@ dependencies:
   - bokeh
   - nglview
   - ipywidgets<8.0
+  - bioconda::mafft
   - nodejs
   - pip:
     - icn3dpy
