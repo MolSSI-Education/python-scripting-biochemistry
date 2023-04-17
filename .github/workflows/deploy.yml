@@ -31,7 +31,7 @@ jobs:
 
         channels: conda-forge,defaults,bioconda
 
-        activate-environment: docs
+        activate-environment: iqb-2023
         auto-update-conda: false
         auto-activate-base: false
         show-channel-urls: true
