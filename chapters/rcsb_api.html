@@ -1,0 +1,1372 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Retrieving Information from the PDB using the Web API &#8212; Python Data and Scripting for Biochemists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/rcsb_api';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Molecular Visualization with iCN3D" href="MolVis_with_iCN3D.html" />
+    <link rel="prev" title="Analyzing MMCIF Files using Biopython" href="biopython_mmcif.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="setup.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="setup.html">
+                    Set Up
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File_Parsing.html">File Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">Processing Multiple Files and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working_with_Pandas.html">Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear_Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">Creating Plots in Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_1.html">Nonlinear Regression Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_2.html">Nonlinear Regression Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biopython_mmcif.html">Analyzing MMCIF Files using Biopython</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Retrieving Information from the PDB using the Web API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MolVis_with_iCN3D.html">Molecular Visualization with iCN3D</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/rcsb_api.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/rcsb_api.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Retrieving Information from the PDB using the Web API</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-download-using-biopython">File Download using Biopython</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdb-data-api">PDB Data API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-access-of-apis">Programmatic Access of APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdb-search-api">PDB Search API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-biopython-to-analyze-search-results">Using Biopython to Analyze Search Results</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="retrieving-information-from-the-pdb-using-the-web-api">
+<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Permalink to this heading">#</a></h1>
+<div class="overview admonition">
+<p class="admonition-title">Overview</p>
+<p>Questions:</p>
+<ul class="simple">
+<li><p>What is a REST API?</p></li>
+<li><p>How can I use Python to retrieve data from a REST API?</p></li>
+</ul>
+<p>Objectives:</p>
+<ul class="simple">
+<li><p>Manipulate URLs to use the PDB REST API.</p></li>
+<li><p>Use Python requests to retrieve information from the PDB.</p></li>
+</ul>
+</div>
+<p>In this lesson, we will explore how to retrieve information from the PDB Web API.</p>
+<p>Many databases can be accessed programmatically through something called a REST API. REST stands for Representational State Transfer. API stands for Application Programming Interface. A REST API is a type of web API that is used to allow different software systems to communicate with each other over the internet.</p>
+<p>Usually a REST API is accessed by varying parameters in a web address.</p>
+<p>We will work with two types of API from the PDB in this lesson.</p>
+<section id="file-download-using-biopython">
+<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this heading">#</a></h2>
+<p>A simple wayBiopython also has a function for retrieving structure files.
+For example, the following cell downloads the Zinc finger structure that we analyzed in the Biopython lesson.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">PDBList</span>
+
+<span class="c1"># Create an instance of the PDBList class</span>
+<span class="n">pdb_list</span> <span class="o">=</span> <span class="n">PDBList</span><span class="p">()</span>
+
+<span class="c1"># Specify the PDB ID of the structure you want to download</span>
+<span class="n">pdb_id</span> <span class="o">=</span> <span class="s2">&quot;1a1t&quot;</span> <span class="c1">#zinc finger</span>
+
+<span class="c1"># Download the MMCIF file using the retrieve_pdb_file method</span>
+<span class="n">pdb_filename</span> <span class="o">=</span> <span class="n">pdb_list</span><span class="o">.</span><span class="n">retrieve_pdb_file</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="n">pdir</span><span class="o">=</span><span class="s2">&quot;data/PDB_files&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;mmCif&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print the name of the downloaded file</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pdb_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Structure exists: &#39;data/PDB_files/1a1t.cif&#39; 
+data/PDB_files/1a1t.cif
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pdb-data-api">
+<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this heading">#</a></h2>
+<p>You can use the web to retrieve information about a molecule using it’s PDB using the PDB Data API.</p>
+<p>As mentioned above, web API’s often work by varying text in a web address (also called URL).</p>
+<p>The PDB Data API has the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">rcsb</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">core</span><span class="o">/&lt;</span><span class="n">TYPE_OF_RESOURCE</span><span class="o">&gt;/&lt;</span><span class="n">IDENTIFIER</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For example, to get the full entry for <code class="docutils literal notranslate"><span class="pre">4hhb</span></code>, you would do:</p>
+<p><a class="reference external" href="https://data.rcsb.org/rest/v1/core/entry/4hhb">https://data.rcsb.org/rest/v1/core/entry/4hhb</a></p>
+<p>Try clicking this link! It will display text in your browser with info about <code class="docutils literal notranslate"><span class="pre">4HHB</span></code>.</p>
+<p>There are many things you can do with the REST API that are beyond this workshop.
+However, one interesting thing you can do is to retrieve PubMed annotations for an entry’s primary citation.</p>
+<p><a class="reference external" href="https://data.rcsb.org/rest/v1/core/pubmed/4hhb">https://data.rcsb.org/rest/v1/core/pubmed/4hhb</a></p>
+<p>The data in these results is in a data format called JSON.  This is a commonly used type of return format for web APIs because it can be processed using programming.
+Its format is similar to a Python dictionary, having keys and values.</p>
+</section>
+<section id="programmatic-access-of-apis">
+<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Permalink to this heading">#</a></h2>
+<p>REST APIs start being more useful when you access them programmatically. We are going to use Python to retrieve the data at the URL and convert it to a format we can work with.</p>
+<p>We will use a Python library called requests. Requests is used to retrieve information from websites and URLs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get information from a URL, we use the requests.get method. The argument to this function is the URL we’d like to retrieve information from.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://data.rcsb.org/rest/v1/core/entry/4hhb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our data variable now contains the results and other information about the request we made.</p>
+<p>If our request was successful. It will have a status code of <code class="docutils literal notranslate"><span class="pre">200</span></code>.
+This is a feature of web URLs.
+If they are successfully retrieved, they send a status code of 200.
+This is true for any website you receive.
+One status code you may be familiar with is <code class="docutils literal notranslate"><span class="pre">404</span></code>, which occurs when a resources is not found.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the JSON associated with our request by calling the .json() method, which we will save in a variable called <code class="docutils literal notranslate"><span class="pre">info_1a1t</span></code>. Our variable is now similar to a Python dictionary, which is a data type that has key, value pairs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we have loaded our returned values as json, we can see all of the keywords associated with an entry using variable.keys()</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;audit_author&#39;, &#39;cell&#39;, &#39;citation&#39;, &#39;diffrn&#39;, &#39;entry&#39;, &#39;exptl&#39;, &#39;exptl_crystal&#39;, &#39;pdbx_audit_revision_category&#39;, &#39;pdbx_audit_revision_details&#39;, &#39;pdbx_audit_revision_group&#39;, &#39;pdbx_audit_revision_history&#39;, &#39;pdbx_audit_revision_item&#39;, &#39;pdbx_database_pdbobs_spr&#39;, &#39;pdbx_database_related&#39;, &#39;pdbx_database_status&#39;, &#39;pdbx_vrpt_summary&#39;, &#39;rcsb_accession_info&#39;, &#39;rcsb_entry_container_identifiers&#39;, &#39;rcsb_entry_info&#39;, &#39;rcsb_primary_citation&#39;, &#39;refine&#39;, &#39;refine_hist&#39;, &#39;struct&#39;, &#39;struct_keywords&#39;, &#39;symmetry&#39;, &#39;rcsb_id&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="p">[</span><span class="s2">&quot;exptl&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;method&#39;: &#39;X-RAY DIFFRACTION&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="p">[</span><span class="s2">&quot;struct_keywords&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pdbx_keywords&#39;: &#39;OXYGEN TRANSPORT&#39;, &#39;text&#39;: &#39;OXYGEN TRANSPORT&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="p">[</span><span class="s2">&quot;struct&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;THE CRYSTAL STRUCTURE OF HUMAN DEOXYHAEMOGLOBIN AT 1.74 ANGSTROMS RESOLUTION&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="p">[</span><span class="s2">&quot;rcsb_entry_info&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;assembly_count&#39;: 1,
+ &#39;branched_entity_count&#39;: 0,
+ &#39;cis_peptide_count&#39;: 0,
+ &#39;deposited_atom_count&#39;: 4779,
+ &#39;deposited_hydrogen_atom_count&#39;: 0,
+ &#39;deposited_model_count&#39;: 1,
+ &#39;deposited_modeled_polymer_monomer_count&#39;: 574,
+ &#39;deposited_nonpolymer_entity_instance_count&#39;: 6,
+ &#39;deposited_polymer_entity_instance_count&#39;: 4,
+ &#39;deposited_polymer_monomer_count&#39;: 574,
+ &#39;deposited_solvent_atom_count&#39;: 221,
+ &#39;deposited_unmodeled_polymer_monomer_count&#39;: 0,
+ &#39;disulfide_bond_count&#39;: 0,
+ &#39;entity_count&#39;: 5,
+ &#39;experimental_method&#39;: &#39;X-ray&#39;,
+ &#39;experimental_method_count&#39;: 1,
+ &#39;inter_mol_covalent_bond_count&#39;: 0,
+ &#39;inter_mol_metalic_bond_count&#39;: 4,
+ &#39;molecular_weight&#39;: 64.74,
+ &#39;na_polymer_entity_types&#39;: &#39;Other&#39;,
+ &#39;nonpolymer_bound_components&#39;: [&#39;HEM&#39;],
+ &#39;nonpolymer_entity_count&#39;: 2,
+ &#39;nonpolymer_molecular_weight_maximum&#39;: 0.62,
+ &#39;nonpolymer_molecular_weight_minimum&#39;: 0.09,
+ &#39;polymer_composition&#39;: &#39;heteromeric protein&#39;,
+ &#39;polymer_entity_count&#39;: 2,
+ &#39;polymer_entity_count_dna&#39;: 0,
+ &#39;polymer_entity_count_rna&#39;: 0,
+ &#39;polymer_entity_count_nucleic_acid&#39;: 0,
+ &#39;polymer_entity_count_nucleic_acid_hybrid&#39;: 0,
+ &#39;polymer_entity_count_protein&#39;: 2,
+ &#39;polymer_entity_taxonomy_count&#39;: 2,
+ &#39;polymer_molecular_weight_maximum&#39;: 15.89,
+ &#39;polymer_molecular_weight_minimum&#39;: 15.15,
+ &#39;polymer_monomer_count_maximum&#39;: 146,
+ &#39;polymer_monomer_count_minimum&#39;: 141,
+ &#39;resolution_combined&#39;: [1.74],
+ &#39;selected_polymer_entity_types&#39;: &#39;Protein (only)&#39;,
+ &#39;solvent_entity_count&#39;: 1,
+ &#39;structure_determination_methodology&#39;: &#39;experimental&#39;,
+ &#39;structure_determination_methodology_priority&#39;: 10,
+ &#39;diffrn_resolution_high&#39;: {&#39;provenance_source&#39;: &#39;From refinement resolution cutoff&#39;,
+  &#39;value&#39;: 1.74}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also retrieve information about interfaces between polymeric entities (protein, or nucleic acids) using
+one of the API endpoints by changing the URL.</p>
+<p>The format for querying about interfaces is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">rcsb</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">interface</span><span class="o">/&lt;</span><span class="n">pdb_id</span><span class="o">&gt;/&lt;</span><span class="n">assembly_id</span><span class="o">&gt;/&lt;</span><span class="n">interface_id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://data.rcsb.org/rest/v1/core/interface/4hhb/1/1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interface_info</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">interface_info</span><span class="p">[</span><span class="s2">&quot;rcsb_interface_info&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;polymer_composition&#39;: &#39;Protein (only)&#39;,
+ &#39;interface_character&#39;: &#39;hetero&#39;,
+ &#39;interface_area&#39;: 847.773205021308,
+ &#39;num_interface_residues&#39;: 44,
+ &#39;num_core_interface_residues&#39;: 11}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pdb-search-api">
+<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this heading">#</a></h2>
+<p>The API we were just working with is called the PDB “Data” API.</p>
+<p>However, the PDB has another API called the “search” API that let’s you search based on keywords, host species, sequence similarity, and many other things.
+The search API can be complicated, but is <a class="reference external" href="https://search.rcsb.org/#search-api">well documented</a>.</p>
+<p>The format for this URL is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://search.rcsb.org/rcsbsearch/v2/query?json={search-request}</span></code></p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">search-request</span></code> is a JSON (similar to a Python dictionary) containing your search parameters.
+We will create a Python dictionary, then use the <code class="docutils literal notranslate"><span class="pre">json</span></code> library to convert it to a json (the data type required by the search API).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">my_query</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;terminal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;full_text&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;oxygen storage&quot;&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  
+  <span class="s2">&quot;return_type&quot;</span><span class="p">:</span> <span class="s2">&quot;entry&quot;</span>
+<span class="p">}</span>
+
+<span class="n">my_query</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">my_query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we use <code class="docutils literal notranslate"><span class="pre">requests.get</span></code> with the our search query and the search API URL format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://search.rcsb.org/rcsbsearch/v2/query?json=</span><span class="si">{</span><span class="n">my_query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;43f76ae8-ed08-48f8-8ea7-da7cf78c639f&#39;,
+ &#39;result_type&#39;: &#39;entry&#39;,
+ &#39;total_count&#39;: 619,
+ &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.49152370348955227},
+  {&#39;identifier&#39;: &#39;1D8U&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;1JP6&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;1JP8&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;1JP9&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;1JPB&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;2BMM&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;6BMG&#39;, &#39;score&#39;: 0.16200921443553892},
+  {&#39;identifier&#39;: &#39;1DUK&#39;, &#39;score&#39;: 0.0}]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our results tell us that our query returned <code class="docutils literal notranslate"><span class="pre">12864</span></code> results (<code class="docutils literal notranslate"><span class="pre">total_count</span></code>).
+The <code class="docutils literal notranslate"><span class="pre">results_set</span></code> keyword has a list of results.
+The <code class="docutils literal notranslate"><span class="pre">identifier</span></code> key in each value in <code class="docutils literal notranslate"><span class="pre">results_set</span></code> tells
+us the PDB ID of a search result.</p>
+<p>We could now combine this with Biopython or the data API to get information about the structures.
+For example, we will retrieve the title of the</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_result</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;result_set&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2EF2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://data.rcsb.org/rest/v1/core/entry/</span><span class="si">{</span><span class="n">first_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">result</span><span class="p">[</span><span class="s2">&quot;struct&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;Crystal Structure of an Artificial Metalloprotein:Rh(Phebox-Ph)/apo-A71G Myoglobin&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also control the format of the returned results including the
+number of results and how the results are sorted.
+The query below searchs for the phrase “oxygen storage” in the keywors of the structure.
+We’ve specified that we want 10 values returned, and for the results to be sorted
+by the initial release date in ascending order (oldest result first).
+If you wanted to see the 10 most recently released results, you would change
+“asc” to “desc” in the query below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_query</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;terminal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;attribute&quot;</span><span class="p">:</span> <span class="s2">&quot;struct_keywords.pdbx_keywords&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;contains_phrase&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s1">&#39;&quot;oxygen storage&quot;&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="s2">&quot;request_options&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;paginate&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;sort&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+      <span class="s2">&quot;sort_by&quot;</span><span class="p">:</span> <span class="s2">&quot;rcsb_accession_info.initial_release_date&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;asc&quot;</span> 
+    <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  
+  <span class="s2">&quot;return_type&quot;</span><span class="p">:</span> <span class="s2">&quot;entry&quot;</span>
+<span class="p">}</span>
+
+<span class="n">my_query</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">my_query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we use <code class="docutils literal notranslate"><span class="pre">requests.get</span></code> with the our search query and the search API URL format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://search.rcsb.org/rcsbsearch/v2/query?json=</span><span class="si">{</span><span class="n">my_query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;ae1c0ff7-eb22-4088-b691-7ecd9c1e9717&#39;,
+ &#39;result_type&#39;: &#39;entry&#39;,
+ &#39;total_count&#39;: 515,
+ &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MBD&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MBO&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MBC&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;4MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;5MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MBA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1PMB&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;3MBA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;4MBA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MB5&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MBI&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;5MBA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2FAL&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2FAM&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MYG&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MYH&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MYI&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MYJ&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1YCA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1YCB&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGB&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGC&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGD&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGE&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGF&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGG&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGH&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGI&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGJ&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGK&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGL&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MGM&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MYA&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MYB&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MYC&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MYD&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2MYE&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2SPL&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2SPM&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2SPN&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;2SPO&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLF&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLG&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLH&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLJ&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLK&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLL&#39;, &#39;score&#39;: &#39;NaN&#39;},
+  {&#39;identifier&#39;: &#39;1MLM&#39;, &#39;score&#39;: &#39;NaN&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-biopython-to-analyze-search-results">
+<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Permalink to this heading">#</a></h2>
+<p>The API becomes really interesting when we use the results for analysis.
+Keeping our example of oxygen storage, we could use Biopython to analyze the structures we have retrieved to see
+if there are heme groups in the structures and if there are common motifs in the binding of the heme groups to proteins.</p>
+<p>The following cells show a farily complicated analysis of the structures we have retrieved using Biopython.
+If you are new to programming, the next few cells will be hard to understand.
+However, they are a demonstration of the type of analysis that can be done by retrieving search results programmatically
+and analyzing data using Python.
+The end of the analysis prints the most commonly found neighboring residues to iron in the structures retrieved by the search.</p>
+<p>The program is broken up into multiple cells based on “steps” in the worflow.</p>
+<ol class="arabic simple">
+<li><p>Biopython is used to download the mmcif files for all of the structures.</p></li>
+<li><p>Biopython is used to create structure objects, sort through atoms, and find residues neighboring iron atoms.</p></li>
+<li><p>Python functions (particular <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.Counter">Counter</a> ) are used to count residue combinations.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">PDBList</span>
+
+<span class="c1"># Create an instance of the PDBList class</span>
+<span class="n">pdb_list</span> <span class="o">=</span> <span class="n">PDBList</span><span class="p">()</span>
+
+<span class="c1"># Download all of the structure files</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;result_set&quot;</span><span class="p">]:</span>
+    <span class="n">pdb_id</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># Download the MMCIF file using the retrieve_pdb_file method</span>
+    <span class="n">pdb_filename</span> <span class="o">=</span> <span class="n">pdb_list</span><span class="o">.</span><span class="n">retrieve_pdb_file</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="n">pdir</span><span class="o">=</span><span class="s2">&quot;pdb_files&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;mmCif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbn&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbd&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbo&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbc&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4mbn&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;5mbn&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mba&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1pmb&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;3mba&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4mba&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mb5&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mbi&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;5mba&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2fal&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2fam&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myg&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myh&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myi&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1myj&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1yca&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1ycb&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mga&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgb&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgc&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgd&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mge&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgf&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgg&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgh&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgi&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgj&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgk&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgl&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mgm&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mya&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2myb&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2myc&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2myd&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2mye&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spl&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spm&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spn&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;2spo&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlf&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlg&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlh&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlj&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mlk&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;1mll&#39;...
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">pdb_id</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Download the MMCIF file using the retrieve_pdb_file method</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">pdb_filename</span> <span class="o">=</span> <span class="n">pdb_list</span><span class="o">.</span><span class="n">retrieve_pdb_file</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="n">pdir</span><span class="o">=</span><span class="s2">&quot;pdb_files&quot;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;mmCif&quot;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/Bio/PDB/PDBList.py:335,</span> in <span class="ni">PDBList.retrieve_pdb_file</span><span class="nt">(self, pdb_code, obsolete, pdir, file_format, overwrite)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">urlcleanup</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">335</span>     <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span> <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Desired structure doesn&#39;t exist&quot;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:241,</span> in <span class="ni">urlretrieve</span><span class="nt">(url, filename, reporthook, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="sd"> Retrieve a URL into a temporary location on disk.</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd"> data file as well as the resulting HTTPMessage object.</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span> <span class="n">url_type</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">_splittype</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">241</span> <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span>     <span class="n">headers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span>     <span class="c1"># Just return the local path and the &quot;headers&quot; for file://</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span>     <span class="c1"># URLs. No sense in performing a copy unless requested.</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:216,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">216</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:519,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">519</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="c1"># post-process response</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span> <span class="n">meth_name</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">+</span><span class="s2">&quot;_response&quot;</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:536,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span>     <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
+<span class="ne">--&gt; </span><span class="mi">536</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
+<span class="g g-Whitespace">    </span><span class="mi">537</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:496,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">496</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:1565,</span> in <span class="ni">FTPHandler.ftp_open</span><span class="nt">(self, req)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1563</span>     <span class="n">dirs</span> <span class="o">=</span> <span class="n">dirs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1565</span>     <span class="n">fw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect_ftp</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1566</span>     <span class="nb">type</span> <span class="o">=</span> <span class="n">file</span> <span class="ow">and</span> <span class="s1">&#39;I&#39;</span> <span class="ow">or</span> <span class="s1">&#39;D&#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1567</span>     <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:1585,</span> in <span class="ni">FTPHandler.connect_ftp</span><span class="nt">(self, user, passwd, host, port, dirs, timeout)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1584</span> <span class="k">def</span> <span class="nf">connect_ftp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1585</span>     <span class="k">return</span> <span class="n">ftpwrapper</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1586</span>                       <span class="n">persistent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:2413,</span> in <span class="ni">ftpwrapper.__init__</span><span class="nt">(self, user, passwd, host, port, dirs, timeout, persistent)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2411</span> <span class="bp">self</span><span class="o">.</span><span class="n">keepalive</span> <span class="o">=</span> <span class="n">persistent</span>
+<span class="g g-Whitespace">   </span><span class="mi">2412</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2413</span>     <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2414</span> <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2415</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/urllib/request.py:2422,</span> in <span class="ni">ftpwrapper.init</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2420</span> <span class="bp">self</span><span class="o">.</span><span class="n">busy</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="g g-Whitespace">   </span><span class="mi">2421</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp</span> <span class="o">=</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">FTP</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">2422</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2423</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">passwd</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2424</span> <span class="n">_target</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/ftplib.py:158,</span> in <span class="ni">FTP.connect</span><span class="nt">(self, host, port, timeout, source_address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="bp">self</span><span class="o">.</span><span class="n">source_address</span> <span class="o">=</span> <span class="n">source_address</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s2">&quot;ftplib.connect&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">158</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span>                                      <span class="n">source_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="bp">self</span><span class="o">.</span><span class="n">af</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">family</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">makefile</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/socket.py:836,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">834</span> <span class="k">if</span> <span class="n">source_address</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">835</span>     <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">836</span> <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span> <span class="c1"># Break explicitly a reference cycle</span>
+<span class="g g-Whitespace">    </span><span class="mi">838</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.PDB.MMCIFParser</span> <span class="kn">import</span> <span class="n">MMCIFParser</span>
+<span class="kn">from</span> <span class="nn">Bio.PDB</span> <span class="kn">import</span> <span class="n">NeighborSearch</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># Create an MMCIFParser object to parse mmCIF files.</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">MMCIFParser</span><span class="p">(</span><span class="n">QUIET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Define the maximum distance (in Ångströms) for identifying neighboring residues.</span>
+<span class="n">cutoff_distance</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Initialize a dictionary to store the neighboring residues for each protein structure.</span>
+<span class="n">residue_neighbors</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># The &#39;results&#39; variable is a dictionary containing search results.</span>
+<span class="c1"># Each result in &#39;results[&quot;result_set&quot;]&#39; represents a protein structure with a PDB ID.</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;result_set&quot;</span><span class="p">]:</span>
+    <span class="c1"># Extract the PDB ID and convert it to lowercase.</span>
+    <span class="n">pdb_id</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># Parse the mmCIF file for the protein structure using the PDB ID.</span>
+    <span class="c1"># The file is expected to be located in the &#39;pdb_files&#39; directory.</span>
+    <span class="n">structure</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="n">pdb_id</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;pdb_files/</span><span class="si">{</span><span class="n">pdb_id</span><span class="si">}</span><span class="s2">.cif&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Extract all atoms from the protein structure.</span>
+    <span class="n">atoms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">get_atoms</span><span class="p">())</span>
+    
+    <span class="c1"># Create a NeighborSearch object to perform neighbor searches.</span>
+    <span class="n">neighbor_search</span> <span class="o">=</span> <span class="n">NeighborSearch</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize a list to store the neighboring residues for this protein structure.</span>
+    <span class="n">neighbor_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Loop through the atoms in the protein structure.</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">:</span>
+        <span class="c1"># Check if the atom is an iron (Fe) atom.</span>
+        <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">element</span> <span class="o">==</span> <span class="s2">&quot;FE&quot;</span><span class="p">:</span>
+            <span class="c1"># Get the parent residue of the iron atom.</span>
+            <span class="n">iron_residue</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
+
+            <span class="c1"># Find atoms within the cutoff distance from the iron atom.</span>
+            <span class="n">neighbors</span> <span class="o">=</span> <span class="n">neighbor_search</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">get_coord</span><span class="p">(),</span> <span class="n">cutoff_distance</span><span class="p">)</span>
+            
+            <span class="c1"># Loop through the neighboring atoms.</span>
+            <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+                <span class="c1"># Get the parent residue of the neighboring atom.</span>
+                <span class="n">residue</span> <span class="o">=</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
+    
+                <span class="c1"># Check if the neighboring residue is different from the iron-containing residue.</span>
+                <span class="k">if</span> <span class="n">residue</span> <span class="o">!=</span> <span class="n">iron_residue</span><span class="p">:</span>
+                    <span class="c1"># Add the neighboring residue to the list.</span>
+                    <span class="n">neighbor_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">residue</span><span class="p">)</span>
+                    
+    <span class="c1"># Store the unique neighboring residues in the dictionary using the PDB ID as the key.</span>
+    <span class="n">residue_neighbors</span><span class="p">[</span><span class="n">pdb_id</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">neighbor_list</span><span class="p">)</span>
+
+<span class="c1"># The &#39;residue_neighbors&#39; dictionary contains the neighboring residues for each protein structure.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now we will want to count the residue neighbor types.</span>
+<span class="c1"># Initialize an empty Counter object to store the counts of residue combinations.</span>
+<span class="n">combination_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="c1"># Iterate over the items in the &#39;residue_neighbors&#39; dictionary.</span>
+<span class="c1"># Each item consists of a PDB ID (&#39;pdb_id&#39;) and a set of neighboring residues (&#39;neighbors&#39;) to iron atoms.</span>
+<span class="k">for</span> <span class="n">pdb_id</span><span class="p">,</span> <span class="n">neighbors</span> <span class="ow">in</span> <span class="n">residue_neighbors</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1"># Extract the residue names (&#39;resname&#39;) for each neighboring residue using the &#39;get_resname&#39; method.</span>
+    <span class="n">resname</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_resname</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neighbors</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get_resname</span><span class="p">()]</span>
+    
+    <span class="c1"># Count the occurrences of each residue name in the current combination.</span>
+    <span class="n">res_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">resname</span><span class="p">)</span>
+    
+    <span class="c1"># Convert the residue counts to a tuple of (residue, count) pairs, sorted by residue name.</span>
+    <span class="c1"># This standardizes the representation of each combination.</span>
+    <span class="n">combination</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">res_counts</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+    
+    <span class="c1"># Update the combination_counts with the current combination.</span>
+    <span class="n">combination_counts</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">combination</span><span class="p">])</span>
+
+<span class="c1"># Use the &#39;most_common&#39; method to get the most common residue combinations.</span>
+<span class="c1"># The result is a list of tuples, where each tuple contains a combination and its count.</span>
+<span class="n">most_common_combinations</span> <span class="o">=</span> <span class="n">combination_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+
+<span class="c1"># For example, to get the top 5 most common combinations, use &#39;most_common(5)&#39;.</span>
+<span class="n">top_5_combinations</span> <span class="o">=</span> <span class="n">combination_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Top 5 most common residue combinations for iron neighbors:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">combination</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">top_5_combinations</span><span class="p">:</span>
+    <span class="n">combination_str</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">residue</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">residue</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">combination</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Combination: </span><span class="si">{</span><span class="n">combination_str</span><span class="si">}</span><span class="s2">, Count: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="biopython_mmcif.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyzing MMCIF Files using Biopython</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MolVis_with_iCN3D.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Molecular Visualization with iCN3D</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-download-using-biopython">File Download using Biopython</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdb-data-api">PDB Data API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-access-of-apis">Programmatic Access of APIs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdb-search-api">PDB Search API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-biopython-to-analyze-search-results">Using Biopython to Analyze Search Results</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Molecular Sciences Software Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
