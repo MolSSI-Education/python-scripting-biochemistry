@@ -1,0 +1,22 @@
+name: iqb-2023
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - jupyter-book
+  - pandas
+  - rdkit
+  - numpy
+  - jupyterlab
+  - notebook
+  - scipy
+  - biopython
+  - seqlike
+  - bokeh
+  - nglview
+  - ipywidgets<8.0
+  - bioconda::mafft
+  - nodejs
+  - pip:
+    - icn3dpy
