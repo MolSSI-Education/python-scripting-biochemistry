@@ -16,6 +16,7 @@ dependencies:
   - seqlike
   - bokeh
   - nglview
+  - seaborn
   - ipywidgets<8.0
   - bioconda::mafft
   - nodejs
