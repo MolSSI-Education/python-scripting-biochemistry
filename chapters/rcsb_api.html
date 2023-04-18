@@ -699,7 +699,7 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;bd90fc1d-7f5f-409c-ac6b-979d6c0e57b1&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;01190da7-b3a8-4d9c-90b0-8e851b51113d&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 619,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
@@ -820,7 +820,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;543af01d-1e79-49d5-a14f-29f2c00e9fe9&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;4721d8da-521d-4e87-ad7e-d74509933a17&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 515,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: &#39;NaN&#39;},
@@ -883,7 +883,7 @@ If you wanted to see the 10 most recently released results, you would change
 <p>The API becomes really interesting when we use the results for analysis.
 Keeping our example of oxygen storage, we could use Biopython to analyze the structures we have retrieved to see
 if there are heme groups in the structures and if there are common motifs in the binding of the heme groups to proteins.</p>
-<p>The following cells show a farily complicated analysis of the structures we have retrieved using Biopython.
+<p>The following cells show a farily complicated analysis of the structures we have retrieved using Biopython in the cells just above this section.
 If you are new to programming, the next few cells will be hard to understand.
 However, they are a demonstration of the type of analysis that can be done by retrieving search results programmatically
 and analyzing data using Python.
@@ -1008,23 +1008,6 @@ The end of the analysis prints the most commonly found neighboring residues to i
 <span class="go">Combination: 5 HIS, 2 HOH, 2 VAL, Count: 2</span>
 <span class="go">Combination: 4 HIS, 2 HOH, 2 VAL, Count: 2</span>
 </pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdb_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pdb_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
