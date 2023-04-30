@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Analyzing MMCIF Files using Biopython &#8212; Python Data and Scripting for Biochemists</title>
+    <title>Analyzing MMCIF Files using Biopython &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
   
   
@@ -53,15 +53,9 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-FHKVGE8HKZ');
-            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -109,8 +103,8 @@ const thebe_selector_output = ".output, .cell_output"
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -151,20 +145,12 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="setup.html">
-                    Set Up
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -222,53 +208,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/biopython_mmcif.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -455,11 +394,6 @@ We can then query the dictionary to pull out data we are interested in.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;64.500&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>The mmCIF file contains a lot of data.
 You can see all of the possible dictionary keys by doing</p>
@@ -475,19 +409,6 @@ In the following cell, we use a <code class="docutils literal notranslate"><span
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdb_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">if</span> <span class="s2">&quot;_cell.&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_cell.entry_id [&#39;1MBN&#39;]
-_cell.length_a [&#39;64.500&#39;]
-_cell.length_b [&#39;30.900&#39;]
-_cell.length_c [&#39;34.700&#39;]
-_cell.angle_alpha [&#39;90.00&#39;]
-_cell.angle_beta [&#39;106.00&#39;]
-_cell.angle_gamma [&#39;90.00&#39;]
-_cell.Z_PDB [&#39;2&#39;]
-_cell.pdbx_unique_axis [&#39;?&#39;]
 </pre></div>
 </div>
 </div>
@@ -519,29 +440,6 @@ You can browse then on <a class="reference external" href="https://mmcif.wwpdb.o
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_cell.entry_id [&#39;1MBN&#39;]
-_cell.length_a [&#39;64.500&#39;]
-_cell.length_b [&#39;30.900&#39;]
-_cell.length_c [&#39;34.700&#39;]
-_cell.angle_alpha [&#39;90.00&#39;]
-_cell.angle_beta [&#39;106.00&#39;]
-_cell.angle_gamma [&#39;90.00&#39;]
-_cell.Z_PDB [&#39;2&#39;]
-_cell.pdbx_unique_axis [&#39;?&#39;]
-_entity.id [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]
-_entity.type [&#39;polymer&#39;, &#39;non-polymer&#39;, &#39;non-polymer&#39;]
-_entity.src_method [&#39;man&#39;, &#39;syn&#39;, &#39;syn&#39;]
-_entity.pdbx_description [&#39;MYOGLOBIN&#39;, &#39;HYDROXIDE ION&#39;, &#39;PROTOPORPHYRIN IX CONTAINING FE&#39;]
-_entity.formula_weight [&#39;17234.951&#39;, &#39;17.007&#39;, &#39;616.487&#39;]
-_entity.pdbx_number_of_molecules [&#39;1&#39;, &#39;1&#39;, &#39;1&#39;]
-_entity.pdbx_ec [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
-_entity.pdbx_mutation [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
-_entity.pdbx_fragment [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
-_entity.details [&#39;?&#39;, &#39;?&#39;, &#39;?&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>We see a few interesting entries in the <code class="docutils literal notranslate"><span class="pre">_entity</span></code> section.
 The output tells us that there are three entities in the PDB.
@@ -558,24 +456,6 @@ These are myoglobin, a hydroxide ion, and a heme group (protoporphyrin IX contai
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_cell.entry_id [&#39;1MBN&#39;]
-_cell.length_a [&#39;64.500&#39;]
-_cell.length_b [&#39;30.900&#39;]
-_cell.length_c [&#39;34.700&#39;]
-_cell.angle_alpha [&#39;90.00&#39;]
-_cell.angle_beta [&#39;106.00&#39;]
-_cell.angle_gamma [&#39;90.00&#39;]
-_cell.Z_PDB [&#39;2&#39;]
-_entity.id [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]
-_entity.type [&#39;polymer&#39;, &#39;non-polymer&#39;, &#39;non-polymer&#39;]
-_entity.src_method [&#39;man&#39;, &#39;syn&#39;, &#39;syn&#39;]
-_entity.pdbx_description [&#39;MYOGLOBIN&#39;, &#39;HYDROXIDE ION&#39;, &#39;PROTOPORPHYRIN IX CONTAINING FE&#39;]
-_entity.formula_weight [&#39;17234.951&#39;, &#39;17.007&#39;, &#39;616.487&#39;]
-_entity.pdbx_number_of_molecules [&#39;1&#39;, &#39;1&#39;, &#39;1&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Some things we might be interested in are the name of the organism the sample originated from and the sequence of the protein.
 The relevant keywords for this will be <code class="docutils literal notranslate"><span class="pre">_entity_src_gen.gene_src_common_name</span></code> to get the common name of the organism,
@@ -588,11 +468,6 @@ and <code class="docutils literal notranslate"><span class="pre">_entity_poly.pd
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sperm whale&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -601,21 +476,11 @@ and <code class="docutils literal notranslate"><span class="pre">_entity_poly.pd
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Physeter catodon&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequence_1mbn</span> <span class="o">=</span> <span class="n">pdb_info</span><span class="p">[</span><span class="s2">&quot;_entity_poly.pdbx_seq_one_letter_code&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sequence_1mbn</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;VLSEGEWQLVLHVWAKVEADVAGHGQDILIRLFKSHPETLEKFDRFKHLKTEAEMKASEDLKKHGVTVLTALGAILKKKG\nHHEAELKPLAQSHATKHKIPIKYLEFISEAIIHVLHSRHPGDFGADAQGAMNKALELFRKDIAAKYKELGYQG&#39;]
 </pre></div>
 </div>
 </div>
@@ -675,11 +540,6 @@ However, if you are ever working with a larger structure, it might be better to 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,11 +554,6 @@ However, if you are ever working with a larger structure, it might be better to 
         <span class="n">iron_coord</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">get_coord</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">iron_atom</span><span class="p">,</span> <span class="n">iron_coord</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Atom FE&gt; [14.8 28.1  4.8]
 </pre></div>
 </div>
 </div>
@@ -728,11 +583,6 @@ Any atom that is within the specified cut-off distance is considered to be a nei
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The iron atom has 21 neighbor atoms.
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can use a for loop to loop through the neighbor atoms that the <code class="docutils literal notranslate"><span class="pre">search</span></code> function found.
 We can get the residue of the atom by using <code class="docutils literal notranslate"><span class="pre">atom.get_parent()</span></code>.</p>
@@ -741,31 +591,6 @@ We can get the residue of the atom by using <code class="docutils literal notran
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
     <span class="n">residue</span> <span class="o">=</span> <span class="n">neighbor</span><span class="o">.</span><span class="n">get_parent</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HIS (&#39; &#39;, 93, &#39; &#39;)
-HIS (&#39; &#39;, 93, &#39; &#39;)
-HIS (&#39; &#39;, 93, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-HEM (&#39;H_HEM&#39;, 155, &#39; &#39;)
-OH (&#39;H_OH&#39;, 154, &#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -781,14 +606,6 @@ We are interested in how the ligand binds to the protein, so we’ll modify the 
     
     <span class="k">if</span> <span class="n">residue</span> <span class="o">!=</span> <span class="n">iron_residue</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">neighbor</span><span class="o">.</span><span class="n">element</span><span class="p">,</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="n">residue</span><span class="o">.</span><span class="n">get_id</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C HIS 93
-N HIS 93
-C HIS 93
-O OH 154
 </pre></div>
 </div>
 </div>
@@ -913,7 +730,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021-2023.
+      © Copyright 2022.
       <br/>
     
   </p>

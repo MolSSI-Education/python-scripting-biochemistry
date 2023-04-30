@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Processing Multiple Files and Writing Files &#8212; Python Data and Scripting for Biochemists</title>
+    <title>Processing Multiple Files and Writing Files &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
   
   
@@ -53,15 +53,9 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-FHKVGE8HKZ');
-            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -107,8 +101,8 @@ const thebe_selector_output = ".output, .cell_output"
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -149,20 +143,12 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="setup.html">
-                    Set Up
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -220,53 +206,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Processing_Multiple_Files_and_Writing_Files.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -439,11 +378,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/*.pdb
-</pre></div>
-</div>
-</div>
 </div>
 <p>This specifies that we want to look for all the files in a directory called <code class="docutils literal notranslate"><span class="pre">data/PDB_files</span></code> that end in “.pdb”.  The * is the wildcard character which matches any character or series of characters.</p>
 <p>Next we are going to use a function called <code class="docutils literal notranslate"><span class="pre">glob</span></code> in the library called <code class="docutils literal notranslate"><span class="pre">glob</span></code>.  It is a little confusing since the function and the library have the same name, but we will see other examples where this is not the case later.  The output of the function <code class="docutils literal notranslate"><span class="pre">glob</span></code> is a list of all the filenames that fit the pattern specified in the input.   The input is the file location.</p>
@@ -452,11 +386,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 <span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">file_location</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">filenames</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;, &#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/3iva.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;]
 </pre></div>
 </div>
 </div>
@@ -480,19 +409,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.91
-1.8
-2.4
-2.7
-1.85
-3.1
-2.6
-1.9
-2.05
-</pre></div>
-</div>
-</div>
 </div>
 <p>Notice that in this code we actually used two <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, one nested inside the other.  The outer <code class="docutils literal notranslate"><span class="pre">for</span></code> loop counts over the filenames we read in earlier.  The inner <code class="docutils literal notranslate"><span class="pre">for</span></code> loop counts over the lines in each file, just as we did in our previous file parsing lesson.</p>
 <p>The output our code currently generates is not that useful.  It doesn’t show us which file each resolution value came from.</p>
@@ -504,12 +420,6 @@ document.write(`
 
 <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">first_file</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/5veu.pdb
-5veu.pdb
 </pre></div>
 </div>
 </div>
@@ -545,19 +455,6 @@ print(molecule_name)</p>
             <span class="n">words</span> <span class="o">=</span> <span class="n">res_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
             <span class="n">resolution</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">molecule_name</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="s2">&quot; Angstroms&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5veu: 2.91 Angstroms
-4eyr: 1.8 Angstroms
-2pkr: 2.4 Angstroms
-3iva: 2.7 Angstroms
-6zt7: 1.85 Angstroms
-1ddo: 3.1 Angstroms
-3vnd: 2.6 Angstroms
-7tim: 1.9 Angstroms
-5eu9: 2.05 Angstroms
 </pre></div>
 </div>
 </div>
@@ -788,7 +685,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021-2023.
+      © Copyright 2022.
       <br/>
     
   </p>

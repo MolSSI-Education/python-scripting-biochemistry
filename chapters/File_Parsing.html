@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>File Parsing &#8212; Python Data and Scripting for Biochemists</title>
+    <title>File Parsing &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
   
   
@@ -53,15 +53,9 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-FHKVGE8HKZ');
-            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -107,8 +101,8 @@ const thebe_selector_output = ".output, .cell_output"
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -149,20 +143,12 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="setup.html">
-                    Set Up
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -220,53 +206,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/File_Parsing.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -423,40 +362,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/runner/work/python-scripting-biochemistry/python-scripting-biochemistry/biochemist-python/chapters&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span> <span class="c1"># provides a list of all files in the current working directory</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Bradford_plot2.png&#39;,
- &#39;rcsb_api.ipynb&#39;,
- &#39;Linear_Regression.ipynb&#39;,
- &#39;.ipynb_checkpoints&#39;,
- &#39;resolutions.txt&#39;,
- &#39;Processing_Multiple_Files_and_Writing_Files.ipynb&#39;,
- &#39;File_Parsing.ipynb&#39;,
- &#39;biopython_mmcif.ipynb&#39;,
- &#39;workshop_schedule.ipynb&#39;,
- &#39;data.zip&#39;,
- &#39;Bradford_plot3.png&#39;,
- &#39;Working_with_Pandas.ipynb&#39;,
- &#39;nonlinear_regression_part_2.ipynb&#39;,
- &#39;Creating_Plots_in_Jupyter_Notebooks.ipynb&#39;,
- &#39;MolVis_with_iCN3D.ipynb&#39;,
- &#39;images&#39;,
- &#39;setup.ipynb&#39;,
- &#39;Bradford_plot.png&#39;,
- &#39;data&#39;,
- &#39;introduction.ipynb&#39;,
- &#39;nonlinear_regression_part_1.ipynb&#39;]
 </pre></div>
 </div>
 </div>
@@ -474,49 +383,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;enzyme_kinetics.xlsx&#39;,
- &#39;chymotrypsin_kinetics.csv&#39;,
- &#39;AP_kin.csv&#39;,
- &#39;chymo_MM_data.csv&#39;,
- &#39;Ground_water.csv&#39;,
- &#39;PDB_files&#39;,
- &#39;chymotrypsin_kinetics.xlsx&#39;,
- &#39;MM_data1.csv&#39;,
- &#39;AP_kinetics.csv&#39;,
- &#39;protein_samples.csv&#39;,
- &#39;protein_assay.csv&#39;,
- &#39;thrombin_with_ligands.csv&#39;,
- &#39;protein_assay2.csv&#39;,
- &#39;enzyme_kinetics.csv&#39;,
- &#39;MM_data_for_NLRpt2.csv&#39;,
- &#39;MM_data.csv&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Notice there is a directory called PDB_files. To look at the contents of that directory, just enter ‘data/PDB_files’ within the parentheses for <code class="docutils literal notranslate"><span class="pre">listdir()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/PDB_files&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;5veu.pdb&#39;,
- &#39;4eyr.pdb&#39;,
- &#39;1pmb.cif&#39;,
- &#39;2pkr.pdb&#39;,
- &#39;3iva.pdb&#39;,
- &#39;5rsa.cif&#39;,
- &#39;1mbn.cif&#39;,
- &#39;6zt7.pdb&#39;,
- &#39;1a6n.cif&#39;,
- &#39;1ddo.pdb&#39;,
- &#39;3vnd.pdb&#39;,
- &#39;7tim.pdb&#39;,
- &#39;1a1t.cif&#39;,
- &#39;5eu9.pdb&#39;]
 </pre></div>
 </div>
 </div>
@@ -527,11 +398,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;PDB_files&#39;</span><span class="p">,</span> <span class="s1">&#39;4eyr.pdb&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">protein_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/4eyr.pdb
 </pre></div>
 </div>
 </div>
@@ -618,22 +484,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HETNAM     RIT RITONAVIR                                                        
-</pre></div>
-</div>
-</div>
 </div>
 <p>Remember that <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> saves each line of the file as a string, so <code class="docutils literal notranslate"><span class="pre">HETNAM_line</span></code> is a string that contains the whole line.  For our analysis, if we are most interested in the abbreviation for the drug, we need to split up the line so we can save just that abbreviation as a different variable name. To do this, we can use a function called <code class="docutils literal notranslate"><span class="pre">split</span></code>.  The <code class="docutils literal notranslate"><span class="pre">split</span></code> function takes a string and divides it into its components using a <em>delimiter</em>.</p>
 <p>The <em>delimiter</em> is specified as an argument to the function (put in the parenthesis <code class="docutils literal notranslate"><span class="pre">()</span></code>). If you do not specify a delimiter, a space is used by default. Let’s try this out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HETNAM_line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HETNAM&#39;, &#39;RIT&#39;, &#39;RITONAVIR&#39;]
 </pre></div>
 </div>
 </div>
@@ -646,22 +502,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;HETNAM&#39;, &#39;RIT&#39;, &#39;RITONAVIR&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>From this <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, we now see that we have a list called words, where we have split <code class="docutils literal notranslate"><span class="pre">HETNAM_line</span></code>.  The abbreviation is actually the second element of this list, so we can now save it as a new variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abbrev</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">abbrev</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIT
 </pre></div>
 </div>
 </div>
@@ -703,11 +549,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>REMARK   3   PROTEIN ATOMS            : 1514                                    
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can see that the fifth element in this list is a colon (:). It is possible to modify the split command to split lines using the colon as the delimiter (‘:’).</p>
 <div class="cell docutils container">
@@ -720,11 +561,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;REMARK   3   PROTEIN ATOMS            &#39;, &#39; 1514                                    \n&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>From this <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, we now see that we have a list called words, where we have split <code class="docutils literal notranslate"><span class="pre">PROTEIN_ATOM_line</span></code>.  The number of atoms in the protein is actually the second element of this list, so we can now save it as a new variable.</p>
 <div class="cell docutils container">
@@ -734,26 +570,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1514                                    
-</pre></div>
-</div>
-</div>
 </div>
 <p>The HIV protease structure in 4eyr.pdb is a dimer. Let’s find the number of atoms in each monomer unit. If we now try to do a math operation on atoms, we get an error message.  Why do you think that is?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">atoms</span> <span class="o">/</span> <span class="mi">2</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for /: &#39;str&#39; and &#39;int&#39;
 </pre></div>
 </div>
 </div>
@@ -985,7 +806,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021-2023.
+      © Copyright 2022.
       <br/>
     
   </p>

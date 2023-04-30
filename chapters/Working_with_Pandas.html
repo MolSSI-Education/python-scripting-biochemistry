@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Working with Pandas &#8212; Python Data and Scripting for Biochemists</title>
+    <title>Working with Pandas &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
   
   
@@ -53,15 +53,9 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-FHKVGE8HKZ');
-            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -107,8 +101,8 @@ const thebe_selector_output = ".output, .cell_output"
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -149,20 +143,12 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="setup.html">
-                    Set Up
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -220,53 +206,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Working_with_Pandas.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -478,56 +417,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Bradford_plot2.png&#39;,
- &#39;rcsb_api.ipynb&#39;,
- &#39;Linear_Regression.ipynb&#39;,
- &#39;.ipynb_checkpoints&#39;,
- &#39;resolutions.txt&#39;,
- &#39;Processing_Multiple_Files_and_Writing_Files.ipynb&#39;,
- &#39;File_Parsing.ipynb&#39;,
- &#39;biopython_mmcif.ipynb&#39;,
- &#39;workshop_schedule.ipynb&#39;,
- &#39;data.zip&#39;,
- &#39;Bradford_plot3.png&#39;,
- &#39;Working_with_Pandas.ipynb&#39;,
- &#39;nonlinear_regression_part_2.ipynb&#39;,
- &#39;Creating_Plots_in_Jupyter_Notebooks.ipynb&#39;,
- &#39;MolVis_with_iCN3D.ipynb&#39;,
- &#39;images&#39;,
- &#39;setup.ipynb&#39;,
- &#39;Bradford_plot.png&#39;,
- &#39;data&#39;,
- &#39;introduction.ipynb&#39;,
- &#39;nonlinear_regression_part_1.ipynb&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>As we saw in the lesson on file parsing, the list includes specific files ending with suffixes such as .ipynb, .png, and .zip. It also includes directories, such as images and data that contain additional files. To find the contents of the data directory, you simply enclose data in single quotes and add it to the <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;enzyme_kinetics.xlsx&#39;,
- &#39;chymotrypsin_kinetics.csv&#39;,
- &#39;AP_kin.csv&#39;,
- &#39;chymo_MM_data.csv&#39;,
- &#39;Ground_water.csv&#39;,
- &#39;PDB_files&#39;,
- &#39;chymotrypsin_kinetics.xlsx&#39;,
- &#39;MM_data1.csv&#39;,
- &#39;AP_kinetics.csv&#39;,
- &#39;protein_samples.csv&#39;,
- &#39;protein_assay.csv&#39;,
- &#39;thrombin_with_ligands.csv&#39;,
- &#39;protein_assay2.csv&#39;,
- &#39;enzyme_kinetics.csv&#39;,
- &#39;MM_data_for_NLRpt2.csv&#39;,
- &#39;MM_data.csv&#39;]
 </pre></div>
 </div>
 </div>
@@ -537,11 +431,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombin_with_ligands.csv&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">thrombin_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/thrombin_with_ligands.csv
 </pre></div>
 </div>
 </div>
@@ -577,136 +466,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3SHC</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.90</td>
-      <td>Human Thrombin</td>
-      <td>B01</td>
-      <td>D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3P17</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.43</td>
-      <td>Thrombin</td>
-      <td>99P</td>
-      <td>D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2ZNK</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.80</td>
-      <td>Thrombin</td>
-      <td>31U</td>
-      <td>D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3SI3</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.55</td>
-      <td>Human Thrombin</td>
-      <td>B03</td>
-      <td>D-phenylalanyl-N-(pyridin-2-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3SI4</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.27</td>
-      <td>Human Thrombin</td>
-      <td>B04</td>
-      <td>D-phenylalanyl-N-[(1-methylpyridinium-2-yl)met...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>3SV2</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.30</td>
-      <td>Human Thrombin</td>
-      <td>P05</td>
-      <td>D-phenylalanyl-N-(pyridin-4-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1UVU</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.80</td>
-      <td>Bovine Thrombin</td>
-      <td>DCH</td>
-      <td>3-(7-DIAMINOMETHYL-NAPHTHALEN-2-YL)-PROPIONIC ...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1UVT</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.50</td>
-      <td>Bovine Thrombin</td>
-      <td>I48</td>
-      <td>N-{3-METHYL-5-[2-(PYRIDIN-4-YLAMINO)-ETHOXY]-P...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2C8Z</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.14</td>
-      <td>Thrombin</td>
-      <td>C2A</td>
-      <td>1-(3-CHLOROPHENYL)METHANAMINE</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2C8Y</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.20</td>
-      <td>Thrombin</td>
-      <td>C3M</td>
-      <td>N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]NAP...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2C90</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.25</td>
-      <td>Thrombin</td>
-      <td>C1M</td>
-      <td>1-(4-CHLOROPHENYL)-1H-TETRAZOLE</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="finding-information-in-a-dataframe">
@@ -715,22 +474,6 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="p">[</span><span class="s1">&#39;Resolution&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     1.90
-1     1.43
-2     1.80
-3     1.55
-4     1.27
-5     1.30
-6     2.80
-7     2.50
-8     2.14
-9     2.20
-10    2.25
-Name: Resolution, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -752,27 +495,11 @@ Name: Resolution, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PDB ID                                                     2ZNK
-Method                                        X-RAY DIFFRACTION
-Resolution                                                  1.8
-Structure                                              Thrombin
-Ligand ID                                                   31U
-Ligand name    D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide
-Name: 2, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <p>You can also use the loc command to locate the information from a specific cell. If you enter the index (row) of 2 and the column ‘Resolution’, the resolution for the structure in the third row is returned. You may be thinking, “Resolution is the third column. Why does python think it is column 2?” Remember that python starts counting at 0. So the number for the first column is 0 and the number for the third column is 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thrombin_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Resolution&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8
 </pre></div>
 </div>
 </div>
@@ -784,11 +511,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you only want to look at the first five rows of a dataframe, you can use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function; you can use the <code class="docutils literal notranslate"><span class="pre">tail</span></code> function to look at the last five rows. We always include () after the name of the function. This is how we can pass arguments into the function. Try using the argument 3 in the head command.</p>
 <div class="cell docutils container">
@@ -797,82 +519,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3SHC</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.90</td>
-      <td>Human Thrombin</td>
-      <td>B01</td>
-      <td>D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3P17</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.43</td>
-      <td>Thrombin</td>
-      <td>99P</td>
-      <td>D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2ZNK</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.80</td>
-      <td>Thrombin</td>
-      <td>31U</td>
-      <td>D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3SI3</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.55</td>
-      <td>Human Thrombin</td>
-      <td>B03</td>
-      <td>D-phenylalanyl-N-(pyridin-2-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3SI4</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.27</td>
-      <td>Human Thrombin</td>
-      <td>B04</td>
-      <td>D-phenylalanyl-N-[(1-methylpyridinium-2-yl)met...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -880,64 +526,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3SHC</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.90</td>
-      <td>Human Thrombin</td>
-      <td>B01</td>
-      <td>D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3P17</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.43</td>
-      <td>Thrombin</td>
-      <td>99P</td>
-      <td>D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2ZNK</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.80</td>
-      <td>Thrombin</td>
-      <td>31U</td>
-      <td>D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -945,82 +533,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6</th>
-      <td>1UVU</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.80</td>
-      <td>Bovine Thrombin</td>
-      <td>DCH</td>
-      <td>3-(7-DIAMINOMETHYL-NAPHTHALEN-2-YL)-PROPIONIC ...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1UVT</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.50</td>
-      <td>Bovine Thrombin</td>
-      <td>I48</td>
-      <td>N-{3-METHYL-5-[2-(PYRIDIN-4-YLAMINO)-ETHOXY]-P...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2C8Z</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.14</td>
-      <td>Thrombin</td>
-      <td>C2A</td>
-      <td>1-(3-CHLOROPHENYL)METHANAMINE</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2C8Y</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.20</td>
-      <td>Thrombin</td>
-      <td>C3M</td>
-      <td>N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]NAP...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2C90</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.25</td>
-      <td>Thrombin</td>
-      <td>C1M</td>
-      <td>1-(4-CHLOROPHENYL)-1H-TETRAZOLE</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="sorting-data-with-pandas">
@@ -1032,136 +544,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>3SI4</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.27</td>
-      <td>Human Thrombin</td>
-      <td>B04</td>
-      <td>D-phenylalanyl-N-[(1-methylpyridinium-2-yl)met...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>3SV2</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.30</td>
-      <td>Human Thrombin</td>
-      <td>P05</td>
-      <td>D-phenylalanyl-N-(pyridin-4-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3P17</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.43</td>
-      <td>Thrombin</td>
-      <td>99P</td>
-      <td>D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3SI3</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.55</td>
-      <td>Human Thrombin</td>
-      <td>B03</td>
-      <td>D-phenylalanyl-N-(pyridin-2-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2ZNK</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.80</td>
-      <td>Thrombin</td>
-      <td>31U</td>
-      <td>D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>3SHC</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.90</td>
-      <td>Human Thrombin</td>
-      <td>B01</td>
-      <td>D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2C8Z</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.14</td>
-      <td>Thrombin</td>
-      <td>C2A</td>
-      <td>1-(3-CHLOROPHENYL)METHANAMINE</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2C8Y</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.20</td>
-      <td>Thrombin</td>
-      <td>C3M</td>
-      <td>N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]NAP...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2C90</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.25</td>
-      <td>Thrombin</td>
-      <td>C1M</td>
-      <td>1-(4-CHLOROPHENYL)-1H-TETRAZOLE</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1UVT</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.50</td>
-      <td>Bovine Thrombin</td>
-      <td>I48</td>
-      <td>N-{3-METHYL-5-[2-(PYRIDIN-4-YLAMINO)-ETHOXY]-P...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1UVU</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.80</td>
-      <td>Bovine Thrombin</td>
-      <td>DCH</td>
-      <td>3-(7-DIAMINOMETHYL-NAPHTHALEN-2-YL)-PROPIONIC ...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Notice that the numbers in the first column (the index values) are not in order. If you type “thrombin_df” now, you will get back the unsorted dataframe.</p>
 <div class="cell docutils container">
@@ -1170,136 +552,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3SHC</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.90</td>
-      <td>Human Thrombin</td>
-      <td>B01</td>
-      <td>D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3P17</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.43</td>
-      <td>Thrombin</td>
-      <td>99P</td>
-      <td>D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2ZNK</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.80</td>
-      <td>Thrombin</td>
-      <td>31U</td>
-      <td>D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3SI3</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.55</td>
-      <td>Human Thrombin</td>
-      <td>B03</td>
-      <td>D-phenylalanyl-N-(pyridin-2-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3SI4</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.27</td>
-      <td>Human Thrombin</td>
-      <td>B04</td>
-      <td>D-phenylalanyl-N-[(1-methylpyridinium-2-yl)met...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>3SV2</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.30</td>
-      <td>Human Thrombin</td>
-      <td>P05</td>
-      <td>D-phenylalanyl-N-(pyridin-4-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1UVU</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.80</td>
-      <td>Bovine Thrombin</td>
-      <td>DCH</td>
-      <td>3-(7-DIAMINOMETHYL-NAPHTHALEN-2-YL)-PROPIONIC ...</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1UVT</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.50</td>
-      <td>Bovine Thrombin</td>
-      <td>I48</td>
-      <td>N-{3-METHYL-5-[2-(PYRIDIN-4-YLAMINO)-ETHOXY]-P...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2C8Z</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.14</td>
-      <td>Thrombin</td>
-      <td>C2A</td>
-      <td>1-(3-CHLOROPHENYL)METHANAMINE</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2C8Y</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.20</td>
-      <td>Thrombin</td>
-      <td>C3M</td>
-      <td>N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]NAP...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2C90</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.25</td>
-      <td>Thrombin</td>
-      <td>C1M</td>
-      <td>1-(4-CHLOROPHENYL)-1H-TETRAZOLE</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>However, if you want to retain the sorting in your dataframe, you can add <code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">True</span></code> to the command.</p>
 <div class="cell docutils container">
@@ -1309,136 +561,6 @@ Name: 2, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PDB ID</th>
-      <th>Method</th>
-      <th>Resolution</th>
-      <th>Structure</th>
-      <th>Ligand ID</th>
-      <th>Ligand name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>3SI4</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.27</td>
-      <td>Human Thrombin</td>
-      <td>B04</td>
-      <td>D-phenylalanyl-N-[(1-methylpyridinium-2-yl)met...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>3SV2</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.30</td>
-      <td>Human Thrombin</td>
-      <td>P05</td>
-      <td>D-phenylalanyl-N-(pyridin-4-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3P17</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.43</td>
-      <td>Thrombin</td>
-      <td>99P</td>
-      <td>D-phenylalanyl-N-(pyridin-3-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3SI3</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.55</td>
-      <td>Human Thrombin</td>
-      <td>B03</td>
-      <td>D-phenylalanyl-N-(pyridin-2-ylmethyl)-L-prolin...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2ZNK</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.80</td>
-      <td>Thrombin</td>
-      <td>31U</td>
-      <td>D-leucyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>3SHC</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>1.90</td>
-      <td>Human Thrombin</td>
-      <td>B01</td>
-      <td>D-phenylalanyl-N-[(4-chloropyridin-2-yl)methyl...</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2C8Z</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.14</td>
-      <td>Thrombin</td>
-      <td>C2A</td>
-      <td>1-(3-CHLOROPHENYL)METHANAMINE</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>2C8Y</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.20</td>
-      <td>Thrombin</td>
-      <td>C3M</td>
-      <td>N-[(2R,3S)-3-AMINO-2-HYDROXY-4-PHENYLBUTYL]NAP...</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2C90</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.25</td>
-      <td>Thrombin</td>
-      <td>C1M</td>
-      <td>1-(4-CHLOROPHENYL)-1H-TETRAZOLE</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1UVT</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.50</td>
-      <td>Bovine Thrombin</td>
-      <td>I48</td>
-      <td>N-{3-METHYL-5-[2-(PYRIDIN-4-YLAMINO)-ETHOXY]-P...</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1UVU</td>
-      <td>X-RAY DIFFRACTION</td>
-      <td>2.80</td>
-      <td>Bovine Thrombin</td>
-      <td>DCH</td>
-      <td>3-(7-DIAMINOMETHYL-NAPHTHALEN-2-YL)-PROPIONIC ...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="exercise admonition">
 <p class="admonition-title">Exercise</p>
@@ -1572,7 +694,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021-2023.
+      © Copyright 2022.
       <br/>
     
   </p>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Creating Plots in Jupyter Notebooks &#8212; Python Data and Scripting for Biochemists</title>
+    <title>Creating Plots in Jupyter Notebooks &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
   
   
@@ -53,15 +53,9 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-FHKVGE8HKZ');
-            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -109,8 +103,8 @@ const thebe_selector_output = ".output, .cell_output"
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -151,20 +145,12 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="setup.html">
-                    Set Up
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -222,53 +208,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Creating_Plots_in_Jupyter_Notebooks.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -459,15 +398,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope = 0.8454285714285716/mg/mL
-Intercept =  0.12786666666666657
-R-squared =  0.994690398528738
-P value =  1.0590717448341336e-05
-Standard error =  0.030884027089284245
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="using-matplotlib-pyplot">
@@ -483,12 +413,6 @@ Standard error =  0.030884027089284245
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fb194909790&gt;
-</pre></div>
-</div>
-<img alt="../_images/36a262d4aeb146e9a1ecbd23c6eaffdec6fe70051d0e51930245c99dd0ce3394.png" src="../_images/36a262d4aeb146e9a1ecbd23c6eaffdec6fe70051d0e51930245c99dd0ce3394.png" />
-</div>
 </div>
 <p>Next we add the best fit line using the slope and intercept that were generated by the stats.linregress function from scipy. The first two lines in the next cell are identical to the cell above (no need to import the libraries again). The third line introduces the best fit curve. You may notice a delay of a few seconds as the notebook generates the figure. The more complex the figure and the larger the dataset, the longer it takes for the plot to appear.</p>
 <div class="cell docutils container">
@@ -498,12 +422,6 @@ Standard error =  0.030884027089284245
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span> <span class="c1"># introduce the best-fit line</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb1948892e0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/0d7ab950b34cf556a4c22ae75a38633be1bf7073563ad84d7a9bc3304e7fe936.png" src="../_images/0d7ab950b34cf556a4c22ae75a38633be1bf7073563ad84d7a9bc3304e7fe936.png" />
 </div>
 </div>
 <p>Next we will use functions for matplotlib.pyplot to add labels for each axis. It is possible to include subscripts and Greek letters in matplotlib figure labels using LaTeX. Here is a <a class="reference external" href="https://towardsdatascience.com/write-markdown-latex-in-the-jupyter-notebook-10985edb91fd">link to a helpful site</a> about using markdown (used for the text cells in Jupyter notebook) and LaTeX in Jupyter notebooks by <a class="reference external" href="https://medium.com/&#64;ahmedazizkhelifi">Khelifi Ahmed Aziz</a>.</p>
@@ -526,12 +444,6 @@ Standard error =  0.030884027089284245
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.25, 1.0, &#39;y = 0.8454 * x + 0.1279&#39;)
-</pre></div>
-</div>
-<img alt="../_images/1246164a9cb5eade96f05bad1ca1dc2564c2540495d0b5e72534b96b053a1671.png" src="../_images/1246164a9cb5eade96f05bad1ca1dc2564c2540495d0b5e72534b96b053a1671.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -557,9 +469,6 @@ Standard error =  0.030884027089284245
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/57b08cc18765509026ed70cbd8289a0071204a59ac55086dd4eb02d73dcf29f4.png" src="../_images/57b08cc18765509026ed70cbd8289a0071204a59ac55086dd4eb02d73dcf29f4.png" />
 </div>
 </div>
 <p>Let’s explore the line of code we wrote to save the figure. Once you have executed this command, you should find the plot in the same folder as the current Jupyter notebook.</p>
@@ -593,12 +502,6 @@ Standard error =  0.030884027089284245
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/1e487d98087d74e30dbcd4a52ef783c3aa4b118ab91b9b2fb25ed54fab92968f.png" src="../_images/1e487d98087d74e30dbcd4a52ef783c3aa4b118ab91b9b2fb25ed54fab92968f.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -645,9 +548,6 @@ Standard error =  0.030884027089284245
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/075f5a77a78a545e9fc3ec2ab18330a81e716deb3300dfb9997988c9632566fd.png" src="../_images/075f5a77a78a545e9fc3ec2ab18330a81e716deb3300dfb9997988c9632566fd.png" />
 </div>
 </div>
 <div class="key admonition">
@@ -753,7 +653,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021-2023.
+      © Copyright 2022.
       <br/>
     
   </p>

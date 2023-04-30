@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Regression &#8212; Python Data and Scripting for Biochemists</title>
+    <title>Linear Regression &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
   
   
@@ -53,15 +53,9 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'G-FHKVGE8HKZ');
-            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -109,8 +103,8 @@ const thebe_selector_output = ".output, .cell_output"
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -151,20 +145,12 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="setup.html">
-                    Set Up
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -222,53 +208,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/MolSSI-Education/python-scripting-biochemistry/issues/new?title=Issue%20on%20page%20%2Fchapters/Linear_Regression.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -485,63 +424,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Protein Concentration (mg/mL)</th>
-      <th>A595</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.2</td>
-      <td>0.285</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.4</td>
-      <td>0.485</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.6</td>
-      <td>0.621</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.8</td>
-      <td>0.799</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1.0</td>
-      <td>1.010</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>1.2</td>
-      <td>1.118</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>In a dataframe, you can refer to the data in a column just by the column header. These are strings, so you need to put single or double quotes around them when you use them. In pandas, the terms <code class="docutils literal notranslate"><span class="pre">series</span></code> is often used to refer to the data in a single column in a dataframe. So we are going to use the two column headers to define the data for our linear regression.</p>
 <div class="cell docutils container">
@@ -549,23 +431,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Protein Concentration (mg/mL)&#39;</span><span class="p">]</span>   <span class="c1"># setting the x values  </span>
 <span class="n">ydata</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A595&#39;</span><span class="p">]</span>  <span class="c1"># setting the y values    </span>
 <span class="nb">print</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">)</span> <span class="c1"># checking to make sure everything is in place</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.2
-1    0.4
-2    0.6
-3    0.8
-4    1.0
-5    1.2
-Name: Protein Concentration (mg/mL), dtype: float64 0    0.285
-1    0.485
-2    0.621
-3    0.799
-4    1.010
-5    1.118
-Name: A595, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -583,15 +448,6 @@ Name: A595, dtype: float64
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R-squared = &quot;</span><span class="p">,</span> <span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P value = &quot;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard error = &quot;</span><span class="p">,</span> <span class="n">std_err</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope =  0.8454285714285716
-Intercept =  0.12786666666666657
-R-squared =  0.994690398528738
-P value =  1.0590717448341336e-05
-Standard error =  0.030884027089284245
 </pre></div>
 </div>
 </div>
@@ -649,63 +505,6 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Sample #</th>
-      <th>A-595</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0.183</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>0.682</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>0.759</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1.340</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0.935</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>1.013</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="create-the-equation">
@@ -715,17 +514,6 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein_conc</span> <span class="o">=</span> <span class="p">((</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">intercept</span><span class="p">)</span> <span class="o">/</span> <span class="n">slope</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">protein_conc</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.065213
-1    0.655447
-2    0.746525
-3    1.433750
-4    0.954703
-5    1.046964
-Name: A-595, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -741,70 +529,6 @@ Name: A-595, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Sample #</th>
-      <th>A-595</th>
-      <th>ProtConc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0.183</td>
-      <td>0.065213</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>0.682</td>
-      <td>0.655447</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>0.759</td>
-      <td>0.746525</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1.340</td>
-      <td>1.433750</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0.935</td>
-      <td>0.954703</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>1.013</td>
-      <td>1.046964</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="eliminating-values-outside-the-calibration-curve-optional">
@@ -821,70 +545,6 @@ Name: A-595, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Sample #</th>
-      <th>A-595</th>
-      <th>ProtConc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0.183</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>0.682</td>
-      <td>0.655447</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>0.759</td>
-      <td>0.746525</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1.340</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0.935</td>
-      <td>0.954703</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>1.013</td>
-      <td>1.046964</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><strong>Optional:</strong> Rather than hard-coding the minimum and maximum values for the calibration curve, we could also do this programmatically with the <code class="docutils literal notranslate"><span class="pre">.min()</span></code> and <code class="docutils literal notranslate"><span class="pre">.max()</span></code> functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -1052,7 +712,7 @@ By The Molecular Sciences Software Institute
     
   <p class="copyright">
     
-      © Copyright 2021-2023.
+      © Copyright 2022.
       <br/>
     
   </p>
