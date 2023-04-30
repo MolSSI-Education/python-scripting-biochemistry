@@ -1,19 +1,27 @@
-#######################################################################################
-# A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
-# https://jupyterbook.org/customize/config.html
-
-#######################################################################################
 # Book settings
-title                       : Python Data and Scripting for Biochemists  # The title of the book. Will be placed in the left navbar.
-author                      : The Molecular Sciences Software Institute  # The author of the book
-copyright                   : "2021-2023"  # Copyright year to be placed in the footer
-logo                        : molssi_main_logo.png  # A path to the book logo
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Python Data and Scripting for Biochemists and Molecular Biologists
+author: The Molecular Sciences Software Institute
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
 
 # Information about where the book exists on the web
 repository:
   url: https://github.com/MolSSI-Education/python-scripting-biochemistry  # Online location of your book
-  path_to_book: biochemist-python  # Optional path to your book, relative to the repository root
+  path_to_book: book/ # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -22,3 +30,13 @@ html:
   use_issues_button: true
   use_repository_button: true
   google_analytics_id: G-FHKVGE8HKZ
+
+sphinx:
+  config:
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+
+    html_theme_options: 
+      logo:
+        image_light: _static/images/molssi_main_logo.png
+        image_dark: _static/images/molssi_main_logo_inverted_white.png
