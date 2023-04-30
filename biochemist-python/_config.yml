@@ -21,7 +21,7 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/MolSSI-Education/python-scripting-biochemistry  # Online location of your book
-  path_to_book: book/ # Optional path to your book, relative to the repository root
+  path_to_book: chapters/ # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -38,5 +38,5 @@ sphinx:
 
     html_theme_options: 
       logo:
-        image_light: _static/images/molssi_main_logo.png
-        image_dark: _static/images/molssi_main_logo_inverted_white.png
+        image_light: images/molssi_main_logo.png
+        image_dark: images/molssi_main_logo_inverted_white.png
