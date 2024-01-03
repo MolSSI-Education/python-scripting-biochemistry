@@ -24,13 +24,6 @@ repository:
   path_to_book: chapters/ # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
-html:
-  use_issues_button: true
-  use_repository_button: true
-  google_analytics_id: G-FHKVGE8HKZ
-
 sphinx:
   config:
     html_js_files:
@@ -38,5 +31,9 @@ sphinx:
 
     html_theme_options: 
       logo:
-        image_light: images/molssi_main_logo.png
-        image_dark: images/molssi_main_logo_inverted_white.png
+        image_light: biochemist-python/images/molssi_main_logo.png
+        image_dark: biochemist-python/images/molssi_main_logo_inverted_white.png
+      analytics:
+        google_analytics_id: G-FHKVGE8HKZ 
+
+  
