@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Retrieving Information from the PDB using the Web API &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -56,6 +58,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -68,7 +77,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Molecular Visualization with iCN3D" href="MolVis_with_iCN3D.html" />
     <link rel="prev" title="Analyzing MMCIF Files using Biopython" href="biopython_mmcif.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +86,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -130,9 +148,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="setup.html">
+  
   
   
   
@@ -142,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>`);</script>
   
   
 </a></div>
@@ -271,20 +291,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -328,7 +350,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="retrieving-information-from-the-pdb-using-the-web-api">
-<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Permalink to this headline">#</a></h1>
+<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Permalink to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -347,7 +369,7 @@ document.write(`
 <p>Usually a REST API is accessed by varying parameters in a web address.</p>
 <p>We will work with two types of API from the PDB in this lesson.</p>
 <section id="file-download-using-biopython">
-<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this headline">#</a></h2>
+<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this heading">#</a></h2>
 <p>Biopython has functions for retrieving structure files.
 To download a structure file from the PDB, you make a <code class="docutils literal notranslate"><span class="pre">PDBList</span></code>.
 Then, you use the function <code class="docutils literal notranslate"><span class="pre">pdb_list.retrieve_pdb_file.</span> <span class="pre">This</span> <span class="pre">function</span> <span class="pre">takes</span> <span class="pre">the</span> <span class="pre">PDB</span> <span class="pre">ID</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">parameter.</span>&#160; <span class="pre">You</span> <span class="pre">specify</span> <span class="pre">the</span> <span class="pre">folder</span> <span class="pre">where</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">saved</span> <span class="pre">using</span> </code>pdir=FOLDER<code class="docutils literal notranslate"><span class="pre">.</span>&#160; <span class="pre">If</span> <span class="pre">we</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">download</span> <span class="pre">the</span> <span class="pre">structure</span> <span class="pre">as</span> <span class="pre">an</span> <span class="pre">MMCIF,</span> <span class="pre">we</span> <span class="pre">have</span> <span class="pre">to</span> <span class="pre">add</span> </code>file_format=”mmCif”`.</p>
@@ -370,11 +392,19 @@ Then, you use the function <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4hhb&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/4hhb.cif
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you check your data folder, you will see that you now have a file called <code class="docutils literal notranslate"><span class="pre">4hhb.cif</span></code>.</p>
 </section>
 <section id="pdb-data-api">
-<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this headline">#</a></h2>
+<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this heading">#</a></h2>
 <p>You can use the web to retrieve information about a molecule using its PDB ID using the PDB Data API.
 This will give you access to information about the PDB entry, rather than the structure file like with the Biopython file download.</p>
 <p>As mentioned above, web APIs often work by varying text in a web address (also called URL).</p>
@@ -392,7 +422,7 @@ However, one interesting thing you can do is to retrieve PubMed annotations for 
 Its format is similar to a Python dictionary, having keys and values.</p>
 </section>
 <section id="programmatic-access-of-apis">
-<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Permalink to this headline">#</a></h2>
+<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Permalink to this heading">#</a></h2>
 <p>REST APIs start being more useful when you access them programmatically. We are going to use Python to retrieve the data at the URL and convert it to a format we can work with.</p>
 <p>We will use a Python library called requests. Requests is used to retrieve information from websites and URLs.</p>
 <div class="cell docutils container">
@@ -423,6 +453,11 @@ One status code you may be familiar with is <code class="docutils literal notran
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can see the JSON associated with our request by calling the .json() method, which we will save in a variable called <code class="docutils literal notranslate"><span class="pre">info_4hhb</span></code>. Our variable is now similar to a Python dictionary, which is a data type that has key, value pairs.</p>
 <div class="cell docutils container">
@@ -439,6 +474,11 @@ One status code you may be familiar with is <code class="docutils literal notran
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;audit_author&#39;, &#39;cell&#39;, &#39;citation&#39;, &#39;diffrn&#39;, &#39;entry&#39;, &#39;exptl&#39;, &#39;exptl_crystal&#39;, &#39;pdbx_audit_revision_category&#39;, &#39;pdbx_audit_revision_details&#39;, &#39;pdbx_audit_revision_group&#39;, &#39;pdbx_audit_revision_history&#39;, &#39;pdbx_audit_revision_item&#39;, &#39;pdbx_database_pdbobs_spr&#39;, &#39;pdbx_database_related&#39;, &#39;pdbx_database_status&#39;, &#39;rcsb_accession_info&#39;, &#39;rcsb_entry_container_identifiers&#39;, &#39;rcsb_entry_info&#39;, &#39;rcsb_primary_citation&#39;, &#39;refine&#39;, &#39;refine_hist&#39;, &#39;struct&#39;, &#39;struct_keywords&#39;, &#39;symmetry&#39;, &#39;rcsb_id&#39;])
+</pre></div>
+</div>
+</div>
 </div>
 <p>The variable <code class="docutils literal notranslate"><span class="pre">info_4hhb</span></code> is a Python dictionary, meaning that
 we can access information in the dictionary using the syntax:</p>
@@ -451,10 +491,20 @@ we can access information in the dictionary using the syntax:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;method&#39;: &#39;X-RAY DIFFRACTION&#39;}]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="p">[</span><span class="s2">&quot;struct_keywords&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pdbx_keywords&#39;: &#39;OXYGEN TRANSPORT&#39;, &#39;text&#39;: &#39;OXYGEN TRANSPORT&#39;}
 </pre></div>
 </div>
 </div>
@@ -465,10 +515,62 @@ we can access information in the dictionary using the syntax:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;THE CRYSTAL STRUCTURE OF HUMAN DEOXYHAEMOGLOBIN AT 1.74 ANGSTROMS RESOLUTION&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">info_4hhb</span><span class="p">[</span><span class="s2">&quot;rcsb_entry_info&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;assembly_count&#39;: 1,
+ &#39;branched_entity_count&#39;: 0,
+ &#39;cis_peptide_count&#39;: 0,
+ &#39;deposited_atom_count&#39;: 4779,
+ &#39;deposited_hydrogen_atom_count&#39;: 0,
+ &#39;deposited_model_count&#39;: 1,
+ &#39;deposited_modeled_polymer_monomer_count&#39;: 574,
+ &#39;deposited_nonpolymer_entity_instance_count&#39;: 6,
+ &#39;deposited_polymer_entity_instance_count&#39;: 4,
+ &#39;deposited_polymer_monomer_count&#39;: 574,
+ &#39;deposited_solvent_atom_count&#39;: 221,
+ &#39;deposited_unmodeled_polymer_monomer_count&#39;: 0,
+ &#39;disulfide_bond_count&#39;: 0,
+ &#39;entity_count&#39;: 5,
+ &#39;experimental_method&#39;: &#39;X-ray&#39;,
+ &#39;experimental_method_count&#39;: 1,
+ &#39;inter_mol_covalent_bond_count&#39;: 0,
+ &#39;inter_mol_metalic_bond_count&#39;: 4,
+ &#39;molecular_weight&#39;: 64.74,
+ &#39;na_polymer_entity_types&#39;: &#39;Other&#39;,
+ &#39;nonpolymer_bound_components&#39;: [&#39;HEM&#39;],
+ &#39;nonpolymer_entity_count&#39;: 2,
+ &#39;nonpolymer_molecular_weight_maximum&#39;: 0.62,
+ &#39;nonpolymer_molecular_weight_minimum&#39;: 0.09,
+ &#39;polymer_composition&#39;: &#39;heteromeric protein&#39;,
+ &#39;polymer_entity_count&#39;: 2,
+ &#39;polymer_entity_count_dna&#39;: 0,
+ &#39;polymer_entity_count_rna&#39;: 0,
+ &#39;polymer_entity_count_nucleic_acid&#39;: 0,
+ &#39;polymer_entity_count_nucleic_acid_hybrid&#39;: 0,
+ &#39;polymer_entity_count_protein&#39;: 2,
+ &#39;polymer_entity_taxonomy_count&#39;: 2,
+ &#39;polymer_molecular_weight_maximum&#39;: 15.89,
+ &#39;polymer_molecular_weight_minimum&#39;: 15.15,
+ &#39;polymer_monomer_count_maximum&#39;: 146,
+ &#39;polymer_monomer_count_minimum&#39;: 141,
+ &#39;resolution_combined&#39;: [1.74],
+ &#39;selected_polymer_entity_types&#39;: &#39;Protein (only)&#39;,
+ &#39;solvent_entity_count&#39;: 1,
+ &#39;structure_determination_methodology&#39;: &#39;experimental&#39;,
+ &#39;structure_determination_methodology_priority&#39;: 10,
+ &#39;diffrn_resolution_high&#39;: {&#39;provenance_source&#39;: &#39;From refinement resolution cutoff&#39;,
+  &#39;value&#39;: 1.74}}
 </pre></div>
 </div>
 </div>
@@ -493,6 +595,11 @@ one of the API endpoints by changing the URL.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -501,11 +608,20 @@ one of the API endpoints by changing the URL.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;polymer_composition&#39;: &#39;Protein (only)&#39;,
+ &#39;interface_character&#39;: &#39;hetero&#39;,
+ &#39;interface_area&#39;: 847.773205021308,
+ &#39;num_interface_residues&#39;: 44,
+ &#39;num_core_interface_residues&#39;: 11}
+</pre></div>
+</div>
+</div>
 </div>
 <p>Try changing the numbers in the URL. How does it change your results?</p>
 </section>
 <section id="pdb-search-api">
-<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this headline">#</a></h2>
+<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this heading">#</a></h2>
 <p>The API we were just working with is called the PDB “Data” API.</p>
 <p>However, the PDB has another API called the “search” API that let’s you search based on keywords, host species, sequence similarity, and many other things.
 The search API can be complicated, but is <a class="reference external" href="https://search.rcsb.org/#search-api">well documented</a>.</p>
@@ -543,6 +659,24 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;06b4b547-40cf-4b89-9536-428bbb2a0805&#39;,
+ &#39;result_type&#39;: &#39;entry&#39;,
+ &#39;total_count&#39;: 628,
+ &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1D8U&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1UVY&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;3BOM&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.99487975568309},
+  {&#39;identifier&#39;: &#39;3H57&#39;, &#39;score&#39;: 0.9898115893937386},
+  {&#39;identifier&#39;: &#39;2D6C&#39;, &#39;score&#39;: 0.9847948997690406},
+  {&#39;identifier&#39;: &#39;6ZMY&#39;, &#39;score&#39;: 0.9847948997690406},
+  {&#39;identifier&#39;: &#39;1M6C&#39;, &#39;score&#39;: 0.9798287246283488},
+  {&#39;identifier&#39;: &#39;1UX8&#39;, &#39;score&#39;: 0.9798287246283488}],
+ &#39;facets&#39;: []}
+</pre></div>
+</div>
+</div>
 </div>
 <p>Our results tell us that our query returned <code class="docutils literal notranslate"><span class="pre">619</span></code> results (<code class="docutils literal notranslate"><span class="pre">total_count</span></code>).
 The <code class="docutils literal notranslate"><span class="pre">results_set</span></code> keyword has a list of results.
@@ -559,12 +693,23 @@ For example, we will retrieve the title of the paper where this structure was pu
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1D8U
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://data.rcsb.org/rest/v1/core/entry/</span><span class="si">{</span><span class="n">first_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="n">result</span><span class="p">[</span><span class="s2">&quot;struct&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pdbx_descriptor&#39;: &#39;NON-SYMBIOTIC HEMOGLOBIN&#39;,
+ &#39;title&#39;: &#39;CRYSTAL STRUCTURE OF NON-SYMBIOTIC PLANT HEMOGLOBIN FROM RICE&#39;}
 </pre></div>
 </div>
 </div>
@@ -624,6 +769,11 @@ If you wanted to see the 10 most recently released results, you would change
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,10 +782,68 @@ If you wanted to see the 10 most recently released results, you would change
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;ca75a4ae-40af-47a8-9e15-6f04100f0c4f&#39;,
+ &#39;result_type&#39;: &#39;entry&#39;,
+ &#39;total_count&#39;: 524,
+ &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MBD&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MBO&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MBC&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;4MBN&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;5MBN&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MBA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1PMB&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;3MBA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;4MBA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MB5&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MBI&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;5MBA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2FAL&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2FAM&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MYG&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MYH&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MYI&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MYJ&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1YCA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1YCB&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGB&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGC&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGD&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGE&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGF&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGG&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGH&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGI&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGJ&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGK&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGL&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MGM&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MYA&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MYB&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MYC&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MYD&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2MYE&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2SPL&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2SPM&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2SPN&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;2SPO&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLF&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLG&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLH&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLJ&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLK&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLL&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1MLM&#39;, &#39;score&#39;: 1.0}],
+ &#39;facets&#39;: []}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="using-biopython-to-analyze-search-results">
-<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Permalink to this headline">#</a></h2>
+<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Permalink to this heading">#</a></h2>
 <p>The API becomes really interesting when we use the results for analysis.
 Keeping our example of oxygen storage, we could use Biopython to analyze the structures we have retrieved to see
 if there are heme groups in the structures and if there are common motifs in the binding of the heme groups to proteins.</p>
@@ -793,11 +1001,10 @@ The end of the analysis prints the most commonly found neighboring residues to i
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="biopython_mmcif.html"
@@ -817,10 +1024,7 @@ The end of the analysis prints the most commonly found neighboring residues to i
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -861,6 +1065,7 @@ By The Molecular Sciences Software Institute
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -887,8 +1092,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

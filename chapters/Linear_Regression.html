@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Linear Regression &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -56,6 +58,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -70,7 +79,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Creating Plots in Jupyter Notebooks" href="Creating_Plots_in_Jupyter_Notebooks.html" />
     <link rel="prev" title="Working with Pandas" href="Working_with_Pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -79,6 +88,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -132,9 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="setup.html">
+  
   
   
   
@@ -144,8 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>`);</script>
   
   
 </a></div>
@@ -273,20 +293,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -341,7 +363,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
-<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h1>
+<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -354,21 +376,21 @@ document.write(`
 </ul>
 </div>
 <section id="why-linear-regression">
-<h2>Why Linear Regression?<a class="headerlink" href="#why-linear-regression" title="Permalink to this headline">#</a></h2>
+<h2>Why Linear Regression?<a class="headerlink" href="#why-linear-regression" title="Permalink to this heading">#</a></h2>
 <p>When I was a biochemistry grad student, we almost always manipulated our data into a linear format so that we could do linear regression on our handheld calculators. The most prominent example was the manipulation of enzyme kinetic data for Lineweaver-Burke or Eadie-Hofstee plots, so that we could determine the kinetic parameters (<strong>Note</strong>: we’ll actually do non-linear curve fitting for enzyme kinetics in a future lesson).  I also remember doing semi-log plots of enzyme inactivation because they were linear. Now we have many more options by using python in Jupyter notebooks.</p>
 <p>However, some data can still be analyzed by simple linear regression. Perhaps the most common case is the protein assay. Whether you use Lowry, Bradford or BCA methods, it is still most common to use a linear regression fit to the results.</p>
 <p>In this module, we will explore linear regression in Jupyter notebooks using Python. Please keep in mind - this is just a beginning. If you take a course in data science, you are likely to encounter a much deeper look at linear regression where you explore the relationships among many variables in a dataset.</p>
 <p>We’re going to build on the previous lesson, using the pandas library to import the data for this lesson. Then, we will perform the linear regression using the SciPy library.</p>
 </section>
 <section id="libraries-you-will-need">
-<h2>Libraries you will need<a class="headerlink" href="#libraries-you-will-need" title="Permalink to this headline">#</a></h2>
+<h2>Libraries you will need<a class="headerlink" href="#libraries-you-will-need" title="Permalink to this heading">#</a></h2>
 <p>In previous lessons, we have used <code class="docutils literal notranslate"><span class="pre">os</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. In this lesson, we will add the SciPy library, a collection of numerical tools for solving mathematical, scientific, technical and engineering problems (from the <a class="reference external" href="https://www.guru99.com/scipy-tutorial.html">Guru99 Python SciPy Tutorial</a>). Specific subsets of SciPy are useful for linear algebra (scipy.linalg), optimization and fit (scipy.optimize), statistics and random numbers (scipy.stats), and numerical integration (scipy.integrate).</p>
 <p>We will use the dot notation we introduced earlier to access the functions in these libraries. I have expanded our table of libraries to help you keep track of our tools. Please note that the abbreviations listed are just the most common. You can actually define any abbreviation you like, but it is best to use the conventional abbreviations. This will help future coders (including yourself six months from now) as they work with the code.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-left head"><p>Library</p></th>
-<th class="text-center head"><p>Uses</p></th>
-<th class="text-center head"><p>Abbreviation</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Library</p></th>
+<th class="head text-center"><p>Uses</p></th>
+<th class="head text-center"><p>Abbreviation</p></th>
 </tr>
 </thead>
 <tbody>
@@ -391,7 +413,7 @@ document.write(`
 </tbody>
 </table>
 <section id="stages-of-this-module">
-<h3>Stages of this module<a class="headerlink" href="#stages-of-this-module" title="Permalink to this headline">#</a></h3>
+<h3>Stages of this module<a class="headerlink" href="#stages-of-this-module" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Importing the correct libraries</p></li>
 <li><p>Importing data with pandas</p></li>
@@ -413,7 +435,7 @@ document.write(`
 </section>
 </section>
 <section id="importing-data-with-pandas">
-<h2>Importing data with pandas<a class="headerlink" href="#importing-data-with-pandas" title="Permalink to this headline">#</a></h2>
+<h2>Importing data with pandas<a class="headerlink" href="#importing-data-with-pandas" title="Permalink to this heading">#</a></h2>
 <p>In this lesson, you will continue to work with <code class="docutils literal notranslate"><span class="pre">os</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to import your data. The exercises in this chapter represent a very straightforward case, but if you look at the code, you can see that it could be applied to much more complex situations. When using pandas, people often append _df to the end of a variable name as a reminder that this is a dataframe, so the dataframe that contains our results might be called results_df. The code in the next cell will enable you to create the dataframe for this lesson. Please note that <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is a reserved word when working with pandas dataframes, so you should not use that word as a variable name.</p>
 <p>The data in the csv file includes the concentrations of the standards, where 100 <span class="math notranslate nohighlight">\(\mu\)</span>L of standard was added to each test tube.</p>
 <div class="cell docutils container">
@@ -424,6 +446,63 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Protein Concentration (mg/mL)</th>
+      <th>A595</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.2</td>
+      <td>0.285</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.4</td>
+      <td>0.485</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.6</td>
+      <td>0.621</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.8</td>
+      <td>0.799</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>1.010</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.2</td>
+      <td>1.118</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>In a dataframe, you can refer to the data in a column just by the column header. These are strings, so you need to put single or double quotes around them when you use them. In pandas, the terms <code class="docutils literal notranslate"><span class="pre">series</span></code> is often used to refer to the data in a single column in a dataframe. So we are going to use the two column headers to define the data for our linear regression.</p>
 <div class="cell docutils container">
@@ -434,10 +513,27 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.2
+1    0.4
+2    0.6
+3    0.8
+4    1.0
+5    1.2
+Name: Protein Concentration (mg/mL), dtype: float64 0    0.285
+1    0.485
+2    0.621
+3    0.799
+4    1.010
+5    1.118
+Name: A595, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="linear-regression-with-scipy">
-<h2>Linear Regression with SciPy<a class="headerlink" href="#linear-regression-with-scipy" title="Permalink to this headline">#</a></h2>
+<h2>Linear Regression with SciPy<a class="headerlink" href="#linear-regression-with-scipy" title="Permalink to this heading">#</a></h2>
 <p>Now that the data are in place, we simply need to import the stats module from SciPy to perform the linear regression.</p>
 <p>Notice that the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function in scipy.stats accepts the two data series and actually generates five values: slope, intercept, r-value, p-value, and standard error. In the next cell all of those variables are assigned in a single command. Then the results are presented with a series of print statements.</p>
 <div class="cell docutils container">
@@ -451,14 +547,23 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope =  0.8454285714285716
+Intercept =  0.12786666666666657
+R-squared =  0.994690398528738
+P value =  1.0590717448341336e-05
+Standard error =  0.030884027089284245
+</pre></div>
+</div>
+</div>
 </div>
 <section id="solving-for-protein-concentrations-in-samples">
-<h3>Solving for protein concentrations in samples<a class="headerlink" href="#solving-for-protein-concentrations-in-samples" title="Permalink to this headline">#</a></h3>
+<h3>Solving for protein concentrations in samples<a class="headerlink" href="#solving-for-protein-concentrations-in-samples" title="Permalink to this heading">#</a></h3>
 <p>In the next lesson, we will look at plotting these data. For now, let’s get some practice using the results of our linear regression to calculate the protein concentrations in typical unknowns. This will be simple math, but it’s good practice with using correct syntax. For this exercise, we are going to determine protein concentration in mg/mL. The data shown for the six protein samples in this table can be found in data/protein_samples.csv. In each case 100 <span class="math notranslate nohighlight">\(\mu\)</span>L of sample was added to the sample tube for analysis.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>Sample #</p></th>
-<th class="text-center head"><p>A<span class="math notranslate nohighlight">\(_{595}\)</span></p></th>
+<tr class="row-odd"><th class="head text-center"><p>Sample #</p></th>
+<th class="head text-center"><p>A<span class="math notranslate nohighlight">\(_{595}\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -495,7 +600,7 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 <p>Our final equation will then solve for concentration in mg/mL, based on the units for the slope (/mg/mL) and the unitless intercept.</p>
 <p>Now let’s put our unknown sample data in a pandas dataframe, write out the code for the equation and use some neat tricks from pandas to add the concentrations to our table.</p>
 <section id="use-pandas-to-import-the-csv-data-into-a-dataframe">
-<h4>Use pandas to import the csv data into a dataframe<a class="headerlink" href="#use-pandas-to-import-the-csv-data-into-a-dataframe" title="Permalink to this headline">#</a></h4>
+<h4>Use pandas to import the csv data into a dataframe<a class="headerlink" href="#use-pandas-to-import-the-csv-data-into-a-dataframe" title="Permalink to this heading">#</a></h4>
 <p>This is the exact process we used above. We are just repeating it to gain practice. We start by using the os library to point to the csv file. Then we use pandas to read the csv file and write it to the dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,10 +610,67 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample #</th>
+      <th>A-595</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.183</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.682</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.759</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1.340</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.935</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1.013</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="create-the-equation">
-<h4>Create the Equation<a class="headerlink" href="#create-the-equation" title="Permalink to this headline">#</a></h4>
+<h4>Create the Equation<a class="headerlink" href="#create-the-equation" title="Permalink to this heading">#</a></h4>
 <p>The next step is to implement the equation we described above in python. You can use the column headers from the pandas dataframe to apply the equation to every row (index) of the dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -517,10 +679,21 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.065213
+1    0.655447
+2    0.746525
+3    1.433750
+4    0.954703
+5    1.046964
+Name: A-595, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="add-the-column-to-the-dataframe">
-<h4>Add the column to the dataframe<a class="headerlink" href="#add-the-column-to-the-dataframe" title="Permalink to this headline">#</a></h4>
+<h4>Add the column to the dataframe<a class="headerlink" href="#add-the-column-to-the-dataframe" title="Permalink to this heading">#</a></h4>
 <p>Adding a column to a pandas dataframe is simple - you just use the name of the dataframe followed by the name of the new column in single quotes within square brackets. In this case, we will create the new column and assign the calculated concentration values to that column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -529,10 +702,74 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample #</th>
+      <th>A-595</th>
+      <th>ProtConc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.183</td>
+      <td>0.065213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.682</td>
+      <td>0.655447</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.759</td>
+      <td>0.746525</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1.340</td>
+      <td>1.433750</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.935</td>
+      <td>0.954703</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1.013</td>
+      <td>1.046964</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="eliminating-values-outside-the-calibration-curve-optional">
-<h4>Eliminating values outside the calibration curve (optional)<a class="headerlink" href="#eliminating-values-outside-the-calibration-curve-optional" title="Permalink to this headline">#</a></h4>
+<h4>Eliminating values outside the calibration curve (optional)<a class="headerlink" href="#eliminating-values-outside-the-calibration-curve-optional" title="Permalink to this heading">#</a></h4>
 <p>Notice that the calculations cover all absorbance values - python went through each row of the dataframe.</p>
 <p>There is one more issue we can address - the absorbance value for two of the unknown samples were outside the absorbance values of the standards. Therefore, these concentrations are not experimentally valid and should be reported as being “Out of Range”.</p>
 <p>We can make this change in the dataframe by using <code class="docutils literal notranslate"><span class="pre">loc</span></code> to look sequentially at the rows in the dataframe. The syntax here tells python to work with the <code class="docutils literal notranslate"><span class="pre">samples_df</span></code> dataframe, look at one row at a time (<code class="docutils literal notranslate"><span class="pre">loc</span></code>), perform a conditional analysis of the A<span class="math notranslate nohighlight">\(_{595}\)</span> value on that row, and change the value for <code class="docutils literal notranslate"><span class="pre">ProtConc</span></code> to <code class="docutils literal notranslate"><span class="pre">NaN</span></code> if the A<span class="math notranslate nohighlight">\(_{595}\)</span> &lt; 0.285 (the value for the lowest standard) or A<span class="math notranslate nohighlight">\(_{595}\)</span> &gt; 1.118 (the value for the highest standard).</p>
@@ -545,6 +782,70 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample #</th>
+      <th>A-595</th>
+      <th>ProtConc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.183</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.682</td>
+      <td>0.655447</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.759</td>
+      <td>0.746525</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1.340</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0.935</td>
+      <td>0.954703</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1.013</td>
+      <td>1.046964</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p><strong>Optional:</strong> Rather than hard-coding the minimum and maximum values for the calibration curve, we could also do this programmatically with the <code class="docutils literal notranslate"><span class="pre">.min()</span></code> and <code class="docutils literal notranslate"><span class="pre">.max()</span></code> functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">samples_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;A-595&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s1">&#39;ProtConc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -631,11 +932,10 @@ ProtConc = \frac{A_{595} - intercept}{slope}
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="Working_with_Pandas.html"
@@ -655,10 +955,7 @@ ProtConc = \frac{A_{595} - intercept}{slope}
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -710,6 +1007,7 @@ By The Molecular Sciences Software Institute
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -736,8 +1034,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

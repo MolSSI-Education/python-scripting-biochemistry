@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Creating Plots in Jupyter Notebooks &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -56,6 +58,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -70,7 +79,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Nonlinear Regression Part 1" href="nonlinear_regression_part_1.html" />
     <link rel="prev" title="Linear Regression" href="Linear_Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -79,6 +88,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -132,9 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="setup.html">
+  
   
   
   
@@ -144,8 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>`);</script>
   
   
 </a></div>
@@ -273,20 +293,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -328,7 +350,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="creating-plots-in-jupyter-notebooks">
-<h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
+<h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -343,13 +365,13 @@ document.write(`
 </ul>
 </div>
 <section id="preparing-to-plot">
-<h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Permalink to this headline">#</a></h2>
+<h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Permalink to this heading">#</a></h2>
 <p>In recent lessons, we have learned to use pandas to import csv data into a dataframe that is very easy to access and can be used for plotting our data. We have also learned to do linear regression analysis using scipy. In this lesson, we will create linear regression plots of our data using two different libraries, matplotlib.pyplot and seaborn. As we add more libraries to our repretoire, we are going to track them in a table.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-left head"><p>Library</p></th>
-<th class="text-center head"><p>Uses</p></th>
-<th class="text-center head"><p>Abbreviation</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Library</p></th>
+<th class="head text-center"><p>Uses</p></th>
+<th class="head text-center"><p>Abbreviation</p></th>
 </tr>
 </thead>
 <tbody>
@@ -398,10 +420,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope = 0.8454285714285716/mg/mL
+Intercept =  0.12786666666666657
+R-squared =  0.994690398528738
+P value =  1.0590717448341336e-05
+Standard error =  0.030884027089284245
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="using-matplotlib-pyplot">
-<h2>Using Matplotlib.pyplot<a class="headerlink" href="#using-matplotlib-pyplot" title="Permalink to this headline">#</a></h2>
+<h2>Using Matplotlib.pyplot<a class="headerlink" href="#using-matplotlib-pyplot" title="Permalink to this heading">#</a></h2>
 <p>Matplotlib is a library that supports static, animated and interactive data visualization in Python (<a class="reference external" href="https://matplotlib.org/">Matplotlib: Visualization with Python</a>). Matplotlib is used alongside numpy to provide for MATLAB-style plotting. You can use matplotlib to create and fully annotate high resolution, publication quality plots that can be easily exported for inclusion in reports and manuscripts. It is possible to create many graph formats in matplotlib, including “picture within a picture graphs.” Think of the chart options that are available in your spreadsheet program. These are all available with matplotlib, plus many more.</p>
 <p>We are going to use one subset of matplotlib’s functions called pyplot. This approach is similar to using the stats subset of the functions found in scipy. This library contains tools for plotting and annotating the data. Let’s start with a simple x-y scatter plot of the protein calibration curve data. First, we need to import the library, set the size of the figure and indicate the data for the plot.</p>
 <div class="cell docutils container">
@@ -413,6 +444,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e15861af0&gt;
+</pre></div>
+</div>
+<img alt="../_images/0d4288b0a92ad6080be27e37c928370c0ce08d255a385dcd12cd878341afbbd0.png" src="../_images/0d4288b0a92ad6080be27e37c928370c0ce08d255a385dcd12cd878341afbbd0.png" />
+</div>
 </div>
 <p>Next we add the best fit line using the slope and intercept that were generated by the stats.linregress function from scipy. The first two lines in the next cell are identical to the cell above (no need to import the libraries again). The third line introduces the best fit curve. You may notice a delay of a few seconds as the notebook generates the figure. The more complex the figure and the larger the dataset, the longer it takes for the plot to appear.</p>
 <div class="cell docutils container">
@@ -422,6 +459,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">xdata</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span> <span class="c1"># introduce the best-fit line</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0e157b1280&gt;]
+</pre></div>
+</div>
+<img alt="../_images/11f308f6aa96b2648ca1297f4fda5898848ca2100c8793338a6b3d4b81cdaa58.png" src="../_images/11f308f6aa96b2648ca1297f4fda5898848ca2100c8793338a6b3d4b81cdaa58.png" />
 </div>
 </div>
 <p>Next we will use functions for matplotlib.pyplot to add labels for each axis. It is possible to include subscripts and Greek letters in matplotlib figure labels using LaTeX. Here is a <a class="reference external" href="https://towardsdatascience.com/write-markdown-latex-in-the-jupyter-notebook-10985edb91fd">link to a helpful site</a> about using markdown (used for the text cells in Jupyter notebook) and LaTeX in Jupyter notebooks by <a class="reference external" href="https://medium.com/&#64;ahmedazizkhelifi">Khelifi Ahmed Aziz</a>.</p>
@@ -444,6 +487,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">F</span><span class="s1">&#39;y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> * x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.25, 1.0, &#39;y = 0.8454 * x + 0.1279&#39;)
+</pre></div>
+</div>
+<img alt="../_images/c92d7db7c6e06d0c3fb76a3a4121eee5b75dc78cf1303501688ebf287d30aa0e.png" src="../_images/c92d7db7c6e06d0c3fb76a3a4121eee5b75dc78cf1303501688ebf287d30aa0e.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -470,6 +519,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/b476f0ae36ec1104621754f2b5e0ab46f22f7241e5f1686569efb742d899ec41.png" src="../_images/b476f0ae36ec1104621754f2b5e0ab46f22f7241e5f1686569efb742d899ec41.png" />
+</div>
 </div>
 <p>Let’s explore the line of code we wrote to save the figure. Once you have executed this command, you should find the plot in the same folder as the current Jupyter notebook.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Bradford_plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">bbox_inches</span> <span class="o">=</span> <span class="s1">&#39;tight&#39;</span><span class="p">)</span>
@@ -483,7 +535,7 @@ document.write(`
 </div>
 </section>
 <section id="scatter-plots-with-seaborn">
-<h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Permalink to this headline">#</a></h2>
+<h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a Python library for statistical data visualization that is based on matplotlib. That means you can use all the commands from Matplotlib with Seaborn, but it also has high-level functions that group many Matplotlib functions to produce sophisticated graphs easily.</p>
 <p>Here we will use the Seaborn library to create a scatter plot that includes a confidence interval. Please note that Seaborn has dependencies on other libraries (numpy, scipy, pandas, and matplotlib), so these must be imported before you can use Seaborn.</p>
 <p>The following plot is based on resources at <a class="reference external" href="https://www.statology.org/scatterplot-with-regression-line-python/">Statology</a>. I prefer this plot to the simple linear regression above because it makes the reliable regions of the calibration curve more obvious by displaying the 95% confidence interval. It also emphasizes the valid range for calculations based on the plot - that we can’t use this curve to analyze absorbance values below 0.285 or above 1.118.</p>
@@ -502,6 +554,12 @@ document.write(`
 <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ydata</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/9005443e5c455af5499f127c88d2638f13399702697e9c999ae03f1f5166671f.png" src="../_images/9005443e5c455af5499f127c88d2638f13399702697e9c999ae03f1f5166671f.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -549,6 +607,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/b7e1fe3a4bc8bc97c61ed2ddb2cfe506f67b6e4d13276264d0017903fdab7fd7.png" src="../_images/b7e1fe3a4bc8bc97c61ed2ddb2cfe506f67b6e4d13276264d0017903fdab7fd7.png" />
+</div>
 </div>
 <div class="key admonition">
 <p class="admonition-title">Key Points</p>
@@ -585,11 +646,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="Linear_Regression.html"
@@ -609,10 +669,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -651,6 +708,7 @@ By The Molecular Sciences Software Institute
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -677,8 +735,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

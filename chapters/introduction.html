@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,12 +39,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -56,6 +58,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -68,7 +77,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="File Parsing" href="File_Parsing.html" />
     <link rel="prev" title="Workshop Schedule" href="workshop_schedule.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +86,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -130,9 +148,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="setup.html">
+  
   
   
   
@@ -142,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>`);</script>
   
   
 </a></div>
@@ -271,20 +291,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -335,7 +357,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions</p>
@@ -351,10 +373,10 @@ document.write(`
 </ul>
 </div>
 <section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p>Python is a computer programming language that has become ubiquitous in scientific programming.  Our lessons will run python <em>interactively</em> through a python interpreter inside a Jupyter notebook.  The <a class="reference internal" href="setup.html"><span class="doc std std-doc">setup</span></a> page should have provided information on how to install and start a Jupyter notebook.  Everything included in a code block is something you could type into your python interpreter and evaluate.</p>
 <section id="setting-up-your-jupyter-notebooks">
-<h3>Setting up your Jupyter notebooks<a class="headerlink" href="#setting-up-your-jupyter-notebooks" title="Permalink to this headline">#</a></h3>
+<h3>Setting up your Jupyter notebooks<a class="headerlink" href="#setting-up-your-jupyter-notebooks" title="Permalink to this heading">#</a></h3>
 <p>In the <a class="reference internal" href="setup.html"><span class="doc std std-doc">setup</span></a>, you learned how to start a Jupyter notebook. Now, we will use the notebook to execute Python code. Jupyter notebooks are divided into cells. You run a Jupyter notebook one cell at a time. To execute a cell, click inside the cell and press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code>.</p>
 <p>In the upper left corner, click where it says “Untitled” and change the name to “MolSSI Workshop”. We have now changed the name of the Jupyter Notebook.</p>
 <p>Jupyter notebooks allow us to also use something called <strong>markdown</strong> in some cells. We can use markdown to write descriptions about our notebooks for others to read. It’s a good practice to have your first cell be markdown to explain the purpose of the notebook. Let’s do that in our first cell. Click inside the first cell, then on the top of the screen select <code class="docutils literal notranslate"><span class="pre">Cell-&gt;Cell</span> <span class="pre">Type-&gt;Markdown</span></code> (shown below).</p>
@@ -373,11 +395,16 @@ document.write(`
 </section>
 </section>
 <section id="assigning-variables-and-data-types">
-<h2>Assigning variables and data types<a class="headerlink" href="#assigning-variables-and-data-types" title="Permalink to this headline">#</a></h2>
+<h2>Assigning variables and data types<a class="headerlink" href="#assigning-variables-and-data-types" title="Permalink to this heading">#</a></h2>
 <p>Any python interpreter can work just like a calculator.  This is not very useful. Type the following into the next cell of your Jupyter notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="o">+</span><span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -407,6 +434,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+</pre></div>
+</div>
+</div>
 </div>
 <p>In the previous code block, we introduced the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.  Often, we will use the print function just to make sure our code is working correctly.</p>
 <p>Note that if you do not specify a new name for a variable, then it doesn’t automatically change the value of the variable; this is called being <em>immutable</em>.  For example if we typed</p>
@@ -418,6 +450,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+34.78260869565217
+</pre></div>
+</div>
+</div>
 </div>
 <p>Nothing happened to the value of <code class="docutils literal notranslate"><span class="pre">velocity</span></code>.  If we wanted to change the value of <code class="docutils literal notranslate"><span class="pre">velocity</span></code> we would have to re-save the variable using the same name to overwrite the existing value.</p>
 <div class="cell docutils container">
@@ -425,6 +463,12 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
 <span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="mi">60</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+2086.9565217391305
 </pre></div>
 </div>
 </div>
@@ -440,10 +484,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+2086.9565217391305
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="assigning-multiple-variables-at-once">
-<h2>Assigning multiple variables at once<a class="headerlink" href="#assigning-multiple-variables-at-once" title="Permalink to this headline">#</a></h2>
+<h2>Assigning multiple variables at once<a class="headerlink" href="#assigning-multiple-variables-at-once" title="Permalink to this heading">#</a></h2>
 <p>Python can do what is called multiple assignment where you assign several variables their values on one line of code.  The following code block does the exact same thing as the previous code block.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -454,14 +504,24 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.78260869565217
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="data-types">
-<h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this headline">#</a></h2>
+<h2>Data types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h2>
 <p>Each variable is some particular type of data.  The most common types of data are strings (<code class="docutils literal notranslate"><span class="pre">str</span></code>), integers (<code class="docutils literal notranslate"><span class="pre">int</span></code>), and floating point numbers (<code class="docutils literal notranslate"><span class="pre">float</span></code>).  You can identify the data type of any variable with the function <code class="docutils literal notranslate"><span class="pre">type(variable_name)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
 </pre></div>
 </div>
 </div>
@@ -474,10 +534,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h2>
 <p>Another common data structure in python is the list.  Lists can be used to group several values or variables together, and are declared using square brackets [_]. <strong>Python assigns special meanings to square brackets [], parentheses () and curly brackets {}, so you must be very careful with these characters.</strong> List values are separated by commas. Python has several built in functions which can be used on lists. The built-in function <code class="docutils literal notranslate"><span class="pre">len</span></code> can be used to determine the length of a list. This code block also demonstrates how to print multiple variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -490,12 +555,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This list contains 13 substrate concentrations
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you want to operate on a particular element of the list, you use the list name and then put in brackets which element of the list you want.  <strong>In python counting starts at zero.  So the first element of the list is <code class="docutils literal notranslate"><span class="pre">list[0]</span></code></strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the first element of the list</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">substrate_concs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
 </pre></div>
 </div>
 </div>
@@ -509,10 +584,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100000.0
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="slices">
-<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this headline">#</a></h2>
+<h2>Slices<a class="headerlink" href="#slices" title="Permalink to this heading">#</a></h2>
 <p>Sometimes you will want to make a new list that is a subset of an existing list.  For example, we might want to make a new list that is just the first few elements of our previous list.  This is called a <code class="docutils literal notranslate"><span class="pre">slice</span></code>.  The general syntax is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="n">list_name</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
 </pre></div>
@@ -529,6 +609,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">short_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0, 2.0, 3.0]
 </pre></div>
 </div>
 </div>
@@ -560,10 +645,16 @@ slice2 is [1.0, 2.0, 3.0]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0, 2.0, 3.0, 4.0, 6.0, 8.0, 10.0, 15.0, 20.0, 30.0, 50.0, 75.0, 100.0]
+[1.0, 2.0, 3.0, 4.0, 6.0, 8.0, 10.0, 15.0, 20.0, 30.0, 50.0, 75.0, 100.0]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="repeating-an-operation-many-times-for-loops">
-<h2>Repeating an operation many times: for loops<a class="headerlink" href="#repeating-an-operation-many-times-for-loops" title="Permalink to this headline">#</a></h2>
+<h2>Repeating an operation many times: for loops<a class="headerlink" href="#repeating-an-operation-many-times-for-loops" title="Permalink to this heading">#</a></h2>
 <p>Often, you will want to do something to every element of a list.  The structure
 to do this is called a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.  The general structure of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
@@ -577,6 +668,23 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
     <span class="n">velocity</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.25
+11.764705882352942
+16.666666666666668
+21.05263157894737
+28.571428571428573
+34.78260869565217
+40.0
+50.0
+57.142857142857146
+66.66666666666667
+76.92307692307692
+83.33333333333333
+86.95652173913044
 </pre></div>
 </div>
 </div>
@@ -597,6 +705,19 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">substrate_concs</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">V</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">number</span> <span class="o">/</span> <span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">number</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">velocities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">velocities</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;velocities&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>This code doesn’t work because on the first iteration of our loop, the list <code class="docutils literal notranslate"><span class="pre">velocities</span></code> doesn’t exist.  To make it work, we have to start the list outside of the loop.  The list can be blank when we start it, but we have to start it.</p>
 <div class="cell docutils container">
@@ -614,7 +735,7 @@ to do this is called a <code class="docutils literal notranslate"><span class="p
 </div>
 </section>
 <section id="making-choices-logic-statements">
-<h2>Making choices: Logic Statements<a class="headerlink" href="#making-choices-logic-statements" title="Permalink to this headline">#</a></h2>
+<h2>Making choices: Logic Statements<a class="headerlink" href="#making-choices-logic-statements" title="Permalink to this heading">#</a></h2>
 <p>Within your code, you may need to evaluate a variable and then do something if the variable has a particular value.  This type of logic is handled by an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.  In the following example, we are only going to use the lower substrate concentrations, as we might do when we are looking for the initial linear portion of a Michaelis-Menten curve. <strong>As a biochemist, you may want to plot the data to see what you find. We will address plotting later in the workshop</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,7 +805,7 @@ nmbers which have been saved as strings. Copy this list exactly into your code.<
 </div>
 </section>
 <section id="a-note-about-jupyter-notebooks">
-<h2>A note about jupyter notebooks<a class="headerlink" href="#a-note-about-jupyter-notebooks" title="Permalink to this headline">#</a></h2>
+<h2>A note about jupyter notebooks<a class="headerlink" href="#a-note-about-jupyter-notebooks" title="Permalink to this heading">#</a></h2>
 <p>If you use the jupyter notebook for your python interpreter, the notebook only executes the current code block.  This can have several unintended consequences. If you change a value and then go back and run an earlier code block, it will use the new value, not the first defined value, which may give you incorrect analysis.  Similarly, if you open your jupyter notebook later, and try to run a code block in the middle, it may tell you that your variables are undefined, even though you can clearly see them defined in earlier code blocks.  But if you didn’t re-run those code blocks, then python doesn’t know they exist.</p>
 </section>
 </section>
@@ -714,11 +835,10 @@ nmbers which have been saved as strings. Copy this list exactly into your code.<
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="workshop_schedule.html"
@@ -738,10 +858,7 @@ nmbers which have been saved as strings. Copy this list exactly into your code.<
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -789,6 +906,7 @@ By The Molecular Sciences Software Institute
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -815,8 +933,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
