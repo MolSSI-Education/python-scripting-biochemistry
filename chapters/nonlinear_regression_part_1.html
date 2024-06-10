@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Nonlinear Regression Part 1 &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -15,49 +14,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -65,15 +61,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-FHKVGE8HKZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/nonlinear_regression_part_1';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Nonlinear Regression Part 2" href="nonlinear_regression_part_2.html" />
@@ -87,28 +88,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -130,12 +126,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +173,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
@@ -187,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
 </ul>
 
     </div>
@@ -202,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -211,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -359,10 +375,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression-part-1">
-<h1>Nonlinear Regression Part 1<a class="headerlink" href="#nonlinear-regression-part-1" title="Permalink to this heading">#</a></h1>
+<h1>Nonlinear Regression Part 1<a class="headerlink" href="#nonlinear-regression-part-1" title="Link to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -379,30 +395,30 @@ document.write(`
 <p>In this module, we will calculate initial rates from the raw data (ΔA<sub>405</sub>) in an enzyme kinetics experiment with alkaline phosphatase. In the process, we will import the raw data into a pandas dataframe, use some pandas tools to reorganize the data, produce a second pandas dataframe that contains the substrate concentrations and initial rates at each concentration. Finally, we will export this information to a csv file to use in the next module, where we will explore nonlinear curve fitting in Python.</p>
 </div>
 <section id="what-is-pandas-and-why-do-we-use-it">
-<h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Permalink to this heading">#</a></h2>
+<h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Link to this heading">#</a></h2>
 <p><em>Please note: this section about pandas is included for those who have not completed the Working with Pandas notebook already.</em> Pandas is a python library that is designed to work with two dimensional data arrays. It is built on numpy, another python library that specializes in numerical analysis. Numpy also has the ability to create and analyze data arrays. If you are not familiar with arrays, here are some simple examples.</p>
 <section id="d-arrays">
-<h3>1D arrays<a class="headerlink" href="#d-arrays" title="Permalink to this heading">#</a></h3>
+<h3>1D arrays<a class="headerlink" href="#d-arrays" title="Link to this heading">#</a></h3>
 <p>A one dimensional array is simply a list of items, for example, a list of the elements: H, He, Li, Be, B, etc.</p>
 </section>
 <section id="id1">
-<h3>2D arrays<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>2D arrays<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>A two dimensional array is an array which has rows and columns. It can have any number of columns and rows. A spreadsheet with rows and columns is analogous to a 2D array.</p>
 </section>
 <section id="id2">
-<h3>3D arrays<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>3D arrays<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>A three-dimensional array would be a collection of two dimensional arrays. For example, this might be a collection of x, y, and z coordinates for a structure as a function of time.</p>
 <p>The numpy library has functions that will manage n-dimensional arrays, while pandas only works on 2D arrays. You may need numpy for nD arrays at some point, but for this workshop, we will learn to use pandas as we learn how to perform linear and nonlinear regression of laboratory data based on data in 2D arrays.</p>
 <p>The pandas library contains powerful tools for working with 2D data arrays, including the ability to identify the rows and columns of data by unique identifiers: things like “Substrate Concentration (mM)” and “initial velocity” rather than “row 1” or “column C”). Pandas also has many more functions that we will not explore in this workshop, but here are three excellent free online resources for learning more about pandas:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://education.molssi.org/python-data-analysis/02-pandas/index.html">Using pandas for data analysis</a> from MolSSI</p></li>
 <li><p>Charlie Weiss’s excellent online textbook, <em>Scientific Computing for Chemists</em>, which you can find on his GitHub site, <a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/intro.html">SciCompforChemists</a></p></li>
-<li><p>Corey Schafer’s <a class="reference external" href="https://www.youtube.com/watch?v=ZyhVh-qRZPA&amp;list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">Pandas Tutorials on YouTube</a></p></li>
+<li><p>Corey Schafer’s <a class="reference external" href="https://www.youtube.com/watch?v=ZyhVh-qRZPA&amp;amp;list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">Pandas Tutorials on YouTube</a></p></li>
 </ul>
 </section>
 </section>
 <section id="importing-the-data">
-<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Permalink to this heading">#</a></h2>
+<h2>Importing the Data<a class="headerlink" href="#importing-the-data" title="Link to this heading">#</a></h2>
 <p>We start by importing data from a csv file as we did earlier with the data for linear regression. These data represent the rate of p-nitrophenol appearance for a series of p-nitrophenol phosphate concentrations in the presence of alkaline phosphatase. We will import the libraries we need, import the data and set up a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -430,7 +446,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-the-pandas-dataframe">
-<h2>Creating the pandas dataframe<a class="headerlink" href="#creating-the-pandas-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Creating the pandas dataframe<a class="headerlink" href="#creating-the-pandas-dataframe" title="Link to this heading">#</a></h2>
 <p>The filehandle, <code class="docutils literal notranslate"><span class="pre">datafile</span></code>, points to a csv file that contains the raw kinetics data. As we saw in the <code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">with</span> <span class="pre">Pandas</span></code> module, the pandas library has a tool for creating a dataframe from an existing csv file. Notice that the variable for the dataframe is called AP_kin_df. The <code class="docutils literal notranslate"><span class="pre">_df</span></code> at the end of the variable name is a reminder that this is a pandas dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,7 +706,7 @@ document.write(`
 </div>
 </section>
 <section id="datatype">
-<h2>Datatype<a class="headerlink" href="#datatype" title="Permalink to this heading">#</a></h2>
+<h2>Datatype<a class="headerlink" href="#datatype" title="Link to this heading">#</a></h2>
 <p>Before we calculate the slopes to get initial velocities, we need to check for the datatypes on the numbers. We must ensure that the numbers are floats, rather than strings, so we can do calculations on them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,7 +722,7 @@ document.write(`
 </div>
 </section>
 <section id="calculating-the-initial-velocity">
-<h2>Calculating the initial velocity<a class="headerlink" href="#calculating-the-initial-velocity" title="Permalink to this heading">#</a></h2>
+<h2>Calculating the initial velocity<a class="headerlink" href="#calculating-the-initial-velocity" title="Link to this heading">#</a></h2>
 <p>The index for each row is the time, which will be the x values to get the slope of each line. The values in each column are the absorbance values at each time point, so those will be our y values. Now we need to follow these steps to calculate the initial velocity at each substrate concentration.</p>
 <ol class="arabic simple">
 <li><p>Inspect the data.</p></li>
@@ -716,7 +732,7 @@ document.write(`
 <li><p>Export the second dataframe to a csv file that we will use in the next module.</p></li>
 </ol>
 <section id="inspect-the-data">
-<h3>Inspect the data<a class="headerlink" href="#inspect-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Inspect the data<a class="headerlink" href="#inspect-the-data" title="Link to this heading">#</a></h3>
 <p>In an earlier module, we used pyplot from matplotlib to create a well-annotated plot of our linear regression data. We could do that here, but we only want to inspect the data to make sure we are on the right track. To do that we can use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html">plot command from pandas</a>, which builds the plot using tools from matplotlib. The syntax is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -734,7 +750,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Time (min)&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/46bfdf92cb5cf30bfefc78a65cb634a2b3d057a1f0350d9c21b7e3e368c1f5e1.png" src="../_images/46bfdf92cb5cf30bfefc78a65cb634a2b3d057a1f0350d9c21b7e3e368c1f5e1.png" />
+<img alt="../_images/772f103b816b24d697586694f21e57bb939b7511b5cf211ba7ea638a68be2900.png" src="../_images/772f103b816b24d697586694f21e57bb939b7511b5cf211ba7ea638a68be2900.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -822,7 +838,7 @@ document.write(`
 </section>
 </section>
 <section id="calculate-the-slopes">
-<h2>Calculate the Slopes<a class="headerlink" href="#calculate-the-slopes" title="Permalink to this heading">#</a></h2>
+<h2>Calculate the Slopes<a class="headerlink" href="#calculate-the-slopes" title="Link to this heading">#</a></h2>
 <p>There is some scatter in the data, but generally, the slopes of the curves increase with increasing substrate concentration. Now we need to calculate the slopes for each of the lines in the plot above. To do so, we can use the linregress function from scipy.stats that we used for the least squares linear regression analysis of the protein assay data from an earlier module. We will use the index from our data frame, <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">(min)</span></code>, AP_kin_df. The y values will be taken from each of the series from the same dataframe.</p>
 <p>Remember that linregress provides five outputs: slope, intercept, r-value, p-value and standard error. We need only the slope, so we will use this format</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
@@ -958,7 +974,7 @@ document.write(`
 </div>
 </section>
 <section id="calculate-the-initial-velocity">
-<h2>Calculate the initial velocity<a class="headerlink" href="#calculate-the-initial-velocity" title="Permalink to this heading">#</a></h2>
+<h2>Calculate the initial velocity<a class="headerlink" href="#calculate-the-initial-velocity" title="Link to this heading">#</a></h2>
 <p>The initial velocity can be calculated by dividing the slope by the micromolar extinction coefficient under the experimental conditions, 0.015 <span class="math notranslate nohighlight">\(\mu\)</span>M<span class="math notranslate nohighlight">\(^{-1}\)</span>cm<span class="math notranslate nohighlight">\(^{-1}\)</span>. It is possible to complete the calculation and add it to the dataframe with a single line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1271,7 +1287,7 @@ Your data will should look something like this:</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1300,6 +1316,7 @@ Your data will should look something like this:</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1346,7 +1363,7 @@ By The Molecular Sciences Software Institute
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1370,8 +1387,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/micromamba-root/envs/iqb-2023/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# We will use a for loop to add hydrogens to and optimize each ligand in 3D 
+
+ligands = [ligand, ligand_cn, ligand_c_methyl, ligand_c_tbu]  # A list so we can use a for loop 
+ligands_H = []                                                # An empty list to hold the ligands with explicit hydrogens
+lig_converge = []
+
+for mol in ligands:                                           # A for loop to iterate the list of ligands
+    mol_H = AllChem.AddHs(mol)                                # The function that adds the hydrogens
+    AllChem.EmbedMolecule(mol_H)                              # Convert from 2D to 3D
+    opt = AllChem.MMFFOptimizeMoleculeConfs(mol_H)            # Optimization function
+    lig_converge.append(opt)                                  # Collecting data on optimization
+    ligands_H.append(mol_H)                                   # Appending the hydrogenated ligands to the list ligands_H
+    
+Draw.MolsToGridImage(ligands_H,molsPerRow=2, subImgSize=(400,400))                # Drawing the molecules for inspection
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[17], line 3[0m
+[1;32m      1[0m [38;5;66;03m# We will use a for loop to add hydrogens to and optimize each ligand in 3D [39;00m
+[0;32m----> 3[0m ligands [38;5;241m=[39m [ligand, ligand_cn, ligand_c_methyl, [43mligand_c_tbu[49m]  [38;5;66;03m# A list so we can use a for loop [39;00m
+[1;32m      4[0m ligands_H [38;5;241m=[39m []                                                [38;5;66;03m# An empty list to hold the ligands with explicit hydrogens[39;00m
+[1;32m      5[0m lig_converge [38;5;241m=[39m []
+
+[0;31mNameError[0m: name 'ligand_c_tbu' is not defined
+

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Processing Multiple Files and Writing Files &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -15,49 +14,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -65,13 +61,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-FHKVGE8HKZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Processing_Multiple_Files_and_Writing_Files';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with Pandas" href="Working_with_Pandas.html" />
@@ -85,28 +86,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -128,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -167,7 +171,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
@@ -185,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
 </ul>
 
     </div>
@@ -200,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -209,7 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -349,10 +365,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="processing-multiple-files-and-writing-files">
-<h1>Processing Multiple Files and Writing Files<a class="headerlink" href="#processing-multiple-files-and-writing-files" title="Permalink to this heading">#</a></h1>
+<h1>Processing Multiple Files and Writing Files<a class="headerlink" href="#processing-multiple-files-and-writing-files" title="Link to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -368,7 +384,7 @@ document.write(`
 </ul>
 </div>
 <section id="processing-multiple-files">
-<h2>Processing multiple files<a class="headerlink" href="#processing-multiple-files" title="Permalink to this heading">#</a></h2>
+<h2>Processing multiple files<a class="headerlink" href="#processing-multiple-files" title="Link to this heading">#</a></h2>
 <p>In our previous lesson, we parsed values from output files.  While you might have seen the utility of doing such a thing, you might have also wondered why we didn’t just search the file and cut and paste the values we wanted into a spreadsheet.  If you only have 1 or 2 files, this might be a very reasonable thing to do.  But what if you had 100 files to analyze?  What if you had 1000?  In such a case the cutting and pasting method would be very tedious and time consuming.</p>
 <p>One of the real powers of writing a program to analyze your data is that you can just as easily analyze 100 files as 1 file.  In this example, we are going to parse the PDB files for a series of enzyme structures in the <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank</a> and extract resolution data and atom counts for each one.  The PDB files are all saved in a folder called PDB_files that you should have downloaded in the setup for this lesson.  Make sure the folder is in the same directory as the directory where you are writing and executing your code.</p>
 <p>To analyze multiple files, we will need to import a python <strong>library</strong>.  A <strong>library</strong> is a set of modules which contain functions. The functions within a library or module are usually related to one another. Using libraries in Python reduces the amount of code you have to write. In the last lesson, we imported <code class="docutils literal notranslate"><span class="pre">os.path</span></code>, which was a module that handled filepaths for us.</p>
@@ -378,7 +394,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="importing-libraries">
-<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this heading">#</a></h3>
+<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Link to this heading">#</a></h3>
 <p>We are going to import two libraries.  One is the <code class="docutils literal notranslate"><span class="pre">os</span></code> library which controls functions related to the operating system of your computer. We used this library in the last lesson to handle filepaths.  The other is the <code class="docutils literal notranslate"><span class="pre">glob</span></code> library which contains functions to help us analyze multiple files.  If we are going to analyze multiple files, we first need to specify where those files are located.</p>
 <div class="exercise admonition">
 <p class="admonition-title">Check Your Understanding</p>
@@ -417,14 +433,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/3iva.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;, &#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/PDB_files/7tim.pdb&#39;, &#39;data/PDB_files/5eu9.pdb&#39;, &#39;data/PDB_files/4eyr.pdb&#39;, &#39;data/PDB_files/3iva.pdb&#39;, &#39;data/PDB_files/5veu.pdb&#39;, &#39;data/PDB_files/6zt7.pdb&#39;, &#39;data/PDB_files/3vnd.pdb&#39;, &#39;data/PDB_files/2pkr.pdb&#39;, &#39;data/PDB_files/1ddo.pdb&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="reading-multiple-files-with-nested-for-loops">
-<h3>Reading multiple files with nested for loops<a class="headerlink" href="#reading-multiple-files-with-nested-for-loops" title="Permalink to this heading">#</a></h3>
+<h3>Reading multiple files with nested for loops<a class="headerlink" href="#reading-multiple-files-with-nested-for-loops" title="Link to this heading">#</a></h3>
 <p>Now you have a list of all the files which end in <code class="docutils literal notranslate"><span class="pre">*.pdb</span></code> in the <code class="docutils literal notranslate"><span class="pre">PDB_files</span></code> directory. To parse every file we just read in, we will use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to go through each file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -442,15 +458,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4
-1.9
-2.7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9
 2.05
-3.1
-2.91
-2.6
-1.85
 1.8
+2.7
+2.91
+1.85
+2.6
+2.4
+3.1
 </pre></div>
 </div>
 </div>
@@ -469,8 +485,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/2pkr.pdb
-2pkr.pdb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/7tim.pdb
+7tim.pdb
 </pre></div>
 </div>
 </div>
@@ -510,15 +526,15 @@ print(molecule_name)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2pkr: 2.4 Angstroms
-7tim: 1.9 Angstroms
-3iva: 2.7 Angstroms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7tim: 1.9 Angstroms
 5eu9: 2.05 Angstroms
-1ddo: 3.1 Angstroms
-5veu: 2.91 Angstroms
-3vnd: 2.6 Angstroms
-6zt7: 1.85 Angstroms
 4eyr: 1.8 Angstroms
+3iva: 2.7 Angstroms
+5veu: 2.91 Angstroms
+6zt7: 1.85 Angstroms
+3vnd: 2.6 Angstroms
+2pkr: 2.4 Angstroms
+1ddo: 3.1 Angstroms
 </pre></div>
 </div>
 </div>
@@ -526,7 +542,7 @@ print(molecule_name)</p>
 </section>
 </section>
 <section id="printing-to-a-file">
-<h2>Printing to a File<a class="headerlink" href="#printing-to-a-file" title="Permalink to this heading">#</a></h2>
+<h2>Printing to a File<a class="headerlink" href="#printing-to-a-file" title="Link to this heading">#</a></h2>
 <p>Finally, it might be useful to print our results in a new file, such that we could share our results with colleagues or e-mail them to our advisors.  Much like when we read in a file, the first step to writing output to a file is opening that file for writing.  In general, to open a file for writing you have two options. The first is uses the <code class="docutils literal notranslate"><span class="pre">open</span></code> command.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file_name.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">):</span>
 <span class="n">take</span> <span class="n">some</span> <span class="n">actions</span>
@@ -576,7 +592,7 @@ print(molecule_name)</p>
 <p>In the file writing line, notice the <code class="docutils literal notranslate"><span class="pre">\n</span></code> at the end of the line.  This is the newline character.  Without it, the text in our file would just be all smushed together on one line.</p>
 </section>
 <section id="a-final-note-about-string-formatting">
-<h2>A final note about string formatting<a class="headerlink" href="#a-final-note-about-string-formatting" title="Permalink to this heading">#</a></h2>
+<h2>A final note about string formatting<a class="headerlink" href="#a-final-note-about-string-formatting" title="Link to this heading">#</a></h2>
 <p>The F’string’ notation that you can use with the print or the write command lets you format strings in many ways.  You could include other words or whole sentences.  For example, we could change the file writing line to</p>
 <p><code class="docutils literal notranslate"><span class="pre">datafile.write(F'For</span> <span class="pre">the</span> <span class="pre">PDB</span> <span class="pre">ID</span> <span class="pre">{molecule_name}</span> <span class="pre">the</span> <span class="pre">resolution</span> <span class="pre">is</span> <span class="pre">{resolution}</span> <span class="pre">in</span> <span class="pre">Angstroms.')</span></code></p>
 <p>where anything in the braces is a python variable and it will print the value of that variable.</p>
@@ -587,7 +603,7 @@ print(molecule_name)</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>COMPND   6 EC: 1.2.1.13;
 </pre></div>
 </div>
-<p>You are probably familiar with these numbers, but just in case - the Enzyme Commission class tells you the function of an enzyme in a hierarchical format. You can learn more at the <a class="reference external" href="https://www.brenda-enzymes.org/ecexplorer.php?browser=1&amp;f%5Bnodes%5D=21&amp;f%5Baction%5D=close&amp;f%5Bchange%5D=21#21">BRENDA EC Explorer</a>.</p>
+<p>You are probably familiar with these numbers, but just in case - the Enzyme Commission class tells you the function of an enzyme in a hierarchical format. You can learn more at the <a class="reference external" href="https://www.brenda-enzymes.org/ecexplorer.php?browser=1&amp;amp;f%5Bnodes%5D=21&amp;amp;f%5Baction%5D=close&amp;amp;f%5Bchange%5D=21#21">BRENDA EC Explorer</a>.</p>
 <p><strong>Your assignment</strong> is to parse the files in the <code class="docutils literal notranslate"><span class="pre">data/PDB_files</span></code> folder and write a new file named <code class="docutils literal notranslate"><span class="pre">EC_class.txt</span></code> that contains the PDB ID and EC class for each of these enzymes. When you open the file in your text editor, it should look like this:</p>
 <p>7tim 	  5.3.1.1<br />
 6zt7 	  3.2.1.55<br />
@@ -679,7 +695,7 @@ print(molecule_name)</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -708,6 +724,7 @@ print(molecule_name)</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -746,7 +763,7 @@ By The Molecular Sciences Software Institute
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -770,8 +787,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

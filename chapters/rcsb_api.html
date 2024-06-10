@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Retrieving Information from the PDB using the Web API &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -15,49 +14,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -65,13 +61,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-FHKVGE8HKZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/rcsb_api';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Molecular Visualization with iCN3D" href="MolVis_with_iCN3D.html" />
@@ -85,28 +86,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -128,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -167,7 +171,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
@@ -185,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
 </ul>
 
     </div>
@@ -200,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -209,7 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -347,10 +363,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="retrieving-information-from-the-pdb-using-the-web-api">
-<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Permalink to this heading">#</a></h1>
+<h1>Retrieving Information from the PDB using the Web API<a class="headerlink" href="#retrieving-information-from-the-pdb-using-the-web-api" title="Link to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -369,7 +385,7 @@ document.write(`
 <p>Usually a REST API is accessed by varying parameters in a web address.</p>
 <p>We will work with two types of API from the PDB in this lesson.</p>
 <section id="file-download-using-biopython">
-<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Permalink to this heading">#</a></h2>
+<h2>File Download using Biopython<a class="headerlink" href="#file-download-using-biopython" title="Link to this heading">#</a></h2>
 <p>Biopython has functions for retrieving structure files.
 To download a structure file from the PDB, you make a <code class="docutils literal notranslate"><span class="pre">PDBList</span></code>.
 Then, you use the function <code class="docutils literal notranslate"><span class="pre">pdb_list.retrieve_pdb_file.</span> <span class="pre">This</span> <span class="pre">function</span> <span class="pre">takes</span> <span class="pre">the</span> <span class="pre">PDB</span> <span class="pre">ID</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">parameter.</span>&#160; <span class="pre">You</span> <span class="pre">specify</span> <span class="pre">the</span> <span class="pre">folder</span> <span class="pre">where</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">saved</span> <span class="pre">using</span> </code>pdir=FOLDER<code class="docutils literal notranslate"><span class="pre">.</span>&#160; <span class="pre">If</span> <span class="pre">we</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">download</span> <span class="pre">the</span> <span class="pre">structure</span> <span class="pre">as</span> <span class="pre">an</span> <span class="pre">MMCIF,</span> <span class="pre">we</span> <span class="pre">have</span> <span class="pre">to</span> <span class="pre">add</span> </code>file_format=”mmCif”`.</p>
@@ -404,7 +420,7 @@ Then, you use the function <code class="docutils literal notranslate"><span clas
 <p>If you check your data folder, you will see that you now have a file called <code class="docutils literal notranslate"><span class="pre">4hhb.cif</span></code>.</p>
 </section>
 <section id="pdb-data-api">
-<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Permalink to this heading">#</a></h2>
+<h2>PDB Data API<a class="headerlink" href="#pdb-data-api" title="Link to this heading">#</a></h2>
 <p>You can use the web to retrieve information about a molecule using its PDB ID using the PDB Data API.
 This will give you access to information about the PDB entry, rather than the structure file like with the Biopython file download.</p>
 <p>As mentioned above, web APIs often work by varying text in a web address (also called URL).</p>
@@ -422,7 +438,7 @@ However, one interesting thing you can do is to retrieve PubMed annotations for 
 Its format is similar to a Python dictionary, having keys and values.</p>
 </section>
 <section id="programmatic-access-of-apis">
-<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Permalink to this heading">#</a></h2>
+<h2>Programmatic Access of APIs<a class="headerlink" href="#programmatic-access-of-apis" title="Link to this heading">#</a></h2>
 <p>REST APIs start being more useful when you access them programmatically. We are going to use Python to retrieve the data at the URL and convert it to a format we can work with.</p>
 <p>We will use a Python library called requests. Requests is used to retrieve information from websites and URLs.</p>
 <div class="cell docutils container">
@@ -532,6 +548,7 @@ we can access information in the dictionary using the syntax:</p>
  &#39;branched_entity_count&#39;: 0,
  &#39;cis_peptide_count&#39;: 0,
  &#39;deposited_atom_count&#39;: 4779,
+ &#39;deposited_deuterated_water_count&#39;: 0,
  &#39;deposited_hydrogen_atom_count&#39;: 0,
  &#39;deposited_model_count&#39;: 1,
  &#39;deposited_modeled_polymer_monomer_count&#39;: 574,
@@ -621,7 +638,7 @@ one of the API endpoints by changing the URL.</p>
 <p>Try changing the numbers in the URL. How does it change your results?</p>
 </section>
 <section id="pdb-search-api">
-<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Permalink to this heading">#</a></h2>
+<h2>PDB Search API<a class="headerlink" href="#pdb-search-api" title="Link to this heading">#</a></h2>
 <p>The API we were just working with is called the PDB “Data” API.</p>
 <p>However, the PDB has another API called the “search” API that let’s you search based on keywords, host species, sequence similarity, and many other things.
 The search API can be complicated, but is <a class="reference external" href="https://search.rcsb.org/#search-api">well documented</a>.</p>
@@ -660,19 +677,19 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;06b4b547-40cf-4b89-9536-428bbb2a0805&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;b9a88423-cdbe-414b-b39c-7fd14309c303&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
- &#39;total_count&#39;: 628,
- &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1D8U&#39;, &#39;score&#39;: 1.0},
-  {&#39;identifier&#39;: &#39;1UVY&#39;, &#39;score&#39;: 1.0},
-  {&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 1.0},
-  {&#39;identifier&#39;: &#39;3BOM&#39;, &#39;score&#39;: 1.0},
-  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.99487975568309},
-  {&#39;identifier&#39;: &#39;3H57&#39;, &#39;score&#39;: 0.9898115893937386},
-  {&#39;identifier&#39;: &#39;2D6C&#39;, &#39;score&#39;: 0.9847948997690406},
-  {&#39;identifier&#39;: &#39;6ZMY&#39;, &#39;score&#39;: 0.9847948997690406},
-  {&#39;identifier&#39;: &#39;1M6C&#39;, &#39;score&#39;: 0.9798287246283488},
-  {&#39;identifier&#39;: &#39;1UX8&#39;, &#39;score&#39;: 0.9798287246283488}],
+ &#39;total_count&#39;: 668,
+ &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2BMM&#39;, &#39;score&#39;: 1.0},
+  {&#39;identifier&#39;: &#39;1UVY&#39;, &#39;score&#39;: 0.9861872248797519},
+  {&#39;identifier&#39;: &#39;1UVX&#39;, &#39;score&#39;: 0.9727507745902415},
+  {&#39;identifier&#39;: &#39;1UX8&#39;, &#39;score&#39;: 0.9596755540123255},
+  {&#39;identifier&#39;: &#39;2AWC&#39;, &#39;score&#39;: 0.9443018967660793},
+  {&#39;identifier&#39;: &#39;7DDS&#39;, &#39;score&#39;: 0.9350267846701926},
+  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.9345519710130025},
+  {&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 0.9345519710130025},
+  {&#39;identifier&#39;: &#39;1D8U&#39;, &#39;score&#39;: 0.922477162878988},
+  {&#39;identifier&#39;: &#39;1DUK&#39;, &#39;score&#39;: 0.922477162878988}],
  &#39;facets&#39;: []}
 </pre></div>
 </div>
@@ -694,7 +711,7 @@ For example, we will retrieve the title of the paper where this structure was pu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1D8U
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2BMM
 </pre></div>
 </div>
 </div>
@@ -708,8 +725,7 @@ For example, we will retrieve the title of the paper where this structure was pu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pdbx_descriptor&#39;: &#39;NON-SYMBIOTIC HEMOGLOBIN&#39;,
- &#39;title&#39;: &#39;CRYSTAL STRUCTURE OF NON-SYMBIOTIC PLANT HEMOGLOBIN FROM RICE&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;X-ray structure of a novel thermostable hemoglobin from the actinobacterium Thermobifida fusca&#39;}
 </pre></div>
 </div>
 </div>
@@ -783,9 +799,9 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;ca75a4ae-40af-47a8-9e15-6f04100f0c4f&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;631ced89-1d3c-4b87-8d13-18d8865399b8&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
- &#39;total_count&#39;: 524,
+ &#39;total_count&#39;: 571,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: 1.0},
   {&#39;identifier&#39;: &#39;1MBD&#39;, &#39;score&#39;: 1.0},
   {&#39;identifier&#39;: &#39;1MBO&#39;, &#39;score&#39;: 1.0},
@@ -843,7 +859,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </section>
 <section id="using-biopython-to-analyze-search-results">
-<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Permalink to this heading">#</a></h2>
+<h2>Using Biopython to Analyze Search Results<a class="headerlink" href="#using-biopython-to-analyze-search-results" title="Link to this heading">#</a></h2>
 <p>The API becomes really interesting when we use the results for analysis.
 Keeping our example of oxygen storage, we could use Biopython to analyze the structures we have retrieved to see
 if there are heme groups in the structures and if there are common motifs in the binding of the heme groups to proteins.</p>
@@ -1003,7 +1019,7 @@ The end of the analysis prints the most commonly found neighboring residues to i
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1032,6 +1048,7 @@ The end of the analysis prints the most commonly found neighboring residues to i
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1068,7 +1085,7 @@ By The Molecular Sciences Software Institute
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1092,8 +1109,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Creating Plots in Jupyter Notebooks &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -15,49 +14,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -65,15 +61,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-FHKVGE8HKZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Creating_Plots_in_Jupyter_Notebooks';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Nonlinear Regression Part 1" href="nonlinear_regression_part_1.html" />
@@ -87,28 +88,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -130,12 +126,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +173,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
@@ -187,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
 </ul>
 
     </div>
@@ -202,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -211,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -347,10 +363,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="creating-plots-in-jupyter-notebooks">
-<h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<h1>Creating Plots in Jupyter Notebooks<a class="headerlink" href="#creating-plots-in-jupyter-notebooks" title="Link to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -365,9 +381,9 @@ document.write(`
 </ul>
 </div>
 <section id="preparing-to-plot">
-<h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Permalink to this heading">#</a></h2>
+<h2>Preparing to Plot<a class="headerlink" href="#preparing-to-plot" title="Link to this heading">#</a></h2>
 <p>In recent lessons, we have learned to use pandas to import csv data into a dataframe that is very easy to access and can be used for plotting our data. We have also learned to do linear regression analysis using scipy. In this lesson, we will create linear regression plots of our data using two different libraries, matplotlib.pyplot and seaborn. As we add more libraries to our repretoire, we are going to track them in a table.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Library</p></th>
 <th class="head text-center"><p>Uses</p></th>
@@ -401,6 +417,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>We will start by importing the data and linear regresson analysis from the previous lesson.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -432,7 +449,7 @@ Standard error =  0.030884027089284245
 </div>
 </section>
 <section id="using-matplotlib-pyplot">
-<h2>Using Matplotlib.pyplot<a class="headerlink" href="#using-matplotlib-pyplot" title="Permalink to this heading">#</a></h2>
+<h2>Using Matplotlib.pyplot<a class="headerlink" href="#using-matplotlib-pyplot" title="Link to this heading">#</a></h2>
 <p>Matplotlib is a library that supports static, animated and interactive data visualization in Python (<a class="reference external" href="https://matplotlib.org/">Matplotlib: Visualization with Python</a>). Matplotlib is used alongside numpy to provide for MATLAB-style plotting. You can use matplotlib to create and fully annotate high resolution, publication quality plots that can be easily exported for inclusion in reports and manuscripts. It is possible to create many graph formats in matplotlib, including “picture within a picture graphs.” Think of the chart options that are available in your spreadsheet program. These are all available with matplotlib, plus many more.</p>
 <p>We are going to use one subset of matplotlib’s functions called pyplot. This approach is similar to using the stats subset of the functions found in scipy. This library contains tools for plotting and annotating the data. Let’s start with a simple x-y scatter plot of the protein calibration curve data. First, we need to import the library, set the size of the figure and indicate the data for the plot.</p>
 <div class="cell docutils container">
@@ -445,10 +462,10 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f0e15861af0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc85430b5d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/0d4288b0a92ad6080be27e37c928370c0ce08d255a385dcd12cd878341afbbd0.png" src="../_images/0d4288b0a92ad6080be27e37c928370c0ce08d255a385dcd12cd878341afbbd0.png" />
+<img alt="../_images/c6f4a6240ca5a5c92433de63781e2bed8f0a7a2ae1bb6cde3e6c37972287f260.png" src="../_images/c6f4a6240ca5a5c92433de63781e2bed8f0a7a2ae1bb6cde3e6c37972287f260.png" />
 </div>
 </div>
 <p>Next we add the best fit line using the slope and intercept that were generated by the stats.linregress function from scipy. The first two lines in the next cell are identical to the cell above (no need to import the libraries again). The third line introduces the best fit curve. You may notice a delay of a few seconds as the notebook generates the figure. The more complex the figure and the larger the dataset, the longer it takes for the plot to appear.</p>
@@ -461,10 +478,10 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0e157b1280&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc85430b150&gt;]
 </pre></div>
 </div>
-<img alt="../_images/11f308f6aa96b2648ca1297f4fda5898848ca2100c8793338a6b3d4b81cdaa58.png" src="../_images/11f308f6aa96b2648ca1297f4fda5898848ca2100c8793338a6b3d4b81cdaa58.png" />
+<img alt="../_images/efbb1073cb5e8ec9e742604eb68bbf0919e668fdaec4244bd2c041d1b70c5d95.png" src="../_images/efbb1073cb5e8ec9e742604eb68bbf0919e668fdaec4244bd2c041d1b70c5d95.png" />
 </div>
 </div>
 <p>Next we will use functions for matplotlib.pyplot to add labels for each axis. It is possible to include subscripts and Greek letters in matplotlib figure labels using LaTeX. Here is a <a class="reference external" href="https://towardsdatascience.com/write-markdown-latex-in-the-jupyter-notebook-10985edb91fd">link to a helpful site</a> about using markdown (used for the text cells in Jupyter notebook) and LaTeX in Jupyter notebooks by <a class="reference external" href="https://medium.com/&#64;ahmedazizkhelifi">Khelifi Ahmed Aziz</a>.</p>
@@ -492,7 +509,7 @@ Standard error =  0.030884027089284245
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.25, 1.0, &#39;y = 0.8454 * x + 0.1279&#39;)
 </pre></div>
 </div>
-<img alt="../_images/c92d7db7c6e06d0c3fb76a3a4121eee5b75dc78cf1303501688ebf287d30aa0e.png" src="../_images/c92d7db7c6e06d0c3fb76a3a4121eee5b75dc78cf1303501688ebf287d30aa0e.png" />
+<img alt="../_images/8bca83a20a65d1114fcb698cca2d4d513576361ab73419dd00474186e89b5088.png" src="../_images/8bca83a20a65d1114fcb698cca2d4d513576361ab73419dd00474186e89b5088.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -520,7 +537,7 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b476f0ae36ec1104621754f2b5e0ab46f22f7241e5f1686569efb742d899ec41.png" src="../_images/b476f0ae36ec1104621754f2b5e0ab46f22f7241e5f1686569efb742d899ec41.png" />
+<img alt="../_images/199f18b72691f702a3e6f58991bf2de3105b37e1521e8f9f1784312d65081c89.png" src="../_images/199f18b72691f702a3e6f58991bf2de3105b37e1521e8f9f1784312d65081c89.png" />
 </div>
 </div>
 <p>Let’s explore the line of code we wrote to save the figure. Once you have executed this command, you should find the plot in the same folder as the current Jupyter notebook.</p>
@@ -535,7 +552,7 @@ Standard error =  0.030884027089284245
 </div>
 </section>
 <section id="scatter-plots-with-seaborn">
-<h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Permalink to this heading">#</a></h2>
+<h2>Scatter Plots with Seaborn<a class="headerlink" href="#scatter-plots-with-seaborn" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> is a Python library for statistical data visualization that is based on matplotlib. That means you can use all the commands from Matplotlib with Seaborn, but it also has high-level functions that group many Matplotlib functions to produce sophisticated graphs easily.</p>
 <p>Here we will use the Seaborn library to create a scatter plot that includes a confidence interval. Please note that Seaborn has dependencies on other libraries (numpy, scipy, pandas, and matplotlib), so these must be imported before you can use Seaborn.</p>
 <p>The following plot is based on resources at <a class="reference external" href="https://www.statology.org/scatterplot-with-regression-line-python/">Statology</a>. I prefer this plot to the simple linear regression above because it makes the reliable regions of the calibration curve more obvious by displaying the 95% confidence interval. It also emphasizes the valid range for calculations based on the plot - that we can’t use this curve to analyze absorbance values below 0.285 or above 1.118.</p>
@@ -559,7 +576,7 @@ Standard error =  0.030884027089284245
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Protein Concentration (mg/mL)&#39;, ylabel=&#39;A595&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/9005443e5c455af5499f127c88d2638f13399702697e9c999ae03f1f5166671f.png" src="../_images/9005443e5c455af5499f127c88d2638f13399702697e9c999ae03f1f5166671f.png" />
+<img alt="../_images/48837cb0869684801946acf7b7aeee8b06884fe70d0ebb738535b709ab3ddc29.png" src="../_images/48837cb0869684801946acf7b7aeee8b06884fe70d0ebb738535b709ab3ddc29.png" />
 </div>
 </div>
 <div class="exercise admonition">
@@ -608,7 +625,7 @@ Standard error =  0.030884027089284245
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b7e1fe3a4bc8bc97c61ed2ddb2cfe506f67b6e4d13276264d0017903fdab7fd7.png" src="../_images/b7e1fe3a4bc8bc97c61ed2ddb2cfe506f67b6e4d13276264d0017903fdab7fd7.png" />
+<img alt="../_images/2648bce312075b8986431de6c4a18296f91e76e61228921394492869b0b4f66e.png" src="../_images/2648bce312075b8986431de6c4a18296f91e76e61228921394492869b0b4f66e.png" />
 </div>
 </div>
 <div class="key admonition">
@@ -648,7 +665,7 @@ Standard error =  0.030884027089284245
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -677,6 +694,7 @@ Standard error =  0.030884027089284245
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -711,7 +729,7 @@ By The Molecular Sciences Software Institute
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -735,8 +753,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

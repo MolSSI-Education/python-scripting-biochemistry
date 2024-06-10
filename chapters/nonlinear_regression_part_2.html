@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Nonlinear Regression Part 2 &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -15,49 +14,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -65,15 +61,20 @@
                 gtag('js', new Date());
                 gtag('config', 'G-FHKVGE8HKZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/nonlinear_regression_part_2';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Analyzing MMCIF Files using Biopython" href="biopython_mmcif.html" />
@@ -87,28 +88,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -130,12 +126,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -169,7 +173,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
@@ -187,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
 </ul>
 
     </div>
@@ -202,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -211,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -353,10 +369,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nonlinear-regression-part-2">
-<h1>Nonlinear Regression Part 2<a class="headerlink" href="#nonlinear-regression-part-2" title="Permalink to this heading">#</a></h1>
+<h1>Nonlinear Regression Part 2<a class="headerlink" href="#nonlinear-regression-part-2" title="Link to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -373,7 +389,7 @@ document.write(`
 </ul>
 </div>
 <section id="data-fitting">
-<h2>Data Fitting<a class="headerlink" href="#data-fitting" title="Permalink to this heading">#</a></h2>
+<h2>Data Fitting<a class="headerlink" href="#data-fitting" title="Link to this heading">#</a></h2>
 <p>In an earlier module, we used the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function from the scipy.stats library to perform linear regression. This is sufficient for a least squares linear fit to the data. Python contains tools that also enable us to fit data to an equation that we have defined, with two or more paramaters. So it is ideal for nonlinear curve fitting to the Michaelis-Menten equation.</p>
 <p>In this module, we will use some familiar tools: importing csv data into a pandas dataframe and plotting results using the matplotlib.pyplot library. We will also create a function based on the Michaelis-Menten equation. The exciting part is learning how to fit the data to the function using <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> from scipy.optimize.</p>
 <p>Here are the steps in our process:</p>
@@ -401,7 +417,7 @@ document.write(`
 </div>
 </section>
 <section id="the-michaelis-menten-equation">
-<h2>The Michaelis-Menten equation<a class="headerlink" href="#the-michaelis-menten-equation" title="Permalink to this heading">#</a></h2>
+<h2>The Michaelis-Menten equation<a class="headerlink" href="#the-michaelis-menten-equation" title="Link to this heading">#</a></h2>
 <p>The Michaelis-Menten equation (which is probably very familiar to you) describes kinetics for enzyme-catalyzed reactions. We will use the simplest version of the equation, based on initial reaction velocities with a single substrate.</p>
 <p>In our equation,  there are two parameters, V<span class="math notranslate nohighlight">\(_{max}\)</span> (maximum velocity) and K<span class="math notranslate nohighlight">\(_m\)</span> (the Michaelis constant, which equals the substrate concentration at half maximal velocity), an independent variable, [S] = substrate concentration, and a dependent variable, V<span class="math notranslate nohighlight">\(_i\)</span>, the initial velocity.</p>
 <div class="math notranslate nohighlight">
@@ -538,15 +554,15 @@ V_i = \frac{V_{max} * [S]}{K_m + [S]}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f92053ba880&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f92b47515d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/b4571227d4e9a63c8c7cb9ed6a03d63ac9428a2ac670971f132e1cfb10db0fd8.png" src="../_images/b4571227d4e9a63c8c7cb9ed6a03d63ac9428a2ac670971f132e1cfb10db0fd8.png" />
+<img alt="../_images/aa4e4115c508bd6ec5d7e2465553ce04296276df3644ba2e02c62dd3aeb709ad.png" src="../_images/aa4e4115c508bd6ec5d7e2465553ce04296276df3644ba2e02c62dd3aeb709ad.png" />
 </div>
 </div>
 </section>
 <section id="creating-functions">
-<h2>Creating Functions<a class="headerlink" href="#creating-functions" title="Permalink to this heading">#</a></h2>
+<h2>Creating Functions<a class="headerlink" href="#creating-functions" title="Link to this heading">#</a></h2>
 <p>To this point we have called a number of functions that are included with python libraries such as pandas, numpy and matplotlib. Most code is organized into blocks of code which perform a particular task. These code blocks are called functions. A commercial software package likely has hundreds, thousands or millions of functions. Functions break up our code into smaller, more easily understandable statements, and also allow our code to be more modular, meaning we can take pieces and reuse them. In general, each function should perform only one computational task.</p>
 <p>In Python, the following syntax is used to declare a function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">independent_variable</span><span class="p">,</span> <span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">):</span>
@@ -638,12 +654,12 @@ Name: initial velocities, dtype: float64
 </div>
 </section>
 <section id="using-curve-fit">
-<h2>Using curve_fit<a class="headerlink" href="#using-curve-fit" title="Permalink to this heading">#</a></h2>
+<h2>Using curve_fit<a class="headerlink" href="#using-curve-fit" title="Link to this heading">#</a></h2>
 <p>The syntax for the curve_fit function from scipy.optimize is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">)</span>
 </pre></div>
 </div>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Term</p></th>
 <th class="head text-left"><p>Signficance</p></th>
@@ -670,6 +686,7 @@ Name: initial velocities, dtype: float64
 </tr>
 </tbody>
 </table>
+</div>
 <p>You can learn much more about <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> in the online documentation for <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">scipy.optimize.curve_fit</a>.</p>
 <p>Let’s review the function, <code class="docutils literal notranslate"><span class="pre">MM</span></code>, that we defined above, to clearly distinguish the data, variables and parameters associated with <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> from those associated with <code class="docutils literal notranslate"><span class="pre">MM</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MM</span><span class="p">(</span><span class="n">SubConc</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">):</span>
@@ -689,7 +706,7 @@ Name: initial velocities, dtype: float64
 </div>
 </section>
 <section id="extracting-the-output-from-curve-fit">
-<h2>Extracting the output from curve_fit<a class="headerlink" href="#extracting-the-output-from-curve-fit" title="Permalink to this heading">#</a></h2>
+<h2>Extracting the output from curve_fit<a class="headerlink" href="#extracting-the-output-from-curve-fit" title="Link to this heading">#</a></h2>
 <p>There are two outputs from curve_fit - popt and pcov. These are typical names that help to point to the contents of the variable, but you can choose any variable name you like.</p>
 <ol class="arabic simple">
 <li><p>popt = a list of the optimized parameters. In our case, the two parameters are <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_m\)</span>. Remember that python starts counting at 0, so popt[0] = <span class="math notranslate nohighlight">\(V_{max}\)</span> and popt[1] = <span class="math notranslate nohighlight">\(K_m\)</span>.</p></li>
@@ -718,7 +735,7 @@ Km for this reaction: 1.1926322406324839 +/- 0.08042268476177239
 </div>
 </section>
 <section id="review-of-f-string-printing">
-<h2>Review of f string printing<a class="headerlink" href="#review-of-f-string-printing" title="Permalink to this heading">#</a></h2>
+<h2>Review of f string printing<a class="headerlink" href="#review-of-f-string-printing" title="Link to this heading">#</a></h2>
 <p>It is unlikely that you will want to have your values printed out to more than 10 decimal places, which is the default when python prints floats. There are a number of ways to get around this that include truncation or rounding, but we are going to look at a very useful tool - <a class="reference external" href="https://realpython.com/python-f-strings/">f string printing</a>. Here is the syntax for an f string print statement:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a string you want to print that may contain </span><span class="si">{</span><span class="n">variables</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">curly</span><span class="w"> </span><span class="n">brackets</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
@@ -752,7 +769,7 @@ Km for this reaction: 1.1926322406324839 +/- 0.08042268476177239
 </div>
 </section>
 <section id="plotting-the-data">
-<h2>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Permalink to this heading">#</a></h2>
+<h2>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Link to this heading">#</a></h2>
 <p>At this point, you want to compare your plotted data with the curve based on the parameters from curve_fit. We’ll do this in two stages. First, we’ll use the <code class="docutils literal notranslate"><span class="pre">MM</span></code> function to calculate y values using your fit model to see how well your model fits the data.</p>
 <p>We will use matplotlib.pyplot (please note the import statement at the top of this notebook) to create and annotate this plot. Our first plot will contain two sets of data:</p>
 <ol class="arabic simple">
@@ -779,7 +796,7 @@ Km for this reaction: 1.1926322406324839 +/- 0.08042268476177239
 </div>
 </section>
 <section id="smoothing-the-plot">
-<h2>Smoothing the plot<a class="headerlink" href="#smoothing-the-plot" title="Permalink to this heading">#</a></h2>
+<h2>Smoothing the plot<a class="headerlink" href="#smoothing-the-plot" title="Link to this heading">#</a></h2>
 <p>You probably noticed that the curve appears a bit disjointed, because it provides values only at the selected concentrations of the substrate. A fit curve based on 1000 x-values will be much smoother. To do this, we first use the numpy linspace function to create a new list of 1000 x-values ranging from the minimum xdata value (using the numpy min function) to the maximum xdata value (using the numpy max function). Then we generate a fit curve using the MM function. We then add the experimental data and the smoothed fit data to the plot. Note that the experimental data is plotted using <code class="docutils literal notranslate"><span class="pre">'bo'</span></code>. This tells matplotlib.pyplot to use blue (<code class="docutils literal notranslate"><span class="pre">b</span></code>) circles (<code class="docutils literal notranslate"><span class="pre">o</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,7 +874,7 @@ Km for this reaction: 1.1926322406324839 +/- 0.08042268476177239
 </div>
 </section>
 <section id="common-errors">
-<h2>Common errors<a class="headerlink" href="#common-errors" title="Permalink to this heading">#</a></h2>
+<h2>Common errors<a class="headerlink" href="#common-errors" title="Link to this heading">#</a></h2>
 <p>Python is very particular about the use of parentheses (), square brackets [], and braces or curly brackets {}.</p>
 <p>Parentheses are used to pass arguments to functions. For example,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Vi</span> <span class="o">=</span> <span class="n">MM</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span>
@@ -903,7 +920,7 @@ Km for this reaction: 1.1926322406324839 +/- 0.08042268476177239
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -932,6 +949,7 @@ Km for this reaction: 1.1926322406324839 +/- 0.08042268476177239
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -972,7 +990,7 @@ By The Molecular Sciences Software Institute
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -996,8 +1014,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

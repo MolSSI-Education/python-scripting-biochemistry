@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Working with Pandas &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
   
@@ -15,49 +14,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -65,13 +61,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-FHKVGE8HKZ');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Working_with_Pandas';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linear Regression" href="Linear_Regression.html" />
@@ -85,28 +86,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -128,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -167,7 +171,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
@@ -185,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
 </ul>
 
     </div>
@@ -200,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -209,7 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -355,10 +371,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-pandas">
-<h1>Working with Pandas<a class="headerlink" href="#working-with-pandas" title="Permalink to this heading">#</a></h1>
+<h1>Working with Pandas<a class="headerlink" href="#working-with-pandas" title="Link to this heading">#</a></h1>
 <div class="overview admonition">
 <p class="admonition-title">Overview</p>
 <p>Questions:</p>
@@ -373,33 +389,33 @@ document.write(`
 </ul>
 </div>
 <section id="what-is-pandas-and-why-do-we-use-it">
-<h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Permalink to this heading">#</a></h2>
+<h2>What is pandas and why do we use it?<a class="headerlink" href="#what-is-pandas-and-why-do-we-use-it" title="Link to this heading">#</a></h2>
 <p>Pandas is a python library that is designed to work with two dimensional data arrays. It is built on numpy, another python library that specializes in numerical analysis. Numpy also has the ability to create and analyze data arrays. If you are not familiar with arrays, here are some simple examples.</p>
 <section id="d-arrays">
-<h3>1D arrays<a class="headerlink" href="#d-arrays" title="Permalink to this heading">#</a></h3>
+<h3>1D arrays<a class="headerlink" href="#d-arrays" title="Link to this heading">#</a></h3>
 <p>A one dimensional array is simply a list of items, for example, a list of the elements: H, He, Li, Be, B, etc.</p>
 </section>
 <section id="id1">
-<h3>2D arrays<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>2D arrays<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>A two dimensional array is an array which has rows and columns. It can have any number of columns and rows. A spreadsheet with rows and columns is analogous to a 2D array.</p>
 </section>
 <section id="id2">
-<h3>3D arrays<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>3D arrays<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>A three-dimensional array would be a collection of two dimensional arrays. For example, this might be a collection of x, y, and z coordinates for a structure as a function of time.</p>
 <p>The numpy library has functions that will manage n-dimensional arrays, while pandas only works on 2D arrays. You may need numpy for nD arrays at some point, but for this workshop, we will learn to use pandas as we learn how to perform linear and nonlinear regression of laboratory data based on data in 2D arrays.</p>
 <p>The pandas library contains powerful tools for working with 2D data arrays, including the ability to identify the rows and columns of data by unique identifiers: things like “Protein Concentration (mg/mL)” and “initial velocity” rather than “row 1” or “column C”). Pandas also has many more functions that we will not explore in this workshop, but here are three excellent free online resources for learning more about pandas:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://education.molssi.org/python-data-analysis/02-pandas/index.html">Using pandas for data analysis</a> from MolSSI</p></li>
 <li><p>Charlie Weiss’s excellent online textbook, <em>Scientific Computing for Chemists</em>, which you can find on his GitHub site, <a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/intro.html">SciCompforChemists</a></p></li>
-<li><p>Corey Schafer’s <a class="reference external" href="https://www.youtube.com/watch?v=ZyhVh-qRZPA&amp;list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">Pandas Tutorials on YouTube</a></p></li>
+<li><p>Corey Schafer’s <a class="reference external" href="https://www.youtube.com/watch?v=ZyhVh-qRZPA&amp;amp;list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS">Pandas Tutorials on YouTube</a></p></li>
 </ul>
 </section>
 </section>
 <section id="importing-python-libraries">
-<h2>Importing python libraries<a class="headerlink" href="#importing-python-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Importing python libraries<a class="headerlink" href="#importing-python-libraries" title="Link to this heading">#</a></h2>
 <p>As we move toward data analysis, we will need to import a series of python <strong>libraries</strong>. A <strong>library</strong> is a set of modules which contain related functions that can be used to complete specific tasks. Using libraries in Python reduces the amount of code you have to write. Usually a function has some type of input and gives a particular output.  To use a function that is in a library, you often use the dot notation introduced previously with commands like <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code>.</p>
 <p>In the file parsing lesson, we imported the <code class="docutils literal notranslate"><span class="pre">os</span></code> library, which can be used to assign the location of a file to a variable (e.g. datafile), so our script can be transferred between computers with different operating systems (e.g., Mac vs Windows). In this lesson, we will be using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, and we will add a few more libraries in the future. As we proceed, we’ll build this table.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Library</p></th>
 <th class="head text-center"><p>Uses</p></th>
@@ -421,6 +437,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>To start we will import the two libraries we need to complete the work in this notebook, os and pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -431,7 +448,7 @@ document.write(`
 </div>
 </div>
 <section id="locating-the-data">
-<h3>Locating the data<a class="headerlink" href="#locating-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Locating the data<a class="headerlink" href="#locating-the-data" title="Link to this heading">#</a></h3>
 <p>To work with data in Jupyter notebooks, you must first find the data. In the file parsing lesson, we used the <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> (get current working directory) command to find out where we were located on our computers. We also used the <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> command to see the contents of the directory. Let’s do that to find our target datafile.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -440,27 +457,33 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Bradford_plot.png&#39;,
- &#39;Bradford_plot3.png&#39;,
- &#39;setup.ipynb&#39;,
- &#39;Bradford_plot2.png&#39;,
- &#39;nonlinear_regression_part_2.ipynb&#39;,
- &#39;images&#39;,
- &#39;introduction.ipynb&#39;,
- &#39;resolutions.txt&#39;,
- &#39;Processing_Multiple_Files_and_Writing_Files.ipynb&#39;,
- &#39;nonlinear_regression_part_1.ipynb&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Linear_Regression.ipynb&#39;,
  &#39;Creating_Plots_in_Jupyter_Notebooks.ipynb&#39;,
+ &#39;images&#39;,
+ &#39;resolutions.txt&#39;,
  &#39;data&#39;,
- &#39;rcsb_api.ipynb&#39;,
- &#39;biopython_mmcif.ipynb&#39;,
- &#39;data.zip&#39;,
+ &#39;introduction.ipynb&#39;,
+ &#39;Bradford_plot3.png&#39;,
+ &#39;File_Parsing.ipynb&#39;,
+ &#39;Bradford_plot2.png&#39;,
+ &#39;Bradford_plot.png&#39;,
+ &#39;Processing_Multiple_Files_and_Writing_Files.ipynb&#39;,
+ &#39;ligands&#39;,
+ &#39;ligand_13U-3D.sdf&#39;,
+ &#39;Working_with_Pandas.ipynb&#39;,
+ &#39;nonlinear_regression_part_2.ipynb&#39;,
  &#39;MolVis_with_iCN3D.ipynb&#39;,
  &#39;.ipynb_checkpoints&#39;,
- &#39;Working_with_Pandas.ipynb&#39;,
- &#39;Linear_Regression.ipynb&#39;,
- &#39;File_Parsing.ipynb&#39;,
- &#39;workshop_schedule.ipynb&#39;]
+ &#39;workshop_schedule.ipynb&#39;,
+ &#39;data.zip&#39;,
+ &#39;ligand_13U-2D.sdf&#39;,
+ &#39;setup.ipynb&#39;,
+ &#39;biopython_mmcif.ipynb&#39;,
+ &#39;SmallMolVis.ipynb&#39;,
+ &#39;Modifying_Ligands_with_rdkit.ipynb&#39;,
+ &#39;rcsb_api.ipynb&#39;,
+ &#39;nonlinear_regression_part_1.ipynb&#39;,
+ &#39;EC_class_ligands_search.ipynb&#39;]
 </pre></div>
 </div>
 </div>
@@ -473,22 +496,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;protein_assay.csv&#39;,
- &#39;protein_assay2.csv&#39;,
- &#39;AP_kin.csv&#39;,
- &#39;AP_kinetics.csv&#39;,
- &#39;chymotrypsin_kinetics.xlsx&#39;,
- &#39;thrombin_with_ligands.csv&#39;,
- &#39;enzyme_kinetics.xlsx&#39;,
- &#39;chymotrypsin_kinetics.csv&#39;,
- &#39;MM_data1.csv&#39;,
- &#39;chymo_MM_data.csv&#39;,
- &#39;MM_data_for_NLRpt2.csv&#39;,
- &#39;enzyme_kinetics.csv&#39;,
- &#39;protein_samples.csv&#39;,
- &#39;PDB_files&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ligand13Uipr-3D.sdf&#39;,
  &#39;Ground_water.csv&#39;,
- &#39;MM_data.csv&#39;]
+ &#39;AP_kinetics.csv&#39;,
+ &#39;protein_assay.csv&#39;,
+ &#39;ligand13Ume-3D.sdf&#39;,
+ &#39;MM_data_for_NLRpt2.csv&#39;,
+ &#39;MM_data1.csv&#39;,
+ &#39;protein_assay2.csv&#39;,
+ &#39;MM_data.csv&#39;,
+ &#39;enzyme_kinetics.xlsx&#39;,
+ &#39;chymo_MM_data.csv&#39;,
+ &#39;PDB_files&#39;,
+ &#39;enzyme_kinetics.csv&#39;,
+ &#39;thrombin_with_ligands.csv&#39;,
+ &#39;AP_kin.csv&#39;,
+ &#39;ligand13Un-3D.sdf&#39;,
+ &#39;chymotrypsin_kinetics.xlsx&#39;,
+ &#39;protein_samples.csv&#39;,
+ &#39;chymotrypsin_kinetics.csv&#39;,
+ &#39;ligand13U-3D.sdf&#39;]
 </pre></div>
 </div>
 </div>
@@ -509,7 +536,7 @@ document.write(`
 </div>
 </section>
 <section id="importing-the-data-with-pandas">
-<h3>Importing the data with pandas<a class="headerlink" href="#importing-the-data-with-pandas" title="Permalink to this heading">#</a></h3>
+<h3>Importing the data with pandas<a class="headerlink" href="#importing-the-data-with-pandas" title="Link to this heading">#</a></h3>
 <p>As mentioned above, the pandas library has a number of excellent tools for importing data. We will be using the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function from the pandas library to import our data. You may have encountered csv files before; csv stands for comma separated values. This is a format that spreadsheet programs like Excel and Google Sheets can both read and write. If you open a csv file in a text editor, it simply contains rows of information, where the information is separated by commas. The information can be integers, real numbers or strings. Here are the first four rows of the csv file that we will be exploring using pandas.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PDB</span> <span class="n">ID</span><span class="p">,</span><span class="n">Method</span><span class="p">,</span><span class="n">Resolution</span><span class="p">,</span><span class="n">Structure</span><span class="p">,</span><span class="n">Ligand</span> <span class="n">ID</span><span class="p">,</span><span class="n">Ligand</span> <span class="n">name</span>
 
@@ -671,7 +698,7 @@ document.write(`
 </div>
 </section>
 <section id="finding-information-in-a-dataframe">
-<h3>Finding information in a dataframe<a class="headerlink" href="#finding-information-in-a-dataframe" title="Permalink to this heading">#</a></h3>
+<h3>Finding information in a dataframe<a class="headerlink" href="#finding-information-in-a-dataframe" title="Link to this heading">#</a></h3>
 <p>The dataframe appears as a table. The data are in rows (“indexes”) and columns (“series”). If you want to look at the data in a single column (one series), you can use this command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -985,7 +1012,7 @@ Name: 2, dtype: object
 </div>
 </section>
 <section id="sorting-data-with-pandas">
-<h3>Sorting data with pandas<a class="headerlink" href="#sorting-data-with-pandas" title="Permalink to this heading">#</a></h3>
+<h3>Sorting data with pandas<a class="headerlink" href="#sorting-data-with-pandas" title="Link to this heading">#</a></h3>
 <p>You can also sort the data using the pandas sort_values function. To sort the thrombin_df dataframe into ascending Resolution values, use the following command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1457,7 +1484,7 @@ Name: 2, dtype: object
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1486,6 +1513,7 @@ Name: 2, dtype: object
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1530,7 +1558,7 @@ By The Molecular Sciences Software Institute
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1554,8 +1582,8 @@ By The Molecular Sciences Software Institute
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,1772 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modifying Ligands in Python &#8212; Python Data and Scripting for Biochemists and Molecular Biologists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0905f21a" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FHKVGE8HKZ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-FHKVGE8HKZ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Modifying_Ligands_with_rdkit';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="setup.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/molssi_main_logo.png" class="logo__image only-light" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>
+    <script>document.write(`<img src="../_static/molssi_main_logo_inverted_white.png" class="logo__image only-dark" alt="Python Data and Scripting for Biochemists and Molecular Biologists - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="workshop_schedule.html">Workshop Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File_Parsing.html">File Parsing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processing_Multiple_Files_and_Writing_Files.html">Processing Multiple Files and Writing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Working_with_Pandas.html">Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linear_Regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating_Plots_in_Jupyter_Notebooks.html">Creating Plots in Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_1.html">Nonlinear Regression Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear_regression_part_2.html">Nonlinear Regression Part 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biopython_mmcif.html">Analyzing MMCIF Files using Biopython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcsb_api.html">Retrieving Information from the PDB using the Web API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MolVis_with_iCN3D.html">Molecular Visualization with iCN3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/Modifying_Ligands_with_rdkit.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modifying Ligands in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-representation-of-molecules">Digital Representation of Molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-do-for-this-notebook">Things to Do for this Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-the-ligand-molecule">Modifying the ligand molecule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-a-ligand-that-is-known-to-bind-to-trypsin">Modifying a ligand that is known to bind to trypsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-the-2d-ligand-structures-to-3d-structures-for-use-in-docking">Converting the 2D ligand structures to 3D structures for use in docking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-for-glucose-and-atp">Results for Glucose and ATP</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modifying-ligands-in-python">
+<h1>Modifying Ligands in Python<a class="headerlink" href="#modifying-ligands-in-python" title="Link to this heading">#</a></h1>
+<p>Learning Goals</p>
+<ul class="simple">
+<li><p>To learn about chemical manipulation in python using rdkit</p></li>
+<li><p>To imagine new structures based on existing structures</p></li>
+</ul>
+<p>Learning Objectives</p>
+<ul class="simple">
+<li><p>To understand the utility of the different Python libraries utilized in this notebook</p></li>
+<li><p>To explain the features of SMILES strings and how they are used to communicate chemical structures to computers</p></li>
+<li><p>To modify a ligand file in a meaningful way (<em>e.g.</em>, testing stereochemistry or electrochemistry) and to save the modified file for future use</p></li>
+<li><p>To add meanin</p></li>
+</ul>
+<p>In this notebook, we are going to take one of the ligands that we downloaded in the <a class="reference internal" href="EC_class_ligands_search.html"><span class="std std-doc">EC_class_ligands_search</span></a> notebook.</p>
+<p>After completing this notebook, if you wish to dig deeper on rdkit, consider reading <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html">Getting Started with rdkit in Python</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rdkit</span>                 <span class="c1"># an open source github repository of cheminformatics software</span>
+<span class="kn">from</span> <span class="nn">rdkit</span> <span class="kn">import</span> <span class="n">Chem</span>       <span class="c1"># a subset of rdkit that supports file string to structure conversions</span>
+<span class="kn">from</span> <span class="nn">rdkit.Chem</span> <span class="kn">import</span> <span class="n">AllChem</span> <span class="c1"># a subset of rdkit.Chem that supports energy optimization</span>
+<span class="kn">from</span> <span class="nn">rdkit.Chem</span> <span class="kn">import</span> <span class="n">Draw</span>  <span class="c1"># a subset of rdkit that supports chemical drawing in Python</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="digital-representation-of-molecules">
+<h2>Digital Representation of Molecules<a class="headerlink" href="#digital-representation-of-molecules" title="Link to this heading">#</a></h2>
+<p>With training we can learn to recognize and interpret chemical structures based on line drawings and other standard representations. One effective way to work with chemical structures in computer languages is to convert them into unique strings of characters which precisely represent the molecule of interest.</p>
+<p>If you visit the <a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/#query=caffeine">PubChem page for Caffeine</a>, you will see a number of different string representations for caffeine:</p>
+<ul class="simple">
+<li><p>IUPAC Name: 1,3,7-trimethylpurine-2,6-dione</p></li>
+<li><p>Isomeric SMILES: CN1C=NC2=C1C(=O)N(C(=O)N2C)C</p></li>
+<li><p>InChIKey: RYYVLZVUVIJVGH-UHFFFAOYSA-N</p></li>
+<li><p>InChI: InChI=1S/C8H10N4O2/c1-10-4-9-6-5(10)7(13)12(3)8(14)11(6)2/h4H,1-3H3</p></li>
+</ul>
+<p>You may have learned IUPAC naming during organic chemistry. It is very effective and unique, but programming languages need strings that are rigorously unambiguous, so we will use one of the other options: SMILES, which stands for “Simplified Molecular-Input Line-Entry System”.</p>
+<p>You can read more about SMILES at this <a class="reference external" href="https://archive.epa.gov/med/med_archive_03/web/html/smiles.html">this tutorial</a>. We will use SMILES in a very limited way in this workshop and you can learn more about using SMILES if you visit the <a class="reference external" href="https://github.com/MolSSI-Education/molssicheminfo/blob/master/01_molecule_representation.ipynb">MolSSI Education Jupyter notebook 01_molecule_representation</a>.</p>
+<p>If we look at the small molecule, <a class="reference external" href="https://www.rcsb.org/ligand/13U">13U</a>, on the <a class="reference external" href="https://www.rcsb.org">RCSB PDB website</a>, you will see that page also contains a list of strings for the molecule:</p>
+<ul class="simple">
+<li><p>Isomeric SMILES: H]/N=C(/c1ccc(cc1)CNC(=O)[C&#64;&#64;H]2CCCN2C(=O)CNC3CCCCCCC3)\N</p></li>
+<li><p>InChI: 	InChI=1S/C23H35N5O2/c24-22(25)18-12-10-17(11-13-18)15-27-23(30)20-9-6-14-28(20)21(29)16-26-19-7-4-2-1-3-5-8-19/h10-13,19-20,26H,1-9,14-16H2,(H3,24,25)(H,27,30)/t20-/m0/s1</p></li>
+<li><p>InChIKey: MMLOIDMSBRJZAE-FQEVSTJZSA-N</p></li>
+</ul>
+<p>For this notebook, we will use the SMILES representation of the ligand structure we are going to explore together. It will be one of the ligand structures we downloaded in the first notebook, so it should already be in your ligands folder.</p>
+</section>
+<section id="things-to-do-for-this-notebook">
+<h2>Things to Do for this Notebook<a class="headerlink" href="#things-to-do-for-this-notebook" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Get the SMILES string for one of the trypsin ligands. Make sure it is correct. Done <a class="reference external" href="https://www.rcsb.org/ligand/13U">13U</a>. I had to use the SMILES string from PubChem.</p></li>
+<li><p>Go from structure to SMILES string to structure with rdkit. Done</p></li>
+<li><p>Find out how to modify the ligand: N for C substitution in an aromatic ring, adding CH3, adding a t-butyl group. Done</p></li>
+<li><p>Optimize the files in 3D.</p></li>
+<li><p>Save the files in the ligands folder with systematic naming conventions.</p></li>
+</ol>
+</section>
+<section id="modifying-the-ligand-molecule">
+<h2>Modifying the ligand molecule<a class="headerlink" href="#modifying-the-ligand-molecule" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">rdkit</span></code> library has some very powerful tools for pattern recognition and substructure substitutions that would enable us to complete the following tasks in a very powerful and extensible fashion. However in view of the time constraints of this workshop, we will take a much simpler approach. If you would like to explore the more powerful approach, you can learn much more the <a class="reference external" href="https://www.rdkit.org/docs/Cookbook.html">RDKit Cookbook</a>.</p>
+<ul class="simple">
+<li><p>Obtain the SMILES code for our ligand of choice</p></li>
+<li><p>Visually inspect the SMILES code to identify the aromatic carbon position we wish to modify</p></li>
+<li><p>Perform three modifications of the ligand</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Replace an aromatic ring carbon with a nitrogen.</p></li>
+<li><p>Starting from the original ligand, add a methyl group to the carbon.</p></li>
+<li><p>Starting from the original ligand, add a t-butyl group to the carbon.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repl</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;OC&#39;</span><span class="p">)</span>
+
+<span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s1">&#39;[$(NC(=O))]&#39;</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(=O)N&#39;</span><span class="p">)</span>
+
+<span class="n">rms</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReplaceSubstructs</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">patt</span><span class="p">,</span><span class="n">repl</span><span class="p">)</span>
+
+<span class="n">rms</span>
+
+<span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">rms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="s1">&#39;COC(C)=O&#39;</span>
+
+<span class="n">original_molecule</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CCC(=O)N&#39;</span><span class="p">)</span>
+<span class="n">original_molecule</span>
+
+<span class="n">new_molecule</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReplaceSubstructs</span><span class="p">(</span><span class="n">original_molecule</span><span class="p">,</span><span class="n">patt</span><span class="p">,</span><span class="n">repl</span><span class="p">)</span>
+<span class="n">new_molecule</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/218589945a09fadaeee2a011324a6e427e9711ad40f78a41f5ef951f071c2d24.png" src="../_images/218589945a09fadaeee2a011324a6e427e9711ad40f78a41f5ef951f071c2d24.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">benzene</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;c1ccccc1&#39;</span><span class="p">)</span>
+<span class="n">benzene</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">repl</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="n">pyridine</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">ReplaceSubstructs</span><span class="p">(</span><span class="n">benzene</span><span class="p">,</span><span class="n">pattern</span><span class="p">,</span><span class="n">repl</span><span class="p">)</span>
+<span class="n">pyridine</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9118b8d5be468711316ed3bf8e1d9a2aca41860dddcd1751fceb2bae47752428.png" src="../_images/9118b8d5be468711316ed3bf8e1d9a2aca41860dddcd1751fceb2bae47752428.png" />
+</div>
+</div>
+</section>
+<section id="modifying-a-ligand-that-is-known-to-bind-to-trypsin">
+<h2>Modifying a ligand that is known to bind to trypsin<a class="headerlink" href="#modifying-a-ligand-that-is-known-to-bind-to-trypsin" title="Link to this heading">#</a></h2>
+<p>We will start with the ligand <a class="reference external" href="https://www.rcsb.org/ligand/13U">PDB entry 13U</a>. Note: the SMILES string from that page does not work with the ligand N-cyclooctylglycyl-N-(4-carbamimidoylbenzyl)-L-prolinamide (PDB entry 13U)</p>
+<p>We can use this SMILES string for the same molecule provided by PubChem:
+<a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/#query=N-cyclooctylglycyl-N-(4-carbamimidoylbenzyl)-L-prolinamide">N-cyclooctylglycyl-N-(4-carbamimidoylbenzyl)-L-prolinamide</a>.</p>
+<p>In this part of the notebook, we will learn to make specific changes in the SMILES string to generate the desired 2D structures. Once that is complete, we will need to generate the molecule in 3D and save it in the mol2 file format.</p>
+<p>Process:</p>
+<ol class="arabic simple">
+<li><p>Convert the SMILES string into a structure and inspect it visually. To do this we will use the <code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles</span></code> function.</p></li>
+<li><p>Identify the carbon atom near the guanidino group we want to modify. The bold portion highlighted in the SMILES string for the ligand is the third ring in the structure and it is the only one that contains double bonds, so we will focus there: C1CCCC(CCC1)NCC(=O)N2CCC[C&#64;H]2C(=O)NC<strong>C3=CC=C(C=C3)</strong> C(=N)N.The modification target is the 2nd C in the CC=C portion of the string.</p></li>
+<li><p>Substitute the target aromatic ring carbon, C, with a nitrogen, N, and save the molecule. This will happen in the second cell below.</p></li>
+<li><p>Return to the original structure and attach a methyl group to the same carbon by placing a (C) after the target carbon. This will happen in the third cell below.</p></li>
+<li><p>Return to the original structure and attach a t-butyl group to the same carbon by placing (CC(C)(C)(C)) after the target carbon.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert a SMILES string into a structure and inspect it visually - the original 13U structure</span>
+
+<span class="n">ligand</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;C1CCCC(CCC1)NCC(=O)N2CCC[C@H]2C(=O)NCC3=CC=C(C=C3)C(=N)N&#39;</span><span class="p">)</span>
+<span class="n">ligand</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6852af1394e657f1eda42c8dc9a91335e609f0a15154a9228d54835e32d356a1.png" src="../_images/6852af1394e657f1eda42c8dc9a91335e609f0a15154a9228d54835e32d356a1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace the carbon atom in the aromatic ring nearest to the guanidino group with a nitrogen atom.</span>
+
+<span class="n">ligand_cn</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;C1CCCC(CCC1)NCC(=O)N2CCC[C@H]2C(=O)NCC3=CN=C(C=C3)C(=N)N&#39;</span><span class="p">)</span>
+<span class="n">ligand_cn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/15b2ab33bce2f6867a9f0e172f2330082f4b3f54f102b3564880277d84e1b7b9.png" src="../_images/15b2ab33bce2f6867a9f0e172f2330082f4b3f54f102b3564880277d84e1b7b9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Starting from the original 13U structure (without the nitrogen substitution), </span>
+<span class="c1"># add a methyl group as (C) right after the target carbon in the SMILES string.</span>
+
+<span class="n">ligand_c_methyl</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;C1CCCC(CCC1)NCC(=O)N2CCC[C@H]2C(=O)NCC3=CC(C)=C(C=C3)C(=N)N&#39;</span><span class="p">)</span>
+<span class="n">ligand_c_methyl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b9e4f30fa422df5b23c6c3ea726adf802efb5070736c6dc0ef933361892f0bca.png" src="../_images/b9e4f30fa422df5b23c6c3ea726adf802efb5070736c6dc0ef933361892f0bca.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Starting from the original 13U structure (without the nitrogen substitution), </span>
+<span class="c1"># add an isopropyl group as (C(C)(C)) right after the target carbon in the SMILES string. </span>
+
+<span class="n">ligand_c_ipr</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;C1CCCC(CCC1)NCC(=O)N2CCC[C@H]2C(=O)NCC3=CC(C(C)(C))=C(C=C3)C(=N)N&#39;</span><span class="p">)</span>
+<span class="n">ligand_c_ipr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9a7e2c48bf392c675ff8b82c5f5abba8e0094daebe88d6b2c90ad140f89f3067.png" src="../_images/9a7e2c48bf392c675ff8b82c5f5abba8e0094daebe88d6b2c90ad140f89f3067.png" />
+</div>
+</div>
+</section>
+<section id="converting-the-2d-ligand-structures-to-3d-structures-for-use-in-docking">
+<h2>Converting the 2D ligand structures to 3D structures for use in docking<a class="headerlink" href="#converting-the-2d-ligand-structures-to-3d-structures-for-use-in-docking" title="Link to this heading">#</a></h2>
+<p>At this point, we have four structures: ligand (actually the original 13U structure from the RCSB PDB), ligand_cn (13U with one aromatic carbon substituted with a nitrogen), ligand_c_methyl (13U with a methyl group attached to the target carbon) and ligand_c_tbu (13U with a t-butyl group attached to the target carbon). At this point, these are 2D molecules. We could download them now and rdkit would give them some coordinates, but it is best to control this process. We will follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Add hydrogen atoms on the molecules using the AllChem.AddHs() function.</p></li>
+<li><p>Optimize the ligands with explicit hydrogens in 3D.</p></li>
+<li><p>Download the 3D-optimized molecules.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will use at print command to look at the contents of the data for the ligand. Note that it is only 2D (xy) data.</span>
+<span class="c1"># The third column contains only zeros.</span>
+
+<span class="n">AllChem</span><span class="o">.</span><span class="n">Compute2DCoords</span><span class="p">(</span><span class="n">ligand</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligand</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     RDKit          2D
+
+ 30 32  0  0  0  0  0  0  0  0999 V2000
+   -3.7613   -5.1040    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.2051   -4.6975    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9387   -3.3891    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5322   -1.9452    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2238   -1.2117    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7799   -1.6181    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0464   -2.9265    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4529   -4.3704    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.4008    0.2779    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1993    1.1759    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.3764    2.6654    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.7548    3.2569    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1749    3.5635    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1952    5.0633    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.7751    5.5462    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1230    4.3447    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.7422    3.1193    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2593    1.6992    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2478    0.5709    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2120    1.4072    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6948   -0.0129    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.1661   -0.3049    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6490   -1.7251    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1203   -2.0170    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.1088   -0.8888    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.6259    0.5314    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.1546    0.8233    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.5801   -1.1807    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.5686   -0.0525    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    8.0629   -2.6009    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0
+  2  3  1  0
+  3  4  1  0
+  4  5  1  0
+  5  6  1  0
+  6  7  1  0
+  7  8  1  0
+  5  9  1  0
+  9 10  1  0
+ 10 11  1  0
+ 11 12  2  0
+ 11 13  1  0
+ 13 14  1  0
+ 14 15  1  0
+ 15 16  1  0
+ 16 17  1  0
+ 17 18  1  1
+ 18 19  2  0
+ 18 20  1  0
+ 20 21  1  0
+ 21 22  1  0
+ 22 23  2  0
+ 23 24  1  0
+ 24 25  2  0
+ 25 26  1  0
+ 26 27  2  0
+ 25 28  1  0
+ 28 29  2  0
+ 28 30  1  0
+  8  1  1  0
+ 17 13  1  0
+ 27 22  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use the print command to save the 2D representation of ligand 13U.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligand</span><span class="p">),</span> <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ligand_13U-2D.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will now use an rdkit command to create the 3D representation of ligand 13U</span>
+
+<span class="c1"># First we add the hydrogens</span>
+
+<span class="n">ligand13U_H</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">ligand</span><span class="p">)</span>
+
+<span class="c1"># Execute this print command and look in fourth column for the atom type. </span>
+<span class="c1"># You will notice hydrogens (H) that you did not see before.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligand13U_H</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     RDKit          2D
+
+ 65 67  0  0  0  0  0  0  0  0999 V2000
+   -3.7613   -5.1040    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.2051   -4.6975    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9387   -3.3891    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5322   -1.9452    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2238   -1.2117    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7799   -1.6181    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0464   -2.9265    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4529   -4.3704    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.4008    0.2779    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1993    1.1759    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.3764    2.6654    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.7548    3.2569    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1749    3.5635    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1952    5.0633    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.7751    5.5462    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1230    4.3447    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.7422    3.1193    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2593    1.6992    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2478    0.5709    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2120    1.4072    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6948   -0.0129    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.1661   -0.3049    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6490   -1.7251    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1203   -2.0170    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.1088   -0.8888    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.6259    0.5314    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.1546    0.8233    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.5801   -1.1807    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.5686   -0.0525    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    8.0629   -2.6009    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.0000    0.0000    0.0000 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0
+  2  3  1  0
+  3  4  1  0
+  4  5  1  0
+  5  6  1  0
+  6  7  1  0
+  7  8  1  0
+  5  9  1  0
+  9 10  1  0
+ 10 11  1  0
+ 11 12  2  0
+ 11 13  1  0
+ 13 14  1  0
+ 14 15  1  0
+ 15 16  1  0
+ 16 17  1  0
+ 17 18  1  0
+ 18 19  2  0
+ 18 20  1  0
+ 20 21  1  0
+ 21 22  1  0
+ 22 23  2  0
+ 23 24  1  0
+ 24 25  2  0
+ 25 26  1  0
+ 26 27  2  0
+ 25 28  1  0
+ 28 29  2  3
+ 28 30  1  0
+  8  1  1  0
+ 17 13  1  0
+ 27 22  1  0
+  1 31  1  0
+  1 32  1  0
+  2 33  1  0
+  2 34  1  0
+  3 35  1  0
+  3 36  1  0
+  4 37  1  0
+  4 38  1  0
+  5 39  1  0
+  6 40  1  0
+  6 41  1  0
+  7 42  1  0
+  7 43  1  0
+  8 44  1  0
+  8 45  1  0
+  9 46  1  0
+ 10 47  1  0
+ 10 48  1  0
+ 14 49  1  0
+ 14 50  1  0
+ 15 51  1  0
+ 15 52  1  0
+ 16 53  1  0
+ 16 54  1  0
+ 17 55  1  6
+ 20 56  1  0
+ 21 57  1  0
+ 21 58  1  0
+ 23 59  1  0
+ 24 60  1  0
+ 26 61  1  0
+ 27 62  1  0
+ 29 63  1  0
+ 30 64  1  0
+ 30 65  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the 3D version of the molecule. I am following a YouTube video to do this:</span>
+<span class="c1"># https://www.youtube.com/watch?v=NozaWUkJ3YM</span>
+
+<span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">ligand13U_H</span><span class="p">)</span>   <span class="c1"># </span>
+
+<span class="c1"># Print out the data for ligand13U_H. Notice the values in the third (z) column - this is a 3D molecule.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligand13U_H</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     RDKit          3D
+
+ 65 67  0  0  0  0  0  0  0  0999 V2000
+   -5.8160    2.9932   -0.1411 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9850    1.9090   -1.1549 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.7493    1.0312   -1.2664 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.0459   -0.3851   -0.8251 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2585   -0.7268    0.4151 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.3086    0.3696    1.4513 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.6223    1.0898    1.4959 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.4346    2.5455    1.2158 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8710   -0.8710    0.0141 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0120   -1.2101    1.1033 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6064   -1.3355    0.6447 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3869   -1.1366   -0.5642 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.4390   -1.6640    1.5268 N   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1493   -1.8889    2.9737 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.9621   -3.1110    3.2520 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9600   -3.2508    2.1333 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8378   -1.8662    1.4599 C   0  0  1  0  0  0  0  0  0  0  0  0
+    2.4929   -1.8648    0.1577 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0019   -1.7328   -0.9652 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.9275   -2.0457    0.1970 N   0  0  0  0  0  0  0  0  0  0  0  0
+    4.7714   -2.0740   -0.9570 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.0137   -0.6944   -1.4340 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.0341    0.0437   -0.8589 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.3384    1.3282   -1.2548 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.5936    1.8879   -2.2604 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5773    1.1854   -2.8511 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.2871   -0.1211   -2.4303 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8706    3.2281   -2.7150 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.9239    3.9749   -3.1394 N   0  0  0  0  0  0  0  0  0  0  0  0
+    7.1909    3.7225   -2.6955 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.7598    3.6033   -0.1650 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.0237    3.6866   -0.5420 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.1269    2.3927   -2.1444 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9037    1.2938   -0.9915 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.3616    1.0032   -2.3228 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9065    1.4451   -0.6722 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6927   -1.1109   -1.6163 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.1317   -0.5902   -0.7200 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6860   -1.6247    0.8633 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.0555   -0.1334    2.4321 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.4549    1.0655    1.2773 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9857    1.0162    2.5644 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.4260    0.6103    0.9011 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.0075    3.1821    1.9534 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.3575    2.7970    1.4399 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.7739   -1.5389   -0.8005 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3617   -2.1456    1.6077 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.0359   -0.3517    1.8241 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.9136   -1.9940    3.1699 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6322   -1.0286    3.4852 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5609   -3.0233    4.2048 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3173   -4.0148    3.2991 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.6187   -3.9732    1.3711 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9871   -3.3871    2.4749 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.4091   -1.1754    2.1322 H   0  0  0  0  0  0  0  0  0  0  0  0
+    4.4062   -2.1669    1.1433 H   0  0  0  0  0  0  0  0  0  0  0  0
+    4.3482   -2.7164   -1.7666 H   0  0  0  0  0  0  0  0  0  0  0  0
+    5.7853   -2.4760   -0.6666 H   0  0  0  0  0  0  0  0  0  0  0  0
+    6.6097   -0.4207   -0.0642 H   0  0  0  0  0  0  0  0  0  0  0  0
+    7.1291    1.8966   -0.8067 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.9779    1.5884   -3.6351 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.4952   -0.6617   -2.9094 H   0  0  0  0  0  0  0  0  0  0  0  0
+    5.0681    4.9400   -3.4756 H   0  0  0  0  0  0  0  0  0  0  0  0
+    7.5045    4.3876   -3.4188 H   0  0  0  0  0  0  0  0  0  0  0  0
+    7.8400    3.4137   -1.9531 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0
+  2  3  1  0
+  3  4  1  0
+  4  5  1  0
+  5  6  1  0
+  6  7  1  0
+  7  8  1  0
+  5  9  1  0
+  9 10  1  0
+ 10 11  1  0
+ 11 12  2  0
+ 11 13  1  0
+ 13 14  1  0
+ 14 15  1  0
+ 15 16  1  0
+ 16 17  1  0
+ 17 18  1  0
+ 18 19  2  0
+ 18 20  1  0
+ 20 21  1  0
+ 21 22  1  0
+ 22 23  2  0
+ 23 24  1  0
+ 24 25  2  0
+ 25 26  1  0
+ 26 27  2  0
+ 25 28  1  0
+ 28 29  2  3
+ 28 30  1  0
+  8  1  1  0
+ 17 13  1  0
+ 27 22  1  0
+  1 31  1  0
+  1 32  1  0
+  2 33  1  0
+  2 34  1  0
+  3 35  1  0
+  3 36  1  0
+  4 37  1  0
+  4 38  1  0
+  5 39  1  0
+  6 40  1  0
+  6 41  1  0
+  7 42  1  0
+  7 43  1  0
+  8 44  1  0
+  8 45  1  0
+  9 46  1  0
+ 10 47  1  0
+ 10 48  1  0
+ 14 49  1  0
+ 14 50  1  0
+ 15 51  1  0
+ 15 52  1  0
+ 16 53  1  0
+ 16 54  1  0
+ 17 55  1  1
+ 20 56  1  0
+ 21 57  1  0
+ 21 58  1  0
+ 23 59  1  0
+ 24 60  1  0
+ 26 61  1  0
+ 27 62  1  0
+ 29 63  1  0
+ 30 64  1  0
+ 30 65  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the 2D structure</span>
+
+<span class="n">ligand</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6852af1394e657f1eda42c8dc9a91335e609f0a15154a9228d54835e32d356a1.png" src="../_images/6852af1394e657f1eda42c8dc9a91335e609f0a15154a9228d54835e32d356a1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the molecule. Note that the shape of the molecule has changed.</span>
+
+<span class="n">ligand13U_H</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c8b9bb7d2965e7f0567af9ee22b9333721c9119de36bf2345f217acbca37b191.png" src="../_images/c8b9bb7d2965e7f0567af9ee22b9333721c9119de36bf2345f217acbca37b191.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finally we will optimize the 3D structure before saving it.</span>
+
+<span class="n">opt_13U_H</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMoleculeConfs</span><span class="p">(</span><span class="n">ligand13U_H</span><span class="p">)</span>
+
+<span class="c1"># Now look at the coordinates again and notice that they have changed.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligand13U_H</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     RDKit          3D
+
+ 65 67  0  0  0  0  0  0  0  0999 V2000
+   -5.9386    2.8651    0.8806 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5920    2.8638   -0.6053 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2131    2.2841   -0.9480 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1967    0.7738   -1.1982 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.8354   -0.1308   -0.0006 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.6542    0.1293    1.2801 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.1599    0.2617    1.0514 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.7148    1.6464    1.3861 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4044    0.0167    0.3082 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8504   -1.1268    1.0570 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3149   -1.0394    1.1042 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3236   -0.2530    0.3949 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3266   -1.9267    1.9430 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.2585   -2.9673    2.7655 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7654   -3.1480    3.8734 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0968   -2.9465    3.1560 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.7844   -1.9321    2.0430 C   0  0  1  0  0  0  0  0  0  0  0  0
+    2.4061   -2.4132    0.7162 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.0769   -3.4644    0.1653 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.3711   -1.5666    0.2067 N   0  0  0  0  0  0  0  0  0  0  0  0
+    3.9070   -1.8039   -1.1120 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.6448   -0.6011   -1.6405 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.0335   -0.6390   -1.8379 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.7045    0.4630   -2.3795 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.9930    1.6207   -2.7258 C   0  0  0  0  0  0  0  0  0  0  0  0
+    4.6160    1.6784   -2.4899 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.9441    0.5724   -1.9605 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.6858    2.7963   -3.3343 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.1051    3.9537   -3.3342 N   0  0  0  0  0  0  0  0  0  0  0  0
+    7.9197    2.6611   -3.9079 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.5746    3.7397    1.0770 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.0402    3.0260    1.4859 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5748    3.9153   -0.9296 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.3854    2.3863   -1.1937 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9100    2.7575   -1.8931 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.4598    2.5849   -0.2121 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.4626    0.5806   -1.9915 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.1506    0.4605   -1.6372 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.0199   -1.1618   -0.3348 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.4962   -0.7131    1.9687 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.2555    1.0054    1.8089 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.6748   -0.4587    1.7050 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.4484   -0.0215    0.0338 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.7519    1.7040    1.0229 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.7850    1.7345    2.4798 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8506    0.1262   -0.5450 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.1046   -2.0710    0.5667 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.2375   -1.1122    2.0781 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3335   -3.8704    2.1494 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.2464   -2.7049    3.1422 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6373   -2.3683    4.6354 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6904   -4.1244    4.3643 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.4429   -3.9072    2.7524 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8756   -2.5807    3.8330 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.1217   -0.9235    2.3038 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.4161   -0.6176    0.5715 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.0954   -2.0711   -1.8028 H   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5710   -2.6752   -1.0437 H   0  0  0  0  0  0  0  0  0  0  0  0
+    6.6003   -1.5338   -1.5813 H   0  0  0  0  0  0  0  0  0  0  0  0
+    7.7753    0.3917   -2.5321 H   0  0  0  0  0  0  0  0  0  0  0  0
+    4.0533    2.5761   -2.7432 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8661    0.6285   -1.8071 H   0  0  0  0  0  0  0  0  0  0  0  0
+    6.7172    4.6476   -3.7596 H   0  0  0  0  0  0  0  0  0  0  0  0
+    8.1901    3.3985   -4.5479 H   0  0  0  0  0  0  0  0  0  0  0  0
+    8.1381    1.7435   -4.2810 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0
+  2  3  1  0
+  3  4  1  0
+  4  5  1  0
+  5  6  1  0
+  6  7  1  0
+  7  8  1  0
+  5  9  1  0
+  9 10  1  0
+ 10 11  1  0
+ 11 12  2  0
+ 11 13  1  0
+ 13 14  1  0
+ 14 15  1  0
+ 15 16  1  0
+ 16 17  1  0
+ 17 18  1  0
+ 18 19  2  0
+ 18 20  1  0
+ 20 21  1  0
+ 21 22  1  0
+ 22 23  2  0
+ 23 24  1  0
+ 24 25  2  0
+ 25 26  1  0
+ 26 27  2  0
+ 25 28  1  0
+ 28 29  2  3
+ 28 30  1  0
+  8  1  1  0
+ 17 13  1  0
+ 27 22  1  0
+  1 31  1  0
+  1 32  1  0
+  2 33  1  0
+  2 34  1  0
+  3 35  1  0
+  3 36  1  0
+  4 37  1  0
+  4 38  1  0
+  5 39  1  0
+  6 40  1  0
+  6 41  1  0
+  7 42  1  0
+  7 43  1  0
+  8 44  1  0
+  8 45  1  0
+  9 46  1  0
+ 10 47  1  0
+ 10 48  1  0
+ 14 49  1  0
+ 14 50  1  0
+ 15 51  1  0
+ 15 52  1  0
+ 16 53  1  0
+ 16 54  1  0
+ 17 55  1  1
+ 20 56  1  0
+ 21 57  1  0
+ 21 58  1  0
+ 23 59  1  0
+ 24 60  1  0
+ 26 61  1  0
+ 27 62  1  0
+ 29 63  1  0
+ 30 64  1  0
+ 30 65  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When the MMFFOptimizeMoleculeConfs function it applied to a file, it optimizes the 3D structure,</span>
+<span class="c1"># and actually changes the coordinates for the molecule. It also gives an output that we have </span>
+<span class="c1"># stored at opt_13U_H, which is a list (with only one element this time) of tuples. The first number in</span>
+<span class="c1"># the tuple indicates if the conformer converged with a value of 0. The second value is the free energy.</span>
+
+<span class="n">opt_13U_H</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 42.969864354321274)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finally we will write and store the 3D coordinate file.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligand13U_H</span><span class="p">),</span> <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ligand_13U-3D.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will use a for loop to add hydrogens to and optimize each ligand in 3D </span>
+
+<span class="n">ligands</span> <span class="o">=</span> <span class="p">[</span><span class="n">ligand</span><span class="p">,</span> <span class="n">ligand_cn</span><span class="p">,</span> <span class="n">ligand_c_methyl</span><span class="p">,</span> <span class="n">ligand_c_tbu</span><span class="p">]</span>  <span class="c1"># A list so we can use a for loop </span>
+<span class="n">ligands_H</span> <span class="o">=</span> <span class="p">[]</span>                                                <span class="c1"># An empty list to hold the ligands with explicit hydrogens</span>
+<span class="n">lig_converge</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">ligands</span><span class="p">:</span>                                           <span class="c1"># A for loop to iterate the list of ligands</span>
+    <span class="n">mol_H</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>                                <span class="c1"># The function that adds the hydrogens</span>
+    <span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">mol_H</span><span class="p">)</span>                              <span class="c1"># Convert from 2D to 3D</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMoleculeConfs</span><span class="p">(</span><span class="n">mol_H</span><span class="p">)</span>            <span class="c1"># Optimization function</span>
+    <span class="n">lig_converge</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>                                  <span class="c1"># Collecting data on optimization</span>
+    <span class="n">ligands_H</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol_H</span><span class="p">)</span>                                   <span class="c1"># Appending the hydrogenated ligands to the list ligands_H</span>
+    
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">ligands_H</span><span class="p">,</span><span class="n">molsPerRow</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">400</span><span class="p">))</span>                <span class="c1"># Drawing the molecules for inspection</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># We will use a for loop to add hydrogens to and optimize each ligand in 3D </span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">ligands</span> <span class="o">=</span> <span class="p">[</span><span class="n">ligand</span><span class="p">,</span> <span class="n">ligand_cn</span><span class="p">,</span> <span class="n">ligand_c_methyl</span><span class="p">,</span> <span class="n">ligand_c_tbu</span><span class="p">]</span>  <span class="c1"># A list so we can use a for loop </span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ligands_H</span> <span class="o">=</span> <span class="p">[]</span>                                                <span class="c1"># An empty list to hold the ligands with explicit hydrogens</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">lig_converge</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="ne">NameError</span>: name &#39;ligand_c_tbu&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the ligand files in 3D format with names that easily identify the molecules</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligands_H</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/ligand13U-3D.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligands_H</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/ligand13Un-3D.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligands_H</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/ligand13Ume-3D.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ligands_H</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/ligand13Uipr-3D.sdf&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Did the optimizations converge properly?</span>
+
+<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">lig_converge</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 41.88494688682022)]
+[(1, 67.59439795024717)]
+[(1, 48.93574367649991)]
+[(1, 59.93229707347896)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Link to this heading">#</a></h2>
+<p>It appears that all of the code worked, but I am concerned that the attempts to optimize the ligands resulted in (a) non-convergence - not sure what that means - and (b) free energies values that are highly positive numbers.</p>
+<p>The code below is from a YouTube video, <a class="reference external" href="https://youtu.be/NozaWUkJ3YM?feature=shared">RDKit Unleashed - Part1: A Visual Journey into the World of Cheminformatics! from Code to Discovery</a>. The code below is taken from this video and run with some common ligands (glucose, ATP) to see if they converge and give negative free energies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Running their code on glucose</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;C([C@@H]1[C@H]([C@@H]([C@H](C(O1)O)O)O)O)O&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">SetProp</span><span class="p">(</span><span class="s2">&quot;_Name&quot;</span><span class="p">,</span> <span class="s2">&quot;mol-2d&quot;</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">Compute2DCoords</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mol-2d
+     RDKit          2D
+
+ 12 12  0  0  0  0  0  0  0  0999 V2000
+    2.8129   -0.0968    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3169    0.0124    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.4743   -1.2286    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.0217   -1.1194    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6751    0.2308    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.8326    1.4718    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6635    1.3626    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4860    2.8220    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1712    0.3400    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8643   -2.3604    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.1277   -2.5788    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.6555    1.1442    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+  2  1  1  6
+  2  3  1  0
+  3  4  1  0
+  4  5  1  0
+  5  6  1  0
+  6  7  1  0
+  6  8  1  0
+  5  9  1  1
+  4 10  1  6
+  3 11  1  1
+  1 12  1  0
+  7  2  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">m2</span><span class="o">.</span><span class="n">SetProp</span><span class="p">(</span><span class="s2">&quot;_Name&quot;</span><span class="p">,</span><span class="s2">&quot;mol-3d&quot;</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">m2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mol-3d
+     RDKit          3D
+
+ 24 24  0  0  0  0  0  0  0  0999 V2000
+    2.3691    0.4070    0.2411 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.8652    0.2026    0.4528 C   0  0  2  0  0  0  0  0  0  0  0  0
+    0.4413   -0.9151   -0.4637 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -1.0280   -1.1495   -0.2163 C   0  0  1  0  0  0  0  0  0  0  0  0
+   -1.7583    0.1216   -0.5073 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -0.8915    1.3373   -0.5540 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1650    1.3515    0.3047 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.7125    2.4337   -0.2449 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8133    0.2836    0.4024 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.4605   -2.2249   -0.9830 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.1796   -2.0501   -0.1677 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.5805    0.8860   -1.0460 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9149   -0.5475    0.3485 H   0  0  0  0  0  0  0  0  0  0  0  0
+    2.7833    1.1153    0.9911 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7520   -0.1621    1.4976 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6335   -0.6681   -1.5287 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1420   -1.4401    0.8506 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.2336    0.0101   -1.5104 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5098    1.5267   -1.5818 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6055    2.7091    0.7032 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.8274   -0.4958    1.0356 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1604   -2.0887   -1.9137 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.2055   -2.2545    0.8041 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2526    1.6119   -1.0129 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0
+  2  3  1  0
+  3  4  1  0
+  4  5  1  0
+  5  6  1  0
+  6  7  1  0
+  6  8  1  0
+  5  9  1  0
+  4 10  1  0
+  3 11  1  0
+  1 12  1  0
+  7  2  1  0
+  1 13  1  0
+  1 14  1  0
+  2 15  1  1
+  3 16  1  6
+  4 17  1  1
+  5 18  1  6
+  6 19  1  0
+  8 20  1  0
+  9 21  1  0
+ 10 22  1  0
+ 11 23  1  0
+ 12 24  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/355dd3663a81bad3e2972b54a2c8aedc7439e77bd278073df1651088a931ac6c.png" src="../_images/355dd3663a81bad3e2972b54a2c8aedc7439e77bd278073df1651088a931ac6c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/950474922c2f9a7987c8a3667b8be253253686bfa63e09bf4f56a6adae679093.png" src="../_images/950474922c2f9a7987c8a3667b8be253253686bfa63e09bf4f56a6adae679093.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMoleculeConfs</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, 90.62520287388557)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Running their code on ATP</span>
+
+<span class="n">ATP</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N&#39;</span><span class="p">)</span>
+<span class="n">ATP</span><span class="o">.</span><span class="n">SetProp</span><span class="p">(</span><span class="s2">&quot;_Name&quot;</span><span class="p">,</span> <span class="s2">&quot;mol-2d&quot;</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">Compute2DCoords</span><span class="p">(</span><span class="n">ATP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ATP</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mol-2d
+     RDKit          2D
+
+ 31 33  0  0  0  0  0  0  0  0999 V2000
+   -4.8482   -2.9599    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.3380   -2.7852    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.9315   -1.4076    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.0353   -0.2048    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.5456   -0.3795    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9520   -1.7571    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.9190    0.9833    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.0216    2.0004    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.3295    1.2661    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.4481    1.2775    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.8216    2.6404    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3318    2.4657    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0376    0.9948    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3456    0.2605    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3253    0.3683    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4641   -1.1253    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8270   -1.7518    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    3.4535   -0.3889    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.2004   -3.1147    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.1899   -2.3783    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    5.4139   -1.5113    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    6.2809   -2.7354    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5469   -0.2873    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    6.6380   -0.6443    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    6.4991    0.8493    0.0000 P   0  0  0  0  0  0  0  0  0  0  0  0
+    7.9927    0.9881    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    5.0056    0.7104    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    6.3603    2.3428    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6852    3.5683    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.5559    3.9484    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.4213   -1.2329    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0
+  2  3  1  0
+  3  4  2  0
+  4  5  1  0
+  5  6  2  0
+  5  7  1  0
+  7  8  1  0
+  8  9  2  0
+ 10  7  1  1
+ 10 11  1  0
+ 11 12  1  0
+ 12 13  1  0
+ 13 14  1  0
+ 13 15  1  1
+ 15 16  1  0
+ 16 17  1  0
+ 17 18  2  0
+ 17 19  1  0
+ 17 20  1  0
+ 20 21  1  0
+ 21 22  2  0
+ 21 23  1  0
+ 21 24  1  0
+ 24 25  1  0
+ 25 26  2  0
+ 25 27  1  0
+ 25 28  1  0
+ 12 29  1  6
+ 11 30  1  6
+  3 31  1  0
+  6  1  1  0
+  9  4  1  0
+ 14 10  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ATP3D</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">ATP</span><span class="p">)</span>
+<span class="n">ATP3D</span><span class="o">.</span><span class="n">SetProp</span><span class="p">(</span><span class="s2">&quot;_Name&quot;</span><span class="p">,</span><span class="s2">&quot;mol-3d&quot;</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">ATP3D</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ATP3D</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mol-3d
+     RDKit          3D
+
+ 47 49  0  0  0  0  0  0  0  0999 V2000
+   -6.0508   -0.7780    2.3488 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.1796   -0.6417    1.5819 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -7.1202   -0.0244    0.3976 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.9047    0.4804   -0.0466 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.7780    0.3372    0.7191 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.8892   -0.3039    1.9225 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.7384    0.8767    0.0533 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -4.1843    1.3692   -1.0863 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -5.5204    1.1321   -1.1766 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.3829    0.5881    0.4205 C   0  0  1  0  0  0  0  0  0  0  0  0
+   -2.0896   -0.5968   -0.6465 C   0  0  1  0  0  0  0  0  0  0  0  0
+   -0.6601   -0.8008   -0.3287 C   0  0  1  0  0  0  0  0  0  0  0  0
+   -0.2776    0.6433   -0.0694 C   0  0  2  0  0  0  0  0  0  0  0  0
+   -1.3630    1.4236    0.0932 O   0  0  0  0  0  0  0  0  0  0  0  0
+    0.8244    1.0020   -1.0072 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4888   -0.3000   -1.0283 O   0  0  0  0  0  0  0  0  0  0  0  0
+    2.9753   -0.1373   -0.4120 P   0  0  0  0  0  5  0  0  0  0  0  0
+    3.0228   -0.9923    0.9517 O   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2547    1.4605    0.0556 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.2782   -0.7891   -1.2369 O   0  0  0  0  0  0  0  0  0  0  0  0
+    5.6538   -0.5610   -0.2199 P   0  0  0  0  0  5  0  0  0  0  0  0
+    5.8864    0.9417   -0.0622 O   0  0  0  0  0  0  0  0  0  0  0  0
+    5.4053   -1.1542    1.3283 O   0  0  0  0  0  0  0  0  0  0  0  0
+    6.9228   -1.3345   -0.9550 O   0  0  0  0  0  0  0  0  0  0  0  0
+    8.3399   -0.4244   -0.6814 P   0  0  0  0  0  5  0  0  0  0  0  0
+    8.2419    0.8050   -1.5328 O   0  0  0  0  0  0  0  0  0  0  0  0
+    8.3837   -0.0543    0.9780 O   0  0  0  0  0  0  0  0  0  0  0  0
+    9.6850   -1.3254   -1.0646 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.5569   -1.5664    0.8454 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.9714   -1.5892   -0.4455 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.2157   -0.0661   -0.4852 N   0  0  0  0  0  0  0  0  0  0  0  0
+   -6.1471   -1.2602    3.2996 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.5289    1.8738   -1.7932 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.2725    0.0497    1.3617 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -2.2120   -0.0464   -1.6065 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.0715   -1.2585   -1.1720 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.2275    0.5797    1.0083 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.3825    1.2178   -2.0078 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.5317    1.7358   -0.7072 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.2876    1.5051    1.0312 H   0  0  0  0  0  0  0  0  0  0  0  0
+    5.0046   -2.0296    1.3989 H   0  0  0  0  0  0  0  0  0  0  0  0
+    7.8945    0.8088    1.0767 H   0  0  0  0  0  0  0  0  0  0  0  0
+   10.4487   -1.0773   -0.5043 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6837   -2.5211    0.6095 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -3.1129   -1.8268    0.4820 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.8114    0.6716   -0.8251 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -8.4173   -1.0695   -0.8627 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0
+  2  3  1  0
+  3  4  2  0
+  4  5  1  0
+  5  6  2  0
+  5  7  1  0
+  7  8  1  0
+  8  9  2  0
+  7 10  1  0
+ 10 11  1  0
+ 11 12  1  0
+ 12 13  1  0
+ 13 14  1  0
+ 13 15  1  0
+ 15 16  1  0
+ 16 17  1  0
+ 17 18  2  0
+ 17 19  1  0
+ 17 20  1  0
+ 20 21  1  0
+ 21 22  2  0
+ 21 23  1  0
+ 21 24  1  0
+ 24 25  1  0
+ 25 26  2  0
+ 25 27  1  0
+ 25 28  1  0
+ 12 29  1  0
+ 11 30  1  0
+  3 31  1  0
+  6  1  1  0
+  9  4  1  0
+ 14 10  1  0
+  1 32  1  0
+  8 33  1  0
+ 10 34  1  1
+ 11 35  1  6
+ 12 36  1  6
+ 13 37  1  1
+ 15 38  1  0
+ 15 39  1  0
+ 19 40  1  0
+ 23 41  1  0
+ 27 42  1  0
+ 28 43  1  0
+ 29 44  1  0
+ 30 45  1  0
+ 31 46  1  0
+ 31 47  1  0
+M  END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ATP</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/438c4fbba730986ef8c961c83f9a29b8dbb672bcae8b1b43a2ed17c8398db668.png" src="../_images/438c4fbba730986ef8c961c83f9a29b8dbb672bcae8b1b43a2ed17c8398db668.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ATP3D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b8488e00a461099fb96604839d0714bda1f2039d4d3f43f860f99a3a2845cc25.png" src="../_images/b8488e00a461099fb96604839d0714bda1f2039d4d3f43f860f99a3a2845cc25.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMoleculeConfs</span><span class="p">(</span><span class="n">ATP3D</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, -490.1029058355571)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="results-for-glucose-and-atp">
+<h2>Results for Glucose and ATP<a class="headerlink" href="#results-for-glucose-and-atp" title="Link to this heading">#</a></h2>
+<p>Glucose converged, but gave a very positive free energy value. ATP converged some of the time and gave very negative free energy values.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-representation-of-molecules">Digital Representation of Molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-do-for-this-notebook">Things to Do for this Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-the-ligand-molecule">Modifying the ligand molecule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-a-ligand-that-is-known-to-bind-to-trypsin">Modifying a ligand that is known to bind to trypsin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-the-2d-ligand-structures-to-3d-structures-for-use-in-docking">Converting the 2D ligand structures to 3D structures for use in docking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-for-glucose-and-atp">Results for Glucose and ATP</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Molecular Sciences Software Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
