@@ -26,4 +26,3 @@ dependencies:
     - icn3dpy
     - rcsbsearchapi
     - pdb2pqr
-    - "docutils>0.21"

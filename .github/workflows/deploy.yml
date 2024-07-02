@@ -30,6 +30,7 @@ jobs:
       - name: Build the book
         shell: bash -l {0}
         run: |
+          pip install docutils --upgrade
           jupyter-book build biochemist-python
 
       - name: GitHub Pages action
