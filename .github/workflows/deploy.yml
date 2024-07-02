@@ -24,12 +24,10 @@ jobs:
 
 
     # More info on options: https://github.com/conda-incubator/setup-miniconda
-    - name: Install Conda environment with Micromamba
-      uses: mamba-org/provision-with-micromamba@main
-      with:
+    - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: biochemist-python
           environment-file: requirements.yaml
-          environment-name: iqb-2023
-
 
     # Build the book
     - name: Build the book
