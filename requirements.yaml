@@ -1,4 +1,4 @@
-name: iqb-2024
+name: biochemist-python
 channels:
   - conda-forge
   - defaults
@@ -16,8 +16,15 @@ dependencies:
   - bokeh
   - nglview
   - seaborn
-  - ipywidgets<8.0
+  - sphinx
+  - ipywidgets>8.0
   - nodejs
+  - openbabel
+  - mdanalysis
+  - vina
+  - prolif
+  - docutils>=0.21
   - pip:
     - icn3dpy
     - rcsbsearchapi
+    - pdb2pqr
