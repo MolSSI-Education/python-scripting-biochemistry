@@ -14,3 +14,4 @@ chapters:
 - file: chapters/rcsb_api
 - file: chapters/MolVis_with_iCN3D
 - file: chapters/EC_class_ligands_search
+- file: chapters/binding_site_investigation
