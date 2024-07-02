@@ -23,6 +23,7 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v3
         with:
           auto-activate-base: false
+          python-version: 3.11
           activate-environment: biochemist-python
           environment-file: requirements.yaml
 
