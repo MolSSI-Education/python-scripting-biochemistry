@@ -3,12 +3,12 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - python=3.11
   - pip
   - jupyter-book
   - pandas
   - rdkit
   - numpy
-  - jupyterlab
   - notebook
   - scipy
   - biopython
@@ -22,8 +22,8 @@ dependencies:
   - mdanalysis
   - vina
   - prolif
-  - docutils>=0.21
   - pip:
     - icn3dpy
     - rcsbsearchapi
     - pdb2pqr
+    - "docutils>0.21"
