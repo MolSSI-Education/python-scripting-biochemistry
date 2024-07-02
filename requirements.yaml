@@ -13,7 +13,7 @@ dependencies:
   - scipy
   - biopython
   - bokeh
-  - nglview
+  - nglview==3.0.8
   - seaborn
   - sphinx
   - ipywidgets>8.0
