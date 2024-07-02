@@ -470,7 +470,7 @@ system. We can load an MDAnalysis universe from a PDB file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b99491671e01419ea6e9dd4d41e4527f", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1c0a1db552e24401b76ab762e90bcce1"}</script></div>
 </div>
 <p>Text here about NGLView</p>
 <div class="cell docutils container">
@@ -481,7 +481,7 @@ system. We can load an MDAnalysis universe from a PDB file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2401aa6c72574b7daf42ea1fa5b8be4b", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f4bf0df4e8374061a847a80ef8387aeb"}</script></div>
 </div>
 <p>This view looks a bit messy. MDAnalysis has a human readable <a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">selection syntax</a>
 that allows us to isolate parts of our structure. We will take our MDAnalysis Universe (the variable <code class="docutils literal notranslate"><span class="pre">u</span></code>) and use the <code class="docutils literal notranslate"><span class="pre">select_atoms</span></code> function.
@@ -505,7 +505,7 @@ It also zooms in on the ligand.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e76e61ee77e54089b97cc13e88d4ba18", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "57cc534d74ca4c49bd4b86168af63d12"}</script></div>
 </div>
 <p>Upon viewing this structure, you will notice that our ligand seems to appear twice.
 If you open the PDB file to investigate, you will see the following in the ligand section:</p>
@@ -543,7 +543,7 @@ By checking the <a class="reference external" href="https://docs.mdanalysis.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "39f72e25876f4a59a5451baa0beb88fd", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "380e3bce47be44c28bb972fd2df092b2"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +552,7 @@ By checking the <a class="reference external" href="https://docs.mdanalysis.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "86508b08ae76439f89976b8e570328a8", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a171ea6d7db146da9e45b1b966d34e29"}</script></div>
 </div>
 <p>When we inspect the ligand in the binding site, we notice a few things.
 First, the binding site has a large hydrophobic area on the surface.
@@ -577,7 +577,7 @@ Then, we will add hydrogens.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/janash/miniconda3/envs/iqb-2024/lib/python3.11/site-packages/MDAnalysis/coordinates/PDB.py:1153: UserWarning: Found no information for attr: &#39;formalcharges&#39; Using default value of &#39;0&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/coordinates/PDB.py:1153: UserWarning: Found no information for attr: &#39;formalcharges&#39; Using default value of &#39;0&#39;
   warnings.warn(&quot;Found no information for attr: &#39;{}&#39;&quot;
 </pre></div>
 </div>
@@ -603,7 +603,9 @@ INFO:Please cite:  Jurrus E, et al.  Improvements to the APBS biomolecular solva
 INFO:Please cite:  Dolinsky TJ, et al.  PDB2PQR: expanding and upgrading automated preparation of biomolecular structures for molecular simulations. Nucleic Acids Res 35 W522-W525 (2007).
 INFO:Checking and transforming input arguments.
 INFO:Loading topology files.
-INFO:Loading molecule: pdb/protein_2zq2.pdb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Loading molecule: pdb/protein_2zq2.pdb
 ERROR:Error parsing line: invalid literal for int() with base 10: &#39;&#39;
 ERROR:&lt;REMARK     2&gt;
 ERROR:Truncating remaining errors for record type:REMARK
@@ -666,7 +668,9 @@ WARNING:Multiple occupancies found: NE2 in GLN A 240.
 WARNING:Multiple occupancies found in GLN A 240. At least one of the instances is being ignored.
 INFO:Setting termini states for biomolecule chains.
 INFO:Loading forcefield.
-INFO:Loading hydrogen topology definitions.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Loading hydrogen topology definitions.
 WARNING:Missing atom CG in residue LYS A 222
 WARNING:Missing atom CD in residue LYS A 222
 WARNING:Missing atom CE in residue LYS A 222
@@ -687,9 +691,15 @@ INFO:Added atom NZ to residue LYS A 222 at coordinates 34.167, -2.339, -0.950
 INFO:Updating disulfide bridges.
 INFO:Debumping biomolecule.
 INFO:Adding hydrogens to biomolecule.
-INFO:Debumping biomolecule (again).
-INFO:Optimizing hydrogen bonds
-INFO:Applying force field to biomolecule states.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Debumping biomolecule (again).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Optimizing hydrogen bonds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Applying force field to biomolecule states.
 INFO:Regenerating headers.
 INFO:Regenerating PDB lines.
 WARNING:Ignoring 390 header lines in output.
@@ -719,6 +729,20 @@ Our ligand might not have bond lengths such that the proper bond orders are alwa
 <span class="n">pdb_ligand</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromPDBFile</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pdb/ligand_A.pdb&quot;</span><span class="p">)</span>
 
 <span class="n">template</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">RemoveAllHs</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">rdkit</span> <span class="kn">import</span> <span class="n">Chem</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">rdkit.Chem.AllChem</span> <span class="kn">import</span> <span class="n">AssignBondOrdersFromTemplate</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">template</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromMol2File</span><span class="p">(</span><span class="s2">&quot;ligands/13U_ideal.mol2&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">pdb_ligand</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromPDBFile</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pdb/ligand_A.pdb&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">template</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">RemoveAllHs</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+
+<span class="ne">OSError</span>: Bad input file ligands/13U_ideal.mol2
 </pre></div>
 </div>
 </div>
