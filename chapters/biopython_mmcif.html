@@ -205,6 +205,7 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="EC_class_ligands_search.html">Enzyme Commission Class with Ligands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binding_site_investigation.html">Investigation the binding Site</a></li>
 </ul>
 
     </div>
@@ -608,7 +609,8 @@ In myoglobin, the iron atom (Fe) in the protoporphyrin reversibly binds the oxyg
 We can use BioPython to analyze the binding of this heme group to the protein.</p>
 <img alt="../_images/Heme.svg" class="align-center" src="../_images/Heme.svg" /><p>Later in the workshop, we will learn how we can use a Python library to visualize the protein structure.
 For now, you can see this image showing myoglobin and the heme group (circled).</p>
-<a class="reference internal image-reference" href="../_images/myoglobin_heme_small.png"><img alt="../_images/myoglobin_heme_small.png" class="align-center" src="../_images/myoglobin_heme_small.png" style="height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/myoglobin_heme_small.png"><img alt="../_images/myoglobin_heme_small.png" class="align-center" src="../_images/myoglobin_heme_small.png" style="height: 350px;" />
+</a>
 <p>We will want to use Biopython to measure the neighbors of the iron atom in order to measure which residues the
 heme group is bound to.
 To perform this analysis, we will have to load the protein into a different data type called a Biopython structure.
@@ -783,7 +785,8 @@ You can read more about myoglobin’s structure <a class="reference external" hr
 These motifs are commonly found in transcription factors, where they play a crucial role in the recognition and binding of specific DNA sequences, thereby regulating gene expression.</p>
 <p>For this challenge, you will analyze the structure <code class="docutils literal notranslate"><span class="pre">1a1t</span></code>.
 This structure is the HIV-1 nucleocapsid protein, which contains two zinc fingers that grip the viral RNA during budding of the virus.</p>
-<a class="reference internal image-reference" href="../_images/1a1t.png"><img alt="../_images/1a1t.png" class="align-center" src="../_images/1a1t.png" style="height: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/1a1t.png"><img alt="../_images/1a1t.png" class="align-center" src="../_images/1a1t.png" style="height: 350px;" />
+</a>
 <p><strong>Hint 1</strong> - The structure <code class="docutils literal notranslate"><span class="pre">1a1t</span></code> is determined by NMR and contains 25 structure models. When you load the structure using the MMCIF parser, you will get a list of 25 structures. You can analyze only one of them by using list indexing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an MMCIFParser object</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">MMCIFParser</span><span class="p">(</span><span class="n">QUIET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
