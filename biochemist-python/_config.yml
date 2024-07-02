@@ -8,6 +8,9 @@ author: The Molecular Sciences Software Institute
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: force
+  exclude_patterns:
+    - "EC_class_ligands_search.ipynb"
+    - 'binding_site_investigation.ipynb'
 
 # Define the name of the latex output file for PDF builds
 latex:
