@@ -470,7 +470,7 @@ system. We can load an MDAnalysis universe from a PDB file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8929d9407c0c4f3a901602eb10536005"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b99491671e01419ea6e9dd4d41e4527f", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Text here about NGLView</p>
 <div class="cell docutils container">
@@ -481,7 +481,7 @@ system. We can load an MDAnalysis universe from a PDB file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "be786c941878415e86cc90e12a93464c"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2401aa6c72574b7daf42ea1fa5b8be4b", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>This view looks a bit messy. MDAnalysis has a human readable <a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">selection syntax</a>
 that allows us to isolate parts of our structure. We will take our MDAnalysis Universe (the variable <code class="docutils literal notranslate"><span class="pre">u</span></code>) and use the <code class="docutils literal notranslate"><span class="pre">select_atoms</span></code> function.
@@ -505,7 +505,7 @@ It also zooms in on the ligand.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c47fd4934e07462eb663746111c82490"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e76e61ee77e54089b97cc13e88d4ba18", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Upon viewing this structure, you will notice that our ligand seems to appear twice.
 If you open the PDB file to investigate, you will see the following in the ligand section:</p>
@@ -543,7 +543,7 @@ By checking the <a class="reference external" href="https://docs.mdanalysis.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "4136366901c441e7b956a21a2a1c535e"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "39f72e25876f4a59a5451baa0beb88fd", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +552,7 @@ By checking the <a class="reference external" href="https://docs.mdanalysis.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "3e61bdebbe3444d681accdeadf8819c7"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "86508b08ae76439f89976b8e570328a8", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>When we inspect the ligand in the binding site, we notice a few things.
 First, the binding site has a large hydrophobic area on the surface.
@@ -577,7 +577,7 @@ Then, we will add hydrogens.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/coordinates/PDB.py:1153: UserWarning: Found no information for attr: &#39;formalcharges&#39; Using default value of &#39;0&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/janash/miniconda3/envs/iqb-2024/lib/python3.11/site-packages/MDAnalysis/coordinates/PDB.py:1153: UserWarning: Found no information for attr: &#39;formalcharges&#39; Using default value of &#39;0&#39;
   warnings.warn(&quot;Found no information for attr: &#39;{}&#39;&quot;
 </pre></div>
 </div>
@@ -598,337 +598,109 @@ You can run command line commands in the Jupyter notebook by putting a <code cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: 1: pdb2pqr: not found
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:PDB2PQR v3.6.2: biomolecular structure conversion software.
+INFO:Please cite:  Jurrus E, et al.  Improvements to the APBS biomolecular solvation software suite.  Protein Sci 27 112-128 (2018).
+INFO:Please cite:  Dolinsky TJ, et al.  PDB2PQR: expanding and upgrading automated preparation of biomolecular structures for molecular simulations. Nucleic Acids Res 35 W522-W525 (2007).
+INFO:Checking and transforming input arguments.
+INFO:Loading topology files.
+INFO:Loading molecule: pdb/protein_2zq2.pdb
+ERROR:Error parsing line: invalid literal for int() with base 10: &#39;&#39;
+ERROR:&lt;REMARK     2&gt;
+ERROR:Truncating remaining errors for record type:REMARK
+WARNING:Warning: pdb/protein_2zq2.pdb is a non-standard PDB file.
+
+ERROR:[&#39;REMARK&#39;]
+INFO:Setting up molecule.
+INFO:Created biomolecule object with 223 residues and 1625 atoms.
+WARNING:Multiple occupancies found: N in SER A 61.
+WARNING:Multiple occupancies found: CA in SER A 61.
+WARNING:Multiple occupancies found: C in SER A 61.
+WARNING:Multiple occupancies found: O in SER A 61.
+WARNING:Multiple occupancies found: CB in SER A 61.
+WARNING:Multiple occupancies found: OG in SER A 61.
+WARNING:Multiple occupancies found in SER A 61. At least one of the instances is being ignored.
+WARNING:Multiple occupancies found: N in SER A 113.
+WARNING:Multiple occupancies found: CA in SER A 113.
+WARNING:Multiple occupancies found: C in SER A 113.
+WARNING:Multiple occupancies found: O in SER A 113.
+WARNING:Multiple occupancies found: CB in SER A 113.
+WARNING:Multiple occupancies found: OG in SER A 113.
+WARNING:Multiple occupancies found in SER A 113. At least one of the instances is being ignored.
+WARNING:Multiple occupancies found: N in SER A 122.
+WARNING:Multiple occupancies found: CA in SER A 122.
+WARNING:Multiple occupancies found: C in SER A 122.
+WARNING:Multiple occupancies found: O in SER A 122.
+WARNING:Multiple occupancies found: CB in SER A 122.
+WARNING:Multiple occupancies found: OG in SER A 122.
+WARNING:Multiple occupancies found in SER A 122. At least one of the instances is being ignored.
+WARNING:Multiple occupancies found: N in SER A 167.
+WARNING:Multiple occupancies found: CA in SER A 167.
+WARNING:Multiple occupancies found: C in SER A 167.
+WARNING:Multiple occupancies found: O in SER A 167.
+WARNING:Multiple occupancies found: CB in SER A 167.
+WARNING:Multiple occupancies found: OG in SER A 167.
+WARNING:Multiple occupancies found in SER A 167. At least one of the instances is being ignored.
+WARNING:Multiple occupancies found: N in SER A 170.
+WARNING:Multiple occupancies found: CA in SER A 170.
+WARNING:Multiple occupancies found: C in SER A 170.
+WARNING:Multiple occupancies found: O in SER A 170.
+WARNING:Multiple occupancies found: CB in SER A 170.
+WARNING:Multiple occupancies found: OG in SER A 170.
+WARNING:Multiple occupancies found in SER A 170. At least one of the instances is being ignored.
+WARNING:Multiple occupancies found: N in SER A 236.
+WARNING:Multiple occupancies found: CA in SER A 236.
+WARNING:Multiple occupancies found: C in SER A 236.
+WARNING:Multiple occupancies found: O in SER A 236.
+WARNING:Multiple occupancies found: CB in SER A 236.
+WARNING:Multiple occupancies found: OG in SER A 236.
+WARNING:Multiple occupancies found in SER A 236. At least one of the instances is being ignored.
+WARNING:Multiple occupancies found: N in GLN A 240.
+WARNING:Multiple occupancies found: CA in GLN A 240.
+WARNING:Multiple occupancies found: C in GLN A 240.
+WARNING:Multiple occupancies found: O in GLN A 240.
+WARNING:Multiple occupancies found: CB in GLN A 240.
+WARNING:Multiple occupancies found: CG in GLN A 240.
+WARNING:Multiple occupancies found: CD in GLN A 240.
+WARNING:Multiple occupancies found: OE1 in GLN A 240.
+WARNING:Multiple occupancies found: NE2 in GLN A 240.
+WARNING:Multiple occupancies found in GLN A 240. At least one of the instances is being ignored.
+INFO:Setting termini states for biomolecule chains.
+INFO:Loading forcefield.
+INFO:Loading hydrogen topology definitions.
+WARNING:Missing atom CG in residue LYS A 222
+WARNING:Missing atom CD in residue LYS A 222
+WARNING:Missing atom CE in residue LYS A 222
+WARNING:Missing atom NZ in residue LYS A 222
+WARNING:Missing atom CG in residue LYS A 222
+WARNING:Missing atom CD in residue LYS A 222
+WARNING:Missing atom CE in residue LYS A 222
+WARNING:Missing atom NZ in residue LYS A 222
+INFO:Attempting to repair 4 missing atoms in biomolecule.
+WARNING:Missing atom CG in residue LYS A 222
+WARNING:Missing atom CD in residue LYS A 222
+WARNING:Missing atom CE in residue LYS A 222
+WARNING:Missing atom NZ in residue LYS A 222
+INFO:Added atom CG to residue LYS A 222 at coordinates 30.628, -3.449, -0.010
+INFO:Added atom CD to residue LYS A 222 at coordinates 32.074, -3.541, -0.453
+INFO:Added atom CE to residue LYS A 222 at coordinates 32.755, -2.198, -0.512
+INFO:Added atom NZ to residue LYS A 222 at coordinates 34.167, -2.339, -0.950
+INFO:Updating disulfide bridges.
+INFO:Debumping biomolecule.
+INFO:Adding hydrogens to biomolecule.
+INFO:Debumping biomolecule (again).
+INFO:Optimizing hydrogen bonds
+INFO:Applying force field to biomolecule states.
+INFO:Regenerating headers.
+INFO:Regenerating PDB lines.
+WARNING:Ignoring 390 header lines in output.
+WARNING:Ignoring 390 header lines in output.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein</span> <span class="o">=</span> <span class="n">mda</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="s2">&quot;pdb/protein_H.pdb&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
-
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">protein</span> <span class="o">=</span> <span class="n">mda</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="s2">&quot;pdb/protein_H.pdb&quot;</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:356,</span> in <span class="ni">Universe.__init__</span><span class="nt">(self, topology, all_coordinates, format, topology_format, transformations, guess_bonds, vdwradii, fudge_factor, lower_bound, in_memory, in_memory_step, *coordinates, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">_check_file_like</span><span class="p">(</span><span class="n">topology</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">356</span>     <span class="n">topology</span> <span class="o">=</span> <span class="n">_topology_from_file_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span>                                         <span class="n">topology_format</span><span class="o">=</span><span class="n">topology_format</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>                                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">if</span> <span class="n">topology</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:118,</span> in <span class="ni">_topology_from_file_like</span><span class="nt">(topology_file, topology_format, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span> <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]):</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="c1"># Runs if the error is propagated due to no permission / file not found</span>
-<span class="ne">--&gt; </span><span class="mi">118</span>     <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="c1"># Runs when the parser fails</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:110,</span> in <span class="ni">_topology_from_file_like</span><span class="nt">(topology_file, topology_format, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">with</span> <span class="n">parser</span><span class="p">(</span><span class="n">topology_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">topology</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="c1"># There are 2 kinds of errors that might be raised here:</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="c1"># one because the file isn&#39;t present</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># or the permissions are bad, second when the parser fails</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/topology/PDBParser.py:210,</span> in <span class="ni">PDBParser.parse</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Parse atom information from PDB file</span>
-<span class="g g-Whitespace">    </span><span class="mi">205</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">206</span><span class="sd"> Returns</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span><span class="sd"> -------</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span><span class="sd"> MDAnalysis Topology object</span>
-<span class="g g-Whitespace">    </span><span class="mi">209</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">210</span> <span class="n">top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parseatoms</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/topology/PDBParser.py:247,</span> in <span class="ni">PDBParser._parseatoms</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="n">last_wrapped_serial</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># if serials wrap, start from here</span>
-<span class="ne">--&gt; </span><span class="mi">247</span> <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">openany</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:318,</span> in <span class="ni">openany</span><span class="nt">(datasource, mode, reset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Context manager for :func:`anyopen`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="sd"> Open the `datasource` and close it when the context of the :keyword:`with`</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="sd"> :func:`anyopen`</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">318</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">anyopen</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:398,</span> in <span class="ni">anyopen</span><span class="nt">(datasource, mode, reset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="n">openfunc</span> <span class="o">=</span> <span class="n">read_handlers</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">398</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">_get_stream</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">openfunc</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> <span class="k">if</span> <span class="n">stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:440,</span> in <span class="ni">_get_stream</span><span class="nt">(filename, openfunction, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span> <span class="k">if</span> <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]:</span>
-<span class="ne">--&gt; </span><span class="mi">440</span>     <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span> <span class="k">return</span> <span class="kc">None</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:434,</span> in <span class="ni">_get_stream</span><span class="nt">(filename, openfunction, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">434</span>     <span class="n">stream</span> <span class="o">=</span> <span class="n">openfunction</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>     <span class="c1"># An exception might be raised due to two reasons, first the openfunction is unable to open the file, in this</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="c1"># case we have to ignore the error and return None. Second is when openfunction can&#39;t open the file because</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="c1"># either the file isn&#39;t there or the permissions don&#39;t allow access.</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/picklable_file_io.py:502,</span> in <span class="ni">bz2_pickle_open</span><span class="nt">(name, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="n">bz_mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">502</span> <span class="n">binary_file</span> <span class="o">=</span> <span class="n">BZ2Picklable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bz_mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">if</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/picklable_file_io.py:283,</span> in <span class="ni">BZ2Picklable.__init__</span><span class="nt">(self, name, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bz_mode</span> <span class="o">=</span> <span class="n">mode</span>
-<span class="ne">--&gt; </span><span class="mi">283</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/bz2.py:81,</span> in <span class="ni">BZ2File.__init__</span><span class="nt">(self, filename, mode, compresslevel)</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="n">_builtin_open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;pdb/protein_H.pdb&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">hidden</span> <span class="mi">1</span> <span class="n">frame</span><span class="p">]</span>
-
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">protein</span> <span class="o">=</span> <span class="n">mda</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="s2">&quot;pdb/protein_H.pdb&quot;</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:356,</span> in <span class="ni">Universe.__init__</span><span class="nt">(self, topology, all_coordinates, format, topology_format, transformations, guess_bonds, vdwradii, fudge_factor, lower_bound, in_memory, in_memory_step, *coordinates, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">_check_file_like</span><span class="p">(</span><span class="n">topology</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">356</span>     <span class="n">topology</span> <span class="o">=</span> <span class="n">_topology_from_file_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span>                                         <span class="n">topology_format</span><span class="o">=</span><span class="n">topology_format</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>                                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">if</span> <span class="n">topology</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:118,</span> in <span class="ni">_topology_from_file_like</span><span class="nt">(topology_file, topology_format, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span> <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]):</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="c1"># Runs if the error is propagated due to no permission / file not found</span>
-<span class="ne">--&gt; </span><span class="mi">118</span>     <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="c1"># Runs when the parser fails</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:110,</span> in <span class="ni">_topology_from_file_like</span><span class="nt">(topology_file, topology_format, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">with</span> <span class="n">parser</span><span class="p">(</span><span class="n">topology_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">topology</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="c1"># There are 2 kinds of errors that might be raised here:</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="c1"># one because the file isn&#39;t present</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># or the permissions are bad, second when the parser fails</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/topology/PDBParser.py:210,</span> in <span class="ni">PDBParser.parse</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Parse atom information from PDB file</span>
-<span class="g g-Whitespace">    </span><span class="mi">205</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">206</span><span class="sd"> Returns</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span><span class="sd"> -------</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span><span class="sd"> MDAnalysis Topology object</span>
-<span class="g g-Whitespace">    </span><span class="mi">209</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">210</span> <span class="n">top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parseatoms</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/topology/PDBParser.py:247,</span> in <span class="ni">PDBParser._parseatoms</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="n">last_wrapped_serial</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># if serials wrap, start from here</span>
-<span class="ne">--&gt; </span><span class="mi">247</span> <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">openany</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:318,</span> in <span class="ni">openany</span><span class="nt">(datasource, mode, reset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Context manager for :func:`anyopen`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="sd"> Open the `datasource` and close it when the context of the :keyword:`with`</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="sd"> :func:`anyopen`</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">318</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">anyopen</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:398,</span> in <span class="ni">anyopen</span><span class="nt">(datasource, mode, reset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="n">openfunc</span> <span class="o">=</span> <span class="n">read_handlers</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">398</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">_get_stream</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">openfunc</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> <span class="k">if</span> <span class="n">stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:440,</span> in <span class="ni">_get_stream</span><span class="nt">(filename, openfunction, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span> <span class="k">if</span> <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]:</span>
-<span class="ne">--&gt; </span><span class="mi">440</span>     <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span> <span class="k">return</span> <span class="kc">None</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:434,</span> in <span class="ni">_get_stream</span><span class="nt">(filename, openfunction, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">434</span>     <span class="n">stream</span> <span class="o">=</span> <span class="n">openfunction</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>     <span class="c1"># An exception might be raised due to two reasons, first the openfunction is unable to open the file, in this</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="c1"># case we have to ignore the error and return None. Second is when openfunction can&#39;t open the file because</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="c1"># either the file isn&#39;t there or the permissions don&#39;t allow access.</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/picklable_file_io.py:502,</span> in <span class="ni">bz2_pickle_open</span><span class="nt">(name, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="n">bz_mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">502</span> <span class="n">binary_file</span> <span class="o">=</span> <span class="n">BZ2Picklable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bz_mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">if</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/picklable_file_io.py:283,</span> in <span class="ni">BZ2Picklable.__init__</span><span class="nt">(self, name, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bz_mode</span> <span class="o">=</span> <span class="n">mode</span>
-<span class="ne">--&gt; </span><span class="mi">283</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/bz2.py:81,</span> in <span class="ni">BZ2File.__init__</span><span class="nt">(self, filename, mode, compresslevel)</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="n">_builtin_open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;pdb/protein_H.pdb&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">protein</span> <span class="o">=</span> <span class="n">mda</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="s2">&quot;pdb/protein_H.pdb&quot;</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:356,</span> in <span class="ni">Universe.__init__</span><span class="nt">(self, topology, all_coordinates, format, topology_format, transformations, guess_bonds, vdwradii, fudge_factor, lower_bound, in_memory, in_memory_step, *coordinates, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">Topology</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">topology</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span>     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">_check_file_like</span><span class="p">(</span><span class="n">topology</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">356</span>     <span class="n">topology</span> <span class="o">=</span> <span class="n">_topology_from_file_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span>                                         <span class="n">topology_format</span><span class="o">=</span><span class="n">topology_format</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>                                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">if</span> <span class="n">topology</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_topology</span> <span class="o">=</span> <span class="n">topology</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:118,</span> in <span class="ni">_topology_from_file_like</span><span class="nt">(topology_file, topology_format, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="c1"># There are 2 kinds of errors that might be raised here:</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="c1"># one because the file isn&#39;t present</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># or the permissions are bad, second when the parser fails</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>         <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]):</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="c1"># Runs if the error is propagated due to no permission / file not found</span>
-<span class="ne">--&gt; </span><span class="mi">118</span>         <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>         <span class="c1"># Runs when the parser fails</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span>         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Failed to load from the topology file </span><span class="si">{0}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span>                         <span class="s2">&quot; with parser </span><span class="si">{1}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">123</span>                         <span class="s2">&quot;Error: </span><span class="si">{2}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">topology_file</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/core/universe.py:110,</span> in <span class="ni">_topology_from_file_like</span><span class="nt">(topology_file, topology_format, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="k">with</span> <span class="n">parser</span><span class="p">(</span><span class="n">topology_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>         <span class="n">topology</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="c1"># There are 2 kinds of errors that might be raised here:</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="c1"># one because the file isn&#39;t present</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="c1"># or the permissions are bad, second when the parser fails</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>         <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]):</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="c1"># Runs if the error is propagated due to no permission / file not found</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/topology/PDBParser.py:210,</span> in <span class="ni">PDBParser.parse</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Parse atom information from PDB file</span>
-<span class="g g-Whitespace">    </span><span class="mi">205</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">206</span><span class="sd">     Returns</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span><span class="sd">     -------</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span><span class="sd">     MDAnalysis Topology object</span>
-<span class="g g-Whitespace">    </span><span class="mi">209</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">210</span>     <span class="n">top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parseatoms</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span>         <span class="n">bonds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parsebonds</span><span class="p">(</span><span class="n">top</span><span class="o">.</span><span class="n">ids</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/topology/PDBParser.py:247,</span> in <span class="ni">PDBParser._parseatoms</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapped_serials</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># did serials go over 100k?</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="n">last_wrapped_serial</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># if serials wrap, start from here</span>
-<span class="ne">--&gt; </span><span class="mi">247</span> <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">openany</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># Remove extra spaces</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:318,</span> in <span class="ni">openany</span><span class="nt">(datasource, mode, reset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span> <span class="nd">@contextmanager</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">def</span> <span class="nf">openany</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rt&#39;</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Context manager for :func:`anyopen`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="sd">     Open the `datasource` and close it when the context of the :keyword:`with`</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="sd">     :func:`anyopen`</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">318</span>     <span class="n">stream</span> <span class="o">=</span> <span class="n">anyopen</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span>         <span class="k">yield</span> <span class="n">stream</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:398,</span> in <span class="ni">anyopen</span><span class="nt">(datasource, mode, reset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">396</span> <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;gz&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>  <span class="c1"># file == &#39;&#39; should be last</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span>     <span class="n">openfunc</span> <span class="o">=</span> <span class="n">read_handlers</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">398</span>     <span class="n">stream</span> <span class="o">=</span> <span class="n">_get_stream</span><span class="p">(</span><span class="n">datasource</span><span class="p">,</span> <span class="n">openfunc</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span>     <span class="k">if</span> <span class="n">stream</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span>         <span class="k">break</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:440,</span> in <span class="ni">_get_stream</span><span class="nt">(filename, openfunction, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>     <span class="c1"># An exception might be raised due to two reasons, first the openfunction is unable to open the file, in this</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="c1"># case we have to ignore the error and return None. Second is when openfunction can&#39;t open the file because</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="c1"># either the file isn&#39;t there or the permissions don&#39;t allow access.</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span>     <span class="k">if</span> <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]:</span>
-<span class="ne">--&gt; </span><span class="mi">440</span>         <span class="k">raise</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">442</span> <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span>     <span class="c1"># additional check for reading (eg can we uncompress) --- is this needed?</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/util.py:434,</span> in <span class="ni">_get_stream</span><span class="nt">(filename, openfunction, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">432</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return open stream if *filename* can be opened with *openfunction* or else ``None``.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">434</span>     <span class="n">stream</span> <span class="o">=</span> <span class="n">openfunction</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span> <span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>     <span class="c1"># An exception might be raised due to two reasons, first the openfunction is unable to open the file, in this</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="c1"># case we have to ignore the error and return None. Second is when openfunction can&#39;t open the file because</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="c1"># either the file isn&#39;t there or the permissions don&#39;t allow access.</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span>     <span class="k">if</span> <span class="n">errno</span><span class="o">.</span><span class="n">errorcode</span><span class="p">[</span><span class="n">err</span><span class="o">.</span><span class="n">errno</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ENOENT&#39;</span><span class="p">,</span> <span class="s1">&#39;EACCES&#39;</span><span class="p">]:</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/picklable_file_io.py:502,</span> in <span class="ni">bz2_pickle_open</span><span class="nt">(name, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">499</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only read mode (&#39;r&#39;, &#39;rt&#39;, &#39;rb&#39;) &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span>                      <span class="s2">&quot;files can be pickled.&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="n">bz_mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">502</span> <span class="n">binary_file</span> <span class="o">=</span> <span class="n">BZ2Picklable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bz_mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">if</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span>     <span class="k">return</span> <span class="n">TextIOPicklable</span><span class="p">(</span><span class="n">binary_file</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/site-packages/MDAnalysis/lib/picklable_file_io.py:283,</span> in <span class="ni">BZ2Picklable.__init__</span><span class="nt">(self, name, mode)</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_bz_mode</span> <span class="o">=</span> <span class="n">mode</span>
-<span class="ne">--&gt; </span><span class="mi">283</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-
-<span class="nn">File /usr/share/miniconda/envs/biochemist-python/lib/python3.11/bz2.py:81,</span> in <span class="ni">BZ2File.__init__</span><span class="nt">(self, filename, mode, compresslevel)</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid mode: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mode</span><span class="p">,))</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)):</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="n">_builtin_open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode_code</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;pdb/protein_H.pdb&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">protein</span> <span class="o">=</span> <span class="n">mda</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="s2">&quot;pdb/protein_h.pdb&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -957,6 +729,11 @@ Our ligand might not have bond lengths such that the proper bond orders are alwa
 
 <span class="c1"># Write the ligand to an SDF file</span>
 <span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolFile</span><span class="p">(</span><span class="n">ligand</span><span class="p">,</span> <span class="s2">&quot;pdb/ligand.sdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[17:18:26] WARNING: More than one matching pattern found - picking one
 </pre></div>
 </div>
 </div>
@@ -994,6 +771,12 @@ Our ligand might not have bond lengths such that the proper bond orders are alwa
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/janash/miniconda3/envs/iqb-2024/lib/python3.11/site-packages/MDAnalysis/converters/RDKit.py:473: UserWarning: No `bonds` attribute in this AtomGroup. Guessing bonds based on atoms coordinates
+  warnings.warn(
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1017,6 +800,8 @@ Our ligand might not have bond lengths such that the proper bond orders are alwa
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "44c9a5ea8b784bb7bbb52e2d81408340", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1025,6 +810,153 @@ Our ligand might not have bond lengths such that the proper bond orders are alwa
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="100%" height="590px" frameborder="0" srcdoc="
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;https://unpkg.com/vis-network@9.0.4/dist/vis-network.min.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;https://unpkg.com/vis-network@9.0.4/dist/dist/vis-network.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            body {
+                padding: 0;
+                margin: 0;
+                background: #fff;
+            }
+            .legend-btn.residues.disabled {
+                background: #b4b4b4 !important;
+                color: #555 !important;
+            }
+            .legend-btn.interactions.disabled {
+                border-color: #b4b4b4 !important;
+                color: #555 !important;
+            }
+        &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;div id=&quot;mynetwork&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;networklegend&quot;&gt;&lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            
+        var ifp, legend, nodes, edges, legend_buttons;
+        function drawGraph(_id, nodes, edges, options) {
+            var container = document.getElementById(_id);
+            nodes = new vis.DataSet(nodes);
+            edges = new vis.DataSet(edges);
+            var data = {nodes: nodes, edges: edges};
+            var network = new vis.Network(container, data, options);
+            network.on(&quot;stabilizationIterationsDone&quot;, function () {
+                network.setOptions( { physics: false } );
+            });
+            return network;
+        }
+        nodes = [{&quot;id&quot;: &quot;ASN97.A&quot;, &quot;label&quot;: &quot;ASN97.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;ASP189.A&quot;, &quot;label&quot;: &quot;ASP189.A&quot;, &quot;color&quot;: &quot;#e35959&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Acidic&quot;}, {&quot;id&quot;: &quot;GLN175.A&quot;, &quot;label&quot;: &quot;GLN175.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;GLN192.A&quot;, &quot;label&quot;: &quot;GLN192.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;GLY216.A&quot;, &quot;label&quot;: &quot;GLY216.A&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Aliphatic&quot;}, {&quot;id&quot;: &quot;GLY219.A&quot;, &quot;label&quot;: &quot;GLY219.A&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Aliphatic&quot;}, {&quot;id&quot;: &quot;HIS57.A&quot;, &quot;label&quot;: &quot;HIS57.A&quot;, &quot;color&quot;: &quot;#5979e3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Basic&quot;}, {&quot;id&quot;: &quot;LEU99.A&quot;, &quot;label&quot;: &quot;LEU99.A&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Aliphatic&quot;}, {&quot;id&quot;: &quot;SER190.A&quot;, &quot;label&quot;: &quot;SER190.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;SER195.A&quot;, &quot;label&quot;: &quot;SER195.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;SER214.A&quot;, &quot;label&quot;: &quot;SER214.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;THR98.A&quot;, &quot;label&quot;: &quot;THR98.A&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Polar&quot;}, {&quot;id&quot;: &quot;TRP215.A&quot;, &quot;label&quot;: &quot;TRP215.A&quot;, &quot;color&quot;: &quot;#b559e3&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Aromatic&quot;}, {&quot;id&quot;: &quot;VAL213.A&quot;, &quot;label&quot;: &quot;VAL213.A&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;shape&quot;: &quot;box&quot;, &quot;borderWidth&quot;: 0, &quot;physics&quot;: true, &quot;mass&quot;: 2, &quot;group&quot;: &quot;protein&quot;, &quot;residue_type&quot;: &quot;Aliphatic&quot;}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 0, &quot;x&quot;: 39.92991297446747, &quot;y&quot;: 21.840942607661304, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;O&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;red&quot;}, &quot;id&quot;: 1, &quot;x&quot;: 54.523563057506436, &quot;y&quot;: 72.27183965752364, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 2, &quot;x&quot;: 76.30752591376651, &quot;y&quot;: -16.012977623122506, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;NH&quot;, &quot;shape&quot;: &quot;ellipse&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;blue&quot;}, &quot;id&quot;: 3, &quot;x&quot;: 112.68513885306558, &quot;y&quot;: -53.866897853906295, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 4, &quot;x&quot;: 163.65640187540362, &quot;y&quot;: -41.28992103482769, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 5, &quot;x&quot;: 214.087298925266, &quot;y&quot;: -55.88357111786665, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 6, &quot;x&quot;: 260.06659714652477, &quot;y&quot;: -30.542810768568756, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 7, &quot;x&quot;: 274.66024722956377, &quot;y&quot;: 19.888086281293624, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 8, &quot;x&quot;: 249.31948688026586, &quot;y&quot;: 65.86738450255243, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 9, &quot;x&quot;: 198.88858983040348, &quot;y&quot;: 80.46103458559136, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 10, &quot;x&quot;: 152.9092916091447, &quot;y&quot;: 55.12027423629349, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 11, &quot;x&quot;: 138.3156415261057, &quot;y&quot;: 4.689377186431113, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;N&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;blue&quot;}, &quot;id&quot;: 12, &quot;x&quot;: -11.041350047870512, &quot;y&quot;: 9.263965788582732, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 13, &quot;x&quot;: -30.826518758627124, &quot;y&quot;: -39.36521371392273, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 14, &quot;x&quot;: -40.06875912972104, &quot;y&quot;: -91.04529684972005, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;O&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;red&quot;}, &quot;id&quot;: 15, &quot;x&quot;: 0.0663855500242011, &quot;y&quot;: -124.88935336686808, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 16, &quot;x&quot;: -83.18957017477092, &quot;y&quot;: -35.57564297434271, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 17, &quot;x&quot;: -95.76654699384945, &quot;y&quot;: 15.395620047995283, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 18, &quot;x&quot;: -51.17649472761578, &quot;y&quot;: 43.10802230573083, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;N&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;blue&quot;}, &quot;id&quot;: 19, &quot;x&quot;: -89.4461441805602, &quot;y&quot;: -108.88132346836925, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 20, &quot;x&quot;: -129.58128886030542, &quot;y&quot;: -75.03726695122118, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 21, &quot;x&quot;: -169.71643354005073, &quot;y&quot;: -41.193210434073116, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 22, &quot;x&quot;: -160.47419316895687, &quot;y&quot;: 10.486872701724266, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 23, &quot;x&quot;: -200.6093378487022, &quot;y&quot;: 44.330929218872335, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 24, &quot;x&quot;: -249.98672289954132, &quot;y&quot;: 26.49490260022307, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 25, &quot;x&quot;: -290.1218675792867, &quot;y&quot;: 60.33895911737116, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;NH&quot;, &quot;shape&quot;: &quot;ellipse&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;blue&quot;}, &quot;id&quot;: 26, &quot;x&quot;: -339.49925263012574, &quot;y&quot;: 42.50293249872184, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;N&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;blue&quot;}, &quot;id&quot;: 27, &quot;x&quot;: -280.87962720819286, &quot;y&quot;: 112.0190422531685, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 28, &quot;x&quot;: -259.2289632706352, &quot;y&quot;: -25.18518053557425, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot; &quot;, &quot;shape&quot;: &quot;dot&quot;, &quot;color&quot;: &quot;black&quot;, &quot;size&quot;: 5.6000000000000005, &quot;id&quot;: 29, &quot;x&quot;: -219.09381859088995, &quot;y&quot;: -59.029237052722316, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;H&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;grey&quot;}, &quot;id&quot;: 39, &quot;x&quot;: 322.56988937616796, &quot;y&quot;: -1.5808724588111256, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;H&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;grey&quot;}, &quot;id&quot;: 55, &quot;x&quot;: -98.68838455165411, &quot;y&quot;: -160.56140660416656, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;H&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;grey&quot;}, &quot;id&quot;: 61, &quot;x&quot;: -321.0147718879382, &quot;y&quot;: 145.86309877031655, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;label&quot;: &quot;H&quot;, &quot;shape&quot;: &quot;circle&quot;, &quot;color&quot;: &quot;white&quot;, &quot;font&quot;: {&quot;color&quot;: &quot;grey&quot;}, &quot;id&quot;: 62, &quot;x&quot;: -231.50224215735366, &quot;y&quot;: 129.8550688718179, &quot;fixed&quot;: true, &quot;group&quot;: &quot;ligand&quot;, &quot;borderWidth&quot;: 0}, {&quot;id&quot;: -779954956826120205, &quot;x&quot;: 35.89544121047848, &quot;y&quot;: 23.008434614304424, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -8324221920903951227, &quot;x&quot;: 50.48909129351745, &quot;y&quot;: 73.43933166416676, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -3170196311755435169, &quot;x&quot;: 43.96438473845646, &quot;y&quot;: 20.673450601018185, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 743474463821328645, &quot;x&quot;: 58.558034821495426, &quot;y&quot;: 71.10434765088053, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -9044174054846429135, &quot;x&quot;: -37.36123460834919, &quot;y&quot;: -87.83448527534043, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -2648220330599224738, &quot;x&quot;: 2.7739100713960476, &quot;y&quot;: -121.67854179248846, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 4194847553068458337, &quot;x&quot;: -42.77628365109288, &quot;y&quot;: -94.25610842409966, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 8098333791953949725, &quot;x&quot;: -2.641138971347645, &quot;y&quot;: -128.1001649412477, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -6142112114815308642, &quot;x&quot;: -173.8508401909145, &quot;y&quot;: -40.45383120438561, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 2693500968751951283, &quot;x&quot;: -164.60859981982065, &quot;y&quot;: 11.226251931411774, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 43678009233211101, &quot;x&quot;: -165.58202688918695, &quot;y&quot;: -41.93258966376062, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 8163441638094608132, &quot;x&quot;: -156.3397865180931, &quot;y&quot;: 9.747493472036759, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 2822438331081444490, &quot;x&quot;: -168.2895514105588, &quot;y&quot;: -45.14340123814025, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 4878394679967456372, &quot;x&quot;: -217.66693646139802, &quot;y&quot;: -62.97942785678945, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -7106259026791180608, &quot;x&quot;: -171.14331566954266, &quot;y&quot;: -37.24301963000598, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -6987338250283054882, &quot;x&quot;: -220.52070072038188, &quot;y&quot;: -55.07904624865518, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -369810024088938402, &quot;x&quot;: -163.18171769032872, &quot;y&quot;: 7.27606112734464, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 432534317684022142, &quot;x&quot;: -203.31686237007406, &quot;y&quot;: 41.12011764449271, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 1923328713902428616, &quot;x&quot;: -157.76666864758502, &quot;y&quot;: 13.697684276103892, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -486866268250111297, &quot;x&quot;: -197.90181332733036, &quot;y&quot;: 47.54174079325196, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -4370325940771974722, &quot;x&quot;: -199.18245571921028, &quot;y&quot;: 40.3807384148052, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -7253370779585771904, &quot;x&quot;: -248.5598407700494, &quot;y&quot;: 22.544711796155937, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -672474184593307530, &quot;x&quot;: -202.03621997819414, &quot;y&quot;: 48.28112002293947, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 4296244816314018322, &quot;x&quot;: -251.41360502903325, &quot;y&quot;: 30.445093404290205, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -7593975385934972783, &quot;x&quot;: -245.85231624867754, &quot;y&quot;: 25.755523370535563, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 1741327034992508524, &quot;x&quot;: -255.0945566197714, &quot;y&quot;: -25.92455976526176, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 5564423158909026540, &quot;x&quot;: -254.1211295504051, &quot;y&quot;: 27.23428182991058, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 2509665238905182995, &quot;x&quot;: -263.363369921499, &quot;y&quot;: -24.445801305886743, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -3018924198156926246, &quot;x&quot;: -288.69498544979473, &quot;y&quot;: 56.38876831330403, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 7841508649261273458, &quot;x&quot;: -338.0723705006338, &quot;y&quot;: 38.552741694654706, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 8142753232582327279, &quot;x&quot;: -291.54874970877864, &quot;y&quot;: 64.2891499214383, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 6947008889168220176, &quot;x&quot;: -340.9261347596177, &quot;y&quot;: 46.453123302788974, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -3233102501543472105, &quot;x&quot;: -256.5214387492633, &quot;y&quot;: -21.974368961194628, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -8321768440225195339, &quot;x&quot;: -216.3862940695181, &quot;y&quot;: -55.8184254783427, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: 338018459654744520, &quot;x&quot;: -261.93648779200703, &quot;y&quot;: -28.395992109953873, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}, {&quot;id&quot;: -1253672071568027438, &quot;x&quot;: -221.8013431122618, &quot;y&quot;: -62.240048627101935, &quot;shape&quot;: &quot;text&quot;, &quot;label&quot;: &quot; &quot;, &quot;fixed&quot;: true, &quot;physics&quot;: false}];
+        edges = [{&quot;from&quot;: 39, &quot;to&quot;: &quot;ASN97.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.48\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 62, &quot;to&quot;: &quot;ASP189.A&quot;, &quot;title&quot;: &quot;HBDonor: 2.72\u00c5&quot;, &quot;interaction_type&quot;: &quot;HBDonor/HBAcceptor&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 26, &quot;to&quot;: &quot;ASP189.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.87\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 8, &quot;to&quot;: &quot;GLN175.A&quot;, &quot;title&quot;: &quot;Hydrophobic: 4.43\u00c5&quot;, &quot;interaction_type&quot;: &quot;Hydrophobic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 10, &quot;to&quot;: &quot;GLN175.A&quot;, &quot;title&quot;: &quot;VdWContact: 3.03\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 15, &quot;to&quot;: &quot;GLN192.A&quot;, &quot;title&quot;: &quot;HBAcceptor: 3.12\u00c5&quot;, &quot;interaction_type&quot;: &quot;HBDonor/HBAcceptor&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 15, &quot;to&quot;: &quot;GLN192.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.19\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: &quot;GLY216.A&quot;, &quot;title&quot;: &quot;HBAcceptor: 3.47\u00c5&quot;, &quot;interaction_type&quot;: &quot;HBDonor/HBAcceptor&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: &quot;GLY216.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.43\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 61, &quot;to&quot;: &quot;GLY219.A&quot;, &quot;title&quot;: &quot;HBDonor: 2.95\u00c5&quot;, &quot;interaction_type&quot;: &quot;HBDonor/HBAcceptor&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 27, &quot;to&quot;: &quot;GLY219.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.95\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 16, &quot;to&quot;: &quot;HIS57.A&quot;, &quot;title&quot;: &quot;Hydrophobic: 4.06\u00c5&quot;, &quot;interaction_type&quot;: &quot;Hydrophobic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 5, &quot;to&quot;: &quot;LEU99.A&quot;, &quot;title&quot;: &quot;Hydrophobic: 4.47\u00c5&quot;, &quot;interaction_type&quot;: &quot;Hydrophobic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 6, &quot;to&quot;: &quot;LEU99.A&quot;, &quot;title&quot;: &quot;VdWContact: 3.30\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 25, &quot;to&quot;: &quot;SER190.A&quot;, &quot;title&quot;: &quot;VdWContact: 3.19\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 20, &quot;to&quot;: &quot;SER195.A&quot;, &quot;title&quot;: &quot;VdWContact: 3.20\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 55, &quot;to&quot;: &quot;SER214.A&quot;, &quot;title&quot;: &quot;HBDonor: 2.96\u00c5&quot;, &quot;interaction_type&quot;: &quot;HBDonor/HBAcceptor&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 19, &quot;to&quot;: &quot;SER214.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.96\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 7, &quot;to&quot;: &quot;THR98.A&quot;, &quot;title&quot;: &quot;VdWContact: 3.21\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 5, &quot;to&quot;: &quot;TRP215.A&quot;, &quot;title&quot;: &quot;Hydrophobic: 4.39\u00c5&quot;, &quot;interaction_type&quot;: &quot;Hydrophobic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 1, &quot;to&quot;: &quot;TRP215.A&quot;, &quot;title&quot;: &quot;VdWContact: 2.50\u00c5&quot;, &quot;interaction_type&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: 28, &quot;to&quot;: &quot;VAL213.A&quot;, &quot;title&quot;: &quot;Hydrophobic: 3.89\u00c5&quot;, &quot;interaction_type&quot;: &quot;Hydrophobic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;smooth&quot;: {&quot;type&quot;: &quot;cubicBezier&quot;, &quot;roundness&quot;: 0.2}, &quot;dashes&quot;: [10], &quot;width&quot;: 6.0, &quot;group&quot;: &quot;interaction&quot;}, {&quot;from&quot;: -779954956826120205, &quot;to&quot;: -8324221920903951227, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -3170196311755435169, &quot;to&quot;: 743474463821328645, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 0, &quot;to&quot;: 2, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 0, &quot;to&quot;: 12, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 2, &quot;to&quot;: 3, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 3, &quot;to&quot;: 4, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 4, &quot;to&quot;: 5, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 4, &quot;to&quot;: 11, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 5, &quot;to&quot;: 6, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 6, &quot;to&quot;: 7, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 7, &quot;to&quot;: 8, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 7, &quot;to&quot;: 39, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 8, &quot;to&quot;: 9, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 9, &quot;to&quot;: 10, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 10, &quot;to&quot;: 11, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 12, &quot;to&quot;: 13, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 12, &quot;to&quot;: 18, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 13, &quot;to&quot;: 14, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 13, &quot;to&quot;: 16, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -9044174054846429135, &quot;to&quot;: -2648220330599224738, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 4194847553068458337, &quot;to&quot;: 8098333791953949725, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 14, &quot;to&quot;: 19, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 16, &quot;to&quot;: 17, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 17, &quot;to&quot;: 18, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 19, &quot;to&quot;: 20, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 19, &quot;to&quot;: 55, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 20, &quot;to&quot;: 21, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -6142112114815308642, &quot;to&quot;: 2693500968751951283, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 43678009233211101, &quot;to&quot;: 8163441638094608132, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 2822438331081444490, &quot;to&quot;: 4878394679967456372, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -7106259026791180608, &quot;to&quot;: -6987338250283054882, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -369810024088938402, &quot;to&quot;: 432534317684022142, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 1923328713902428616, &quot;to&quot;: -486866268250111297, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -4370325940771974722, &quot;to&quot;: -7253370779585771904, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -672474184593307530, &quot;to&quot;: 4296244816314018322, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 24, &quot;to&quot;: 25, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -7593975385934972783, &quot;to&quot;: 1741327034992508524, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 5564423158909026540, &quot;to&quot;: 2509665238905182995, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -3018924198156926246, &quot;to&quot;: 7841508649261273458, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 8142753232582327279, &quot;to&quot;: 6947008889168220176, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 25, &quot;to&quot;: 27, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 27, &quot;to&quot;: 61, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 27, &quot;to&quot;: 62, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: -3233102501543472105, &quot;to&quot;: -8321768440225195339, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}, {&quot;from&quot;: 338018459654744520, &quot;to&quot;: -1253672071568027438, &quot;color&quot;: &quot;black&quot;, &quot;physics&quot;: false, &quot;dashes&quot;: [10], &quot;group&quot;: &quot;ligand&quot;, &quot;width&quot;: 4}];
+        ifp = drawGraph(&#x27;mynetwork&#x27;, nodes, edges, {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;500px&quot;, &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 20}}, &quot;physics&quot;: {&quot;barnesHut&quot;: {&quot;avoidOverlap&quot;: 0.8, &quot;springConstant&quot;: 0.1}}});
+    
+        legend_buttons = [{&quot;index&quot;: 0, &quot;label&quot;: &quot;Acidic&quot;, &quot;color&quot;: &quot;#e35959&quot;, &quot;group&quot;: &quot;residues&quot;}, {&quot;index&quot;: 1, &quot;label&quot;: &quot;Aliphatic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;group&quot;: &quot;residues&quot;}, {&quot;index&quot;: 2, &quot;label&quot;: &quot;Aromatic&quot;, &quot;color&quot;: &quot;#b559e3&quot;, &quot;group&quot;: &quot;residues&quot;}, {&quot;index&quot;: 3, &quot;label&quot;: &quot;Basic&quot;, &quot;color&quot;: &quot;#5979e3&quot;, &quot;group&quot;: &quot;residues&quot;}, {&quot;index&quot;: 4, &quot;label&quot;: &quot;Polar&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;group&quot;: &quot;residues&quot;}, {&quot;index&quot;: 0, &quot;label&quot;: &quot;HBDonor/HBAcceptor&quot;, &quot;color&quot;: &quot;#59bee3&quot;, &quot;group&quot;: &quot;interactions&quot;}, {&quot;index&quot;: 1, &quot;label&quot;: &quot;Hydrophobic&quot;, &quot;color&quot;: &quot;#59e382&quot;, &quot;group&quot;: &quot;interactions&quot;}, {&quot;index&quot;: 2, &quot;label&quot;: &quot;VdWContact&quot;, &quot;color&quot;: &quot;#dfab43&quot;, &quot;group&quot;: &quot;interactions&quot;}];
+        legend = document.getElementById(&#x27;networklegend&#x27;);
+        var div_residues = document.createElement(&#x27;div&#x27;);
+        var div_interactions = document.createElement(&#x27;div&#x27;);
+        var disabled = [];
+        var legend_callback = function() {
+            this.classList.toggle(&quot;disabled&quot;);
+            var hide = this.classList.contains(&quot;disabled&quot;);
+            var show = !hide;
+            var btn_label = this.innerHTML;
+            if (hide) {
+                disabled.push(btn_label);
+            } else {
+                disabled = disabled.filter(x =&gt; x !== btn_label);
+            }
+            var node_update = [],
+                edge_update = [];
+            // click on residue type
+            if (this.classList.contains(&quot;residues&quot;)) {
+                nodes.forEach((node) =&gt; {
+                    // find nodes corresponding to this type
+                    if (node.residue_type === btn_label) {
+                        // if hiding this type and residue isn&#x27;t already hidden
+                        if (hide &amp;&amp; !node.hidden) {
+                            node.hidden = true;
+                            node_update.push(node);
+                        // if showing this type and residue isn&#x27;t already visible
+                        } else if (show &amp;&amp; node.hidden) {
+                            // display if there&#x27;s at least one of its edge that isn&#x27;t hidden
+                            num_edges_active = edges.filter(x =&gt; x.to === node.id)
+                                                    .map(x =&gt; Boolean(x.hidden))
+                                                    .filter(x =&gt; !x)
+                                                    .length;
+                            if (num_edges_active &gt; 0) {
+                                node.hidden = false;
+                                node_update.push(node);
+                            }
+                        }
+                    }
+                });
+                ifp.body.data.nodes.update(node_update);
+            // click on interaction type
+            } else {
+                edges.forEach((edge) =&gt; {
+                    // find edges corresponding to this type
+                    if (edge.interaction_type === btn_label) {
+                        edge.hidden = !edge.hidden;
+                        edge_update.push(edge);
+                        // number of active edges for the corresponding residue
+                        var num_edges_active = edges.filter(x =&gt; x.to === edge.to)
+                                               .map(x =&gt; Boolean(x.hidden))
+                                               .filter(x =&gt; !x)
+                                               .length;
+                        // find corresponding residue
+                        var ix = nodes.findIndex(x =&gt; x.id === edge.to);
+                        // only change visibility if residue_type not being hidden
+                        if (!(disabled.includes(nodes[ix].residue_type))) {
+                            // hide if no edge being shown for this residue
+                            if (hide &amp;&amp; (num_edges_active === 0)) {
+                                nodes[ix].hidden = true;
+                                node_update.push(nodes[ix]);
+                            // show if edges are being shown
+                            } else if (show &amp;&amp; (num_edges_active &gt; 0)) {
+                                nodes[ix].hidden = false;
+                                node_update.push(nodes[ix]);
+                            }
+                        }
+                    }
+                });
+                ifp.body.data.nodes.update(node_update);
+                ifp.body.data.edges.update(edge_update);
+            }
+        };
+        legend_buttons.forEach(function(v,i) {
+            if (v.group === &quot;residues&quot;) {
+                var div = div_residues;
+                var border = &quot;none&quot;;
+                var color = v.color;
+            } else {
+                var div = div_interactions;
+                var border = &quot;3px dashed &quot; + v.color;
+                var color = &quot;white&quot;;
+            }
+            var button = div.appendChild(document.createElement(&#x27;button&#x27;));
+            button.classList.add(&quot;legend-btn&quot;, v.group);
+            button.innerHTML = v.label;
+            Object.assign(button.style, {
+                &quot;cursor&quot;: &quot;pointer&quot;,
+                &quot;background-color&quot;: color,
+                &quot;border&quot;: border,
+                &quot;border-radius&quot;: &quot;5px&quot;,
+                &quot;padding&quot;: &quot;5px&quot;,
+                &quot;margin&quot;: &quot;5px&quot;,
+                &quot;font&quot;: &quot;14px &#x27;Arial&#x27;, sans-serif&quot;,
+            });
+            button.onclick = legend_callback;
+        });
+        legend.appendChild(div_residues);
+        legend.appendChild(div_interactions);
+        
+        &lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+    "></iframe></div></div>
 </div>
 </section>
 </section>
