@@ -31,6 +31,8 @@ jobs:
         shell: bash -l {0}
         run: |
           pip install docutils --upgrade
+          jupyter labextension install @jupyter-widgets/jupyterlab-manager
+          jupyter labextension install nglview-js-widgets
           jupyter-book build biochemist-python
 
       - name: GitHub Pages action
