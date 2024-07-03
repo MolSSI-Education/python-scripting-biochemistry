@@ -30,6 +30,7 @@ sphinx:
   config:
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    - https://cdn.jsdelivr.net/npm/nglview-js-widgets@3.0.8
 
     html_theme_options: 
       logo:
