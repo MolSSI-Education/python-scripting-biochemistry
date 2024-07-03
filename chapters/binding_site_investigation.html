@@ -73,6 +73,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/binding_site_investigation';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nglview-js-widgets@3.0.8"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Enzyme Commission Class with Ligands" href="EC_class_ligands_search.html" />
@@ -470,7 +471,7 @@ system. We can load an MDAnalysis universe from a PDB file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "21564f47e4294fb98db5efa380fbf193"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e25eeca8dd2442b6ba63d4295c2a7633"}</script></div>
 </div>
 <p>Text here about NGLView</p>
 <div class="cell docutils container">
@@ -481,7 +482,7 @@ system. We can load an MDAnalysis universe from a PDB file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9759dbe2ce4c417f961659645e93d37a"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "babb140dcd504339896765f3ce9f6bd1"}</script></div>
 </div>
 <p>This view looks a bit messy. MDAnalysis has a human readable <a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/selections.html">selection syntax</a>
 that allows us to isolate parts of our structure. We will take our MDAnalysis Universe (the variable <code class="docutils literal notranslate"><span class="pre">u</span></code>) and use the <code class="docutils literal notranslate"><span class="pre">select_atoms</span></code> function.
@@ -505,7 +506,7 @@ It also zooms in on the ligand.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2a3b5861a13c413e96e408e3fefd6bc2"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "5d93a9d1f3124e028705a051ebdfdcec"}</script></div>
 </div>
 <p>Upon viewing this structure, you will notice that our ligand seems to appear twice.
 If you open the PDB file to investigate, you will see the following in the ligand section:</p>
@@ -543,7 +544,7 @@ By checking the <a class="reference external" href="https://docs.mdanalysis.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "21480dac6468402a832fa902ada3c14d"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "81cdb7e7b78d429d9a13aed752c3ef0a"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +553,7 @@ By checking the <a class="reference external" href="https://docs.mdanalysis.org/
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b5997e4def5440fea76d9710b0a613f5"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8929ec08065d4481866b9ee51eb7c9da"}</script></div>
 </div>
 <p>When we inspect the ligand in the binding site, we notice a few things.
 First, the binding site has a large hydrophobic area on the surface.
@@ -690,9 +691,7 @@ INFO:Added atom CE to residue LYS A 222 at coordinates 32.755, -2.198, -0.512
 INFO:Added atom NZ to residue LYS A 222 at coordinates 34.167, -2.339, -0.950
 INFO:Updating disulfide bridges.
 INFO:Debumping biomolecule.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Adding hydrogens to biomolecule.
+INFO:Adding hydrogens to biomolecule.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:Debumping biomolecule (again).

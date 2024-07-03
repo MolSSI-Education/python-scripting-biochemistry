@@ -73,6 +73,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/rcsb_api';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nglview-js-widgets@3.0.8"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Molecular Visualization with iCN3D" href="MolVis_with_iCN3D.html" />
@@ -413,9 +414,7 @@ Then, you use the function <code class="docutils literal notranslate"><span clas
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading PDB structure &#39;4hhb&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data/PDB_files/4hhb.cif
+data/PDB_files/4hhb.cif
 </pre></div>
 </div>
 </div>
@@ -680,19 +679,19 @@ We will create a Python dictionary, then use the <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;4dc359ba-a707-4c52-9a4c-b51d4570302d&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;2025cd7d-79b1-4288-908f-9a02e9fb65b6&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 668,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;2BMM&#39;, &#39;score&#39;: 1.0},
-  {&#39;identifier&#39;: &#39;1UVY&#39;, &#39;score&#39;: 0.9859877949560755},
-  {&#39;identifier&#39;: &#39;1UVX&#39;, &#39;score&#39;: 0.972362877827634},
-  {&#39;identifier&#39;: &#39;1UX8&#39;, &#39;score&#39;: 0.9591093723128088},
-  {&#39;identifier&#39;: &#39;2AWC&#39;, &#39;score&#39;: 0.9441253498945321},
-  {&#39;identifier&#39;: &#39;7DDS&#39;, &#39;score&#39;: 0.9347193058098741},
-  {&#39;identifier&#39;: &#39;1JP6&#39;, &#39;score&#39;: 0.9336574705860224},
-  {&#39;identifier&#39;: &#39;1JP8&#39;, &#39;score&#39;: 0.9336574705860224},
-  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.9336574705860224},
-  {&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 0.9336574705860224}],
+  {&#39;identifier&#39;: &#39;1UVY&#39;, &#39;score&#39;: 0.9859961673836528},
+  {&#39;identifier&#39;: &#39;1UVX&#39;, &#39;score&#39;: 0.9723790379350801},
+  {&#39;identifier&#39;: &#39;1UX8&#39;, &#39;score&#39;: 0.9591328901055924},
+  {&#39;identifier&#39;: &#39;2AWC&#39;, &#39;score&#39;: 0.9441326554556121},
+  {&#39;identifier&#39;: &#39;7DDS&#39;, &#39;score&#39;: 0.934732107938991},
+  {&#39;identifier&#39;: &#39;1JP6&#39;, &#39;score&#39;: 0.9336946421587798},
+  {&#39;identifier&#39;: &#39;1JP8&#39;, &#39;score&#39;: 0.9336946421587798},
+  {&#39;identifier&#39;: &#39;2EB8&#39;, &#39;score&#39;: 0.9336946421587798},
+  {&#39;identifier&#39;: &#39;2EF2&#39;, &#39;score&#39;: 0.9336946421587798}],
  &#39;facets&#39;: []}
 </pre></div>
 </div>
@@ -802,7 +801,7 @@ If you wanted to see the 10 most recently released results, you would change
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;c4c04d94-5537-4bf5-ad49-8a0462f100f7&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;query_id&#39;: &#39;77ba738d-6207-41c1-93f3-1fe439cd1d78&#39;,
  &#39;result_type&#39;: &#39;entry&#39;,
  &#39;total_count&#39;: 571,
  &#39;result_set&#39;: [{&#39;identifier&#39;: &#39;1MBN&#39;, &#39;score&#39;: 1.0},
