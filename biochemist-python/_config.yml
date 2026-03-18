@@ -37,6 +37,6 @@ sphinx:
         image_light: biochemist-python/images/molssi_main_logo.png
         image_dark: biochemist-python/images/molssi_main_logo_inverted_white.png
       analytics:
-        google_analytics_id: G-FHKVGE8HKZ 
+        google_analytics_id: G-2NEP9LE9KQ 
 
   
